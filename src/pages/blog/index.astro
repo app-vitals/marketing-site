@@ -1,0 +1,58 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
+
+const categoryColors: Record<string, string> = {
+  'AI Adoption': 'text-accent-cyan border-accent-cyan/30',
+  'Engineering Velocity': 'text-electric-400 border-electric-400/30',
+  'Technical Leadership': 'text-accent-violet border-accent-violet/30',
+  'Company Updates': 'text-electric-300 border-electric-300/30',
+};
+---
+
+<BaseLayout title="Blog — App Vitals" description="Insights on AI adoption, engineering velocity, and technical leadership from the App Vitals team.">
+  <section class="py-24 md:py-32">
+    <div class="max-w-4xl mx-auto px-6">
+      <!-- Header -->
+      <div class="mb-16 reveal">
+        <p class="font-mono text-[13px] tracking-widest uppercase text-electric-400 mb-4">Blog</p>
+        <h1 class="font-display text-4xl md:text-5xl font-bold tracking-tight mb-6">
+          Insights for <span class="gradient-text">engineering leaders</span>
+        </h1>
+        <p class="text-lg text-white/50 max-w-2xl">
+          Practical thinking on AI adoption, engineering velocity, and building teams that ship.
+        </p>
+      </div>
+
+      <!-- Posts -->
+      <div class="space-y-2">
+        {posts.map((post) => (
+          <a
+            href={`/blog/${post.id}`}
+            class="block group p-6 md:p-8 rounded-2xl border border-white/[0.06] hover:border-white/[0.12] bg-navy-900/40 hover:bg-navy-900/60 transition-all duration-300 reveal card-glow"
+          >
+            <div class="flex flex-wrap items-center gap-3 mb-3">
+              <span class={`font-mono text-[11px] tracking-widest uppercase px-2.5 py-1 rounded-full border ${categoryColors[post.data.category] || 'text-white/50 border-white/10'}`}>
+                {post.data.category}
+              </span>
+              <span class="font-mono text-[12px] text-white/30">
+                {new Date(post.data.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+              </span>
+              <span class="font-mono text-[12px] text-white/30">·</span>
+              <span class="font-mono text-[12px] text-white/30">{post.data.readTime}</span>
+            </div>
+            <h2 class="font-display text-xl md:text-2xl font-semibold tracking-tight mb-2 group-hover:text-electric-400 transition-colors duration-300">
+              {post.data.title}
+            </h2>
+            <p class="text-white/40 text-[15px] leading-relaxed mb-3">{post.data.excerpt}</p>
+            <p class="font-mono text-[12px] text-white/25">{post.data.author}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
