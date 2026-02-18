@@ -46,7 +46,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600&display=swap" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600&display=swap" rel="stylesheet" /></noscript>
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -63,11 +65,42 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
       gtag('config', 'G-XXXXXXXXXX');
     </script> -->
   </head>
-  <body class="min-h-screen flex flex-col">
+  <body class="min-h-screen flex flex-col overflow-x-hidden">
+    <!-- Grain texture overlay -->
+    <div class="grain-overlay" aria-hidden="true"></div>
+
     <Header />
-    <main class="flex-1 pt-16">
+    <main class="flex-1 pt-[72px]">
       <slot />
     </main>
     <Footer />
+
+    <!-- Scroll reveal observer -->
+    <script>
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+            }
+          });
+        },
+        { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+      );
+      document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+    </script>
+
+    <!-- Card glow mouse tracking -->
+    <script>
+      document.querySelectorAll('.card-glow').forEach((card) => {
+        card.addEventListener('mousemove', (e) => {
+          const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
+          const x = ((e as MouseEvent).clientX - rect.left) / rect.width * 100;
+          const y = ((e as MouseEvent).clientY - rect.top) / rect.height * 100;
+          (e.currentTarget as HTMLElement).style.setProperty('--mouse-x', `${x}%`);
+          (e.currentTarget as HTMLElement).style.setProperty('--mouse-y', `${y}%`);
+        });
+      });
+    </script>
   </body>
 </html>

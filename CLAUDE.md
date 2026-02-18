@@ -26,12 +26,15 @@ planning/       # PRD, task breakdown, clarifying questions
 - **Files**: ~200 lines max per file
 
 ## Design Tokens
-- **Background**: Navy `#0F172A` (navy-900), `#1E293B` (navy-800)
-- **Accent**: Electric blue `#3B82F6` (electric-500)
-- **Text**: White on dark backgrounds, `text-gray-400` for secondary
-- **Font**: Inter (Google Fonts)
+- **Background**: Deep navy `#080E1E` (navy-950), `#0F172A` (navy-900)
+- **Accent**: Electric blue `#3B82F6`, Cyan `#22D3EE`, Violet `#8B5CF6`
+- **Text**: White on dark, `text-white/40-50` for body, `text-white/25` for subtle
+- **Display font**: Space Grotesk (Google Fonts) — headings, brand
+- **Body font**: General Sans (Fontshare) — paragraphs, UI
+- **Mono font**: JetBrains Mono — labels, tags, metadata
 - **Max width**: `max-w-6xl` (1152px)
-- **Inspiration**: Linear.app, Vercel.com — clean, fast, developer-friendly
+- **Aesthetic**: Premium editorial — grain texture overlay, animated gradient glow orbs, scroll reveals, gradient text, mouse-tracking card glow effects
+- **Inspiration**: Linear.app, Stripe annual letters — dark, confident, memorable
 
 ## Content Rules
 - NO client names (anonymize everything)

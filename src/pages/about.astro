@@ -7,24 +7,38 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   description="Meet Dan McAulay and Dave O'Dell — 40+ years of engineering leadership at Uber, Alto Pharmacy, and enterprise companies, now helping teams adopt AI the right way."
 >
   <!-- Hero -->
-  <section class="max-w-6xl mx-auto px-6 pt-24 pb-16 md:pt-32 md:pb-20">
-    <div class="max-w-3xl">
-      <h1 class="text-4xl md:text-5xl font-bold leading-tight tracking-tight">
-        Move fast and build things<br />
-        <span class="text-electric-500">that last.</span>
-      </h1>
-      <p class="mt-6 text-lg text-gray-400 leading-relaxed max-w-2xl">
-        App Vitals is a two-person team that embeds with engineering organizations to help them adopt AI — without sacrificing the standards that got them here.
-      </p>
+  <section class="relative overflow-hidden">
+    <div class="glow-orb w-[400px] h-[400px] bg-accent-violet/[0.05] top-[-10%] right-[10%] animate-glow-drift" aria-hidden="true"></div>
+
+    <div class="max-w-6xl mx-auto px-6 pt-24 pb-20 md:pt-32 md:pb-24 relative z-10">
+      <div class="max-w-3xl">
+        <p class="font-mono text-[13px] text-electric-400 tracking-[0.25em] uppercase mb-6 opacity-0 animate-fade-in-up">
+          About Us
+        </p>
+        <h1 class="font-display text-[clamp(2.5rem,5vw,4.5rem)] font-bold leading-[1.05] tracking-[-0.03em] opacity-0 animate-fade-in-up-delay-1">
+          Move fast and build<br />
+          things <span class="gradient-text">that last.</span>
+        </h1>
+        <p class="mt-8 text-[18px] text-white/45 max-w-xl leading-[1.7] opacity-0 animate-fade-in-up-delay-2">
+          A two-person team that embeds with engineering organizations to help them adopt AI — without sacrificing the standards that got them here.
+        </p>
+      </div>
     </div>
   </section>
 
-  <!-- Our Story -->
-  <section class="border-y border-white/10 bg-navy-800/20">
-    <div class="max-w-6xl mx-auto px-6 py-20 md:py-28">
-      <div class="max-w-3xl">
-        <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-8">Our story</h2>
-        <div class="space-y-6 text-gray-400 leading-relaxed text-lg">
+  <!-- Story -->
+  <section class="relative">
+    <div class="gradient-divider"></div>
+    <div class="max-w-6xl mx-auto px-6 py-24 md:py-32">
+      <div class="grid md:grid-cols-[1fr,1.5fr] gap-16 items-start">
+        <div class="reveal">
+          <p class="font-mono text-[12px] text-electric-400 uppercase tracking-[0.3em] mb-4">Our Story</p>
+          <h2 class="font-display text-[clamp(1.5rem,3vw,2.25rem)] font-bold tracking-[-0.02em] leading-[1.2]">
+            Enterprise experience.<br />
+            <span class="text-white/40">Startup intensity.</span>
+          </h2>
+        </div>
+        <div class="space-y-6 text-[16px] text-white/45 leading-[1.8] reveal" style="transition-delay: 150ms;">
           <p>
             We've spent 40+ combined years building and leading engineering teams at companies like Uber and Alto Pharmacy. We've navigated bureaucracy, shipped distributed systems for millions of users, and learned what it takes to move fast at scale.
           </p>
@@ -32,26 +46,36 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             Now we're applying that experience to the biggest shift in software engineering since the cloud: AI-assisted development. Most teams know they should be using AI tools. Few know how to adopt them without creating a mess.
           </p>
           <p>
-            That's the gap we fill. We don't roll out tools and hope for the best. We find the engineers who are already excited, coach them into champions, and help them spread adoption organically across the team. Same bar for AI code as human code. No shortcuts.
+            That's the gap we fill. We don't roll out tools and hope for the best. We find the engineers who are already excited, coach them into champions, and help them spread adoption organically. Same bar for AI code as human code. No shortcuts.
           </p>
         </div>
       </div>
     </div>
+    <div class="gradient-divider"></div>
   </section>
 
   <!-- Founders -->
-  <section class="max-w-6xl mx-auto px-6 py-20 md:py-28">
-    <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-16 text-center">The team</h2>
+  <section class="max-w-6xl mx-auto px-6 py-24 md:py-32">
+    <div class="mb-16 reveal">
+      <p class="font-mono text-[12px] text-electric-400 uppercase tracking-[0.3em] mb-4">The Team</p>
+      <h2 class="font-display text-[clamp(1.5rem,3vw,2.25rem)] font-bold tracking-[-0.02em]">
+        Two founders. Decades of depth.
+      </h2>
+    </div>
 
-    <div class="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
+    <div class="grid md:grid-cols-2 gap-8">
       <!-- Dan -->
-      <div class="p-8 rounded-2xl border border-white/10 bg-navy-800/30">
-        <div class="w-20 h-20 rounded-full bg-electric-500/10 flex items-center justify-center mb-6">
-          <span class="text-2xl font-bold text-electric-500">DM</span>
+      <div class="card-glow p-10 rounded-2xl border border-white/[0.06] bg-white/[0.02] reveal">
+        <div class="flex items-center gap-5 mb-8">
+          <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-electric-500/20 to-accent-cyan/20 flex items-center justify-center">
+            <span class="font-display text-[20px] font-bold gradient-text">DM</span>
+          </div>
+          <div>
+            <h3 class="font-display text-[22px] font-bold tracking-tight">Dan McAulay</h3>
+            <p class="text-[13px] text-electric-400 font-mono tracking-[0.15em] uppercase">Co-Founder</p>
+          </div>
         </div>
-        <h3 class="text-2xl font-bold mb-1">Dan McAulay</h3>
-        <p class="text-electric-500 text-sm font-medium mb-4">Co-Founder</p>
-        <div class="space-y-4 text-gray-400 leading-relaxed">
+        <div class="space-y-4 text-[15px] text-white/40 leading-[1.7]">
           <p>
             20+ years building at scale. Former engineering leader at Uber, where he worked on distributed systems serving millions of users. Deep expertise in platform engineering, team building, and navigating complex organizations.
           </p>
@@ -62,18 +86,22 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
 
       <!-- Dave -->
-      <div class="p-8 rounded-2xl border border-white/10 bg-navy-800/30">
-        <div class="w-20 h-20 rounded-full bg-electric-500/10 flex items-center justify-center mb-6">
-          <span class="text-2xl font-bold text-electric-500">DO</span>
+      <div class="card-glow p-10 rounded-2xl border border-white/[0.06] bg-white/[0.02] reveal" style="transition-delay: 150ms;">
+        <div class="flex items-center gap-5 mb-8">
+          <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-accent-violet/20 to-electric-500/20 flex items-center justify-center">
+            <span class="font-display text-[20px] font-bold gradient-text">DO</span>
+          </div>
+          <div>
+            <h3 class="font-display text-[22px] font-bold tracking-tight">Dave O'Dell</h3>
+            <p class="text-[13px] text-electric-400 font-mono tracking-[0.15em] uppercase">Co-Founder</p>
+          </div>
         </div>
-        <h3 class="text-2xl font-bold mb-1">Dave O'Dell</h3>
-        <p class="text-electric-500 text-sm font-medium mb-4">Co-Founder</p>
-        <div class="space-y-4 text-gray-400 leading-relaxed">
+        <div class="space-y-4 text-[15px] text-white/40 leading-[1.7]">
           <p>
             20+ years of engineering leadership across enterprise and healthcare companies, including Alto Pharmacy. Specializes in engineering velocity, developer experience, and building systems that scale.
           </p>
           <p>
-            Dave is an AI-native practitioner who uses AI assistants daily to operate at startup velocity with enterprise quality. He brings hands-on expertise in making AI tools actually useful for real engineering work.
+            An AI-native practitioner who uses AI assistants daily to operate at startup velocity with enterprise quality. Hands-on expertise in making AI tools actually useful for real engineering work.
           </p>
         </div>
       </div>
@@ -81,32 +109,53 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </section>
 
   <!-- Philosophy -->
-  <section class="border-y border-white/10 bg-navy-800/20">
-    <div class="max-w-6xl mx-auto px-6 py-20 md:py-28">
-      <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-12 text-center">Our approach</h2>
+  <section class="relative">
+    <div class="gradient-divider"></div>
+    <div class="max-w-6xl mx-auto px-6 py-24 md:py-32">
+      <div class="mb-16 reveal">
+        <p class="font-mono text-[12px] text-electric-400 uppercase tracking-[0.3em] mb-4">Our Approach</p>
+        <h2 class="font-display text-[clamp(1.5rem,3vw,2.25rem)] font-bold tracking-[-0.02em]">
+          Principles, not playbooks.
+        </h2>
+      </div>
 
-      <div class="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
-        <div>
-          <h3 class="text-xl font-semibold mb-4 text-electric-500">Champions, not mandates</h3>
-          <p class="text-gray-400 leading-relaxed">
+      <div class="grid md:grid-cols-2 gap-x-12 gap-y-14">
+        <div class="reveal">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-1 h-6 rounded-full bg-electric-500"></div>
+            <h3 class="font-display text-[18px] font-semibold tracking-tight">Champions, not mandates</h3>
+          </div>
+          <p class="text-[15px] text-white/40 leading-[1.7] pl-5">
             Top-down AI mandates get ignored. We find the engineers who are already excited and help them become the proof that adoption works. Their peers follow because they see results — not because they were told to.
           </p>
         </div>
-        <div>
-          <h3 class="text-xl font-semibold mb-4 text-electric-500">Context is infrastructure</h3>
-          <p class="text-gray-400 leading-relaxed">
+
+        <div class="reveal" style="transition-delay: 100ms;">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-1 h-6 rounded-full bg-accent-cyan"></div>
+            <h3 class="font-display text-[18px] font-semibold tracking-tight">Context is infrastructure</h3>
+          </div>
+          <p class="text-[15px] text-white/40 leading-[1.7] pl-5">
             AI tools are only as useful as the context they have. We build the foundation — architecture docs, shared patterns, conventions — that makes AI genuinely understand your codebase.
           </p>
         </div>
-        <div>
-          <h3 class="text-xl font-semibold mb-4 text-electric-500">Ship first, strategize second</h3>
-          <p class="text-gray-400 leading-relaxed">
+
+        <div class="reveal" style="transition-delay: 200ms;">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-1 h-6 rounded-full bg-accent-violet"></div>
+            <h3 class="font-display text-[18px] font-semibold tracking-tight">Ship first, strategize second</h3>
+          </div>
+          <p class="text-[15px] text-white/40 leading-[1.7] pl-5">
             We deliver production code in Week 1, not PowerPoints. Strategy comes from doing the work and seeing what actually moves the needle for your team.
           </p>
         </div>
-        <div>
-          <h3 class="text-xl font-semibold mb-4 text-electric-500">Two founders + AI</h3>
-          <p class="text-gray-400 leading-relaxed">
+
+        <div class="reveal" style="transition-delay: 300ms;">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-1 h-6 rounded-full bg-electric-400"></div>
+            <h3 class="font-display text-[18px] font-semibold tracking-tight">Two founders + AI</h3>
+          </div>
+          <p class="text-[15px] text-white/40 leading-[1.7] pl-5">
             We're a small team by design. Two senior engineers leveraging AI tools means startup velocity with enterprise quality. No overhead, no layers, no diluted expertise.
           </p>
         </div>
@@ -115,20 +164,28 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </section>
 
   <!-- CTA -->
-  <section class="max-w-6xl mx-auto px-6 py-20 md:py-28 text-center">
-    <h2 class="text-3xl md:text-4xl font-bold tracking-tight">
-      Let's talk about your team.
-    </h2>
-    <p class="mt-4 text-lg text-gray-400 max-w-xl mx-auto">
-      30 minutes to understand where you are, where you want to be, and whether we're the right fit.
-    </p>
-    <a
-      href="https://cal.com/app-vitals/discovery"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="inline-flex items-center justify-center mt-8 px-8 py-3 bg-electric-500 hover:bg-electric-600 rounded-lg text-lg font-medium transition-colors"
-    >
-      Book a Discovery Call
-    </a>
+  <section class="relative py-24 md:py-32">
+    <div class="gradient-divider"></div>
+    <div class="glow-orb w-[500px] h-[300px] bg-electric-500/[0.04] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate-glow-drift" aria-hidden="true"></div>
+
+    <div class="max-w-6xl mx-auto px-6 pt-24 text-center relative z-10 reveal">
+      <h2 class="font-display text-[clamp(1.75rem,4vw,3rem)] font-bold tracking-[-0.02em] leading-[1.15]">
+        Let's talk about <span class="gradient-text">your team.</span>
+      </h2>
+      <p class="mt-6 text-[17px] text-white/40 max-w-md mx-auto leading-[1.7]">
+        30 minutes to understand where you are, where you want to be, and whether we're the right fit.
+      </p>
+      <a
+        href="https://cal.com/app-vitals/discovery"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center justify-center mt-10 px-10 py-4 bg-white text-navy-950 rounded-full text-[16px] font-semibold tracking-wide transition-all duration-300 hover:shadow-[0_0_60px_rgba(59,130,246,0.3)] hover:scale-[1.02]"
+      >
+        Book a Discovery Call
+        <svg class="ml-2 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+        </svg>
+      </a>
+    </div>
   </section>
 </BaseLayout>

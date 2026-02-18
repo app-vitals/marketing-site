@@ -8,20 +8,22 @@ const navLinks = [
 const currentPath = Astro.url.pathname;
 ---
 
-<header class="fixed top-0 w-full z-50 border-b border-white/10 bg-navy-900/80 backdrop-blur-md">
-  <nav class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-    <a href="/" class="text-xl font-bold tracking-tight">
-      App<span class="text-electric-500">Vitals</span>
+<header class="fixed top-0 w-full z-50 bg-navy-950/60 backdrop-blur-xl border-b border-white/[0.06]">
+  <nav class="max-w-6xl mx-auto px-6 h-[72px] flex items-center justify-between">
+    <a href="/" class="font-display text-[22px] font-bold tracking-tight group">
+      <span class="text-white group-hover:text-electric-400 transition-colors duration-300">App</span><span class="gradient-text">Vitals</span>
     </a>
 
     <!-- Desktop nav -->
-    <div class="hidden md:flex items-center gap-8">
+    <div class="hidden md:flex items-center gap-10">
       {navLinks.map(({ href, label }) => (
         <a
           href={href}
           class:list={[
-            'text-sm transition-colors',
-            currentPath === href ? 'text-white' : 'text-gray-400 hover:text-white',
+            'text-[15px] font-medium tracking-wide transition-colors duration-300 relative',
+            currentPath === href
+              ? 'text-white after:absolute after:bottom-[-4px] after:left-0 after:w-full after:h-[2px] after:bg-electric-500 after:rounded-full'
+              : 'text-white/50 hover:text-white',
           ]}
         >
           {label}
@@ -31,7 +33,7 @@ const currentPath = Astro.url.pathname;
         href="https://cal.com/app-vitals/discovery"
         target="_blank"
         rel="noopener noreferrer"
-        class="text-sm px-4 py-2 bg-electric-500 hover:bg-electric-600 rounded-lg transition-colors font-medium"
+        class="text-[14px] px-5 py-2.5 bg-white text-navy-950 hover:bg-white/90 rounded-full transition-all duration-300 font-semibold tracking-wide hover:shadow-[0_0_24px_rgba(59,130,246,0.25)]"
       >
         Book a Call
       </a>
@@ -40,24 +42,24 @@ const currentPath = Astro.url.pathname;
     <!-- Mobile menu button -->
     <button
       id="mobile-menu-btn"
-      class="md:hidden p-2 text-gray-400 hover:text-white"
+      class="md:hidden p-2 text-white/50 hover:text-white transition-colors"
       aria-label="Toggle menu"
     >
-      <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+        <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" d="M3.75 9h16.5m-16.5 6.75h16.5" />
       </svg>
     </button>
   </nav>
 
   <!-- Mobile menu -->
-  <div id="mobile-menu" class="hidden md:hidden border-t border-white/10 bg-navy-900/95 backdrop-blur-md">
-    <div class="px-6 py-4 space-y-3">
+  <div id="mobile-menu" class="hidden md:hidden bg-navy-950/95 backdrop-blur-xl border-t border-white/[0.06]">
+    <div class="px-6 py-6 space-y-1">
       {navLinks.map(({ href, label }) => (
         <a
           href={href}
           class:list={[
-            'block text-sm py-2 transition-colors',
-            currentPath === href ? 'text-white' : 'text-gray-400 hover:text-white',
+            'block text-[15px] py-3 font-medium tracking-wide transition-colors duration-300',
+            currentPath === href ? 'text-white' : 'text-white/50 hover:text-white',
           ]}
         >
           {label}
@@ -67,7 +69,7 @@ const currentPath = Astro.url.pathname;
         href="https://cal.com/app-vitals/discovery"
         target="_blank"
         rel="noopener noreferrer"
-        class="block text-sm px-4 py-2 bg-electric-500 hover:bg-electric-600 rounded-lg transition-colors font-medium text-center mt-2"
+        class="block text-[14px] px-5 py-3 bg-white text-navy-950 rounded-full transition-colors font-semibold text-center mt-4 tracking-wide"
       >
         Book a Call
       </a>

@@ -2,6 +2,31 @@
 @tailwind components;
 @tailwind utilities;
 
+/* General Sans from CDN */
+@font-face {
+  font-family: 'General Sans';
+  src: url('https://cdn.fontshare.com/wf/ZTPAQFMQMLBZBWFYCDDIIUUZYIHQBRSP/QLKX6YVDJ5OTIVVNLAT55M5IBRHVUKJF/HPWVNIRLJMYVFOXDBMHUNWXICCZEXMKH.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'General Sans';
+  src: url('https://cdn.fontshare.com/wf/ZTPAQFMQMLBZBWFYCDDIIUUZYIHQBRSP/5IDXEPFHD3JRS5STMRM4O4NXQT3XMVHB/53ZO7DBHTJKTZWUZSOKWHFAEVMKFPYEY.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'General Sans';
+  src: url('https://cdn.fontshare.com/wf/ZTPAQFMQMLBZBWFYCDDIIUUZYIHQBRSP/YT5IGIKRQXQMV5PLBBTOPXKTG2KPP3BB/LMNQWIHGNJ6DRJFTW3TDHVIYRMHLPRCK.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
@@ -10,6 +35,77 @@
   }
 
   body {
-    @apply bg-navy-900 text-white font-sans;
+    @apply bg-navy-950 text-white font-body;
+  }
+
+  /* Selection color */
+  ::selection {
+    @apply bg-electric-500/30 text-white;
+  }
+}
+
+@layer components {
+  /* Grain overlay */
+  .grain-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 256px 256px;
+    animation: grain 0.5s steps(1) infinite;
+  }
+
+  /* Glow orbs */
+  .glow-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    pointer-events: none;
+  }
+
+  /* Scroll reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #60A5FA, #22D3EE, #8B5CF6);
+  }
+
+  /* Subtle border glow on hover */
+  .card-glow {
+    position: relative;
+    transition: border-color 0.3s ease;
+  }
+  .card-glow::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(59, 130, 246, 0.06), transparent 40%);
+    pointer-events: none;
+  }
+  .card-glow:hover::after {
+    opacity: 1;
+  }
+
+  /* Divider line with gradient */
+  .gradient-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.3), transparent);
   }
 }

@@ -6,62 +6,74 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   title="Contact — App Vitals"
   description="Book a discovery call with App Vitals. 30 minutes to understand your team's AI adoption challenges and whether we can help."
 >
-  <section class="max-w-6xl mx-auto px-6 pt-24 pb-20 md:pt-32 md:pb-28">
-    <div class="max-w-2xl mx-auto text-center">
-      <h1 class="text-4xl md:text-5xl font-bold leading-tight tracking-tight">
-        Let's talk.
-      </h1>
-      <p class="mt-6 text-lg text-gray-400 leading-relaxed">
-        Book a 30-minute discovery call. We'll discuss where your engineering team is with AI adoption, where it should be, and whether we're the right fit to help.
-      </p>
+  <section class="relative min-h-[80vh] flex items-center overflow-hidden">
+    <div class="glow-orb w-[500px] h-[500px] bg-electric-500/[0.06] top-[20%] right-[-5%] animate-glow-drift" aria-hidden="true"></div>
+    <div class="glow-orb w-[300px] h-[300px] bg-accent-violet/[0.04] bottom-[20%] left-[5%] animate-glow-drift-slow" aria-hidden="true"></div>
 
-      <a
-        href="https://cal.com/app-vitals/discovery"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="inline-flex items-center justify-center mt-10 px-10 py-4 bg-electric-500 hover:bg-electric-600 rounded-lg text-xl font-medium transition-colors"
-      >
-        Book a Discovery Call
-      </a>
+    <div class="max-w-6xl mx-auto px-6 py-24 md:py-32 relative z-10 w-full">
+      <div class="grid md:grid-cols-[1.2fr,1fr] gap-16 md:gap-24 items-center">
+        <!-- Left: CTA -->
+        <div>
+          <p class="font-mono text-[13px] text-electric-400 tracking-[0.25em] uppercase mb-6 opacity-0 animate-fade-in-up">
+            Get in Touch
+          </p>
+          <h1 class="font-display text-[clamp(2.5rem,5vw,4.5rem)] font-bold leading-[1.05] tracking-[-0.03em] opacity-0 animate-fade-in-up-delay-1">
+            Let's <span class="gradient-text">talk.</span>
+          </h1>
+          <p class="mt-8 text-[18px] text-white/45 max-w-md leading-[1.7] opacity-0 animate-fade-in-up-delay-2">
+            Book a 30-minute discovery call. No pitch deck, no pressure — just an honest conversation about your team's AI adoption challenges.
+          </p>
+          <a
+            href="https://cal.com/app-vitals/discovery"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center mt-10 px-10 py-4 bg-white text-navy-950 rounded-full text-[16px] font-semibold tracking-wide transition-all duration-300 hover:shadow-[0_0_60px_rgba(59,130,246,0.3)] hover:scale-[1.02] opacity-0 animate-fade-in-up-delay-3"
+          >
+            Book a Discovery Call
+            <svg class="ml-2 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+            </svg>
+          </a>
+        </div>
 
-      <div class="mt-16 pt-12 border-t border-white/10">
-        <div class="grid sm:grid-cols-2 gap-8 text-left">
-          <div>
-            <h3 class="text-sm font-medium text-gray-500 uppercase tracking-widest mb-2">What to expect</h3>
-            <ul class="space-y-3 text-gray-400">
-              <li class="flex gap-3">
-                <span class="text-electric-500 mt-0.5">→</span>
-                <span>30-minute video call</span>
+        <!-- Right: Details -->
+        <div class="space-y-10 opacity-0 animate-fade-in-up-delay-2">
+          <div class="card-glow p-8 rounded-2xl border border-white/[0.06] bg-white/[0.02]">
+            <h3 class="font-mono text-[12px] text-white/25 uppercase tracking-[0.3em] mb-5">What to expect</h3>
+            <ul class="space-y-4">
+              <li class="flex gap-4 text-[15px]">
+                <span class="text-electric-400 mt-0.5 font-mono text-[13px]">→</span>
+                <span class="text-white/50">30-minute video call</span>
               </li>
-              <li class="flex gap-3">
-                <span class="text-electric-500 mt-0.5">→</span>
-                <span>We'll ask about your team, stack, and AI goals</span>
+              <li class="flex gap-4 text-[15px]">
+                <span class="text-electric-400 mt-0.5 font-mono text-[13px]">→</span>
+                <span class="text-white/50">We'll ask about your team, stack, and AI goals</span>
               </li>
-              <li class="flex gap-3">
-                <span class="text-electric-500 mt-0.5">→</span>
-                <span>Honest assessment of whether we can help</span>
+              <li class="flex gap-4 text-[15px]">
+                <span class="text-electric-400 mt-0.5 font-mono text-[13px]">→</span>
+                <span class="text-white/50">Honest assessment of whether we can help</span>
               </li>
-              <li class="flex gap-3">
-                <span class="text-electric-500 mt-0.5">→</span>
-                <span>No pitch decks, no pressure</span>
+              <li class="flex gap-4 text-[15px]">
+                <span class="text-electric-400 mt-0.5 font-mono text-[13px]">→</span>
+                <span class="text-white/50">No pitch decks, no pressure</span>
               </li>
             </ul>
           </div>
 
-          <div>
-            <h3 class="text-sm font-medium text-gray-500 uppercase tracking-widest mb-2">Details</h3>
-            <ul class="space-y-3 text-gray-400">
-              <li class="flex gap-3">
-                <span class="text-electric-500 mt-0.5">→</span>
-                <span>Remote-first, US-based</span>
+          <div class="card-glow p-8 rounded-2xl border border-white/[0.06] bg-white/[0.02]">
+            <h3 class="font-mono text-[12px] text-white/25 uppercase tracking-[0.3em] mb-5">Details</h3>
+            <ul class="space-y-4">
+              <li class="flex gap-4 text-[15px]">
+                <span class="text-accent-cyan mt-0.5 font-mono text-[13px]">→</span>
+                <span class="text-white/50">Remote-first, US-based</span>
               </li>
-              <li class="flex gap-3">
-                <span class="text-electric-500 mt-0.5">→</span>
-                <span>Work with teams of 40–100+ engineers</span>
+              <li class="flex gap-4 text-[15px]">
+                <span class="text-accent-cyan mt-0.5 font-mono text-[13px]">→</span>
+                <span class="text-white/50">Teams of 40–100+ engineers</span>
               </li>
-              <li class="flex gap-3">
-                <span class="text-electric-500 mt-0.5">→</span>
-                <span>Engagements start with a 6-week pilot</span>
+              <li class="flex gap-4 text-[15px]">
+                <span class="text-accent-cyan mt-0.5 font-mono text-[13px]">→</span>
+                <span class="text-white/50">Engagements start with a 6-week pilot</span>
               </li>
             </ul>
           </div>
