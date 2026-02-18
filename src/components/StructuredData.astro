@@ -1,0 +1,26 @@
+---
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'App Vitals',
+  url: 'https://app-vitals.com',
+  logo: 'https://app-vitals.com/favicon.svg',
+  description: 'App Vitals helps engineering teams adopt AI to ship faster — without lowering their standards.',
+  foundingDate: '2025',
+  founders: [
+    { '@type': 'Person', name: 'Dan McAulay' },
+    { '@type': 'Person', name: 'Dave O\'Dell' },
+  ],
+  sameAs: [],
+};
+
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'App Vitals',
+  url: 'https://app-vitals.com',
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+<script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
