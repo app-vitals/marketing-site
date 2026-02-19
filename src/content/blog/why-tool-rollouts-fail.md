@@ -3,7 +3,7 @@ title: "Why Tool Rollouts Fail (And What Works Instead)"
 date: "2026-02-07"
 author: "Dan McAulay"
 category: "AI Adoption"
-excerpt: "Top-down AI mandates fail. Champion-based adoption works. Here's the 6-week pilot model we use to make AI stick."
+excerpt: "Top-down AI mandates fail. Champion-based adoption works. Here's the 12-week pilot model we use to make AI stick."
 readTime: "6 min read"
 ---
 
@@ -63,11 +63,11 @@ These wins create curiosity. Other engineers start asking: "How did you do that?
 
 This is where the magic happens. Champions start teaching others — not in a formal training session, but organically. Pair programming. Slack threads. Code reviews where they show AI-assisted approaches.
 
-Your role shifts from enabler to support. You're available for questions, you help champions when they get stuck, but they're doing the teaching. By Week 6, the champions should be self-sustaining.
+Your role shifts from enabler to support. You're available for questions, you help champions when they get stuck, but they're doing the teaching. By Week 12, the champions should be self-sustaining.
 
 ## Why This Works
 
-The 6-week pilot works because it respects how humans actually adopt new tools:
+The 12-week pilot works because it respects how humans actually adopt new tools:
 
 **Social proof over authority.** People trust their peers more than their bosses. When a respected engineer on the team says "this changed how I work," it carries more weight than any executive mandate.
 
