@@ -8,12 +8,14 @@ interface Props {
   title: string;
   description?: string;
   ogImage?: string;
+  extraSchema?: Record<string, unknown> | Record<string, unknown>[];
 }
 
 const {
   title,
   description = 'App Vitals helps engineering teams adopt AI to ship faster — without lowering their standards.',
   ogImage = '/og-default.png',
+  extraSchema,
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -55,6 +57,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
     <!-- Structured Data -->
     <StructuredData />
+    {extraSchema && (Array.isArray(extraSchema) ? extraSchema : [extraSchema]).map((schema) => (
+      <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+    ))}
 
     <!-- GA4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-H7QY6C7T1L"></script>
