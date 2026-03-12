@@ -6,6 +6,21 @@ const posts = (await getCollection('blog')).sort(
   (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
 );
 
+const collectionPageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'Blog — App Vitals',
+  description: 'Insights on AI adoption, engineering velocity, and technical leadership from the App Vitals team.',
+  url: 'https://app-vitals.com/blog/',
+  hasPart: posts.map((post) => ({
+    '@type': 'BlogPosting',
+    headline: post.data.title,
+    datePublished: post.data.date,
+    description: post.data.excerpt,
+    url: `https://app-vitals.com/blog/${post.id}/`,
+  })),
+};
+
 const categoryColors: Record<string, string> = {
   'AI Adoption': 'text-accent-cyan border-accent-cyan/30',
   'Engineering Velocity': 'text-electric-400 border-electric-400/30',
@@ -14,7 +29,7 @@ const categoryColors: Record<string, string> = {
 };
 ---
 
-<BaseLayout title="Blog — App Vitals" description="Insights on AI adoption, engineering velocity, and technical leadership from the App Vitals team.">
+<BaseLayout title="Blog — App Vitals" description="Insights on AI adoption, engineering velocity, and technical leadership from the App Vitals team." extraSchema={collectionPageSchema}>
   <section class="py-24 md:py-32">
     <div class="max-w-4xl mx-auto px-6">
       <!-- Header -->

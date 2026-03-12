@@ -13,6 +13,17 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const { Content } = await render(post);
 
+const blogPostingSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: post.data.title,
+  datePublished: post.data.date,
+  description: post.data.excerpt,
+  author: { '@type': 'Person', name: post.data.author },
+  publisher: { '@type': 'Organization', name: 'App Vitals', url: 'https://app-vitals.com' },
+  mainEntityOfPage: `https://app-vitals.com/blog/${post.id}/`,
+};
+
 const categoryColors: Record<string, string> = {
   'AI Adoption': 'text-accent-cyan border-accent-cyan/30',
   'Engineering Velocity': 'text-electric-400 border-electric-400/30',
@@ -21,7 +32,7 @@ const categoryColors: Record<string, string> = {
 };
 ---
 
-<BaseLayout title={`${post.data.title} — App Vitals`} description={post.data.excerpt}>
+<BaseLayout title={`${post.data.title} — App Vitals`} description={post.data.excerpt} extraSchema={blogPostingSchema}>
   <article class="py-24 md:py-32">
     <div class="max-w-3xl mx-auto px-6">
       <!-- Header -->
