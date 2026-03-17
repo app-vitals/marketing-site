@@ -75,7 +75,7 @@ This is the metric that separates real AI adoption from AI theater.
 
 **How to measure:** Track defects per release (or per sprint) normalized by throughput. If you're merging 30% more PRs, a 30% increase in absolute defect count means the rate is flat — which is acceptable. A decrease is excellent. An increase that outpaces throughput is a red flag.
 
-**What good looks like:** Flat or improving defect rates alongside throughput increases. The research shows [only 33% of developers fully trust AI-generated output](https://stackoverflow.blog/2024/07/developer-survey-ai-trust/) — which is actually healthy. The teams that do best are the ones where engineers treat AI output as a first draft that needs review, not finished code.
+**What good looks like:** Flat or improving defect rates alongside throughput increases. The research shows [only 33% of developers fully trust AI-generated output](https://survey.stackoverflow.co/2024/) — which is actually healthy. The teams that do best are the ones where engineers treat AI output as a first draft that needs review, not finished code.
 
 **The nuance:** Early in adoption, defect rates sometimes spike as engineers learn to calibrate their trust in AI output. That's normal. If it persists beyond 2-3 months, you have a training or process problem — your engineers aren't reviewing AI output rigorously enough.
 

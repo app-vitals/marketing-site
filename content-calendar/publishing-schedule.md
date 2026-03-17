@@ -2,13 +2,15 @@
 
 ## Publishing Schedule
 
-| Date | Day | Blog Post | LinkedIn Draft | Status |
-|------|-----|-----------|---------------|--------|
-| Mar 19, 2026 | Thursday | The AI Champion Playbook | Post 1 — "Your best AI adoption strategy is already sitting in your org" | Ready |
-| Mar 21, 2026 | Saturday | How to Measure AI Adoption ROI | Post 2 — "77% of orgs can't measure ROI on AI" | Ready |
-| Mar 24, 2026 | Tuesday | Code Review Is Your New Bottleneck | Post 3 — "We made developers 3x faster and nothing shipped faster" | Ready |
-| Mar 26, 2026 | Thursday | Why Your AI Coding Assistant Is Just Fancy Autocomplete | Post 4 — "AI coding tools aren't broken. Your setup is." | Ready |
-| Mar 28, 2026 | Saturday | The Velocity Engineering Playbook | Post 5 — "After 20 years in DevOps, here's the playbook" | Ready |
+| Date | Day | Blog Post | LinkedIn Post Date | LinkedIn Hook | Status |
+|------|-----|-----------|-------------------|---------------|--------|
+| Mar 19 | Thu | The AI Champion Playbook | Mar 19 (Thu) | "Your best AI adoption strategy is already sitting in your org" | Ready |
+| Mar 21 | Sat | How to Measure AI Adoption ROI | **Mar 23 (Mon)** | "77% of orgs can't measure ROI on AI" | Ready |
+| Mar 24 | Tue | Code Review Is Your New Bottleneck | Mar 24 (Tue) | "We made developers 3x faster and nothing shipped faster" | Ready |
+| Mar 26 | Thu | Why Your AI Coding Assistant Is Just Fancy Autocomplete | Mar 26 (Thu) | "AI coding tools aren't broken. Your setup is." | Ready |
+| Mar 28 | Sat | The Velocity Engineering Playbook | **Mar 30 (Mon)** | "After 20 years in DevOps, here's the playbook" | Ready |
+
+**LinkedIn timing note:** Blog posts publish on their frontmatter dates. LinkedIn promo posts are best on Tue-Thu mornings (8-10am PST). When a blog drops on Saturday, hold the LinkedIn promo for Monday morning.
 
 ## Cadence
 - **Blog posts:** Publish on the dates above (already dated in frontmatter)
