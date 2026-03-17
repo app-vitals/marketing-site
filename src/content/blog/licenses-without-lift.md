@@ -37,7 +37,7 @@ Architecture docs, coding conventions, and project-specific patterns accessible 
 
 ### 2. Champions, Not Mandates
 
-You can't email your way to AI adoption. [Top-down mandates fail](/blog/why-tool-rollouts-fail). What works is one or two engineers who are genuinely excited, paired with real work — not demo projects — shipping to production and showing results their teammates can't ignore.
+You can't email your way to AI adoption. [Top-down mandates fail](/blog/why-tool-rollouts-fail). What works is one or two engineers who are genuinely excited, paired with real work — not demo projects — shipping to production and showing results their teammates can't ignore. We've seen this pattern enough times to write [a full playbook for building AI champion programs](/blog/ai-champion-playbook).
 
 Champions create pull. Training creates push. Pull wins every time.
 
@@ -61,7 +61,7 @@ The question isn't "should we adopt AI tools?" Your competitors already have.
 
 The question is: are your engineers actually using them — or did you just buy the most expensive shelfware in your engineering budget?
 
-If your utilization numbers make you uncomfortable, that's a good sign. It means you're paying attention. The next step isn't buying more tools or scheduling more training. It's understanding why adoption stalled — and building the infrastructure to make it stick.
+If your utilization numbers make you uncomfortable, that's a good sign. It means you're paying attention. The next step isn't buying more tools or scheduling more training. It's understanding why adoption stalled — and [measuring what actually matters](/blog/measure-ai-adoption-roi) so you can build the infrastructure to make it stick.
 
 ---
 

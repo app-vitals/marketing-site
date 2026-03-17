@@ -117,7 +117,7 @@ Velocity engineering isn't just pipeline optimization. The people layer matters 
 
 Top-down tool mandates don't work. I've watched enough [enterprise AI adoption mistakes](/blog/enterprise-ai-adoption-mistakes) to be confident about this. What works is [champion-led adoption](/blog/ai-champion-playbook) — finding the engineers who are already bought in and giving them time and support to spread effective patterns.
 
-The champion model works because engineering culture is peer-driven. An engineer who sees a respected colleague ship a feature in two hours using AI is more persuaded than any executive presentation. One champion who's already getting results is worth more than a hundred training sessions.
+The champion model works because engineering culture is peer-driven. An engineer who sees a respected colleague ship a feature in two hours using AI is more persuaded than any executive presentation. One champion who's already getting results is worth more than a hundred training sessions. We've seen this firsthand — [two engineers with AI and deep experience](/blog/two-engineers-output-of-twenty) can produce the output of a much larger team when the velocity stack is optimized.
 
 ### Skills, Not Just Tools
 

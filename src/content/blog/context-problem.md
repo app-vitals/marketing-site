@@ -89,4 +89,4 @@ Create a conventions file in your repo root. Spend an hour with your senior engi
 
 Then watch what happens when your AI tools read it.
 
-The teams that get the most out of AI aren't the ones with the best AI tools. They're the ones whose codebases are legible — to humans and machines alike. Context isn't just infrastructure for AI. It's infrastructure for your entire engineering organization. AI just makes the ROI undeniable.
+The teams that get the most out of AI aren't the ones with the best AI tools. They're the ones whose codebases are legible — to humans and machines alike. Without that legibility, even the most powerful AI assistant is [just fancy autocomplete](/blog/ai-fancy-autocomplete). Context isn't just infrastructure for AI. It's infrastructure for your entire engineering organization. AI just makes the ROI undeniable.

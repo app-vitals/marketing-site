@@ -17,7 +17,7 @@ This is the most common one, especially at larger companies. The security and le
 
 It looks like this: A 6-month security review before any developer can use an AI tool. Approved tool lists that are outdated before they're published. Usage policies so restrictive that the AI tools are essentially useless. Mandatory training sessions that teach developers how to use tools they've already been using on personal projects for a year.
 
-Meanwhile, your best engineers are already using AI tools — they're just not telling you about it. They're using personal accounts, working around corporate proxies, and keeping it quiet because the official process is too slow.
+Meanwhile, your best engineers are already using AI tools — they're just not telling you about it. They're using personal accounts, working around corporate proxies, and keeping it quiet because the official process is too slow. And the tools they're using without proper context infrastructure? They're producing [generic output that's barely better than fancy autocomplete](/blog/ai-fancy-autocomplete).
 
 **This is the worst possible outcome.** You have AI usage you can't monitor, can't govern, and can't learn from. The compliance process designed to reduce risk is actually increasing it.
 
@@ -47,7 +47,7 @@ This is like having a group of employees who already know how to do the thing yo
 
 **Early adopters are your biggest asset in AI adoption.** They have credibility with their peers (they're already shipping faster). They have practical knowledge (they've already hit the pitfalls). They have enthusiasm (they want the rest of the team to experience what they have).
 
-**What works instead:** Find your early adopters. Talk to them. Understand what they've learned. Then formalize their role — make them champions who help their teams adopt AI practices. Give them time and air cover. Let them teach in their own style, using real examples from the actual codebase.
+**What works instead:** Find your early adopters. Talk to them. Understand what they've learned. Then formalize their role — make them champions who help their teams adopt AI practices. We've written [a full playbook for building champion programs](/blog/ai-champion-playbook) because this is the single highest-leverage move in AI adoption. Give them time and air cover. Let them teach in their own style, using real examples from the actual codebase.
 
 Champion-based adoption is slower to start but faster to scale, because each champion naturally enables 3-5 other engineers. And because the adoption is peer-driven, it actually sticks.
 
@@ -64,7 +64,7 @@ That means success depends on:
 - **Trust.** Engineers need to trust that the organization will support experimentation, not punish it.
 - **Relevance.** Training and enablement need to use real examples from real codebases, not generic demos.
 - **Patience.** Some engineers will adopt quickly. Others will take months. Both are fine.
-- **Measurement.** Track outcomes (velocity, quality, cycle time), not inputs (tool logins, hours of training).
+- **Measurement.** Track outcomes (velocity, quality, cycle time), not inputs (tool logins, hours of training). If you're not sure what to measure, we break down the [metrics that actually matter for AI adoption ROI](/blog/measure-ai-adoption-roi).
 
 ## The Window Is Closing
 

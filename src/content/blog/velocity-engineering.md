@@ -49,7 +49,7 @@ Think about it like a highway. You widen one lane from two to six lanes. Traffic
 
 That's exactly what happens when you speed up code generation without touching the rest of the pipeline:
 
-- Developers write 3x more code → code review queue triples
+- Developers write 3x more code → [code review queue triples](/blog/code-review-bottleneck)
 - More PRs → CI pipeline backs up → flaky tests become a crisis
 - More features ready for deploy → staging environments become contested → deploy conflicts multiply
 
@@ -85,7 +85,7 @@ Where does work actually wait in our pipeline?
 
 Not where you think it waits. Where it actually waits. Time the journey of a single PR from "code complete" to "running in production." Look at every stop along the way. How long does review take? How long does CI take? How long between "CI green" and "deployed"?
 
-That's where your velocity is hiding.
+That's where your velocity is hiding. We've since expanded this thinking into [the complete velocity engineering playbook](/blog/velocity-engineering-playbook) — a stage-by-stage framework for accelerating everything from code generation to production, along with the [metrics that actually tell you if your AI investment is paying off](/blog/measure-ai-adoption-roi).
 
 AI tools solved the code generation problem. The rest of the pipeline is waiting.
 

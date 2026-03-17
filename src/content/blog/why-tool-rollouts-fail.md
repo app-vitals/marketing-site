@@ -34,7 +34,7 @@ A champion isn't just someone who likes the tool. They have specific characteris
 - **They're pragmatic.** They know when AI helps and when it doesn't. They won't oversell it.
 - **They're generous.** They naturally share what they learn. They want the team to get better.
 
-You probably already know who these people are on your team. If you don't, ask around. They're not hiding.
+You probably already know who these people are on your team. If you don't, ask around. They're not hiding. (We've written [a detailed playbook for identifying and enabling AI champions](/blog/ai-champion-playbook) if you want the full framework.)
 
 ## The 6-Week Pilot
 
@@ -93,7 +93,7 @@ Measure what matters: PR throughput, cycle time, deployment frequency. Not tool 
 
 ## The Real Goal
 
-The goal of AI adoption isn't "everyone uses AI tools." It's "the team ships better software faster." Sometimes AI tools are part of that. Sometimes fixing the CI pipeline is more impactful. Sometimes it's better documentation. Sometimes it's clearer architecture.
+The goal of AI adoption isn't "everyone uses AI tools." It's "the team ships better software faster." Sometimes AI tools are part of that. Sometimes fixing the CI pipeline is more impactful. Sometimes it's [better documentation so AI isn't just fancy autocomplete](/blog/ai-fancy-autocomplete). Sometimes it's clearer architecture.
 
 Champions figure this out naturally because they're embedded in the work. They'll tell you what actually moves the needle — if you listen.
 

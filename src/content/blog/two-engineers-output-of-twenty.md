@@ -47,7 +47,7 @@ Our workflow is built around a few principles:
 
 **Aggressive testing.** When AI writes code faster, you need to verify faster too. We invest heavily in test infrastructure — not because we don't trust AI, but because we don't trust any code that isn't tested. AI-written or human-written, the bar is the same.
 
-**Human review of everything.** Neither of us ships code that the other hasn't reviewed. AI-generated code gets the same scrutiny as human-written code. Sometimes more, because AI can produce plausible-looking code that has subtle issues.
+**Human review of everything.** Neither of us ships code that the other hasn't reviewed. AI-generated code gets the same scrutiny as human-written code. Sometimes more, because AI can produce plausible-looking code that has subtle issues. This is a challenge at scale too — when teams adopt AI tools, [code review becomes the new bottleneck](/blog/code-review-bottleneck) because the volume of code outpaces the capacity to review it.
 
 ## What This Means for Our Clients
 
@@ -55,7 +55,7 @@ When we embed with a client's team, we're not just bringing two engineers. We're
 
 More importantly, we understand that AI velocity is a system property, not a tool property. It's not enough to give developers AI tools. You need the conventions, the documentation, the CI pipeline, the review process, and the deployment infrastructure to all be optimized for higher throughput.
 
-That's what we help teams build. Not "AI tool rollout" but the entire velocity stack — from developer workflow to production deployment.
+That's what we help teams build. Not "AI tool rollout" but the entire velocity stack — from developer workflow to production deployment. We've codified this approach in [the velocity engineering playbook](/blog/velocity-engineering-playbook), covering every stage from code generation to production.
 
 ## The Leverage Equation
 

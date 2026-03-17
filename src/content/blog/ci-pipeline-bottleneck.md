@@ -33,7 +33,7 @@ The teams that are actually shipping faster with AI? They didn't just adopt AI t
 
 In most engineering organizations, code is actively being worked on for maybe 20% of its journey from idea to production. The other 80% is waiting:
 
-- **Waiting for review.** Senior engineers are drowning in review requests. AI makes this worse — more PRs mean more review load.
+- **Waiting for review.** Senior engineers are drowning in review requests. AI makes this worse — more PRs mean more review load. We've seen review times nearly double since AI adoption; [code review is the new bottleneck](/blog/code-review-bottleneck) most teams don't see coming.
 - **Waiting for CI.** Test suites that grew organically over years. Nobody optimized them because a 30-minute build was "fine." It's not fine when you're pushing 3x more commits.
 - **Waiting for deployment.** Weekly release trains, change advisory boards, manual QA gates. Each one designed for a world where code moved slower.
 - **Waiting for environments.** Shared staging environments that become contention points when throughput increases.
@@ -79,4 +79,4 @@ Before you optimize anything, measure where time actually goes. Track the journe
 
 The goal isn't to make developers type faster. It's to make the entire system flow. AI tools are one piece of that puzzle — an important piece — but if you're not looking at the full picture, you're optimizing the wrong thing.
 
-The teams that win in this era won't be the ones with the best AI tools. They'll be the ones who used AI adoption as the catalyst to fix everything else that was slowing them down.
+The teams that win in this era won't be the ones with the best AI tools. They'll be the ones who used AI adoption as the catalyst to fix everything else that was slowing them down. We've put together [a complete velocity engineering playbook](/blog/velocity-engineering-playbook) that covers how to accelerate every stage — from code generation to production.
