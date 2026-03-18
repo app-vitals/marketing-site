@@ -13,6 +13,9 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const { Content } = await render(post);
 
+// Per-post OG image (falls back to default)
+const ogImagePath = `/img/og-${post.id}.png`;
+
 const blogPostingSchema = {
   '@context': 'https://schema.org',
   '@type': 'BlogPosting',
@@ -32,7 +35,7 @@ const categoryColors: Record<string, string> = {
 };
 ---
 
-<BaseLayout title={`${post.data.title} — App Vitals`} description={post.data.excerpt} extraSchema={blogPostingSchema}>
+<BaseLayout title={`${post.data.title} — App Vitals`} description={post.data.excerpt} ogImage={ogImagePath} articleDate={post.data.date} articleAuthor={post.data.author} extraSchema={blogPostingSchema}>
   <article class="py-24 md:py-32">
     <div class="max-w-3xl mx-auto px-6">
       <!-- Header -->

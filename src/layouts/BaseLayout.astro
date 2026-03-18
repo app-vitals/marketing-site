@@ -8,6 +8,9 @@ interface Props {
   title: string;
   description?: string;
   ogImage?: string;
+  keywords?: string;
+  articleDate?: string;
+  articleAuthor?: string;
   extraSchema?: Record<string, unknown> | Record<string, unknown>[];
 }
 
@@ -15,6 +18,9 @@ const {
   title,
   description = 'App Vitals helps engineering teams adopt AI to ship faster — without lowering their standards.',
   ogImage = '/og-default.png',
+  keywords = 'AI adoption, velocity engineering, engineering productivity, AI coding tools, CI/CD optimization, developer experience, App Vitals',
+  articleDate,
+  articleAuthor,
   extraSchema,
 } = Astro.props;
 
@@ -30,14 +36,20 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
     <title>{title}</title>
     <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
     <link rel="canonical" href={canonicalURL} />
 
     <!-- Open Graph -->
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={articleDate ? "article" : "website"} />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={new URL(ogImage, Astro.site)} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    {articleDate && <meta property="article:published_time" content={articleDate} />}
+    {articleAuthor && <meta property="article:author" content={articleAuthor} />}
+    <meta property="og:site_name" content="App Vitals" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
