@@ -1,6 +1,6 @@
 ---
 title: "Shipwright: How We Built a Mostly Autonomous Dev Pipeline for Claude Code"
-date: "2026-03-20"
+date: "2026-03-25"
 author: "Dave O'Dell"
 category: "Engineering Velocity"
 excerpt: "We built a Claude Code plugin that plans projects, executes tasks, runs multi-agent code reviews, and merges PRs — mostly without human intervention. Here's how it works and what we learned."
@@ -13,7 +13,7 @@ No, this isn't hype. This is [Shipwright](https://github.com/app-vitals/marketpl
 
 ## The Problem We Were Solving
 
-If you've used Claude Code for more than a week, you've hit this wall: it's incredible at individual tasks, but it has no memory between sessions. No structure. No pipeline. You end up being the orchestrator — feeding it context, checking its work, managing branches, running tests, creating PRs.
+If you've used Claude Code for more than a week, you've hit this wall: it's incredible at individual tasks, but it has no memory between sessions. No structure. No pipeline. You end up being the orchestrator — feeding it context, checking its work, managing branches, running tests, creating PRs. We've written about why [context is the real bottleneck](/blog/context-problem) — Shipwright is our answer to that problem at scale.
 
 That's fine for small tasks. It doesn't scale to building real products.
 
@@ -39,9 +39,9 @@ For projects with a UI, it automatically includes Playwright end-to-end tests in
 
 Here's the thing: we didn't build this in isolation. The Claude Code plugin ecosystem is evolving fast, and Shipwright deliberately integrates with other plugins rather than reinventing what already works.
 
-[`learning-loop`](https://github.com/app-vitals/marketplace) captures patterns from code reviews and promotes them to `CLAUDE.md`, so your project literally gets smarter over time. Every review finding that reveals a recurring issue becomes a convention that prevents the next one.
+[`learning-loop`](https://github.com/app-vitals/marketplace) captures patterns from code reviews and promotes them to `CLAUDE.md`, so your project literally gets smarter over time. Every review finding that reveals a recurring issue becomes a convention that prevents the next one. It's the technical implementation of what we describe in the [AI Champion Playbook](/blog/ai-champion-playbook) — building internal knowledge that scales.
 
-[`frontend-design`](https://github.com/anthropics/claude-code) from Anthropic's own plugin collection ensures UI tasks don't produce generic AI-generated interfaces. When a task is tagged with the design skill, it gets a dedicated design pass.
+[`frontend-design`](https://github.com/anthropics/claude-code/tree/main/plugins) from Anthropic's plugin collection ensures UI tasks don't produce generic AI-generated interfaces. When a task is tagged with the design skill, it gets a dedicated design pass.
 
 [`damage-control`](https://github.com/app-vitals/marketplace) provides defense-in-depth via PreToolUse hooks — blocking dangerous commands and protecting sensitive files. Because when you're running autonomous dev loops, guardrails matter.
 
