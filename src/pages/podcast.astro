@@ -1,0 +1,95 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="The Velocity Lab Podcast — App Vitals"
+  description="Dave O'Dell and Dan McAulay share what they're seeing inside engineering organizations every day — Claude Code updates, AI-enabled SDLC acceleration, and personal AI agents. No hype, no BS."
+>
+  <!-- Hero -->
+  <section class="relative overflow-hidden">
+    <div class="glow-orb w-[400px] h-[400px] bg-accent-violet/[0.05] top-[-10%] right-[10%] animate-glow-drift" aria-hidden="true"></div>
+
+    <div class="max-w-6xl mx-auto px-6 pt-24 pb-12 md:pt-32 md:pb-16 relative z-10">
+      <div class="max-w-3xl">
+        <p class="font-mono text-[13px] text-electric-400 tracking-[0.25em] uppercase mb-6 opacity-0 animate-fade-in-up">
+          Podcast
+        </p>
+        <h1 class="font-display text-[clamp(2.5rem,5vw,4.5rem)] font-bold leading-[1.05] tracking-[-0.03em] opacity-0 animate-fade-in-up-delay-1">
+          The Velocity <span class="gradient-text">Lab</span>
+        </h1>
+        <p class="mt-8 text-[18px] text-white/45 max-w-xl leading-[1.7] opacity-0 animate-fade-in-up-delay-2">
+          We work inside engineering organizations every day, helping them ship faster with AI — not in theory, but inside their actual teams. Each week we share what we're seeing in the field: what's working, what isn't, and what most people are getting wrong. No hype, no BS.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Player -->
+  <section class="relative">
+    <div class="max-w-4xl mx-auto px-6 pb-16">
+      <div class="rounded-2xl overflow-hidden border border-white/[0.06] bg-white/[0.02]">
+        <iframe
+          src="https://share.transistor.fm/e/the-velocity-lab"
+          width="100%"
+          height="380"
+          frameborder="0"
+          scrolling="no"
+          seamless="true"
+          style="width:100%; height:380px;"
+        ></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Subscribe -->
+  <section class="relative pb-24">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="text-center">
+        <h2 class="font-display text-2xl font-bold mb-4 opacity-0 animate-fade-in-up">
+          Subscribe wherever you listen
+        </h2>
+        <p class="text-white/40 mb-8 opacity-0 animate-fade-in-up-delay-1">
+          New episodes weekly — covering Claude Code updates, AI velocity engineering, and personal AI agents.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4 opacity-0 animate-fade-in-up-delay-2">
+          <a
+            href="https://feeds.transistor.fm/the-velocity-lab"
+            target="_blank"
+            rel="noopener"
+            class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-white/[0.06] border border-white/[0.08] text-white/70 hover:text-white hover:border-electric-400/30 transition-all duration-200 text-sm"
+          >
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm0 18c-4.418 0-8-3.582-8-8s3.582-8 8-8 8 3.582 8 8-3.582 8-8 8zm-1-13v8l6-4-6-4z"/></svg>
+            RSS Feed
+          </a>
+        </div>
+        <p class="text-white/25 text-xs mt-6">
+          Apple Podcasts & Spotify links coming soon
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- About the Hosts -->
+  <section class="relative pb-24">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-8 md:p-12">
+        <h2 class="font-display text-2xl font-bold mb-6">About the Hosts</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div>
+            <h3 class="font-display text-lg font-semibold text-electric-400 mb-2">Dave O'Dell</h3>
+            <p class="text-white/45 text-sm leading-relaxed">
+              Co-founder of App Vitals. 20+ years in DevOps and platform engineering — from Kubernetes clusters to AI-enabled pipelines. Lives in Claude Code daily and builds personal AI agents on Raspberry Pis for fun.
+            </p>
+          </div>
+          <div>
+            <h3 class="font-display text-lg font-semibold text-electric-400 mb-2">Dan McAulay</h3>
+            <p class="text-white/45 text-sm leading-relaxed">
+              Co-founder of App Vitals. Software consultant and backend engineer specializing in AI implementation. Self-professed code lover who hasn't written a line of code in six months — and that tells you everything about where things are headed.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
