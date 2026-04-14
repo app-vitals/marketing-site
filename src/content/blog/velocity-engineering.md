@@ -25,7 +25,7 @@ You didn't eliminate a bottleneck. You moved it downstream.
 
 ## Why "AI Adoption" Isn't Enough
 
-The consultants and vendors selling AI adoption are focused on one thing: tool rollout. Get licenses, run training sessions, maybe write some configuration files, measure how many engineers are using the tool. Done.
+The consultants and vendors selling AI adoption are focused on one thing: [tool rollout](/blog/enterprise-ai-adoption-mistakes/). Get licenses, run training sessions, maybe write some configuration files, measure how many engineers are using the tool. Done.
 
 But tool usage isn't velocity. Velocity is how fast your team ships working software to production. And that depends on the entire software development lifecycle — not just the code generation step.
 
@@ -50,7 +50,7 @@ Think about it like a highway. You widen one lane from two to six lanes. Traffic
 That's exactly what happens when you speed up code generation without touching the rest of the pipeline:
 
 - Developers write 3x more code → [code review queue triples](/blog/code-review-bottleneck)
-- More PRs → CI pipeline backs up → flaky tests become a crisis
+- More PRs → [CI pipeline backs up](/blog/ci-pipeline-bottleneck/) → flaky tests become a crisis
 - More features ready for deploy → staging environments become contested → deploy conflicts multiply
 
 Each speedup in one area cascades into pressure on the next bottleneck. The team feels busier but isn't actually shipping faster. Morale drops because everyone's working harder with nothing to show for it.

@@ -9,7 +9,7 @@ readTime: "5 min read"
 
 Here's the math nobody does before buying AI tools.
 
-50 engineers × $40/month per seat × 12 months = $24,000 in licensing. Add enterprise SSO, compliance review, security audit, and the "AI transformation initiative" that took three months of leadership time to approve. You're well past $100K in total cost before a single line of AI-assisted code ships to production.
+50 engineers × $40/month per seat × 12 months = $24,000 in licensing. Add enterprise SSO, [compliance review](/blog/enterprise-ai-adoption-mistakes/), security audit, and the "AI transformation initiative" that took three months of leadership time to approve. You're well past $100K in total cost before a single line of AI-assisted code ships to production.
 
 Now check your dashboard. 15% utilization. Maybe 20% on a good week.
 

@@ -97,7 +97,7 @@ Don't measure how many pairing sessions your champion did. Don't count Slack mes
 
 Measure what actually matters:
 - **Adoption rate:** What percentage of the team is actively using AI tools weekly? (Not logged in — *using*.)
-- **Velocity impact:** Is cycle time decreasing? Are PR lead times dropping?
+- **Velocity impact:** Is [cycle time](/blog/velocity-engineering/) decreasing? Are PR lead times dropping?
 - **Quality indicators:** Is the defect rate stable or improving as velocity increases?
 - **Spread:** Are engineers on adjacent teams starting to adopt without direct champion involvement?
 
