@@ -35,7 +35,7 @@ An experienced engineer on your team carries all of this in their head. An AI as
 
 ## The Documentation Multiplier
 
-Here's the counterintuitive thing: **teams that document well get dramatically more value from AI tools than teams that don't.** It's not a small difference. It's the difference between AI being a genuine force multiplier and AI being an expensive autocomplete.
+Here's the counterintuitive thing: **teams that document well get dramatically more value from AI tools than teams that don't.** It's not a small difference. It's the difference between AI being a genuine [force multiplier](/blog/velocity-engineering/) and AI being an expensive autocomplete.
 
 When you have a well-maintained conventions file in your repo root that describes your patterns, architecture decisions, and coding standards, AI tools can read it. They adjust their suggestions accordingly. The code they produce actually looks like it belongs.
 

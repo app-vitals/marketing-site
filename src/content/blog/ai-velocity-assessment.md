@@ -19,9 +19,9 @@ Why? Because nobody looked at the whole system first.
 
 When you give engineers a tool that writes code 2-3x faster, you're accelerating roughly 20% of the journey from idea to production. The other 80% — builds, tests, code review, CI, staging, security checks, deployment — stays exactly the same speed.
 
-What you've actually done is created a traffic jam. More code hitting the same slow pipeline. More PRs waiting for review. More CI runs queuing up. More deploy windows filling up.
+What you've actually done is created [a traffic jam](/blog/velocity-engineering/). More code hitting the same slow pipeline. More PRs waiting for review. More CI runs queuing up. More deploy windows filling up.
 
-But here's the thing: every organization's traffic jam is different. Some teams are bottlenecked on CI that takes 45 minutes. Some are blocked by security review processes designed for a pre-AI world. Some have the technical infrastructure but no internal champions driving real adoption — engineers accepted the licenses but never changed how they work.
+But here's the thing: every organization's traffic jam is different. Some teams are bottlenecked on [CI that takes 45 minutes](/blog/ci-pipeline-bottleneck/). Some are blocked by [security review processes designed for a pre-AI world](/blog/enterprise-ai-adoption-mistakes/). Some have the technical infrastructure but no internal champions driving real adoption — engineers accepted the licenses but never changed how they work.
 
 You can't fix what you haven't diagnosed. And most teams are guessing.
 

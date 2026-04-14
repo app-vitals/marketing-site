@@ -64,7 +64,7 @@ That means success depends on:
 - **Trust.** Engineers need to trust that the organization will support experimentation, not punish it.
 - **Relevance.** Training and enablement need to use real examples from real codebases, not generic demos.
 - **Patience.** Some engineers will adopt quickly. Others will take months. Both are fine.
-- **Measurement.** Track outcomes (velocity, quality, cycle time), not inputs (tool logins, hours of training). If you're not sure what to measure, we break down the [metrics that actually matter for AI adoption ROI](/blog/measure-ai-adoption-roi).
+- **Measurement.** Track outcomes ([velocity](/blog/velocity-engineering/), quality, cycle time), not inputs (tool logins, hours of training). If you're not sure what to measure, we break down the [metrics that actually matter for AI adoption ROI](/blog/measure-ai-adoption-roi).
 
 ## The Window Is Closing
 
