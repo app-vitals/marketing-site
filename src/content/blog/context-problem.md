@@ -1,9 +1,9 @@
 ---
-title: "The Context Problem: Why AI Can't Help Teams That Don't Document"
+title: "Why Your AI Coding Assistant Keeps Getting Your Codebase Wrong"
 date: "2026-02-12"
 author: "Dave O'Dell"
 category: "AI Adoption"
-excerpt: "AI tools are only as smart as the context they have. Without architecture docs, coding conventions, and shared patterns, your AI assistant is just a fancy autocomplete."
+excerpt: "By week three, your team's AI assistant is suggesting patterns you don't use. This is the context problem—and it has a surprisingly simple fix."
 readTime: "6 min read"
 ---
 

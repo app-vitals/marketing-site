@@ -1,9 +1,9 @@
 ---
-title: "What Enterprise Teams Get Wrong About AI Adoption"
+title: "3 Enterprise AI Adoption Mistakes That Kill ROI (And What Works Instead)"
 date: "2026-02-24"
 author: "Dan McAulay"
 category: "AI Adoption"
-excerpt: "Compliance theater, tool mandates, and ignoring the early adopters. Three patterns killing AI adoption in enterprise engineering teams."
+excerpt: "Compliance theater. Tool mandates. Ignoring early adopters. Three patterns that kill AI adoption at every enterprise—and what works instead."
 readTime: "6 min read"
 ---
 

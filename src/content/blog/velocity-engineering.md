@@ -1,9 +1,9 @@
 ---
-title: "Velocity Engineering: Why AI Adoption Alone Won't Make You Faster"
+title: "Why AI Coding Tools Don't Make Teams Ship Faster (And What Does)"
 date: "2026-02-23"
 author: "Dave O'Dell"
 category: "Engineering Velocity"
-excerpt: "Most teams adopt AI tools and expect to ship faster. They don't. Because speed in one part of the pipeline just exposes how slow everything else is. That's why we built a practice around velocity engineering."
+excerpt: "Your team rolled out AI coding tools. Code output is up. Nothing's shipping faster. Here's the real bottleneck—and how to fix it."
 readTime: "6 min read"
 ---
 
