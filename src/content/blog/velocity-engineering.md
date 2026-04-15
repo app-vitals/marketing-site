@@ -77,6 +77,66 @@ We embed with engineering teams for 12 weeks. When we leave, two things are diff
 
 That's the goal. Not a dependency. Not a permanent consulting engagement. Twelve weeks of focused work, then your team carries it forward.
 
+## How to Audit Your Pipeline
+
+The fastest way to find your real bottleneck is to trace one PR end-to-end. Pick a recent, typical feature PR — not a hotfix, not a monster refactor. Something representative. Then time every stop.
+
+**Step 1: Code-complete to first review request.** How long after the developer marks it ready does a reviewer actually look at it? This is your review queue time. Most teams underestimate this by a factor of three.
+
+**Step 2: First look to approval.** Count the cycles. One round of feedback is normal. Three or more is a signal. If PRs are going back and forth repeatedly, the problem is usually unclear requirements upstream — not the reviewers.
+
+**Step 3: PR open to CI green.** How long does your CI take end-to-end? Every minute over 10 is friction. Every minute over 20 is a real cost — engineers context-switch while they wait, and switching back kills flow.
+
+**Step 4: CI green to merge.** If there's a consistent gap here, you have a gating problem. Someone's approving deploys manually. There's a schedule. There's fear. Find it.
+
+**Step 5: Merge to production.** Immediate? Hours? Days? Batched weekly? This is your final number. Add all five steps together and that's your lead time.
+
+Most teams are genuinely shocked when they do this math. The typical result: what felt like a 2-hour PR actually takes 28 hours door-to-door.
+
+**Red flags to watch for:**
+
+- Review queue time over 4 hours for a typical PR
+- CI runtime over 15 minutes (10 is the target)
+- More than 2 review cycles on average
+- Any unexplained gap between "CI green" and "merged"
+- Merge-to-deploy over 24 hours outside of a scheduled release train
+
+Two or more of these and you have a pipeline problem. AI tools are making it worse, not better — because they're flooding a slow pipe with more volume.
+
+Do this audit on 10-15 recent PRs, across different team members, and look for patterns. One slow PR is noise. Five slow PRs with the same delay at the same stage is signal.
+
+## What Fast Actually Looks Like
+
+Engineers always ask for benchmarks. Here's what we've seen from teams where AI adoption actually translated to faster shipping.
+
+**Build time:** Under 5 minutes for a standard PR build. Under 10 is acceptable. Over 15 means CI is a daily source of friction — engineers have mentally checked out before their build finishes. Over 20 and you're hemorrhaging flow state across the entire team.
+
+**Code review turnaround:** First review within 2 hours of opening during working hours. Total cycle — open to approved — under 24 hours for most PRs. If you're consistently hitting 48+ hours, you have a capacity or culture problem, not a tooling problem.
+
+**Deploy frequency:** Daily at minimum. High-performing teams deploy on merge, or multiple times per day. If your team deploys weekly, you're batching risk — and your feedback loops are too slow for AI to help you much. You can't know if something works until it's in production.
+
+**Mean time to merge:** Code complete to merged should be under 4 hours for a typical feature PR. That's the benchmark we target at the end of a 12-week engagement. Most teams we start with are sitting at 2-3 days.
+
+**Flaky test rate:** Under 1% of CI runs should fail due to flakiness. Above that, CI becomes a noise source — and engineers learn to re-run failures instead of investigating them. Which means real failures get ignored too. That's how bugs get to production.
+
+None of these numbers are arbitrary. They're the thresholds where individual flow either survives or breaks. Below the line, AI makes your team dramatically faster. Above it, AI just creates more waste, faster.
+
+## The First Week
+
+People ask what a velocity engineering engagement actually looks like from day one. Here's the honest version.
+
+**Day 1: Map the pipeline.** We don't touch anything on day one. We run the PR audit above on 10-15 recent PRs. We pull CI run history. We look at deploy logs. We're building a factual picture of where time goes — not where the team thinks it goes. These two pictures are almost never the same.
+
+**Day 2: Find the loudest bottleneck.** We present what we found. Usually one thing accounts for 60-70% of lead time. We align on that before touching a single config file. If we can't agree on the problem, we can't agree on the fix.
+
+**Day 3: Ship something fast.** We pick the highest-impact, lowest-risk change and ship it. Faster CI through parallelization. A test suite split in half. Auto-merge on green. Something concrete. Something that shows the team what's possible in 24 hours. Speed builds trust.
+
+**Day 4: Go deeper.** With trust and a baseline established, we start the bigger work — AI workflow integration, review tooling, deploy automation. We do this alongside engineers, not in a separate workstream. Pair work, not slide decks.
+
+**Day 5: Document everything.** Before we leave week one, every change is documented and explained. No black boxes. The team should understand every decision we made. If they can't explain it to a new hire, we haven't finished.
+
+The first week sets the tone for the whole engagement. If we've done it right, the team is already measurably faster by Friday — and they know exactly why.
+
 ## The Question to Ask
 
 If your team recently adopted AI tools and you're not seeing the velocity gains you expected, ask yourself this:
