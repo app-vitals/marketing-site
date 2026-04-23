@@ -1,0 +1,175 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Vitals OS — The Operating System for AI-Augmented Consultancies"
+  description="Vitals OS is the scheduling, time-tracking, invoicing, and AI-agent platform built by App Vitals. One product, one operator — run a modern consultancy end-to-end."
+  keywords="Vitals OS, consulting operations, time tracking, Cal.com scheduling, AI agent, invoicing, App Vitals"
+>
+  <!-- Hero -->
+  <section class="relative overflow-hidden">
+    <div class="glow-orb w-[450px] h-[450px] bg-electric-500/[0.06] top-[-10%] right-[5%] animate-glow-drift" aria-hidden="true"></div>
+    <div class="glow-orb w-[350px] h-[350px] bg-accent-cyan/[0.04] top-[20%] left-[-5%] animate-glow-drift" aria-hidden="true"></div>
+
+    <div class="max-w-6xl mx-auto px-6 pt-24 pb-20 md:pt-32 md:pb-24 relative z-10">
+      <div class="max-w-3xl">
+        <p class="font-mono text-[13px] text-electric-400 tracking-[0.25em] uppercase mb-6 opacity-0 animate-fade-in-up">
+          Product
+        </p>
+        <h1 class="font-display text-[clamp(2.5rem,5vw,4.5rem)] font-bold leading-[1.05] tracking-[-0.03em] opacity-0 animate-fade-in-up-delay-1">
+          Vitals <span class="gradient-text">OS.</span>
+        </h1>
+        <p class="mt-8 text-[18px] text-white/45 max-w-xl leading-[1.7] opacity-0 animate-fade-in-up-delay-2">
+          The operating system for an AI-augmented consultancy. Scheduling, time tracking, invoicing, and an always-on agent — in one place, built and run by App Vitals.
+        </p>
+        <div class="mt-10 opacity-0 animate-fade-in-up-delay-2">
+          <a
+            href="https://vitals-os.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center px-10 py-4 bg-white text-navy-950 rounded-full text-[16px] font-semibold tracking-wide transition-all duration-300 hover:shadow-[0_0_60px_rgba(59,130,246,0.3)] hover:scale-[1.02]"
+          >
+            Visit vitals-os.com
+            <svg class="ml-2 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What it does -->
+  <section id="what-it-does" class="relative">
+    <div class="gradient-divider"></div>
+    <div class="max-w-6xl mx-auto px-6 py-24 md:py-32">
+      <div class="grid md:grid-cols-[1fr,1.5fr] gap-16 items-start">
+        <div class="reveal">
+          <p class="font-mono text-[12px] text-electric-400 uppercase tracking-[0.3em] mb-4">The Platform</p>
+          <h2 class="font-display text-[clamp(1.5rem,3vw,2.25rem)] font-bold tracking-[-0.02em] leading-[1.2]">
+            One product. The<br />
+            <span class="text-white/40">entire operation.</span>
+          </h2>
+        </div>
+        <div class="space-y-6 text-[16px] text-white/45 leading-[1.8] reveal" style="transition-delay: 150ms;">
+          <p>
+            A modern consultancy juggles a dozen tools — Calendly for bookings, Toggl for time, QuickBooks for invoicing, a separate CRM, a separate dashboard for each. Vitals OS collapses that stack into one coherent system.
+          </p>
+          <p>
+            It's the platform we built to run App Vitals itself. Every meeting we book, every hour we log, every invoice we send, and every automated follow-up flows through Vitals OS. We ship what we use — and use what we ship.
+          </p>
+          <p>
+            Because it's API-first and agent-aware from day one, AI assistants can read and act on your operational data the same way a human operator would. Less context switching, more leverage.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="gradient-divider"></div>
+  </section>
+
+  <!-- Feature highlights -->
+  <section id="features" class="max-w-6xl mx-auto px-6 py-24 md:py-32">
+    <div class="mb-16 reveal">
+      <p class="font-mono text-[12px] text-electric-400 uppercase tracking-[0.3em] mb-4">What's Inside</p>
+      <h2 class="font-display text-[clamp(1.5rem,3vw,2.25rem)] font-bold tracking-[-0.02em]">
+        Four surfaces. One system of record.
+      </h2>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-x-12 gap-y-14">
+      <div class="reveal">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-1 h-6 rounded-full bg-electric-500"></div>
+          <h3 class="font-display text-[18px] font-semibold tracking-tight">Scheduling via Cal.com</h3>
+        </div>
+        <p class="text-[15px] text-white/40 leading-[1.7] pl-5">
+          Native Cal.com integration for discovery calls, recurring client meetings, and team availability. Bookings land in Vitals OS already tagged to the right engagement, so nothing falls through the cracks.
+        </p>
+      </div>
+
+      <div class="reveal" style="transition-delay: 100ms;">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-1 h-6 rounded-full bg-accent-cyan"></div>
+          <h3 class="font-display text-[18px] font-semibold tracking-tight">Time tracking</h3>
+        </div>
+        <p class="text-[15px] text-white/40 leading-[1.7] pl-5">
+          Pragmatic time logs at the engagement, task, and session level. Roll-up reports, utilization, and weekly comp calculations are a query away — not a spreadsheet away.
+        </p>
+      </div>
+
+      <div class="reveal" style="transition-delay: 200ms;">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-1 h-6 rounded-full bg-accent-violet"></div>
+          <h3 class="font-display text-[18px] font-semibold tracking-tight">Invoicing &amp; billing</h3>
+        </div>
+        <p class="text-[15px] text-white/40 leading-[1.7] pl-5">
+          Invoices generated from the same time and engagement data you already track. No re-entry, no drift between what was worked and what was billed.
+        </p>
+      </div>
+
+      <div class="reveal" style="transition-delay: 300ms;">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-1 h-6 rounded-full bg-electric-400"></div>
+          <h3 class="font-display text-[18px] font-semibold tracking-tight">AI agent</h3>
+        </div>
+        <p class="text-[15px] text-white/40 leading-[1.7] pl-5">
+          An operator-grade assistant with safe, scoped access to your clients, calendar, and time data. Drafts follow-ups, surfaces anomalies, and handles routine ops work under clear guardrails.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it fits with App Vitals -->
+  <section id="parent-company" class="relative">
+    <div class="gradient-divider"></div>
+    <div class="max-w-6xl mx-auto px-6 py-24 md:py-32">
+      <div class="grid md:grid-cols-[1fr,1.5fr] gap-16 items-start">
+        <div class="reveal">
+          <p class="font-mono text-[12px] text-electric-400 uppercase tracking-[0.3em] mb-4">Parent Company</p>
+          <h2 class="font-display text-[clamp(1.5rem,3vw,2.25rem)] font-bold tracking-[-0.02em] leading-[1.2]">
+            App Vitals is<br />
+            <span class="text-white/40">the company behind it.</span>
+          </h2>
+        </div>
+        <div class="space-y-6 text-[16px] text-white/45 leading-[1.8] reveal" style="transition-delay: 150ms;">
+          <p>
+            <span class="text-white/70">App Vitals</span> is the consulting firm co-founded by Dan McAulay and Dave O'Dell. <span class="text-white/70">Vitals OS</span> is the product App Vitals builds, owns, and operates — hosted at <a href="https://vitals-os.com" target="_blank" rel="noopener noreferrer" class="text-electric-400 hover:text-electric-300 underline underline-offset-4">vitals-os.com</a>.
+          </p>
+          <p>
+            Same team, same standards, same trust relationship. When you engage App Vitals, you're working with the people who wrote the software; when you use Vitals OS, you're running the platform those same people depend on every day.
+          </p>
+          <p>
+            The shared privacy policy, terms, and contact point across both properties reflect that single operating entity — App Vitals acting as the publisher of Vitals OS, with consistent data handling and a single point of accountability.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="gradient-divider"></div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="relative py-24 md:py-32">
+    <div class="glow-orb w-[500px] h-[300px] bg-electric-500/[0.04] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate-glow-drift" aria-hidden="true"></div>
+
+    <div class="max-w-6xl mx-auto px-6 pt-24 text-center relative z-10 reveal">
+      <h2 class="font-display text-[clamp(1.75rem,4vw,3rem)] font-bold tracking-[-0.02em] leading-[1.15]">
+        See Vitals OS <span class="gradient-text">in action.</span>
+      </h2>
+      <p class="mt-6 text-[17px] text-white/40 max-w-md mx-auto leading-[1.7]">
+        The full product lives at vitals-os.com. Take a look, kick the tires, and tell us what you'd change.
+      </p>
+      <a
+        href="https://vitals-os.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center justify-center mt-10 px-10 py-4 bg-white text-navy-950 rounded-full text-[16px] font-semibold tracking-wide transition-all duration-300 hover:shadow-[0_0_60px_rgba(59,130,246,0.3)] hover:scale-[1.02]"
+      >
+        Visit vitals-os.com
+        <svg class="ml-2 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+        </svg>
+      </a>
+    </div>
+  </section>
+</BaseLayout>
