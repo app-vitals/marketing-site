@@ -27,7 +27,7 @@ Now that PR sits in a review queue for 6 hours. Then CI takes 40 minutes. Then i
 
 Total time from code complete to production: 18 hours. You optimized 2.5 hours out of an 18-hour process. That's a 14% improvement on total cycle time, not the 3x you were expecting.
 
-The teams that are actually shipping faster with AI? They didn't just adopt AI tools. They looked at the entire pipeline and asked: where does work actually wait?
+The teams that are actually shipping faster with AI? They didn't just adopt AI tools. They looked at [the entire pipeline](/blog/velocity-engineering/) and asked: where does work actually wait?
 
 ## Where Work Waits
 
@@ -48,7 +48,7 @@ Your test suite probably runs sequentially because it was easier to set up that 
 
 **2. Automate the review bottleneck.**
 
-This doesn't mean replacing human reviewers with AI (though AI-assisted review helps). It means establishing clear conventions — documented in places like architecture decision records and coding standards files — so that reviewers spend time on design decisions, not style nitpicks. The less ambiguity in your codebase, the faster reviews go.
+This doesn't mean replacing human reviewers with AI (though AI-assisted review helps). It means establishing clear conventions — documented in places like [architecture decision records and coding standards files](/blog/context-problem/) — so that reviewers spend time on design decisions, not style nitpicks. The less ambiguity in your codebase, the faster reviews go.
 
 **3. Make deployment boring.**
 

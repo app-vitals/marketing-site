@@ -1,0 +1,284 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Shipwright — Autonomous Programming, Installed"
+  description="Shipwright is a customizable autonomous-programming system installed in your engineering org. Your engineers queue tasks; the agents ship the work. Dan and Dave get you landed."
+  keywords="autonomous programming, AI agents, AI coding, engineering velocity, Shipwright, App Vitals"
+>
+  <!-- Hero -->
+  <section class="relative overflow-hidden">
+    <div class="glow-orb w-[500px] h-[500px] bg-electric-500/[0.07] top-[-10%] right-[-5%] animate-glow-drift" aria-hidden="true"></div>
+    <div class="glow-orb w-[400px] h-[400px] bg-accent-violet/[0.05] bottom-[0%] left-[-10%] animate-glow-drift-slow" aria-hidden="true"></div>
+
+    <div class="max-w-6xl mx-auto px-6 pt-24 pb-20 md:pt-32 md:pb-24 relative z-10">
+      <div class="max-w-3xl">
+        <p class="font-mono text-[13px] text-electric-400 tracking-[0.25em] uppercase mb-6 opacity-0 animate-fade-in-up">
+          Product · Shipwright
+        </p>
+        <h1 class="font-display text-[clamp(2.5rem,5vw,4.5rem)] font-bold leading-[1.05] tracking-[-0.03em] opacity-0 animate-fade-in-up-delay-1">
+          Autonomous programming,<br />
+          <span class="gradient-text">installed.</span>
+        </h1>
+        <p class="mt-8 text-[18px] text-white/50 max-w-xl leading-[1.7] opacity-0 animate-fade-in-up-delay-2">
+          A customizable agent system that ships code alongside your team. Dan and Dave handle the infra agents can't — cloud deploy, secrets, scaling, optimization. Your engineers queue tasks like they queue PRs.
+        </p>
+        <div class="mt-10 opacity-0 animate-fade-in-up-delay-3">
+          <a
+            href="https://cal.com/team/app-vitals"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center px-10 py-4 bg-white text-navy-950 rounded-full text-[16px] font-semibold tracking-wide transition-all duration-300 hover:shadow-[0_0_60px_rgba(59,130,246,0.3)] hover:scale-[1.02]"
+          >
+            Book a Discovery Call
+            <svg class="ml-2 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What it is -->
+  <section class="relative">
+    <div class="gradient-divider"></div>
+    <div class="max-w-6xl mx-auto px-6 py-24 md:py-32">
+      <div class="grid md:grid-cols-[1fr,1.5fr] gap-16 items-start">
+        <div class="reveal">
+          <p class="font-mono text-[12px] text-electric-400 uppercase tracking-[0.3em] mb-4">The Product</p>
+          <h2 class="font-display text-[clamp(1.5rem,3vw,2.25rem)] font-bold tracking-[-0.02em] leading-[1.2]">
+            Customizable agents.<br />
+            <span class="text-white/40">Your environment.</span>
+          </h2>
+        </div>
+        <div class="space-y-6 text-[16px] text-white/45 leading-[1.8] reveal" style="transition-delay: 150ms;">
+          <p>
+            Most AI coding offerings are one of two things: a managed service that ships outcomes from somewhere else, or a tool that sits on an engineer's laptop. Shipwright is neither. It's a system you install in your own environment, configured to your codebase, your conventions, and your guardrails — and your engineers drive it from inside their normal workflow.
+          </p>
+          <p>
+            It's the same system we use to ship production work across our own client engagements in parallel. Every ticket that gets queued, every PR that lands, every guardrail that fires — it all flows through the product. We shipped it because running AI coding at enterprise quality required infrastructure we couldn't find anywhere else. Now we install it for you.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="gradient-divider"></div>
+  </section>
+
+  <!-- How it works -->
+  <section class="max-w-6xl mx-auto px-6 py-24 md:py-32">
+    <div class="mb-20 reveal">
+      <p class="font-mono text-[12px] text-electric-400 uppercase tracking-[0.3em] mb-4">How it works</p>
+      <h2 class="font-display text-[clamp(1.75rem,4vw,3rem)] font-bold tracking-[-0.02em] max-w-2xl leading-[1.15]">
+        Install. Co-operate.<br />
+        <span class="text-white/40">Hand off.</span>
+      </h2>
+      <p class="mt-6 text-[17px] text-white/40 max-w-xl leading-[1.7]">
+        Three phases, total: about 8–10 weeks from kickoff to your team running the system without us in the loop.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6 max-w-5xl">
+      <div class="p-6 rounded-xl border border-electric-500/20 bg-electric-500/[0.03] reveal">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-8 h-8 rounded-lg bg-electric-500/10 flex items-center justify-center">
+            <span class="text-electric-400 font-mono text-[14px] font-bold">1</span>
+          </div>
+          <h3 class="font-display text-[17px] font-semibold tracking-tight">Install</h3>
+        </div>
+        <p class="font-mono text-[12px] text-white/25 mb-3">~2 weeks</p>
+        <p class="text-[14px] text-white/40 leading-[1.7]">
+          We set up Shipwright in your environment. Integrate with your repos, CI, code review, and secrets. Configure guardrails and conventions. Ship a first production PR through the system before we leave the week.
+        </p>
+      </div>
+
+      <div class="p-6 rounded-xl border border-white/[0.06] bg-white/[0.02] reveal" style="transition-delay: 100ms;">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-8 h-8 rounded-lg bg-accent-cyan/10 flex items-center justify-center">
+            <span class="text-accent-cyan font-mono text-[14px] font-bold">2</span>
+          </div>
+          <h3 class="font-display text-[17px] font-semibold tracking-tight">Co-operate</h3>
+        </div>
+        <p class="font-mono text-[12px] text-white/25 mb-3">~4–6 weeks</p>
+        <p class="text-[14px] text-white/40 leading-[1.7]">
+          Your engineers queue tasks, review the agents' PRs, and tune the guardrails. We're in the loop — pairing on tricky tickets, refining context, and turning one-off fixes into repeatable patterns. No curriculum. No 1:1s. Just the work.
+        </p>
+      </div>
+
+      <div class="p-6 rounded-xl border border-white/[0.06] bg-white/[0.02] reveal" style="transition-delay: 200ms;">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-8 h-8 rounded-lg bg-accent-violet/10 flex items-center justify-center">
+            <span class="text-accent-violet font-mono text-[14px] font-bold">3</span>
+          </div>
+          <h3 class="font-display text-[17px] font-semibold tracking-tight">Hand off</h3>
+        </div>
+        <p class="font-mono text-[12px] text-white/25 mb-3">~2 weeks</p>
+        <p class="text-[14px] text-white/40 leading-[1.7]">
+          Ownership transfers to your team. We stay reachable for tuning and new use cases, but you're driving the system day-to-day. No ongoing dependency on us to keep shipping.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- The bundle -->
+  <section class="relative">
+    <div class="gradient-divider"></div>
+    <div class="max-w-6xl mx-auto px-6 py-24 md:py-32">
+      <div class="grid md:grid-cols-[1fr,1.5fr] gap-16 items-start">
+        <div class="reveal">
+          <p class="font-mono text-[12px] text-electric-400 uppercase tracking-[0.3em] mb-4">The bundle</p>
+          <h2 class="font-display text-[clamp(1.5rem,3vw,2.25rem)] font-bold tracking-[-0.02em] leading-[1.2]">
+            Agents ship the 90%.<br />
+            <span class="text-white/40">We handle the last 10%.</span>
+          </h2>
+        </div>
+        <div class="space-y-6 text-[16px] text-white/45 leading-[1.8] reveal" style="transition-delay: 150ms;">
+          <p>
+            Autonomous programming is great at the 85–95% of engineering work that fits inside a codebase — features, refactors, tests, patches. It's not great at the last 5–15% that sits outside. That's where Shipwright engagements include us directly.
+          </p>
+          <p>
+            When the agents can't reach what needs doing, Dan or Dave pick it up. The engagement keeps moving. The expertise is part of the product, not a separate invoice:
+          </p>
+          <div class="flex flex-wrap gap-2 pt-1">
+            <span class="px-3 py-1.5 rounded-full border border-white/[0.08] bg-white/[0.03] text-[13px] text-white/60 font-mono">Cloud deployment</span>
+            <span class="px-3 py-1.5 rounded-full border border-white/[0.08] bg-white/[0.03] text-[13px] text-white/60 font-mono">Secret management</span>
+            <span class="px-3 py-1.5 rounded-full border border-white/[0.08] bg-white/[0.03] text-[13px] text-white/60 font-mono">Database optimization</span>
+            <span class="px-3 py-1.5 rounded-full border border-white/[0.08] bg-white/[0.03] text-[13px] text-white/60 font-mono">Scaling</span>
+            <span class="px-3 py-1.5 rounded-full border border-white/[0.08] bg-white/[0.03] text-[13px] text-white/60 font-mono">Performance tuning</span>
+          </div>
+          <p class="pt-2">
+            That's why the bundle is inseparable. Shipwright isn't sold without the two of us, and the two of us don't install without the system — because the work each of us does only makes sense together.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="gradient-divider"></div>
+  </section>
+
+  <!-- Differentiators -->
+  <section class="max-w-6xl mx-auto px-6 py-24 md:py-32">
+    <div class="mb-20 reveal">
+      <p class="font-mono text-[12px] text-electric-400 uppercase tracking-[0.3em] mb-4">How we're different</p>
+      <h2 class="font-display text-[clamp(1.75rem,4vw,3rem)] font-bold tracking-[-0.02em] max-w-2xl leading-[1.15]">
+        Not a managed service.<br />
+        <span class="text-white/40">Not a code generator.</span>
+      </h2>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="card-glow p-8 rounded-2xl border border-white/[0.06] bg-white/[0.02] hover:border-white/[0.12] transition-all duration-500 reveal">
+        <div class="w-10 h-10 rounded-xl bg-electric-500/10 flex items-center justify-center mb-6">
+          <svg class="w-5 h-5 text-electric-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21" />
+          </svg>
+        </div>
+        <h3 class="font-display text-[20px] font-semibold mb-3 tracking-tight">Customizable, not managed</h3>
+        <p class="text-[15px] text-white/40 leading-[1.7]">
+          Managed-agent services rent you outcomes from somewhere else. Shipwright runs in your environment, configured to your conventions, with guardrails you control. You own the system. You own the output.
+        </p>
+      </div>
+
+      <div class="card-glow p-8 rounded-2xl border border-white/[0.06] bg-white/[0.02] hover:border-white/[0.12] transition-all duration-500 reveal" style="transition-delay: 100ms;">
+        <div class="w-10 h-10 rounded-xl bg-accent-cyan/10 flex items-center justify-center mb-6">
+          <svg class="w-5 h-5 text-accent-cyan" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </div>
+        <h3 class="font-display text-[20px] font-semibold mb-3 tracking-tight">Production, not prototype</h3>
+        <p class="text-[15px] text-white/40 leading-[1.7]">
+          Vibe-coding shops ship prototypes. Shipwright ships production — with the same review, testing, and CI guardrails your engineers already use. Same bar for agent code as human code. No shortcuts.
+        </p>
+      </div>
+
+      <div class="card-glow p-8 rounded-2xl border border-white/[0.06] bg-white/[0.02] hover:border-white/[0.12] transition-all duration-500 reveal" style="transition-delay: 200ms;">
+        <div class="w-10 h-10 rounded-xl bg-accent-violet/10 flex items-center justify-center mb-6">
+          <svg class="w-5 h-5 text-accent-violet" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />
+          </svg>
+        </div>
+        <h3 class="font-display text-[20px] font-semibold mb-3 tracking-tight">Two operators, not a team</h3>
+        <p class="text-[15px] text-white/40 leading-[1.7]">
+          You don't need a vendor army rolling out curriculum and running change-management sessions. You need the two engineers who built this to land it with you — and then get out of the way.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Design Partner program -->
+  <section class="relative">
+    <div class="gradient-divider"></div>
+    <div class="max-w-6xl mx-auto px-6 py-24 md:py-32">
+      <div class="mb-16 reveal">
+        <p class="font-mono text-[12px] text-electric-400 uppercase tracking-[0.3em] mb-4">Proof · Design Partners</p>
+        <h2 class="font-display text-[clamp(1.75rem,4vw,3rem)] font-bold tracking-[-0.02em] max-w-2xl leading-[1.15]">
+          Early. Honest.<br />
+          <span class="text-white/40">Room for a few more.</span>
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-[1.2fr,1fr] gap-12 items-start max-w-5xl">
+        <div class="space-y-6 text-[16px] text-white/45 leading-[1.8] reveal">
+          <p>
+            Shipwright is new. We're working with a small number of design partners — companies who want to install autonomous programming early, work directly with Dan and Dave, and help shape the product as it matures.
+          </p>
+          <p>
+            Design partners get a <span class="text-white/70">reduced-rate pilot</span>, weekly working sessions with the founders, and direct influence on the roadmap. In exchange, we ask for real engagement, honest feedback, and permission to share results — even when we anonymize the specifics.
+          </p>
+          <p>
+            If your engineering org has a real problem autonomous programming could solve, and you want to be part of how this product gets built, we'd like to talk.
+          </p>
+        </div>
+
+        <div class="p-8 rounded-2xl border border-electric-500/20 bg-electric-500/[0.03] reveal" style="transition-delay: 150ms;">
+          <p class="font-mono text-[12px] text-electric-400 uppercase tracking-[0.2em] mb-6">What a pilot looks like</p>
+          <ul class="space-y-4">
+            <li class="flex items-start gap-3">
+              <span class="text-electric-400 mt-0.5">—</span>
+              <span class="text-[14px] text-white/55 leading-[1.6]">8–10 weeks, install to hand-off</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-electric-400 mt-0.5">—</span>
+              <span class="text-[14px] text-white/55 leading-[1.6]">Weekly working sessions with Dan and Dave</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-electric-400 mt-0.5">—</span>
+              <span class="text-[14px] text-white/55 leading-[1.6]">Reduced-rate pilot pricing, shaped to scope</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-electric-400 mt-0.5">—</span>
+              <span class="text-[14px] text-white/55 leading-[1.6]">Direct influence on the product roadmap</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="gradient-divider"></div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="relative py-24 md:py-32">
+    <div class="glow-orb w-[600px] h-[400px] bg-electric-500/[0.05] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate-glow-drift" aria-hidden="true"></div>
+
+    <div class="max-w-6xl mx-auto px-6 text-center relative z-10 reveal">
+      <h2 class="font-display text-[clamp(1.75rem,4vw,3rem)] font-bold tracking-[-0.02em] leading-[1.15]">
+        Install the agents.<br />
+        <span class="gradient-text">Ship alongside them.</span>
+      </h2>
+      <p class="mt-6 text-[17px] text-white/40 max-w-md mx-auto leading-[1.7]">
+        30 minutes with Dan and Dave. No pitch deck. We'll ask what you're trying to ship and tell you honestly whether Shipwright is the right shape.
+      </p>
+      <a
+        href="https://cal.com/team/app-vitals"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center justify-center mt-10 px-10 py-4 bg-white text-navy-950 rounded-full text-[16px] font-semibold tracking-wide transition-all duration-300 hover:shadow-[0_0_60px_rgba(59,130,246,0.3)] hover:scale-[1.02]"
+      >
+        Book a Discovery Call
+        <svg class="ml-2 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+        </svg>
+      </a>
+    </div>
+  </section>
+</BaseLayout>

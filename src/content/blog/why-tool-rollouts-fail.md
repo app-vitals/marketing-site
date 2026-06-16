@@ -44,7 +44,7 @@ Here's the model we use. It's not theoretical — it's what we run with real tea
 
 Meet with 3-5 potential champions. Pair with them on real work — their actual codebase, their actual problems. Not a demo environment. Not a tutorial.
 
-The goal isn't to teach them the tool. It's to show them what's possible in their specific context. An AI assistant that can navigate their architecture, understand their patterns, and produce code that passes their CI pipeline.
+The goal isn't to teach them the tool. It's to show them what's possible in their specific context. An AI assistant that can [navigate their architecture, understand their patterns](/blog/context-problem/), and produce code that passes their CI pipeline.
 
 By the end of Week 2, you'll know who your real champions are. They're the ones who are already experimenting on their own between sessions.
 
@@ -75,7 +75,7 @@ The 12-week pilot works because it respects how humans actually adopt new tools:
 
 **Pull over push.** When other engineers see champions shipping faster and ask "how are you doing that?", adoption becomes pull-based. People are choosing to learn, not being told to learn. The psychology is completely different.
 
-**Organic scaling.** Each champion naturally enables 3-5 other engineers. Those engineers enable others. By the time you've done this across 2-3 teams, you have a movement, not a mandate.
+**Organic scaling.** Each champion naturally enables 3-5 other engineers. Those engineers enable others. By the time you've done this across 2-3 teams, you have a movement, not [a mandate](/blog/enterprise-ai-adoption-mistakes/).
 
 ## Common Objections
 
@@ -89,11 +89,11 @@ You can. Every team has at least one person who's already curious about AI tools
 
 **"Our leadership wants metrics. How do we measure this?"**
 
-Measure what matters: PR throughput, cycle time, deployment frequency. Not tool logins. Champions should be measurably outperforming their pre-AI baselines by Week 4. If they're not, something's wrong with the enablement, not the approach.
+Measure what matters: PR throughput, [cycle time](/blog/velocity-engineering/), deployment frequency. Not tool logins. Champions should be measurably outperforming their pre-AI baselines by Week 4. If they're not, something's wrong with the enablement, not the approach.
 
 ## The Real Goal
 
-The goal of AI adoption isn't "everyone uses AI tools." It's "the team ships better software faster." Sometimes AI tools are part of that. Sometimes fixing the CI pipeline is more impactful. Sometimes it's [better documentation so AI isn't just fancy autocomplete](/blog/ai-fancy-autocomplete). Sometimes it's clearer architecture.
+The goal of AI adoption isn't "everyone uses AI tools." It's "the team ships better software faster." Sometimes AI tools are part of that. Sometimes fixing [the CI pipeline](/blog/ci-pipeline-bottleneck/) is more impactful. Sometimes it's [better documentation so AI isn't just fancy autocomplete](/blog/ai-fancy-autocomplete). Sometimes it's clearer architecture.
 
 Champions figure this out naturally because they're embedded in the work. They'll tell you what actually moves the needle — if you listen.
 

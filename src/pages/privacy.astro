@@ -1,0 +1,186 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const lastUpdated = 'April 23, 2026';
+---
+
+<BaseLayout
+  title="Privacy Policy — App Vitals"
+  description="How App Vitals and Vitals OS collect, use, and protect your data — including Google Calendar data accessed through the Google Calendar API."
+>
+  <!-- Hero -->
+  <section class="relative overflow-hidden">
+    <div class="glow-orb w-[400px] h-[400px] bg-accent-violet/[0.05] top-[-10%] right-[10%] animate-glow-drift" aria-hidden="true"></div>
+
+    <div class="max-w-6xl mx-auto px-6 pt-24 pb-20 md:pt-32 md:pb-24 relative z-10">
+      <div class="max-w-3xl">
+        <p class="font-mono text-[13px] text-electric-400 tracking-[0.25em] uppercase mb-6 opacity-0 animate-fade-in-up">
+          Legal
+        </p>
+        <h1 class="font-display text-[clamp(2.5rem,5vw,4.5rem)] font-bold leading-[1.05] tracking-[-0.03em] opacity-0 animate-fade-in-up-delay-1">
+          Privacy <span class="gradient-text">Policy.</span>
+        </h1>
+        <p class="mt-8 text-[18px] text-white/45 max-w-xl leading-[1.7] opacity-0 animate-fade-in-up-delay-2">
+          How App Vitals and Vitals OS handle your data. Plain English, no dark patterns.
+        </p>
+        <p class="mt-4 font-mono text-[12px] text-white/30 tracking-[0.15em] uppercase opacity-0 animate-fade-in-up-delay-2">
+          Last updated · {lastUpdated}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Intro -->
+  <section id="introduction" class="relative">
+    <div class="gradient-divider"></div>
+    <div class="max-w-6xl mx-auto px-6 py-20 md:py-24">
+      <div class="grid md:grid-cols-[1fr,1.5fr] gap-16 items-start">
+        <div class="reveal">
+          <p class="font-mono text-[12px] text-electric-400 uppercase tracking-[0.3em] mb-4">Introduction</p>
+          <h2 class="font-display text-[clamp(1.5rem,3vw,2.25rem)] font-bold tracking-[-0.02em] leading-[1.2]">
+            Who we are.
+          </h2>
+        </div>
+        <div class="space-y-6 text-[16px] text-white/50 leading-[1.8] reveal" style="transition-delay: 150ms;">
+          <p>
+            App Vitals is the consulting business behind Vitals OS, the scheduling and engagement platform available at <a href="https://vitals-os.com" class="text-electric-400 hover:text-electric-300 underline underline-offset-4" target="_blank" rel="noopener noreferrer">vitals-os.com</a>. App Vitals operates Vitals OS as its owner and publisher. When this policy refers to "we," "us," or "our," it refers to App Vitals acting on behalf of both the App Vitals consulting business and the Vitals OS application.
+          </p>
+          <p>
+            This policy describes what information we collect when you visit <span class="font-mono text-white/70">app-vitals.com</span> or use Vitals OS, how we use it, who we share it with, and the choices available to you. A separate section below covers data we access through the Google Calendar API.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="gradient-divider"></div>
+  </section>
+
+  <!-- What we collect -->
+  <section id="what-we-collect" class="max-w-6xl mx-auto px-6 py-20 md:py-24">
+    <div class="grid md:grid-cols-[1fr,1.5fr] gap-16 items-start">
+      <div class="reveal">
+        <p class="font-mono text-[12px] text-electric-400 uppercase tracking-[0.3em] mb-4">Section 1</p>
+        <h2 class="font-display text-[clamp(1.5rem,3vw,2.25rem)] font-bold tracking-[-0.02em] leading-[1.2]">
+          What we collect.
+        </h2>
+      </div>
+      <div class="space-y-6 text-[16px] text-white/50 leading-[1.8] reveal" style="transition-delay: 150ms;">
+        <p>
+          <strong class="text-white/80">Account data.</strong> When you sign up for Vitals OS, we collect the information you provide — typically your name, email address, and the credentials or OAuth tokens used to connect third-party services you authorize.
+        </p>
+        <p>
+          <strong class="text-white/80">Usage data.</strong> We record basic analytics about how the marketing site and the application are used — page views, device and browser metadata, and aggregate interaction events. We use Google Analytics on <span class="font-mono text-white/70">app-vitals.com</span> for this purpose.
+        </p>
+        <p>
+          <strong class="text-white/80">Content you create.</strong> Within Vitals OS, we store the scheduling, invoicing, and engagement records you create through the product. This content belongs to you.
+        </p>
+        <p>
+          <strong class="text-white/80">Third-party integrations.</strong> If you choose to connect an external service (for example, Google Calendar), we access only the specific data scopes you authorize, as described below.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- How we use it -->
+  <section id="how-we-use-it" class="relative">
+    <div class="gradient-divider"></div>
+    <div class="max-w-6xl mx-auto px-6 py-20 md:py-24">
+      <div class="grid md:grid-cols-[1fr,1.5fr] gap-16 items-start">
+        <div class="reveal">
+          <p class="font-mono text-[12px] text-electric-400 uppercase tracking-[0.3em] mb-4">Section 2</p>
+          <h2 class="font-display text-[clamp(1.5rem,3vw,2.25rem)] font-bold tracking-[-0.02em] leading-[1.2]">
+            How we use it.
+          </h2>
+        </div>
+        <div class="space-y-6 text-[16px] text-white/50 leading-[1.8] reveal" style="transition-delay: 150ms;">
+          <p>
+            We use the information above to provide and operate Vitals OS, authenticate you, deliver the features you've asked for (including calendar-aware scheduling), communicate with you about your account, and maintain the security and reliability of the service.
+          </p>
+          <p>
+            We do not sell your data. We do not use your data to train machine-learning models on your behalf or anyone else's. We do not use integration data (including Google Calendar data) for advertising or cross-service profiling.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="gradient-divider"></div>
+  </section>
+
+  <!-- Google Calendar Data (PRD §1.2 disclosure, verbatim) -->
+  <section id="google-calendar-data" class="max-w-6xl mx-auto px-6 py-20 md:py-24">
+    <div class="grid md:grid-cols-[1fr,1.5fr] gap-16 items-start">
+      <div class="reveal">
+        <p class="font-mono text-[12px] text-electric-400 uppercase tracking-[0.3em] mb-4">Section 3</p>
+        <h2 class="font-display text-[clamp(1.5rem,3vw,2.25rem)] font-bold tracking-[-0.02em] leading-[1.2]">
+          Google Calendar Data.
+        </h2>
+      </div>
+      <div class="space-y-6 reveal" style="transition-delay: 150ms;">
+        <div class="card-glow rounded-2xl border border-electric-500/20 bg-electric-500/[0.03] p-8">
+          <p class="font-mono text-[12px] text-electric-400 uppercase tracking-[0.2em] mb-4">Disclosure</p>
+          <p class="text-[16px] text-white/70 leading-[1.8]">
+            Vitals OS accesses your Google Calendar data via the Google Calendar API with your explicit authorization. We use this data solely to display your calendar availability and schedule within the Vitals OS platform. We do not sell, share, or use Google Calendar data for advertising, analytics unrelated to the service, or any purpose beyond providing you the scheduling features of the app. You can revoke access at any time via your Google Account settings.
+          </p>
+        </div>
+        <p class="text-[15px] text-white/45 leading-[1.8]">
+          Google Calendar data is accessed only while you are actively using Vitals OS features that require it. We do not run background scans, bulk exports, or persist calendar data beyond what is required to render availability and manage events you've initiated. To revoke access, visit <a href="https://myaccount.google.com/permissions" class="text-electric-400 hover:text-electric-300 underline underline-offset-4" target="_blank" rel="noopener noreferrer">your Google Account permissions page</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Who we share with -->
+  <section id="who-we-share-with" class="relative">
+    <div class="gradient-divider"></div>
+    <div class="max-w-6xl mx-auto px-6 py-20 md:py-24">
+      <div class="grid md:grid-cols-[1fr,1.5fr] gap-16 items-start">
+        <div class="reveal">
+          <p class="font-mono text-[12px] text-electric-400 uppercase tracking-[0.3em] mb-4">Section 4</p>
+          <h2 class="font-display text-[clamp(1.5rem,3vw,2.25rem)] font-bold tracking-[-0.02em] leading-[1.2]">
+            Who we share with.
+          </h2>
+        </div>
+        <div class="space-y-6 text-[16px] text-white/50 leading-[1.8] reveal" style="transition-delay: 150ms;">
+          <p>
+            We do not sell personal information. We share data only with the sub-processors required to run the service — hosting, email delivery, error monitoring, and analytics — under contracts that restrict their use to providing that service. We will disclose information if required by law, or to protect the rights, property, or safety of App Vitals, our customers, or others.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="gradient-divider"></div>
+  </section>
+
+  <!-- User rights -->
+  <section id="user-rights" class="max-w-6xl mx-auto px-6 py-20 md:py-24">
+    <div class="grid md:grid-cols-[1fr,1.5fr] gap-16 items-start">
+      <div class="reveal">
+        <p class="font-mono text-[12px] text-electric-400 uppercase tracking-[0.3em] mb-4">Section 5</p>
+        <h2 class="font-display text-[clamp(1.5rem,3vw,2.25rem)] font-bold tracking-[-0.02em] leading-[1.2]">
+          Your rights.
+        </h2>
+      </div>
+      <div class="space-y-6 text-[16px] text-white/50 leading-[1.8] reveal" style="transition-delay: 150ms;">
+        <p>
+          You can request a copy of the personal data we hold about you, correct inaccuracies, or ask us to delete your account and associated content. You can revoke any third-party integration — including Google Calendar — at any time from the integration provider's settings.
+        </p>
+        <p>
+          To exercise any of these rights, email us at the address below and we will respond within a reasonable timeframe.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="relative py-20 md:py-24">
+    <div class="gradient-divider"></div>
+    <div class="glow-orb w-[500px] h-[300px] bg-electric-500/[0.04] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate-glow-drift" aria-hidden="true"></div>
+
+    <div class="max-w-6xl mx-auto px-6 pt-16 text-center relative z-10 reveal">
+      <p class="font-mono text-[12px] text-electric-400 uppercase tracking-[0.3em] mb-4">Contact</p>
+      <h2 class="font-display text-[clamp(1.5rem,3vw,2.25rem)] font-bold tracking-[-0.02em] leading-[1.2]">
+        Questions about this policy?
+      </h2>
+      <p class="mt-6 text-[16px] text-white/45 max-w-md mx-auto leading-[1.7]">
+        Email <a href="mailto:privacy@app-vitals.com" class="text-electric-400 hover:text-electric-300 underline underline-offset-4">privacy@app-vitals.com</a> and we'll get back to you.
+      </p>
+    </div>
+  </section>
+</BaseLayout>

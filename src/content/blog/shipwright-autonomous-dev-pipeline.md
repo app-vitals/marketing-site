@@ -9,7 +9,7 @@ readTime: "7 min read"
 
 Last week, I pointed an AI at a product spec and walked away. When I came back, it had generated a 1,900-line task breakdown covering 7 features, 45 tasks, 5 development phases, and estimated 128 hours of work. Then it started building.
 
-No, this isn't hype. This is [Shipwright](https://github.com/app-vitals/marketplace), a Claude Code plugin we built at App Vitals that turns product requirements into shipped software through a structured, mostly autonomous pipeline.
+No, this isn't hype. This is [Shipwright](https://github.com/app-vitals/shipwright), a Claude Code plugin we built at App Vitals that turns product requirements into shipped software through a structured, mostly autonomous pipeline.
 
 ## The Problem We Were Solving
 
@@ -39,11 +39,11 @@ For projects with a UI, it automatically includes Playwright end-to-end tests in
 
 Here's the thing: we didn't build this in isolation. The Claude Code plugin ecosystem is evolving fast, and Shipwright deliberately integrates with other plugins rather than reinventing what already works.
 
-[`learning-loop`](https://github.com/app-vitals/marketplace) captures patterns from code reviews and promotes them to `CLAUDE.md`, so your project literally gets smarter over time. Every review finding that reveals a recurring issue becomes a convention that prevents the next one. It's the technical implementation of what we describe in the [AI Champion Playbook](/blog/ai-champion-playbook) — building internal knowledge that scales.
+[`learning-loop`](https://github.com/app-vitals/shipwright) captures patterns from code reviews and promotes them to `CLAUDE.md`, so your project literally gets smarter over time. Every review finding that reveals a recurring issue becomes a convention that prevents the next one. It's the technical implementation of what we describe in the [AI Champion Playbook](/blog/ai-champion-playbook) — building internal knowledge that scales.
 
 [`frontend-design`](https://github.com/anthropics/claude-code/tree/main/plugins) from Anthropic's plugin collection ensures UI tasks don't produce generic AI-generated interfaces. When a task is tagged with the design skill, it gets a dedicated design pass.
 
-[`damage-control`](https://github.com/app-vitals/marketplace) provides defense-in-depth via PreToolUse hooks — blocking dangerous commands and protecting sensitive files. Because when you're running autonomous dev loops, guardrails matter.
+[`damage-control`](https://github.com/app-vitals/shipwright) provides defense-in-depth via PreToolUse hooks — blocking dangerous commands and protecting sensitive files. Because when you're running autonomous dev loops, guardrails matter.
 
 We also learned from the community's patterns around structured orchestration, distillation, and context management. The marketplace model — where plugins compose rather than compete — is what makes this possible.
 
@@ -69,10 +69,10 @@ This is what [velocity engineering](/blog/velocity-engineering) looks like in pr
 
 ## Try It
 
-Shipwright is open source and available in the [App Vitals marketplace](https://github.com/app-vitals/marketplace):
+Shipwright is open source and available in the [App Vitals shipwright repo](https://github.com/app-vitals/shipwright):
 
 ```
-/plugin install shipwright@app-vitals/marketplace
+/plugin install shipwright@app-vitals/shipwright
 ```
 
 Point it at a product spec and see what happens. We think you'll be surprised.

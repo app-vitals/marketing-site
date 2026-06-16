@@ -41,7 +41,7 @@ Here's what our actual workflow looks like.
 
 Our workflow is built around a few principles:
 
-**Convention files in every repo.** Every project we work on has a conventions file that describes patterns, architecture, and coding standards. This makes AI suggestions dramatically more accurate. It also makes our code more consistent, which is good for clients regardless of AI.
+**Convention files in every repo.** Every project we work on has a [conventions file](/blog/context-problem/) that describes patterns, architecture, and coding standards. This makes AI suggestions dramatically more accurate. It also makes our code more consistent, which is good for clients regardless of AI.
 
 **Small, focused PRs.** AI makes it easy to produce large changes quickly. That's a trap. We keep PRs small and focused because they're easier to review, easier to revert, and less likely to introduce subtle bugs. Speed of production doesn't change the value of small batches.
 
@@ -53,7 +53,7 @@ Our workflow is built around a few principles:
 
 When we embed with a client's team, we're not just bringing two engineers. We're bringing two engineers who have spent thousands of hours optimizing their own AI-assisted workflow. We know what works, what doesn't, and where the pitfalls are — because we hit them ourselves first.
 
-More importantly, we understand that AI velocity is a system property, not a tool property. It's not enough to give developers AI tools. You need the conventions, the documentation, the CI pipeline, the review process, and the deployment infrastructure to all be optimized for higher throughput.
+More importantly, we understand that AI velocity is a system property, not a tool property. It's not enough to give developers AI tools. You need the conventions, the documentation, [the CI pipeline](/blog/ci-pipeline-bottleneck/), the review process, and the deployment infrastructure to all be optimized for higher throughput.
 
 That's what we help teams build. Not "AI tool rollout" but the entire velocity stack — from developer workflow to production deployment. We've codified this approach in [the velocity engineering playbook](/blog/velocity-engineering-playbook), covering every stage from code generation to production.
 
@@ -65,4 +65,4 @@ When you eliminate most of the mechanical work, what's left is the hard stuff �
 
 That's the model we believe in: experienced engineers, amplified by AI, focused on the work that actually matters. It's how we run App Vitals, and it's what we help our clients' teams achieve.
 
-The question isn't whether AI makes engineers faster. It does. The question is whether your organization is set up to capture that speed. That's where the real work is.
+The question isn't whether AI makes engineers faster. It does. The question is whether your organization is [set up to capture that speed](/blog/velocity-engineering/). That's where the real work is.
