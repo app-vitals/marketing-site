@@ -1,0 +1,21 @@
+---
+interface Props {
+  lineClass: string;  // e.g. "bg-electric-500"
+  title: string;
+  description: string;
+  delay?: number;
+}
+
+const { lineClass, title, description, delay = 0 } = Astro.props;
+---
+
+<div
+  class="reveal"
+  style={delay ? `transition-delay: ${delay}ms;` : undefined}
+>
+  <div class="flex items-center gap-3 mb-4">
+    <div class={`w-1 h-6 rounded-full ${lineClass}`}></div>
+    <h3 class="font-display text-[18px] font-semibold tracking-tight">{title}</h3>
+  </div>
+  <p class="text-[15px] text-white/40 leading-[1.7] pl-5">{description}</p>
+</div>

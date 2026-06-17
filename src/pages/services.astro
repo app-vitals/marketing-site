@@ -1,5 +1,113 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import PhaseCard from '../components/PhaseCard.astro';
+import WhyUsCard from '../components/WhyUsCard.astro';
+
+const phases = [
+  {
+    number: '01',
+    title: 'AI Velocity Assessment',
+    timing: '4 weeks · Fixed fee',
+    description: "Most teams don't know what's actually blocking AI adoption. We find out. 1:1 interviews with engineers, a full SDLC audit, bottleneck mapping, and champion identification — everything needed to build a real plan.",
+    bullets: [
+      '1:1 engineer interviews across the org',
+      'Full SDLC and toolchain audit',
+      'Bottleneck mapping and prioritization',
+      'Champion identification',
+    ],
+    outcome: 'Maturity arc placement, a prioritized roadmap, and concrete Phase 2 project proposals. No guesswork — a clear path forward.',
+    delay: 0,
+    circleClass: 'bg-electric-500/10',
+    numberClass: 'text-electric-500',
+    timingClass: 'text-electric-400',
+    dotClass: 'bg-electric-500',
+    labelClass: 'text-electric-400',
+  },
+  {
+    number: '02',
+    title: 'Systems Acceleration',
+    timing: '4 weeks per project · Scoped per engagement',
+    description: "Broad adoption before fixing systems creates churn. Engineers hit access walls, security blockers, and toil-heavy workflows. We run targeted infrastructure projects to make your services AI-ready — with embedded engineers using the same tools we're helping your team adopt.",
+    bullets: [
+      'Targeted infrastructure projects',
+      'AI-ready service architecture',
+      'Embedded engineers using Claude Code',
+      'Security and access unblocking',
+    ],
+    outcome: 'Services unblocked for AI tooling and measurable pipeline improvements. Real infrastructure changes, not configuration slides.',
+    delay: 100,
+    circleClass: 'bg-accent-cyan/10',
+    numberClass: 'text-accent-cyan',
+    timingClass: 'text-accent-cyan',
+    dotClass: 'bg-accent-cyan',
+    labelClass: 'text-accent-cyan',
+  },
+  {
+    number: '03',
+    title: 'Champion-Led Adoption',
+    timing: '4–6 weeks · Scoped per engagement',
+    description: "Top-down mandates get ignored. Most AI rollouts fail because they skip the people layer. We identify internal champions, build curriculum with them, measure progress with DORA metrics, and create learning loops that sustain themselves.",
+    bullets: [
+      'Internal champion coaching',
+      'Co-created curriculum and workshops',
+      'DORA metrics instrumentation',
+      'Peer-driven learning loops',
+    ],
+    outcome: "Self-sustaining adoption, org-wide AI usage, and velocity metrics that are live and owned by your team — not dependent on us.",
+    delay: 200,
+    circleClass: 'bg-accent-violet/10',
+    numberClass: 'text-accent-violet',
+    timingClass: 'text-accent-violet',
+    dotClass: 'bg-accent-violet',
+    labelClass: 'text-accent-violet',
+  },
+  {
+    number: '04',
+    title: 'Ongoing Velocity',
+    timing: 'Pricing on request',
+    description: "Teams stall at mid-maturity. Getting from \"using AI\" to \"measurably faster\" needs continuity. We stay engaged with quarterly maturity check-ins, ad hoc support for new blockers, and keep the learning loop alive until your team owns it completely.",
+    bullets: [
+      'Quarterly maturity reassessments',
+      'Ad hoc blocker resolution',
+      'Evolving curriculum updates',
+      'Sustained learning loops',
+    ],
+    outcome: "Sustained velocity gains and permanent ownership by your team. We're the safety net until you don't need one.",
+    delay: 300,
+    circleClass: 'bg-electric-500/10',
+    numberClass: 'text-electric-400',
+    timingClass: 'text-electric-400',
+    dotClass: 'bg-electric-400',
+    labelClass: 'text-electric-400',
+  },
+];
+
+const whyUsItems = [
+  {
+    lineClass: 'bg-electric-500',
+    title: 'Senior founders, not junior consultants',
+    description: "Dan and Dave do the work. You're not paying for a brand name and getting a rotating cast of associates. Two engineers with decades of combined depth — in every meeting, on every project.",
+    delay: 0,
+  },
+  {
+    lineClass: 'bg-accent-cyan',
+    title: 'Phased, not open-ended',
+    description: "Every engagement has a defined scope, timeline, and exit criteria. We're building toward your team's independence — not a perpetual billing relationship.",
+    delay: 100,
+  },
+  {
+    lineClass: 'bg-accent-violet',
+    title: 'Measurable outcomes, not vague promises',
+    description: "DORA metrics, cycle time, deployment frequency — we instrument what matters and track it. If velocity isn't improving, we adjust. No hand-waving.",
+    delay: 200,
+  },
+  {
+    lineClass: 'bg-electric-400',
+    title: 'Small team + AI',
+    description: "We practice what we preach. Two founders leveraging AI tools daily means startup velocity with enterprise quality. No overhead, no layers — just results.",
+    delay: 300,
+  },
+];
 ---
 
 <BaseLayout
@@ -9,7 +117,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <!-- Hero -->
   <section class="relative overflow-hidden">
     <div class="glow-orb w-[400px] h-[400px] bg-electric-500/[0.05] top-[-10%] left-[15%] animate-glow-drift" aria-hidden="true"></div>
-
     <div class="max-w-6xl mx-auto px-6 pt-24 pb-20 md:pt-32 md:pb-24 relative z-10">
       <div class="max-w-3xl">
         <p class="font-mono text-[13px] text-electric-400 tracking-[0.25em] uppercase mb-6 opacity-0 animate-fade-in-up">
@@ -36,191 +143,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           From assessment to adoption.
         </h2>
       </div>
-
-      <!-- Phase 1 -->
       <div class="space-y-8">
-        <div class="card-glow p-8 md:p-10 rounded-2xl border border-white/[0.06] bg-white/[0.02] reveal">
-          <div class="flex flex-col md:flex-row md:items-start gap-6 md:gap-10">
-            <div class="flex-shrink-0">
-              <div class="flex items-center gap-4 mb-2">
-                <div class="w-10 h-10 rounded-xl bg-electric-500/10 flex items-center justify-center">
-                  <span class="font-mono text-[14px] text-electric-500 font-bold">01</span>
-                </div>
-                <div>
-                  <h3 class="font-display text-[22px] font-bold tracking-tight">AI Velocity Assessment</h3>
-                  <p class="font-mono text-[12px] text-electric-400 tracking-[0.15em] uppercase mt-1">4 weeks · Fixed fee</p>
-                </div>
-              </div>
-            </div>
-            <div class="flex-1">
-              <p class="text-[15px] text-white/45 leading-[1.7] mb-6">
-                Most teams don't know what's actually blocking AI adoption. We find out. 1:1 interviews with engineers, a full SDLC audit, bottleneck mapping, and champion identification — everything needed to build a real plan.
-              </p>
-              <div class="grid sm:grid-cols-2 gap-x-8 gap-y-3">
-                <div class="flex items-start gap-3">
-                  <div class="w-1 h-1 rounded-full bg-electric-500 mt-2.5 flex-shrink-0"></div>
-                  <p class="text-[14px] text-white/40 leading-[1.6]">1:1 engineer interviews across the org</p>
-                </div>
-                <div class="flex items-start gap-3">
-                  <div class="w-1 h-1 rounded-full bg-electric-500 mt-2.5 flex-shrink-0"></div>
-                  <p class="text-[14px] text-white/40 leading-[1.6]">Full SDLC and toolchain audit</p>
-                </div>
-                <div class="flex items-start gap-3">
-                  <div class="w-1 h-1 rounded-full bg-electric-500 mt-2.5 flex-shrink-0"></div>
-                  <p class="text-[14px] text-white/40 leading-[1.6]">Bottleneck mapping and prioritization</p>
-                </div>
-                <div class="flex items-start gap-3">
-                  <div class="w-1 h-1 rounded-full bg-electric-500 mt-2.5 flex-shrink-0"></div>
-                  <p class="text-[14px] text-white/40 leading-[1.6]">Champion identification</p>
-                </div>
-              </div>
-              <div class="mt-6 pt-6 border-t border-white/[0.06]">
-                <p class="font-mono text-[12px] text-electric-400 uppercase tracking-[0.2em] mb-2">You get</p>
-                <p class="text-[15px] text-white/45 leading-[1.7]">
-                  Maturity arc placement, a prioritized roadmap, and concrete Phase 2 project proposals. No guesswork — a clear path forward.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Phase 2 -->
-        <div class="card-glow p-8 md:p-10 rounded-2xl border border-white/[0.06] bg-white/[0.02] reveal" style="transition-delay: 100ms;">
-          <div class="flex flex-col md:flex-row md:items-start gap-6 md:gap-10">
-            <div class="flex-shrink-0">
-              <div class="flex items-center gap-4 mb-2">
-                <div class="w-10 h-10 rounded-xl bg-accent-cyan/10 flex items-center justify-center">
-                  <span class="font-mono text-[14px] text-accent-cyan font-bold">02</span>
-                </div>
-                <div>
-                  <h3 class="font-display text-[22px] font-bold tracking-tight">Systems Acceleration</h3>
-                  <p class="font-mono text-[12px] text-accent-cyan tracking-[0.15em] uppercase mt-1">4 weeks per project · Scoped per engagement</p>
-                </div>
-              </div>
-            </div>
-            <div class="flex-1">
-              <p class="text-[15px] text-white/45 leading-[1.7] mb-6">
-                Broad adoption before fixing systems creates churn. Engineers hit access walls, security blockers, and toil-heavy workflows. We run targeted infrastructure projects to make your services AI-ready — with embedded engineers using the same tools we're helping your team adopt.
-              </p>
-              <div class="grid sm:grid-cols-2 gap-x-8 gap-y-3">
-                <div class="flex items-start gap-3">
-                  <div class="w-1 h-1 rounded-full bg-accent-cyan mt-2.5 flex-shrink-0"></div>
-                  <p class="text-[14px] text-white/40 leading-[1.6]">Targeted infrastructure projects</p>
-                </div>
-                <div class="flex items-start gap-3">
-                  <div class="w-1 h-1 rounded-full bg-accent-cyan mt-2.5 flex-shrink-0"></div>
-                  <p class="text-[14px] text-white/40 leading-[1.6]">AI-ready service architecture</p>
-                </div>
-                <div class="flex items-start gap-3">
-                  <div class="w-1 h-1 rounded-full bg-accent-cyan mt-2.5 flex-shrink-0"></div>
-                  <p class="text-[14px] text-white/40 leading-[1.6]">Embedded engineers using Claude Code</p>
-                </div>
-                <div class="flex items-start gap-3">
-                  <div class="w-1 h-1 rounded-full bg-accent-cyan mt-2.5 flex-shrink-0"></div>
-                  <p class="text-[14px] text-white/40 leading-[1.6]">Security and access unblocking</p>
-                </div>
-              </div>
-              <div class="mt-6 pt-6 border-t border-white/[0.06]">
-                <p class="font-mono text-[12px] text-accent-cyan uppercase tracking-[0.2em] mb-2">You get</p>
-                <p class="text-[15px] text-white/45 leading-[1.7]">
-                  Services unblocked for AI tooling and measurable pipeline improvements. Real infrastructure changes, not configuration slides.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Phase 3 -->
-        <div class="card-glow p-8 md:p-10 rounded-2xl border border-white/[0.06] bg-white/[0.02] reveal" style="transition-delay: 200ms;">
-          <div class="flex flex-col md:flex-row md:items-start gap-6 md:gap-10">
-            <div class="flex-shrink-0">
-              <div class="flex items-center gap-4 mb-2">
-                <div class="w-10 h-10 rounded-xl bg-accent-violet/10 flex items-center justify-center">
-                  <span class="font-mono text-[14px] text-accent-violet font-bold">03</span>
-                </div>
-                <div>
-                  <h3 class="font-display text-[22px] font-bold tracking-tight">Champion-Led Adoption</h3>
-                  <p class="font-mono text-[12px] text-accent-violet tracking-[0.15em] uppercase mt-1">4–6 weeks · Scoped per engagement</p>
-                </div>
-              </div>
-            </div>
-            <div class="flex-1">
-              <p class="text-[15px] text-white/45 leading-[1.7] mb-6">
-                Top-down mandates get ignored. Most AI rollouts fail because they skip the people layer. We identify internal champions, build curriculum with them, measure progress with DORA metrics, and create learning loops that sustain themselves.
-              </p>
-              <div class="grid sm:grid-cols-2 gap-x-8 gap-y-3">
-                <div class="flex items-start gap-3">
-                  <div class="w-1 h-1 rounded-full bg-accent-violet mt-2.5 flex-shrink-0"></div>
-                  <p class="text-[14px] text-white/40 leading-[1.6]">Internal champion coaching</p>
-                </div>
-                <div class="flex items-start gap-3">
-                  <div class="w-1 h-1 rounded-full bg-accent-violet mt-2.5 flex-shrink-0"></div>
-                  <p class="text-[14px] text-white/40 leading-[1.6]">Co-created curriculum and workshops</p>
-                </div>
-                <div class="flex items-start gap-3">
-                  <div class="w-1 h-1 rounded-full bg-accent-violet mt-2.5 flex-shrink-0"></div>
-                  <p class="text-[14px] text-white/40 leading-[1.6]">DORA metrics instrumentation</p>
-                </div>
-                <div class="flex items-start gap-3">
-                  <div class="w-1 h-1 rounded-full bg-accent-violet mt-2.5 flex-shrink-0"></div>
-                  <p class="text-[14px] text-white/40 leading-[1.6]">Peer-driven learning loops</p>
-                </div>
-              </div>
-              <div class="mt-6 pt-6 border-t border-white/[0.06]">
-                <p class="font-mono text-[12px] text-accent-violet uppercase tracking-[0.2em] mb-2">You get</p>
-                <p class="text-[15px] text-white/45 leading-[1.7]">
-                  Self-sustaining adoption, org-wide AI usage, and velocity metrics that are live and owned by your team — not dependent on us.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Phase 4 -->
-        <div class="card-glow p-8 md:p-10 rounded-2xl border border-white/[0.06] bg-white/[0.02] reveal" style="transition-delay: 300ms;">
-          <div class="flex flex-col md:flex-row md:items-start gap-6 md:gap-10">
-            <div class="flex-shrink-0">
-              <div class="flex items-center gap-4 mb-2">
-                <div class="w-10 h-10 rounded-xl bg-electric-500/10 flex items-center justify-center">
-                  <span class="font-mono text-[14px] text-electric-400 font-bold">04</span>
-                </div>
-                <div>
-                  <h3 class="font-display text-[22px] font-bold tracking-tight">Ongoing Velocity</h3>
-                  <p class="font-mono text-[12px] text-electric-400 tracking-[0.15em] uppercase mt-1">Pricing on request</p>
-                </div>
-              </div>
-            </div>
-            <div class="flex-1">
-              <p class="text-[15px] text-white/45 leading-[1.7] mb-6">
-                Teams stall at mid-maturity. Getting from "using AI" to "measurably faster" needs continuity. We stay engaged with quarterly maturity check-ins, ad hoc support for new blockers, and keep the learning loop alive until your team owns it completely.
-              </p>
-              <div class="grid sm:grid-cols-2 gap-x-8 gap-y-3">
-                <div class="flex items-start gap-3">
-                  <div class="w-1 h-1 rounded-full bg-electric-400 mt-2.5 flex-shrink-0"></div>
-                  <p class="text-[14px] text-white/40 leading-[1.6]">Quarterly maturity reassessments</p>
-                </div>
-                <div class="flex items-start gap-3">
-                  <div class="w-1 h-1 rounded-full bg-electric-400 mt-2.5 flex-shrink-0"></div>
-                  <p class="text-[14px] text-white/40 leading-[1.6]">Ad hoc blocker resolution</p>
-                </div>
-                <div class="flex items-start gap-3">
-                  <div class="w-1 h-1 rounded-full bg-electric-400 mt-2.5 flex-shrink-0"></div>
-                  <p class="text-[14px] text-white/40 leading-[1.6]">Evolving curriculum updates</p>
-                </div>
-                <div class="flex items-start gap-3">
-                  <div class="w-1 h-1 rounded-full bg-electric-400 mt-2.5 flex-shrink-0"></div>
-                  <p class="text-[14px] text-white/40 leading-[1.6]">Sustained learning loops</p>
-                </div>
-              </div>
-              <div class="mt-6 pt-6 border-t border-white/[0.06]">
-                <p class="font-mono text-[12px] text-electric-400 uppercase tracking-[0.2em] mb-2">You get</p>
-                <p class="text-[15px] text-white/45 leading-[1.7]">
-                  Sustained velocity gains and permanent ownership by your team. We're the safety net until you don't need one.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
+        {phases.map((phase) => <PhaseCard {...phase} />)}
       </div>
     </div>
   </section>
@@ -235,47 +159,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           Not your typical AI consultancy.
         </h2>
       </div>
-
       <div class="grid md:grid-cols-2 gap-x-12 gap-y-14">
-        <div class="reveal">
-          <div class="flex items-center gap-3 mb-4">
-            <div class="w-1 h-6 rounded-full bg-electric-500"></div>
-            <h3 class="font-display text-[18px] font-semibold tracking-tight">Senior founders, not junior consultants</h3>
-          </div>
-          <p class="text-[15px] text-white/40 leading-[1.7] pl-5">
-            Dan and Dave do the work. You're not paying for a brand name and getting a rotating cast of associates. Two engineers with decades of combined depth — in every meeting, on every project.
-          </p>
-        </div>
-
-        <div class="reveal" style="transition-delay: 100ms;">
-          <div class="flex items-center gap-3 mb-4">
-            <div class="w-1 h-6 rounded-full bg-accent-cyan"></div>
-            <h3 class="font-display text-[18px] font-semibold tracking-tight">Phased, not open-ended</h3>
-          </div>
-          <p class="text-[15px] text-white/40 leading-[1.7] pl-5">
-            Every engagement has a defined scope, timeline, and exit criteria. We're building toward your team's independence — not a perpetual billing relationship.
-          </p>
-        </div>
-
-        <div class="reveal" style="transition-delay: 200ms;">
-          <div class="flex items-center gap-3 mb-4">
-            <div class="w-1 h-6 rounded-full bg-accent-violet"></div>
-            <h3 class="font-display text-[18px] font-semibold tracking-tight">Measurable outcomes, not vague promises</h3>
-          </div>
-          <p class="text-[15px] text-white/40 leading-[1.7] pl-5">
-            DORA metrics, cycle time, deployment frequency — we instrument what matters and track it. If velocity isn't improving, we adjust. No hand-waving.
-          </p>
-        </div>
-
-        <div class="reveal" style="transition-delay: 300ms;">
-          <div class="flex items-center gap-3 mb-4">
-            <div class="w-1 h-6 rounded-full bg-electric-400"></div>
-            <h3 class="font-display text-[18px] font-semibold tracking-tight">Small team + AI</h3>
-          </div>
-          <p class="text-[15px] text-white/40 leading-[1.7] pl-5">
-            We practice what we preach. Two founders leveraging AI tools daily means startup velocity with enterprise quality. No overhead, no layers — just results.
-          </p>
-        </div>
+        {whyUsItems.map((item) => <WhyUsCard {...item} />)}
       </div>
     </div>
   </section>
@@ -284,7 +169,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <section class="relative py-24 md:py-32">
     <div class="gradient-divider"></div>
     <div class="glow-orb w-[500px] h-[300px] bg-electric-500/[0.04] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate-glow-drift" aria-hidden="true"></div>
-
     <div class="max-w-6xl mx-auto px-6 pt-24 text-center relative z-10 reveal">
       <h2 class="font-display text-[clamp(1.75rem,4vw,3rem)] font-bold tracking-[-0.02em] leading-[1.15]">
         See where your team <span class="gradient-text">stands.</span>
