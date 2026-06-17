@@ -1,0 +1,66 @@
+---
+interface Props {
+  number: string;
+  title: string;
+  timing: string;
+  description: string;
+  bullets: string[];
+  outcome: string;
+  delay?: number;
+  // Pre-computed Tailwind class strings for purge safety
+  circleClass: string;   // e.g. "bg-electric-500/10"
+  numberClass: string;   // e.g. "text-electric-500"
+  timingClass: string;   // e.g. "text-electric-400"
+  dotClass: string;      // e.g. "bg-electric-500"
+  labelClass: string;    // e.g. "text-electric-400"
+}
+
+const {
+  number,
+  title,
+  timing,
+  description,
+  bullets,
+  outcome,
+  delay = 0,
+  circleClass,
+  numberClass,
+  timingClass,
+  dotClass,
+  labelClass,
+} = Astro.props;
+---
+
+<div
+  class="card-glow p-8 md:p-10 rounded-2xl border border-white/[0.06] bg-white/[0.02] reveal"
+  style={delay ? `transition-delay: ${delay}ms;` : undefined}
+>
+  <div class="flex flex-col md:flex-row md:items-start gap-6 md:gap-10">
+    <div class="flex-shrink-0">
+      <div class="flex items-center gap-4 mb-2">
+        <div class={`w-10 h-10 rounded-xl ${circleClass} flex items-center justify-center`}>
+          <span class={`font-mono text-[14px] ${numberClass} font-bold`}>{number}</span>
+        </div>
+        <div>
+          <h3 class="font-display text-[22px] font-bold tracking-tight">{title}</h3>
+          <p class={`font-mono text-[12px] ${timingClass} tracking-[0.15em] uppercase mt-1`}>{timing}</p>
+        </div>
+      </div>
+    </div>
+    <div class="flex-1">
+      <p class="text-[15px] text-white/45 leading-[1.7] mb-6">{description}</p>
+      <div class="grid sm:grid-cols-2 gap-x-8 gap-y-3">
+        {bullets.map((bullet) => (
+          <div class="flex items-start gap-3">
+            <div class={`w-1 h-1 rounded-full ${dotClass} mt-2.5 flex-shrink-0`}></div>
+            <p class="text-[14px] text-white/40 leading-[1.6]">{bullet}</p>
+          </div>
+        ))}
+      </div>
+      <div class="mt-6 pt-6 border-t border-white/[0.06]">
+        <p class={`font-mono text-[12px] ${labelClass} uppercase tracking-[0.2em] mb-2`}>You get</p>
+        <p class="text-[15px] text-white/45 leading-[1.7]">{outcome}</p>
+      </div>
+    </div>
+  </div>
+</div>

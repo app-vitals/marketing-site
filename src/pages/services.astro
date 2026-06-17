@@ -1,0 +1,192 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PhaseCard from '../components/PhaseCard.astro';
+import WhyUsCard from '../components/WhyUsCard.astro';
+
+const phases = [
+  {
+    number: '01',
+    title: 'AI Velocity Assessment',
+    timing: '4 weeks · Fixed fee',
+    description: "Most teams don't know what's actually blocking AI adoption. We find out. 1:1 interviews with engineers, a full SDLC audit, bottleneck mapping, and champion identification — everything needed to build a real plan.",
+    bullets: [
+      '1:1 engineer interviews across the org',
+      'Full SDLC and toolchain audit',
+      'Bottleneck mapping and prioritization',
+      'Champion identification',
+    ],
+    outcome: 'Maturity arc placement, a prioritized roadmap, and concrete Phase 2 project proposals. No guesswork — a clear path forward.',
+    delay: 0,
+    circleClass: 'bg-electric-500/10',
+    numberClass: 'text-electric-500',
+    timingClass: 'text-electric-400',
+    dotClass: 'bg-electric-500',
+    labelClass: 'text-electric-400',
+  },
+  {
+    number: '02',
+    title: 'Systems Acceleration',
+    timing: '4 weeks per project · Scoped per engagement',
+    description: "Broad adoption before fixing systems creates churn. Engineers hit access walls, security blockers, and toil-heavy workflows. We run targeted infrastructure projects to make your services AI-ready — with embedded engineers using the same tools we're helping your team adopt.",
+    bullets: [
+      'Targeted infrastructure projects',
+      'AI-ready service architecture',
+      'Embedded engineers using Claude Code',
+      'Security and access unblocking',
+    ],
+    outcome: 'Services unblocked for AI tooling and measurable pipeline improvements. Real infrastructure changes, not configuration slides.',
+    delay: 100,
+    circleClass: 'bg-accent-cyan/10',
+    numberClass: 'text-accent-cyan',
+    timingClass: 'text-accent-cyan',
+    dotClass: 'bg-accent-cyan',
+    labelClass: 'text-accent-cyan',
+  },
+  {
+    number: '03',
+    title: 'Champion-Led Adoption',
+    timing: '4–6 weeks · Scoped per engagement',
+    description: "Top-down mandates get ignored. Most AI rollouts fail because they skip the people layer. We identify internal champions, build curriculum with them, measure progress with DORA metrics, and create learning loops that sustain themselves.",
+    bullets: [
+      'Internal champion coaching',
+      'Co-created curriculum and workshops',
+      'DORA metrics instrumentation',
+      'Peer-driven learning loops',
+    ],
+    outcome: "Self-sustaining adoption, org-wide AI usage, and velocity metrics that are live and owned by your team — not dependent on us.",
+    delay: 200,
+    circleClass: 'bg-accent-violet/10',
+    numberClass: 'text-accent-violet',
+    timingClass: 'text-accent-violet',
+    dotClass: 'bg-accent-violet',
+    labelClass: 'text-accent-violet',
+  },
+  {
+    number: '04',
+    title: 'Ongoing Velocity',
+    timing: 'Pricing on request',
+    description: "Teams stall at mid-maturity. Getting from \"using AI\" to \"measurably faster\" needs continuity. We stay engaged with quarterly maturity check-ins, ad hoc support for new blockers, and keep the learning loop alive until your team owns it completely.",
+    bullets: [
+      'Quarterly maturity reassessments',
+      'Ad hoc blocker resolution',
+      'Evolving curriculum updates',
+      'Sustained learning loops',
+    ],
+    outcome: "Sustained velocity gains and permanent ownership by your team. We're the safety net until you don't need one.",
+    delay: 300,
+    circleClass: 'bg-electric-500/10',
+    numberClass: 'text-electric-400',
+    timingClass: 'text-electric-400',
+    dotClass: 'bg-electric-400',
+    labelClass: 'text-electric-400',
+  },
+];
+
+const whyUsItems = [
+  {
+    lineClass: 'bg-electric-500',
+    title: 'Senior founders, not junior consultants',
+    description: "Dan and Dave do the work. You're not paying for a brand name and getting a rotating cast of associates. Two engineers with decades of combined depth — in every meeting, on every project.",
+    delay: 0,
+  },
+  {
+    lineClass: 'bg-accent-cyan',
+    title: 'Phased, not open-ended',
+    description: "Every engagement has a defined scope, timeline, and exit criteria. We're building toward your team's independence — not a perpetual billing relationship.",
+    delay: 100,
+  },
+  {
+    lineClass: 'bg-accent-violet',
+    title: 'Measurable outcomes, not vague promises',
+    description: "DORA metrics, cycle time, deployment frequency — we instrument what matters and track it. If velocity isn't improving, we adjust. No hand-waving.",
+    delay: 200,
+  },
+  {
+    lineClass: 'bg-electric-400',
+    title: 'Small team + AI',
+    description: "We practice what we preach. Two founders leveraging AI tools daily means startup velocity with enterprise quality. No overhead, no layers — just results.",
+    delay: 300,
+  },
+];
+---
+
+<BaseLayout
+  title="Services — App Vitals"
+  description="A phased engagement model for AI adoption: assessment, systems acceleration, champion-led adoption, and ongoing velocity engineering."
+>
+  <!-- Hero -->
+  <section class="relative overflow-hidden">
+    <div class="glow-orb w-[400px] h-[400px] bg-electric-500/[0.05] top-[-10%] left-[15%] animate-glow-drift" aria-hidden="true"></div>
+    <div class="max-w-6xl mx-auto px-6 pt-24 pb-20 md:pt-32 md:pb-24 relative z-10">
+      <div class="max-w-3xl">
+        <p class="font-mono text-[13px] text-electric-400 tracking-[0.25em] uppercase mb-6 opacity-0 animate-fade-in-up">
+          Services
+        </p>
+        <h1 class="font-display text-[clamp(2.5rem,5vw,4.5rem)] font-bold leading-[1.05] tracking-[-0.03em] opacity-0 animate-fade-in-up-delay-1">
+          A system, not<br />
+          a <span class="gradient-text">rollout.</span>
+        </h1>
+        <p class="mt-8 text-[18px] text-white/45 max-w-xl leading-[1.7] opacity-0 animate-fade-in-up-delay-2">
+          Four phases. Each one builds on the last. We assess where you are, fix the systems blocking adoption, coach internal champions, and stay until velocity is self-sustaining.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Phases -->
+  <section class="relative">
+    <div class="gradient-divider"></div>
+    <div class="max-w-6xl mx-auto px-6 py-24 md:py-32">
+      <div class="mb-16 reveal">
+        <p class="font-mono text-[12px] text-electric-400 uppercase tracking-[0.3em] mb-4">The Model</p>
+        <h2 class="font-display text-[clamp(1.5rem,3vw,2.25rem)] font-bold tracking-[-0.02em]">
+          From assessment to adoption.
+        </h2>
+      </div>
+      <div class="space-y-8">
+        {phases.map((phase) => <PhaseCard {...phase} />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- How We're Different -->
+  <section class="relative">
+    <div class="gradient-divider"></div>
+    <div class="max-w-6xl mx-auto px-6 py-24 md:py-32">
+      <div class="mb-16 reveal">
+        <p class="font-mono text-[12px] text-electric-400 uppercase tracking-[0.3em] mb-4">Why Us</p>
+        <h2 class="font-display text-[clamp(1.5rem,3vw,2.25rem)] font-bold tracking-[-0.02em]">
+          Not your typical AI consultancy.
+        </h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-x-12 gap-y-14">
+        {whyUsItems.map((item) => <WhyUsCard {...item} />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="relative py-24 md:py-32">
+    <div class="gradient-divider"></div>
+    <div class="glow-orb w-[500px] h-[300px] bg-electric-500/[0.04] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate-glow-drift" aria-hidden="true"></div>
+    <div class="max-w-6xl mx-auto px-6 pt-24 text-center relative z-10 reveal">
+      <h2 class="font-display text-[clamp(1.75rem,4vw,3rem)] font-bold tracking-[-0.02em] leading-[1.15]">
+        See where your team <span class="gradient-text">stands.</span>
+      </h2>
+      <p class="mt-6 text-[17px] text-white/40 max-w-md mx-auto leading-[1.7]">
+        30 minutes to understand your current velocity, identify blockers, and map a path to faster shipping.
+      </p>
+      <a
+        href="https://cal.com/app-vitals/discovery"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center justify-center mt-10 px-10 py-4 bg-white text-navy-950 rounded-full text-[16px] font-semibold tracking-wide transition-all duration-300 hover:shadow-[0_0_60px_rgba(59,130,246,0.3)] hover:scale-[1.02]"
+      >
+        Book a Discovery Call
+        <svg class="ml-2 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+        </svg>
+      </a>
+    </div>
+  </section>
+</BaseLayout>
