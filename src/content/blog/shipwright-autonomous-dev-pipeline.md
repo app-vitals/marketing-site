@@ -41,7 +41,7 @@ Here's the thing: we didn't build this in isolation. The Claude Code plugin ecos
 
 [`learning-loop`](https://github.com/app-vitals/shipwright) captures patterns from code reviews and promotes them to `CLAUDE.md`, so your project literally gets smarter over time. Every review finding that reveals a recurring issue becomes a convention that prevents the next one. It's the technical implementation of what we describe in the [AI Champion Playbook](/blog/ai-champion-playbook) — building internal knowledge that scales.
 
-[`frontend-design`](https://github.com/anthropics/claude-code/tree/main/plugins) from Anthropic's plugin collection ensures UI tasks don't produce generic AI-generated interfaces. When a task is tagged with the design skill, it gets a dedicated design pass.
+[`frontend-design`](https://github.com/anthropics/claude-code/tree/main/plugins/frontend-design) from Anthropic's plugin collection ensures UI tasks don't produce generic AI-generated interfaces. When a task is tagged with the design skill, it gets a dedicated design pass.
 
 [`damage-control`](https://github.com/app-vitals/shipwright) provides defense-in-depth via PreToolUse hooks — blocking dangerous commands and protecting sensitive files. Because when you're running autonomous dev loops, guardrails matter.
 
