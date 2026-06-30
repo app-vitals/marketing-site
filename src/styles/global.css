@@ -109,3 +109,25 @@
     background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.3), transparent);
   }
 }
+
+/* Respect OS motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .grain-overlay,
+  .glow-orb {
+    animation-duration: 0.01ms;
+    animation-iteration-count: 1;
+    transition-duration: 0.01ms;
+  }
+}
+
+/* Mobile: hide GPU-expensive grain; disable glow orb drift */
+@media (max-width: 767px) {
+  .grain-overlay {
+    display: none;
+  }
+
+  .glow-orb {
+    animation: none !important;
+  }
+}
