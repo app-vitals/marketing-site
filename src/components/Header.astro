@@ -13,9 +13,9 @@ const currentPath = Astro.url.pathname;
 ---
 
 <header class="fixed top-0 w-full z-50 bg-navy-950/60 backdrop-blur-xl border-b border-white/[0.06]">
-  <nav class="max-w-6xl mx-auto px-6 h-[72px] flex items-center justify-between">
+  <nav aria-label="Primary navigation" class="max-w-6xl mx-auto px-6 h-[72px] flex items-center justify-between">
     <a href="/" class="group">
-      <img src="/img/app-vitals-logo-white.png" alt="App Vitals" class="h-8 opacity-90 group-hover:opacity-100 transition-opacity duration-300" />
+      <img src="/img/app-vitals-logo-white.png" alt="App Vitals" width="85" height="32" class="h-8 opacity-90 group-hover:opacity-100 transition-opacity duration-300" />
     </a>
 
     <!-- Desktop nav -->
@@ -46,8 +46,10 @@ const currentPath = Astro.url.pathname;
     <!-- Mobile menu button -->
     <button
       id="mobile-menu-btn"
-      class="md:hidden p-2 text-white/50 hover:text-white transition-colors"
+      class="md:hidden p-3 text-white/50 hover:text-white transition-colors"
       aria-label="Toggle menu"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
     >
       <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
         <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" d="M3.75 9h16.5m-16.5 6.75h16.5" />
@@ -56,7 +58,7 @@ const currentPath = Astro.url.pathname;
   </nav>
 
   <!-- Mobile menu -->
-  <div id="mobile-menu" class="hidden md:hidden bg-navy-950/95 backdrop-blur-xl border-t border-white/[0.06]">
+  <div id="mobile-menu" role="navigation" aria-label="Mobile navigation" aria-hidden="true" class="hidden md:hidden bg-navy-950/95 backdrop-blur-xl border-t border-white/[0.06]">
     <div class="px-6 py-6 space-y-1">
       {navLinks.map(({ href, label }) => (
         <a
@@ -82,7 +84,21 @@ const currentPath = Astro.url.pathname;
 </header>
 
 <script>
-  const btn = document.getElementById('mobile-menu-btn');
+  const btn = document.getElementById('mobile-menu-btn') as HTMLButtonElement | null;
   const menu = document.getElementById('mobile-menu');
-  btn?.addEventListener('click', () => menu?.classList.toggle('hidden'));
+
+  btn?.addEventListener('click', () => {
+    const isOpen = !menu?.classList.contains('hidden');
+    menu?.classList.toggle('hidden');
+    btn.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+    menu?.setAttribute('aria-hidden', isOpen ? 'true' : 'false');
+  });
+
+  menu?.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      menu.classList.add('hidden');
+      btn?.setAttribute('aria-expanded', 'false');
+      menu.setAttribute('aria-hidden', 'true');
+    });
+  });
 </script>
