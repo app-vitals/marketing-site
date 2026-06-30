@@ -86,53 +86,61 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <!-- Before: Only code is fast -->
         <div class="mb-8">
           <p class="text-[13px] text-white/25 font-mono mb-3">AFTER AI TOOL ROLLOUT</p>
-          <div class="flex items-center gap-1 md:gap-2 overflow-x-auto pb-2">
-            <div class="flex-shrink-0 px-3 py-2 rounded-lg bg-electric-500/20 border border-electric-500/30 text-electric-400 text-[13px] font-mono">
-              Code ⚡
+          <div class="relative">
+            <div class="flex items-center gap-1 md:gap-2 overflow-x-auto pb-2">
+              <div class="flex-shrink-0 px-3 py-2 rounded-lg bg-electric-500/20 border border-electric-500/30 text-electric-400 text-[13px] font-mono">
+                Code ⚡
+              </div>
+              <svg class="w-4 h-4 text-white/15 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+              <div class="flex-shrink-0 px-3 py-2 rounded-lg bg-red-500/10 border border-red-500/20 text-red-400/70 text-[13px] font-mono">
+                Build 🐌
+              </div>
+              <svg class="w-4 h-4 text-white/15 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+              <div class="flex-shrink-0 px-3 py-2 rounded-lg bg-red-500/10 border border-red-500/20 text-red-400/70 text-[13px] font-mono">
+                Test 🐌
+              </div>
+              <svg class="w-4 h-4 text-white/15 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+              <div class="flex-shrink-0 px-3 py-2 rounded-lg bg-red-500/10 border border-red-500/20 text-red-400/70 text-[13px] font-mono">
+                CI 🐌
+              </div>
+              <svg class="w-4 h-4 text-white/15 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+              <div class="flex-shrink-0 px-3 py-2 rounded-lg bg-red-500/10 border border-red-500/20 text-red-400/70 text-[13px] font-mono">
+                Deploy 🐌
+              </div>
             </div>
-            <svg class="w-4 h-4 text-white/15 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
-            <div class="flex-shrink-0 px-3 py-2 rounded-lg bg-red-500/10 border border-red-500/20 text-red-400/70 text-[13px] font-mono">
-              Build 🐌
-            </div>
-            <svg class="w-4 h-4 text-white/15 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
-            <div class="flex-shrink-0 px-3 py-2 rounded-lg bg-red-500/10 border border-red-500/20 text-red-400/70 text-[13px] font-mono">
-              Test 🐌
-            </div>
-            <svg class="w-4 h-4 text-white/15 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
-            <div class="flex-shrink-0 px-3 py-2 rounded-lg bg-red-500/10 border border-red-500/20 text-red-400/70 text-[13px] font-mono">
-              CI 🐌
-            </div>
-            <svg class="w-4 h-4 text-white/15 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
-            <div class="flex-shrink-0 px-3 py-2 rounded-lg bg-red-500/10 border border-red-500/20 text-red-400/70 text-[13px] font-mono">
-              Deploy 🐌
-            </div>
+            <div class="absolute right-0 top-0 bottom-2 w-10 bg-gradient-to-l from-navy-800/80 to-transparent pointer-events-none md:hidden" aria-hidden="true"></div>
           </div>
+          <p class="font-mono text-[11px] text-white/25 text-right mt-1 md:hidden">scroll →</p>
         </div>
 
         <!-- After: Everything is fast -->
         <div>
           <p class="text-[13px] text-white/25 font-mono mb-3">WITH VITALS AGENTS INSTALLED</p>
-          <div class="flex items-center gap-1 md:gap-2 overflow-x-auto pb-2">
-            <div class="flex-shrink-0 px-3 py-2 rounded-lg bg-electric-500/20 border border-electric-500/30 text-electric-400 text-[13px] font-mono">
-              Code ⚡
+          <div class="relative">
+            <div class="flex items-center gap-1 md:gap-2 overflow-x-auto pb-2">
+              <div class="flex-shrink-0 px-3 py-2 rounded-lg bg-electric-500/20 border border-electric-500/30 text-electric-400 text-[13px] font-mono">
+                Code ⚡
+              </div>
+              <svg class="w-4 h-4 text-white/15 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+              <div class="flex-shrink-0 px-3 py-2 rounded-lg bg-electric-500/20 border border-electric-500/30 text-electric-400 text-[13px] font-mono">
+                Build ⚡
+              </div>
+              <svg class="w-4 h-4 text-white/15 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+              <div class="flex-shrink-0 px-3 py-2 rounded-lg bg-electric-500/20 border border-electric-500/30 text-electric-400 text-[13px] font-mono">
+                Test ⚡
+              </div>
+              <svg class="w-4 h-4 text-white/15 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+              <div class="flex-shrink-0 px-3 py-2 rounded-lg bg-electric-500/20 border border-electric-500/30 text-electric-400 text-[13px] font-mono">
+                CI ⚡
+              </div>
+              <svg class="w-4 h-4 text-white/15 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+              <div class="flex-shrink-0 px-3 py-2 rounded-lg bg-electric-500/20 border border-electric-500/30 text-electric-400 text-[13px] font-mono">
+                Deploy ⚡
+              </div>
             </div>
-            <svg class="w-4 h-4 text-white/15 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
-            <div class="flex-shrink-0 px-3 py-2 rounded-lg bg-electric-500/20 border border-electric-500/30 text-electric-400 text-[13px] font-mono">
-              Build ⚡
-            </div>
-            <svg class="w-4 h-4 text-white/15 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
-            <div class="flex-shrink-0 px-3 py-2 rounded-lg bg-electric-500/20 border border-electric-500/30 text-electric-400 text-[13px] font-mono">
-              Test ⚡
-            </div>
-            <svg class="w-4 h-4 text-white/15 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
-            <div class="flex-shrink-0 px-3 py-2 rounded-lg bg-electric-500/20 border border-electric-500/30 text-electric-400 text-[13px] font-mono">
-              CI ⚡
-            </div>
-            <svg class="w-4 h-4 text-white/15 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
-            <div class="flex-shrink-0 px-3 py-2 rounded-lg bg-electric-500/20 border border-electric-500/30 text-electric-400 text-[13px] font-mono">
-              Deploy ⚡
-            </div>
+            <div class="absolute right-0 top-0 bottom-2 w-10 bg-gradient-to-l from-navy-800/80 to-transparent pointer-events-none md:hidden" aria-hidden="true"></div>
           </div>
+          <p class="font-mono text-[11px] text-white/25 text-right mt-1 md:hidden">scroll →</p>
         </div>
       </div>
     </div>

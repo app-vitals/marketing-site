@@ -117,15 +117,17 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
     <!-- Card glow mouse tracking -->
     <script>
-      document.querySelectorAll('.card-glow').forEach((card) => {
-        card.addEventListener('mousemove', (e) => {
-          const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
-          const x = ((e as MouseEvent).clientX - rect.left) / rect.width * 100;
-          const y = ((e as MouseEvent).clientY - rect.top) / rect.height * 100;
-          (e.currentTarget as HTMLElement).style.setProperty('--mouse-x', `${x}%`);
-          (e.currentTarget as HTMLElement).style.setProperty('--mouse-y', `${y}%`);
+      if (window.matchMedia('(hover: hover)').matches) {
+        document.querySelectorAll('.card-glow').forEach((card) => {
+          card.addEventListener('mousemove', (e) => {
+            const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
+            const x = ((e as MouseEvent).clientX - rect.left) / rect.width * 100;
+            const y = ((e as MouseEvent).clientY - rect.top) / rect.height * 100;
+            (e.currentTarget as HTMLElement).style.setProperty('--mouse-x', `${x}%`);
+            (e.currentTarget as HTMLElement).style.setProperty('--mouse-y', `${y}%`);
+          });
         });
-      });
+      }
     </script>
   </body>
 </html>
