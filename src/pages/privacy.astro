@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-const lastUpdated = 'April 23, 2026';
+const lastUpdated = 'July 1, 2026';
 ---
 
 <BaseLayout
@@ -104,11 +104,44 @@ const lastUpdated = 'April 23, 2026';
     <div class="gradient-divider"></div>
   </section>
 
+  <!-- How we protect it -->
+  <section id="how-we-protect-it" class="relative">
+    <div class="gradient-divider"></div>
+    <div class="max-w-6xl mx-auto px-6 py-20 md:py-24">
+      <div class="grid md:grid-cols-[1fr,1.5fr] gap-16 items-start">
+        <div class="reveal">
+          <p class="font-mono text-[12px] text-electric-400 uppercase tracking-[0.3em] mb-4">Section 3</p>
+          <h2 class="font-display text-[clamp(1.5rem,3vw,2.25rem)] font-bold tracking-[-0.02em] leading-[1.2]">
+            How we protect it.
+          </h2>
+        </div>
+        <div class="space-y-6 text-[16px] text-white/50 leading-[1.8] reveal" style="transition-delay: 150ms;">
+          <p>
+            <strong class="text-white/80">Encryption in transit.</strong> All traffic to <span class="font-mono text-white/70">app-vitals.com</span> and <span class="font-mono text-white/70">vitals-os.com</span>, including the OAuth flow with Google, is encrypted with TLS. We do not serve the application or accept authentication traffic over unencrypted HTTP.
+          </p>
+          <p>
+            <strong class="text-white/80">Encryption at rest.</strong> OAuth access and refresh tokens — including tokens granting Google Calendar access — are encrypted before they are written to our database. They are not stored in plaintext. The underlying database itself runs on infrastructure with encryption at rest enabled at the platform level.
+          </p>
+          <p>
+            <strong class="text-white/80">Access controls.</strong> Application data is partitioned by service, and access to sensitive operations (such as connecting additional OAuth scopes) is gated to authorized administrators. Engineers do not have standing access to production OAuth tokens outside of the systems that need them to operate the product.
+          </p>
+          <p>
+            <strong class="text-white/80">Data minimization.</strong> We request the minimum OAuth scopes required for the feature you're using, we don't run background scans or bulk exports of connected Google data, and Calendar data is only ever accessed in direct response to an action you take in the product.
+          </p>
+          <p>
+            <strong class="text-white/80">Retention and deletion.</strong> Google Calendar tokens and associated data are retained only for as long as your account is active and the integration remains connected. Revoking access — either from your Vitals OS account settings or from <a href="https://myaccount.google.com/permissions" class="text-electric-400 hover:text-electric-300 underline underline-offset-4" target="_blank" rel="noopener noreferrer">your Google Account permissions page</a> — stops further access and removes the stored tokens.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="gradient-divider"></div>
+  </section>
+
   <!-- Google Calendar Data (PRD §1.2 disclosure, verbatim) -->
   <section id="google-calendar-data" class="max-w-6xl mx-auto px-6 py-20 md:py-24">
     <div class="grid md:grid-cols-[1fr,1.5fr] gap-16 items-start">
       <div class="reveal">
-        <p class="font-mono text-[12px] text-electric-400 uppercase tracking-[0.3em] mb-4">Section 3</p>
+        <p class="font-mono text-[12px] text-electric-400 uppercase tracking-[0.3em] mb-4">Section 4</p>
         <h2 class="font-display text-[clamp(1.5rem,3vw,2.25rem)] font-bold tracking-[-0.02em] leading-[1.2]">
           Google Calendar Data.
         </h2>
@@ -133,7 +166,7 @@ const lastUpdated = 'April 23, 2026';
     <div class="max-w-6xl mx-auto px-6 py-20 md:py-24">
       <div class="grid md:grid-cols-[1fr,1.5fr] gap-16 items-start">
         <div class="reveal">
-          <p class="font-mono text-[12px] text-electric-400 uppercase tracking-[0.3em] mb-4">Section 4</p>
+          <p class="font-mono text-[12px] text-electric-400 uppercase tracking-[0.3em] mb-4">Section 5</p>
           <h2 class="font-display text-[clamp(1.5rem,3vw,2.25rem)] font-bold tracking-[-0.02em] leading-[1.2]">
             Who we share with.
           </h2>
@@ -152,7 +185,7 @@ const lastUpdated = 'April 23, 2026';
   <section id="user-rights" class="max-w-6xl mx-auto px-6 py-20 md:py-24">
     <div class="grid md:grid-cols-[1fr,1.5fr] gap-16 items-start">
       <div class="reveal">
-        <p class="font-mono text-[12px] text-electric-400 uppercase tracking-[0.3em] mb-4">Section 5</p>
+        <p class="font-mono text-[12px] text-electric-400 uppercase tracking-[0.3em] mb-4">Section 6</p>
         <h2 class="font-display text-[clamp(1.5rem,3vw,2.25rem)] font-bold tracking-[-0.02em] leading-[1.2]">
           Your rights.
         </h2>
