@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { BOOKING_URL } from '../../consts';
 ---
 
 <BaseLayout
@@ -30,7 +31,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         </p>
         <div class="mt-10 flex flex-col gap-4 opacity-0 animate-fade-in-up-delay-3 sm:flex-row sm:items-center sm:gap-3">
           <a
-            href="https://cal.com/app-vitals/discovery"
+            href={BOOKING_URL}
             target="_blank"
             rel="noopener noreferrer"
             class="inline-flex items-center justify-center px-10 py-4 bg-white text-navy-950 rounded-full text-[16px] font-semibold tracking-wide transition-all duration-300 hover:shadow-[0_0_60px_rgba(59,130,246,0.3)] hover:scale-[1.02]"
@@ -320,7 +321,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
             Dan and Dave handle the install, configuration, and first 8–10 weeks alongside your team. Limited cohort.
           </p>
           <a
-            href="https://cal.com/team/app-vitals"
+            href={BOOKING_URL}
             target="_blank"
             rel="noopener noreferrer"
             class="inline-flex items-center justify-center w-full px-8 py-4 rounded-full border border-electric-500/40 bg-electric-500/10 text-electric-300 text-[15px] font-semibold tracking-wide transition-all duration-300 hover:bg-electric-500/20 hover:border-electric-500/60"
