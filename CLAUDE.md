@@ -40,7 +40,7 @@ planning/       # PRD, task breakdown, clarifying questions
 - NO client names (anonymize everything)
 - NO specific pricing or rates
 - NO email capture forms
-- Cal.com link for booking: https://cal.com/app-vitals/discovery
+- Booking link lives in `src/consts.ts` as `BOOKING_URL` — import it, never hardcode a booking URL
 - Co-founders: Dan McAulay + Dave O'Dell
 
 ## Commands

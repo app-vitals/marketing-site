@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { BOOKING_URL } from '../consts';
 ---
 
 <BaseLayout
@@ -24,7 +25,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             Book a 30-minute discovery call with Dan and Dave. No pitch deck, no pressure — just an honest conversation about what you're trying to ship and whether Shipwright is the right shape.
           </p>
           <a
-            href="https://cal.com/team/app-vitals"
+            href={BOOKING_URL}
             target="_blank"
             rel="noopener noreferrer"
             class="inline-flex items-center justify-center mt-10 px-10 py-4 bg-white text-navy-950 rounded-full text-[16px] font-semibold tracking-wide transition-all duration-300 hover:shadow-[0_0_60px_rgba(59,130,246,0.3)] hover:scale-[1.02] opacity-0 animate-fade-in-up-delay-3"
