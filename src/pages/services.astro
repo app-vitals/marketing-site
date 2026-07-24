@@ -7,16 +7,16 @@ import { BOOKING_URL } from '../consts';
 const phases = [
   {
     number: '01',
-    title: 'AI Velocity Assessment',
-    timing: '4 weeks · Fixed fee',
-    description: "Most teams don't know what's actually blocking AI adoption. We find out. 1:1 interviews with engineers, a full SDLC audit, bottleneck mapping, and champion identification — everything needed to build a real plan.",
+    title: 'Ladder Placement',
+    timing: '1–2 weeks · Fixed fee · Step 0–2',
+    description: "Most teams believe they've already adopted AI and are further up the ladder than they are. We find out where you actually stand — Gated, Assisted, Parallel, or beyond — and what's blocking the next rung. 1:1 engineer interviews, a full SDLC audit, and an honest placement, not a vendor pitch.",
     bullets: [
       '1:1 engineer interviews across the org',
       'Full SDLC and toolchain audit',
-      'Bottleneck mapping and prioritization',
-      'Champion identification',
+      'Ladder placement — where you are, not where you think you are',
+      'Devin vs. Shipwright fit assessment',
     ],
-    outcome: 'Maturity arc placement, a prioritized roadmap, and concrete Phase 2 project proposals. No guesswork — a clear path forward.',
+    outcome: 'A clear rung, a prioritized roadmap to the next one, and a straight answer on which path — Devin or Shipwright — fits your constraints.',
     delay: 0,
     circleClass: 'bg-electric-500/10',
     numberClass: 'text-electric-500',
@@ -26,16 +26,16 @@ const phases = [
   },
   {
     number: '02',
-    title: 'Systems Acceleration',
-    timing: '4 weeks per project · Scoped per engagement',
-    description: "Broad adoption before fixing systems creates churn. Engineers hit access walls, security blockers, and toil-heavy workflows. We run targeted infrastructure projects to make your services AI-ready — with embedded engineers using the same tools we're helping your team adopt.",
+    title: 'Guardrail Installation',
+    timing: '4 weeks per project · Scoped per engagement · Step 1→2',
+    description: "Climbing from step 1 to step 2 isn't about more tokens — it's the guardrails: a self-verification loop you trust, automated review and security, worktree isolation so parallel agents don't collide. We build these directly into your systems, with engineers embedded on whichever tool you've chosen — Devin or Shipwright.",
     bullets: [
-      'Targeted infrastructure projects',
-      'AI-ready service architecture',
-      'Embedded engineers using Claude Code',
+      'Self-verification loop: tests, build, lint, e2e',
+      'Automated code review and security review',
+      'Worktree isolation for parallel agents',
       'Security and access unblocking',
     ],
-    outcome: 'Services unblocked for AI tooling and measurable pipeline improvements. Real infrastructure changes, not configuration slides.',
+    outcome: 'The infrastructure the next rung actually requires — real guardrails your team runs on, not a configuration slide.',
     delay: 100,
     circleClass: 'bg-accent-cyan/10',
     numberClass: 'text-accent-cyan',
@@ -45,16 +45,16 @@ const phases = [
   },
   {
     number: '03',
-    title: 'Champion-Led Adoption',
-    timing: '4–6 weeks · Scoped per engagement',
-    description: "Top-down mandates get ignored. Most AI rollouts fail because they skip the people layer. We identify internal champions, build curriculum with them, measure progress with DORA metrics, and create learning loops that sustain themselves.",
+    title: 'Embedded Operation',
+    timing: '4–6 weeks · Scoped per engagement · Step 2→3',
+    description: "Training decks and champion programs don't move a team up the ladder — we learned that the hard way. What works is running the actual orchestration alongside your engineers: multiple agents, your real backlog, our engineers pairing in the loop until parallel work is normal, not a workshop topic.",
     bullets: [
-      'Internal champion coaching',
-      'Co-created curriculum and workshops',
-      'DORA metrics instrumentation',
-      'Peer-driven learning loops',
+      'Embedded engineers, real backlog — not workshops',
+      'Orchestrating agents in your review queue',
+      'DORA metrics instrumented and visible',
+      'Step 2 to step 3, done together, not taught',
     ],
-    outcome: "Self-sustaining adoption, org-wide AI usage, and velocity metrics that are live and owned by your team — not dependent on us.",
+    outcome: "Your team actually operating at the next rung — orchestrating agents daily, not attending a training that fades in a month.",
     delay: 200,
     circleClass: 'bg-accent-violet/10',
     numberClass: 'text-accent-violet',
@@ -65,13 +65,13 @@ const phases = [
   {
     number: '04',
     title: 'Ongoing Velocity',
-    timing: 'Pricing on request',
-    description: "Teams stall at mid-maturity. Getting from \"using AI\" to \"measurably faster\" needs continuity. We stay engaged with quarterly maturity check-ins, ad hoc support for new blockers, and keep the learning loop alive until your team owns it completely.",
+    timing: 'Pricing on request · Sustaining step 3+',
+    description: "Teams stall mid-ladder without continuity. We stay engaged with quarterly rung check-ins, ad hoc support when new bottlenecks surface, and keep pushing until your team owns the climb completely.",
     bullets: [
-      'Quarterly maturity reassessments',
+      'Quarterly ladder reassessments',
       'Ad hoc blocker resolution',
-      'Evolving curriculum updates',
-      'Sustained learning loops',
+      'Evolving guardrails as the tools change',
+      'Sustained gains, permanently owned by your team',
     ],
     outcome: "Sustained velocity gains and permanent ownership by your team. We're the safety net until you don't need one.",
     delay: 300,
@@ -99,7 +99,7 @@ const whyUsItems = [
   {
     lineClass: 'bg-accent-violet',
     title: 'Measurable outcomes, not vague promises',
-    description: "DORA metrics, cycle time, deployment frequency — we instrument what matters and track it. If velocity isn't improving, we adjust. No hand-waving.",
+    description: "DORA metrics, cycle time, deployment frequency, and which rung you're actually on — we instrument what matters and track it. If you're not climbing, we adjust. No hand-waving.",
     delay: 200,
   },
   {
@@ -113,7 +113,7 @@ const whyUsItems = [
 
 <BaseLayout
   title="Services — App Vitals"
-  description="A phased engagement model for AI adoption: assessment, systems acceleration, champion-led adoption, and ongoing velocity engineering."
+  description="A phased engagement model built around the AI adoption ladder: find your rung, install the guardrails, ship alongside your team, then hand off — for teams on Devin or Shipwright."
 >
   <!-- Hero -->
   <section class="relative overflow-hidden">
@@ -128,7 +128,7 @@ const whyUsItems = [
           a <span class="gradient-text">rollout.</span>
         </h1>
         <p class="mt-8 text-[18px] text-white/45 max-w-xl leading-[1.7] opacity-0 animate-fade-in-up-delay-2">
-          Four phases. Each one builds on the last. We assess where you are, fix the systems blocking adoption, coach internal champions, and stay until velocity is self-sustaining.
+          Installing Devin or Shipwright doesn't guarantee velocity — climbing the ladder does. Four phases, each one moving your team up a rung: find where you actually are, build the guardrails the next step requires, ship alongside your engineers until it's normal, then hand off.
         </p>
       </div>
     </div>
@@ -141,7 +141,7 @@ const whyUsItems = [
       <div class="mb-16 reveal">
         <p class="font-mono text-[12px] text-electric-400 uppercase tracking-[0.3em] mb-4">The Model</p>
         <h2 class="font-display text-[clamp(1.5rem,3vw,2.25rem)] font-bold tracking-[-0.02em]">
-          From assessment to adoption.
+          Installed isn't the same as faster.
         </h2>
       </div>
       <div class="space-y-8">
@@ -172,10 +172,10 @@ const whyUsItems = [
     <div class="glow-orb w-[500px] h-[300px] bg-electric-500/[0.04] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate-glow-drift" aria-hidden="true"></div>
     <div class="max-w-6xl mx-auto px-6 pt-24 text-center relative z-10 reveal">
       <h2 class="font-display text-[clamp(1.75rem,4vw,3rem)] font-bold tracking-[-0.02em] leading-[1.15]">
-        See where your team <span class="gradient-text">stands.</span>
+        See which rung you're <span class="gradient-text">actually on.</span>
       </h2>
       <p class="mt-6 text-[17px] text-white/40 max-w-md mx-auto leading-[1.7]">
-        30 minutes to understand your current velocity, identify blockers, and map a path to faster shipping.
+        30 minutes to find your place on the ladder, identify what's blocking the next step, and map the path up.
       </p>
       <a
         href={BOOKING_URL}
