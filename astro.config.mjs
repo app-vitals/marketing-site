@@ -21,6 +21,10 @@ if (fs.existsSync(blogDir)) {
 
 export default defineConfig({
   site: 'https://app-vitals.com',
+  // Canonical URL form is the trailing-slash variant — it is what the sitemap
+  // and every <link rel="canonical"> emit. Vercel 301s the slashless form
+  // (see vercel.json) so only one URL per page is crawlable.
+  trailingSlash: 'always',
   integrations: [
     tailwind(),
     sitemap({
