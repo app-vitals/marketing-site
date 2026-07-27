@@ -39,7 +39,7 @@ There's a hard truth inside this for individual engineers, and we're not going t
 
 The roles that survive most cleanly are the ones that were already mostly judgment. Staff and principal engineers spend their time planning, reviewing, double-checking, keeping the system sane. That's *exactly* the human-in-the-loop shape agentic engineering needs. The shift isn't that those people stop being valuable — it's that everyone else's job moves toward what those people were already doing. It's the same career transition a lot of senior engineers already made once, going from writing most of the code to reviewing most of it. AI just makes that transition mandatory and faster, because there's far more code flowing through review now, not less.
 
-What's striking is how many engineers still aren't curious about this. That's the part we'd push on hardest if we were leading a team. [Resistance is the real bottleneck](/blog/engineering-ai-resistance/), not capability.
+What's striking is how many engineers still aren't curious about this. That's the part we'd push on hardest if we were leading a team. [Resistance is the real bottleneck](/blog/engineering-ai-resistance/), not capability. If your team hasn't gotten this far yet, the on-ramp is the same one we lay out in [how to roll out Claude Code to an engineering team](/blog/how-to-roll-out-claude-code/).
 
 ## You're not picking a project. You're building a system.
 

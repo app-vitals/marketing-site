@@ -9,7 +9,7 @@ readTime: "8 min read"
 
 We live twenty minutes apart. We're together in person exactly one day a week—Fridays, when we record the podcast. Every other day, we're collaborating over Google Meet, same as any distributed team.
 
-So we were on a Meet call working through a presentation. Nothing special. Dave had Claude Code open in voice mode—holding spacebar, talking through slides, the usual. Dan started suggesting edits out loud. And then something happened that we both needed a second to process: Claude responded to Dan.
+So we were on a Meet call working through a presentation. Nothing special. Dave had Claude Code open in voice mode—the same voice setup we'd [written about a week earlier](/blog/this-week-in-claude-code-ep002/)—holding spacebar, talking through slides, the usual. Dan started suggesting edits out loud. And then something happened that we both needed a second to process: Claude responded to Dan.
 
 Not because Dan had Claude open. Not because we had some elaborate setup. Just because Dan was talking in the same room as Dave's laptop, and the mic picked it up.
 

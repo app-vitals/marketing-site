@@ -118,6 +118,6 @@ If you can answer all six cleanly with real numbers and written policies, your b
 
 The pattern we see in the field is consistent. The leaders who get out ahead of these questions look very different two quarters later from the ones who get caught flat-footed. The compounding window is months, not years. A 90-day delay in answering question 4 well is a year of lost competitive ground.
 
-If you're trying to figure out which of these six gaps your team has, hit us up at [App Vitals](/contact). Our [AI Velocity Assessment](/blog/ai-velocity-assessment) is structured around exactly these questions — we walk the org with you, identify what's missing, and tell you what to put in place before the next board cycle.
+If you're trying to figure out which of these six gaps your team has, hit us up at [App Vitals](/contact). Our [AI Velocity Assessment](/blog/ai-velocity-assessment) is structured around exactly these questions — we walk the org with you, identify what's missing, and tell you what to put in place before the next board cycle. Before you walk into that meeting, it's also worth being clear-eyed about [who should actually be leading the transformation](/blog/who-leads-ai-transformation/) you're about to describe.
 
 Listen to the full conversation on [The Velocity Lab](https://share.transistor.fm/s/950e4db5).

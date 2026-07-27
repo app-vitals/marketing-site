@@ -11,7 +11,7 @@ It was 16 degrees and dumping three feet of fresh snow at Mammoth. I was on a ch
 
 By the time I got off the lift, it had scaffolded a version. I gave it feedback with my thumbs. A few runs later it had built a *different* version of solitaire, deployed it to Vercel, and all I had to do was buy a $12 domain and approve a couple of things. It was live that day. I never opened my laptop. I wasn't even typing — it was too cold, so I was just talking to my phone between powder runs.
 
-That was the day it clicked for both Dan and me: we can ship real software without being in a terminal. Not "AI helps us type faster." Actually *away* from the machine.
+That was the day it clicked for both Dan and me: we can ship real software without being in a terminal. Not "AI helps us type faster." Actually *away* from the machine. We've since written up [the honest, feature-by-feature comparison against Devin](/blog/shipwright-vs-devin/) for anyone trying to decide between the two.
 
 We didn't set out to build a product that day. We didn't set out to build one ever, really. But that instinct — build the thing you personally need, right now, wherever you happen to be — is exactly how we ended up with an open-source alternative to Devin that we never planned to make.
 

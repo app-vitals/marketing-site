@@ -97,4 +97,4 @@ The goal of AI adoption isn't "everyone uses AI tools." It's "the team ships bet
 
 Champions figure this out naturally because they're embedded in the work. They'll tell you what actually moves the needle — if you listen.
 
-Tool rollouts fail because they start with the tool. Successful adoption starts with the people.
+Tool rollouts fail because they start with the tool. Successful adoption starts with the people. If you want the fuller phased playbook — proving ground, champions, shared infrastructure — we walked through [how to actually roll out Claude Code to an engineering team](/blog/how-to-roll-out-claude-code/) start to finish.

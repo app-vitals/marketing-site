@@ -60,7 +60,7 @@ Every step the agent takes is metered — PostHog by default, Prometheus if you'
 
 So what do you actually do, once the system is running?
 
-You plan, and you review. That's the job now. You spend an hour with the agent in Slack building a PRD — a good one takes time. You run the plan session and it turns into, say, 24 tasks. You approve, and you go to bed. You flip your laptop open Monday morning and there are 24 PRs, all done, all green, all ready to review and deploy.
+You plan, and you review. That's the job now. You spend an hour with the agent in Slack building a PRD — a good one takes time, and increasingly that hour happens with both of us on a call, feeding the same session at once, the way we stumbled into during [the Google Meet epiphany](/blog/google-meet-epiphany/). You run the plan session and it turns into, say, 24 tasks. You approve, and you go to bed. You flip your laptop open Monday morning and there are 24 PRs, all done, all green, all ready to review and deploy.
 
 Dan and I land in slightly different places on the last mile, and that's worth being honest about. I lean further into trusting the system — let it merge our own internal software when the tests and reviews pass. Dan still runs more things locally, verifies features by hand, watches more deploys go to prod. He'll tell you that's why he has a better track record of fewer outages, mitigated faster. He's not wrong. The point of the knobs is that you don't have to adopt my risk tolerance or his — you set them where your product and your customers need them.
 
@@ -68,7 +68,7 @@ But neither of us is writing the code. When I do step in, it's not to type. It's
 
 ## Where we fit
 
-There are open-source takes on this kind of pipeline, and there are commercial tools in the neighborhood. We built our own, we named it Shipwright, we use it every single day, and we keep improving it on our own metrics — the [pipeline I described here](/blog/shipwright-autonomous-dev-pipeline/) is the same one running against this very business. The difference when you work with us isn't just the software. It's that you get the software *plus* Dan and me, hands-on, customizing the knobs and the extensions to your product and your stack — the last-mile infrastructure work that off-the-shelf tools don't touch.
+There are open-source takes on this kind of pipeline, and there are commercial tools in the neighborhood — we've laid out [how Shipwright actually compares to Devin](/blog/shipwright-vs-devin/) if you're weighing the two. We built our own, we named it Shipwright, we use it every single day, and we keep improving it on our own metrics — the [pipeline I described here](/blog/shipwright-autonomous-dev-pipeline/) is the same one running against this very business. The difference when you work with us isn't just the software. It's that you get the software *plus* Dan and me, hands-on, customizing the knobs and the extensions to your product and your stack — the last-mile infrastructure work that off-the-shelf tools don't touch.
 
 Eighty-five PRs in a week isn't a flex. It's what "build the system" actually produces when you stop admiring the idea and go build it. The coding was never the hard part. The system is.
 

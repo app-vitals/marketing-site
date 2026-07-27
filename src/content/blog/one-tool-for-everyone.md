@@ -7,7 +7,7 @@ excerpt: "Claude isn't just for engineers. Here's how marketing, ops, and data t
 readTime: "8 min read"
 ---
 
-We've been inside engineering organizations long enough to see a pattern that keeps repeating itself. A company rolls out AI tools for the engineering team, gets real productivity gains, and then stops there. Marketing is still manually pulling Amplitude dashboards. Operations is still wrestling with the same half-broken admin app. Data analysts are still fielding the same five requests from business development every week.
+We've been inside engineering organizations long enough to see a pattern that keeps repeating itself. A company rolls out AI tools for the engineering team, gets real productivity gains, and then stops there. Marketing is still manually pulling Amplitude dashboards. Operations is still wrestling with the same half-broken admin app. Data analysts are still fielding the same five requests from business development every week — the exact kind of request that [natural language queries against your data warehouse](/blog/natural-language-data-queries/) can eliminate entirely.
 
 The unlock that most companies are missing isn't a better AI tool. It's using the same AI tool everywhere — across every function, every team, every person in the building.
 
@@ -49,7 +49,7 @@ We also spent time with someone on the marketing and sales side this week. What 
 
 She's not a software engineer. She's not writing code. But she's using Claude Desktop with connections to the data that matters to her, and she's operating at a level that would have required a data analyst or a BI team a year ago.
 
-Our honest take: without that one tool, she'd be running at roughly half the efficiency. Not because she lacks capability — she's clearly very capable — but because so much of what she was doing before was mechanical. Pulling the same data in the same way, reformatting it, presenting it. Now that's handled. She's focused on what she's actually good at.
+Our honest take: without that one tool, she'd be running at roughly half the efficiency. Not because she lacks capability — she's clearly very capable — but because so much of what she was doing before was mechanical. Pulling the same data in the same way, reformatting it, presenting it. Now that's handled. She's focused on what she's actually good at. It's the same story we told about [a non-coder founder who rebuilt his entire workflow around Claude](/blog/notepad-to-claude/) — the tool doesn't care whether you can read a stack trace.
 
 The thing that makes this work is curiosity. The people winning at this right now are the curious ones — the ones who don't wait to be trained on the tool, who just start poking at it, who figure out what's possible and then build workflows around it.
 
@@ -89,7 +89,7 @@ These are real gaps. But they're the kind of gaps that matter precisely because 
 
 If you're in leadership and you're still letting every team pick their own AI tool, you're leaving most of the value on the floor.
 
-Pick one. We recommend Claude — not because we're biased (we are a little biased), but because we've watched it work for software engineers and non-software engineers in the same organization, in the same week, building on top of each other's work. That's not something you get from a fragmented toolset.
+Pick one. We recommend Claude — not because we're biased (we are a little biased), but because we've watched it work for software engineers and non-software engineers in the same organization, in the same week, building on top of each other's work. That's not something you get from a fragmented toolset. We've seen the same asymmetry play out one level up too — [non-technical entrepreneurs are out-AI'ing professional engineers](/blog/entrepreneurs-vs-engineers/) precisely because they never fragmented their tooling in the first place.
 
 Your marketing team should be on it. Your ops team should be on it. Your customer support team should be on it. Not because it's the coolest thing to do, but because every one of those teams has repetitive, knowledge-intensive work that Claude can take off their plate — and every skill they build becomes infrastructure the next person can use.
 
@@ -97,4 +97,4 @@ Get curious. Get building. The people winning right now aren't the ones with the
 
 ---
 
-*This post is based on Episode 9 of The Velocity Lab — "One Tool for Everyone: Claude Beyond the Engineering Team." Listen on [Apple Podcasts](https://podcasts.apple.com/podcast/the-velocity-lab/id1888653618).*
+*This post is based on Episode 9 of The Velocity Lab — "One Tool for Everyone: Claude Beyond the Engineering Team." Listen on [Apple Podcasts](https://podcasts.apple.com/podcast/the-velocity-lab/id1888653618). For a look at the platform updates that made a lot of this possible, see [our recap of Claude Code's biggest week](/blog/this-week-in-claude-code-ep002/).*

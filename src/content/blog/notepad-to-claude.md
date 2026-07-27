@@ -15,7 +15,7 @@ Thousands of people used it.
 
 When that workflow broke, he moved to Replit. Then Cursor. Then VS Code with the Claude extension. Last week, he switched to using the Claude desktop app directly, because diff views were slowing him down — he didn't need to see them. Today he's running a one-person agency helping local businesses fix their digital storefront, with phase one of his methodology mapped out as 94 discrete tasks, mostly orchestrated through Claude.
 
-He's shipping faster than most senior engineers we work with.
+He's shipping faster than most senior engineers we work with — a pattern we later saw repeat widely enough that we wrote a whole post about [non-technical entrepreneurs out-AI'ing professional engineers](/blog/entrepreneurs-vs-engineers/).
 
 We sat down with him on the podcast — our [first guest, ever](https://share.transistor.fm/s/6d6debaf) — and he said something that crystallized a pattern we'd been seeing for months:
 
@@ -77,7 +77,7 @@ The last 5 % is the boring stuff. It's the deploy pipeline. It's the database th
 
 Claude can't reliably do the last 5 %. Not yet. Maybe not ever, depending on which of us you ask. But the gap between "AI can build the feature" and "the feature is in production serving real users" is where engineering experience compounds — and it's where most of the lasting value of senior engineers is going to live for the foreseeable future.
 
-This is why we built the Shipwright bundle the way we did: the agent system handles the build, and Dan and I handle the last 5 %. It's not that Claude *can't* eventually learn to deploy and harden infrastructure. It's that we're not willing to bet a client's launch on the version of Claude that's three releases away. So we ship the autonomy that's working today, and we cover the gap that isn't yet, with our actual hands.
+This is why we built the Shipwright bundle the way we did: the agent system handles the build, and Dan and I handle the last 5 % — and it's not just an engineering story, either; we've watched [non-engineers get just as much leverage from the same tool](/blog/one-tool-for-everyone/) once someone hands it to them. It's not that Claude *can't* eventually learn to deploy and harden infrastructure. It's that we're not willing to bet a client's launch on the version of Claude that's three releases away. So we ship the autonomy that's working today, and we cover the gap that isn't yet, with our actual hands.
 
 For senior engineers reading this: that gap — the deploy, the secrets, the perf, the production-readiness — is where your expertise is least taxed and most valuable in the AI era. It's also where most teams are bleeding the most time. If you're trying to figure out where to lean in, lean there.
 

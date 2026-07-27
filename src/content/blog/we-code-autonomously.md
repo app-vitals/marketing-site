@@ -41,7 +41,7 @@ There's a progression to how teams get here. We call it the AI Adoption Ladder.
 
 **Rung 2: Supervised.** Claude Code or a similar agent handles a task while you steer. You review each step but don't write the code. Faster than rung 1, but still full-time supervision.
 
-**Rung 3: Asynchronous.** You kick off a task and come back to review the output. PR review automation is a good example — send the agent a PR, it reviews, you check the result. We've written about [getting to asynchronous PR reviews](/blog/autonomous-coding-pipeline/) in detail.
+**Rung 3: Asynchronous.** You kick off a task and come back to review the output. PR review automation is a good example — send the agent a PR, it reviews, you check the result. We've written about [getting to asynchronous PR reviews](/blog/autonomous-coding-pipeline/) in detail. Even the planning step gets easier at this rung — we accidentally discovered you can pair-plan with Claude over a [Google Meet call](/blog/google-meet-epiphany/) with zero extra tooling.
 
 **Rung 4: Parallel Asynchronous.** Multiple independent workstreams running simultaneously. This is where we operate. This is what produced 393 PRs in two weeks.
 

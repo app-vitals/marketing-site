@@ -66,3 +66,5 @@ When you eliminate most of the mechanical work, what's left is the hard stuff â€
 That's the model we believe in: experienced engineers, amplified by AI, focused on the work that actually matters. It's how we run App Vitals, and it's what we help our clients' teams achieve.
 
 The question isn't whether AI makes engineers faster. It does. The question is whether your organization is [set up to capture that speed](/blog/velocity-engineering/). That's where the real work is.
+
+We've since put a real number on what "the output of twenty" looks like in practice â€” see [85 pull requests in a week](/blog/85-prs-a-week/).

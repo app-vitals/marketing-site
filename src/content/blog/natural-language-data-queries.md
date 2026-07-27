@@ -35,7 +35,7 @@ Want to share it? "Export this as a PDF." Done.
 
 No ticket. No waiting. No dashboard dude.
 
-This is what we mean when we talk about giving non-engineers access to company data. Not read access to a shared spreadsheet — actual, on-demand query capability, personalized to the individual.
+This is what we mean when we talk about giving non-engineers access to company data. Not read access to a shared spreadsheet — actual, on-demand query capability, personalized to the individual. It's the same shift we saw when we watched marketing and ops teams get real value out of [one tool used across the whole company](/blog/one-tool-for-everyone/), not just engineering.
 
 ## The Colorblind Use Case
 

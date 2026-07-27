@@ -19,7 +19,7 @@ I wrote about this in [Velocity Engineering: Why AI Adoption Alone Won't Make Yo
 
 When you speed up code generation with AI tools, you don't eliminate the other 80%. You amplify it. More code gets written faster, which means more PRs in the review queue, more CI runs stacking up, more deploy windows filling up. You moved the bottleneck downstream.
 
-This isn't theoretical. The DORA research shows it happening in real numbers: 91% increase in code review time, 154% increase in PR size since teams adopted AI tools. I dug into this data in [Code Review Is Your New Bottleneck](/blog/code-review-bottleneck) — the numbers are alarming.
+This isn't theoretical. The DORA research shows it happening in real numbers: 91% increase in code review time, 154% increase in PR size since teams adopted AI tools. I dug into this data in [Code Review Is Your New Bottleneck](/blog/code-review-bottleneck) — the numbers are alarming. I've since written a fuller breakdown of [what DORA metrics still get right in the AI era, and what they miss](/blog/dora-metrics-ai-era/).
 
 The teams that actually ship faster with AI aren't just using AI to write code. They're re-engineering the entire pipeline around the reality that code now arrives faster than ever before.
 

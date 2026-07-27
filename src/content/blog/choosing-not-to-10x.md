@@ -7,7 +7,7 @@ excerpt: "We open-sourced Shipwright — the autonomous agent that takes you fro
 readTime: "8 min read"
 ---
 
-We built an autonomous coding agent that goes from a product spec all the way to a production deployment, and roughly 99% of the time no human touches the code in between. It plans the work, writes the code, writes the tests, opens the pull request, checks CI, fixes what's broken, addresses the review, merges, and deploys. Then it picks up the next task. We've been running it since November. And this month we open-sourced the whole thing — it's called [Shipwright](https://shipwrightharness.com), it's MIT, and you can have it today.
+We built an autonomous coding agent that goes from a product spec all the way to a production deployment, and roughly 99% of the time no human touches the code in between. It plans the work, writes the code, writes the tests, opens the pull request, checks CI, fixes what's broken, addresses the review, merges, and deploys. Then it picks up the next task. We've been running it since November. And this month we open-sourced the whole thing — it's called [Shipwright](https://shipwrightharness.com), it's MIT, and you can have it today. It genuinely wasn't the plan going in; [we more or less backed into building an open-source alternative to Devin](/blog/accidental-devin-alternative/) along the way.
 
 Here's the number that still surprises us when we say it out loud: the current Shipwright repository has around 500 pull requests, and between the two of us, we wrote maybe two or three of them by hand. The rest, Shipwright wrote. Shipwright built Shipwright. Dan spent his time shepherding PRs and denying the occasional bad task request; I spent mine on infrastructure and marketing. Neither of us sat and typed out features. One week we shipped 263 tasks with two agents running. Two people producing the throughput of a 20-engineer team — not because we're fast typists, but because we stopped typing.
 
@@ -23,7 +23,7 @@ So if the capability is here and the system is free and open-source, adoption sh
 
 ## The math nobody wants to say out loud
 
-A 10X in throughput is a 10X in token spend. That's the catch, and it's not a small one.
+A 10X in throughput is a 10X in token spend. That's the catch, and it's not a small one — and it's about to get more literal, not less, now that [the subsidized-token era is ending](/blog/anthropic-ended-ai-free-ride/).
 
 Run the arithmetic. Say you have ten engineers burning $1,000 a month in tokens between them. You drop in Shipwright — free — and suddenly each of them is shipping ten times the work. Your token bill doesn't stay at $10,000. It tracks the work, so it goes toward $100,000. The tool costs you nothing. The *throughput* costs you a fortune. We feel it ourselves at a much smaller scale: I've maxed my weekly Claude token limit five weeks running, I run out of Sonnet most days, and the thing that keeps me up at night isn't that the agents will break something — it's that I didn't queue enough work before bed to keep them busy overnight. Even our GitHub Actions bill jumped, because shipping that many PRs means running that many test suites. Two hundred bucks in CI, just from velocity.
 
@@ -53,10 +53,10 @@ So here's where we've landed, and we'll say it plainly because we think it's tru
 
 There is now a free, open-source system that will, at minimum, 10X the throughput of every developer on your team. We know it works because we use it to build itself, in public, and you can read the commits. The cost of saying yes is real — it's a token bill that scales with the work, and it may force trade-offs elsewhere. But the cost of saying no is also real, and it compounds quietly: six months building an inferior version of this in-house, or no system at all while the teams around you pull ahead.
 
-If you run an engineering organization and you look at this and choose not to adopt it, that's a legitimate choice. But it is a *choice* — you are deciding, on purpose, not to 10X your team when the tool to do it is sitting right there for free. We're genuinely curious what the justification sounds like. If you're a CEO, an investor, or an advisor, that's the question worth walking into your next engineering review and asking: *Have you looked at this — and if you have, tell me why we've chosen not to 10X the team for free?*
+If you run an engineering organization and you look at this and choose not to adopt it, that's a legitimate choice. But it is a *choice* — you are deciding, on purpose, not to 10X your team when the tool to do it is sitting right there for free, and paying for [licenses that sit unused](/blog/licenses-without-lift/) is a much worse version of the same decision. We're genuinely curious what the justification sounds like. If you're a CEO, an investor, or an advisor, that's the question worth walking into your next engineering review and asking: *Have you looked at this — and if you have, tell me why we've chosen not to 10X the team for free?*
 
 We don't make a dollar when you clone the repo. We'll help you integrate it and bring your engineers along if you want that, but the system itself is yours to take. Run `task stack up`, watch the whole thing — agents, web UI, task store, metrics, token costs — spin up on your laptop, and decide for yourself.
 
 ---
 
-*This post is adapted from [The Velocity Lab podcast](https://podcasts.apple.com/podcast/the-velocity-lab/id1888653618), Episode 26: You're Choosing Not to 10X Your Team for Free.*
+*This post is adapted from [The Velocity Lab podcast](https://podcasts.apple.com/podcast/the-velocity-lab/id1888653618), Episode 26: You're Choosing Not to 10X Your Team for Free. If you're weighing Shipwright against the commercial alternative, see [Shipwright vs. Devin](/blog/shipwright-vs-devin/).*

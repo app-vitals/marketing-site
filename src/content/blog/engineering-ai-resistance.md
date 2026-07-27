@@ -67,13 +67,13 @@ The metric that matters is whether the engineers who've adopted AI are shipping 
 
 If your AI adoption curve is inverted — if the newer, less experienced engineers are using it heavily and the senior engineers are avoiding it — that's a red flag. The senior engineers are the calibration signal. They're not using it because it's not working well enough yet. [Measuring AI adoption ROI](/blog/measure-ai-adoption-roi/) requires getting past vanity metrics and asking what actually changed in output quality.
 
-Some organizations never crack this because the adoption dashboard looks fine. Usage is up. A percentage of engineers are using it. The resistant engineers are getting social pressure to comply. From the top of the org, everything looks like progress.
+Some organizations never crack this because the adoption dashboard looks fine. Usage is up. A percentage of engineers are using it. The resistant engineers are getting social pressure to comply. From the top of the org, everything looks like progress. Meanwhile the non-technical founders down the street have no such resistance to overcome — see [why entrepreneurs are out-AI'ing engineers](/blog/entrepreneurs-vs-engineers/) for the other side of this coin.
 
 Meanwhile, the engineers who know where the bodies are buried are doing their best work without the tools, feeling increasingly alienated, and updating their LinkedIn.
 
 ## The Bigger Picture
 
-We're at an inflection point where AI coding tools genuinely do unlock velocity gains — meaningful ones, not demo-ware. We've watched teams move faster than they thought possible. [Velocity engineering](/blog/velocity-engineering/) is real, and the gap between teams that do it well and teams that don't is growing.
+We're at an inflection point where AI coding tools genuinely do unlock velocity gains — meaningful ones, not demo-ware. We've watched teams move faster than they thought possible. [Velocity engineering](/blog/velocity-engineering/) is real, and the gap between teams that do it well and teams that don't is growing. Getting through this resistance well is also a leadership question — see [who should actually lead your AI engineering transformation](/blog/who-leads-ai-transformation/).
 
 But the path to that velocity doesn't run through mandated adoption and ignored resistance. It runs through honesty about where the tools work and where they don't, investment in making them work better for your actual context, and trust in the engineers who are telling you something isn't working.
 

@@ -131,7 +131,7 @@ Here's the part that matters most: champion-led adoption is self-sustaining.
 
 Training programs need constant investment. Mandates need constant enforcement. Champions, once enabled, create a flywheel. They enable engineers who become champions themselves. The practice spreads because it works, not because someone told people to do it.
 
-Your [AI adoption strategy](/blog/enterprise-ai-adoption-mistakes) doesn't need a bigger budget. It needs the right model. Find your champions, give them time and infrastructure, and get out of the way.
+Your [AI adoption strategy](/blog/enterprise-ai-adoption-mistakes) doesn't need a bigger budget. It needs the right model. Find your champions, give them time and infrastructure, and get out of the way. For the full mechanics of running this alongside a real tool rollout, see [how to roll out Claude Code to your engineering team](/blog/how-to-roll-out-claude-code/).
 
 The transformation is already sitting in your org. You just have to let it happen.
 

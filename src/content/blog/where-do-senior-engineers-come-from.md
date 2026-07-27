@@ -9,7 +9,7 @@ readTime: "8 min read"
 
 Here's a contradiction we keep walking into, and we say both halves of it out loud on the show without flinching.
 
-The first half: if you're still writing code by hand in 2026, you're doing something wrong. We mean that. With a real harness, Claude codes faster and cleaner than either of us, and the highest-leverage thing a good engineer does now is plan and review — not type. We've made [that argument before](/blog/your-engineering-career-was-never-safe/), and we'll keep making it.
+The first half: if you're still writing code by hand in 2026, you're doing something wrong. We mean that. With a real harness, Claude codes faster and cleaner than either of us, and the highest-leverage thing a good engineer does now is plan and review — not type. We've made [that argument before](/blog/your-engineering-career-was-never-safe/), and we'll keep making it — most bluntly in [no one is paying you to code anymore](/blog/no-one-is-paying-you-to-code-anymore/).
 
 The second half: planning and reviewing is *senior* work. It's what a staff or principal engineer does. So if the entry-level job — write the code, get it reviewed, learn from the feedback, repeat — is the exact part we just handed to the machine, then where do the next senior engineers come from?
 
