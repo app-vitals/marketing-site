@@ -136,3 +136,28 @@ This is the most comprehensive thing we've published. It's the distillation of e
 What stage is slowing your team down the most right now?
 
 https://app-vitals.com/blog/velocity-engineering-playbook/
+
+---
+
+## Post — July 29, 2026
+**Promoting:** The Harness Is All You Need. So We Built One in the Open — and Made It Easy to Leave.
+
+---
+
+GitHub just published a piece called "The harness is all you need (mostly)." They're right — and it points somewhere they didn't go.
+
+The argument: your productivity gains don't come from the next tool or MCP. They come from mastering the harness — the layer that plans, picks the model, and drives the loop.
+
+Agreed. But every workflow in that post still has a human in the chair: plan it, iterate on it, rubber-duck it, ship it. The harness is the copilot. You're still flying the plane.
+
+The interesting question is what the harness becomes when it closes the loop itself. Plan → queue → loop — with you on approval, not on the keyboard.
+
+That's the bet we made with Shipwright: an open-source, MIT-licensed harness for Claude Code that runs the delivery loop autonomously. We didn't go fullstack like Devin or Cursor — we don't build a model. We're the thin layer that ships, sitting on the harness Anthropic already built.
+
+Here's the part none of the fullstack agents can offer: if you ever want out, you keep everything. The CLAUDE.md, the docs, the skills, the commands it wrote all keep working on vanilla Claude Code. Leaving Devin or Cursor strands your whole workflow in their stack. Leaving Shipwright costs you nothing but the orchestration you self-hosted.
+
+Same premise GitHub just validated. One step further.
+
+What would you actually hand a harness to ship without you in the chair?
+
+https://app-vitals.com/blog/harness-is-all-you-need/
