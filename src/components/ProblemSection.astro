@@ -1,0 +1,96 @@
+---
+const rungs = [
+  { step: '0', name: 'Gated', line: 'AI access locked down — no real infrastructure to host what it produces.' },
+  { step: '1', name: 'Assisted', line: 'One engineer, one agent, mostly supervised — you review almost everything before it merges.' },
+  { step: '2', name: 'Parallel', line: '5–10 agents running at once, auto mode on, review and security automated by default.' },
+  { step: '3', name: 'Supervised Autonomy', line: 'Claude writes nearly all the code — one engineer effectively managing managers.' },
+  { step: '4', name: 'AI-native', line: 'The loop closes. Agents kick off agents. You steer by intent, check in by exception.' },
+];
+---
+
+<div class="gradient-divider"></div>
+<section class="relative py-24 md:py-32">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="mb-16 reveal">
+      <p class="font-mono text-[12px] text-electric-400 uppercase tracking-[0.3em] mb-4">The problem</p>
+      <h2 class="font-display text-[clamp(1.75rem,4vw,3rem)] font-bold tracking-[-0.02em] max-w-3xl leading-[1.15]">
+        Almost everyone has adopted AI. <span class="gradient-text">Almost no one has integrated it.</span>
+      </h2>
+      <p class="mt-4 text-white/40 text-[17px] leading-relaxed max-w-2xl">
+        80–90% of developers now use AI tools regularly — but only 44% say it's actually integrated into how their team works, not just how individuals work.
+        <span class="block mt-1 text-white/25 text-[13px] font-mono">— industry adoption surveys</span>
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6 mb-12">
+      <div class="p-8 rounded-2xl border border-electric-500/20 bg-electric-500/[0.03] reveal">
+        <p class="font-mono text-[11px] text-electric-400 uppercase tracking-[0.2em] mb-4">Faros AI · 10,000+ devs, 400+ orgs</p>
+        <div class="grid grid-cols-2 gap-6">
+          <div>
+            <p class="font-display text-[2.25rem] font-bold tracking-[-0.03em] leading-none mb-2 gradient-text">+98%</p>
+            <p class="text-white/45 text-[14px] leading-relaxed">PR volume in heavy-AI-adoption teams</p>
+          </div>
+          <div>
+            <p class="font-display text-[2.25rem] font-bold tracking-[-0.03em] leading-none mb-2 gradient-text">+91–441%</p>
+            <p class="text-white/45 text-[14px] leading-relaxed">Review time</p>
+          </div>
+          <div>
+            <p class="font-display text-[2.25rem] font-bold tracking-[-0.03em] leading-none mb-2 gradient-text">+54%</p>
+            <p class="text-white/45 text-[14px] leading-relaxed">Bugs per developer</p>
+          </div>
+          <div>
+            <p class="font-display text-[2.25rem] font-bold tracking-[-0.03em] leading-none mb-2 gradient-text">+243%</p>
+            <p class="text-white/45 text-[14px] leading-relaxed">Incidents per PR</p>
+          </div>
+        </div>
+        <p class="mt-6 text-white/25 text-[13px] font-mono">— Faros AI</p>
+      </div>
+
+      <div class="p-8 rounded-2xl border border-white/[0.06] bg-white/[0.02] reveal">
+        <p class="font-mono text-[11px] text-white/30 uppercase tracking-[0.2em] mb-4">CloudBees</p>
+        <div class="grid grid-cols-2 gap-6">
+          <div>
+            <p class="font-display text-[2.25rem] font-bold tracking-[-0.03em] leading-none mb-2 text-white">97% <span class="text-white/30 text-[1.1rem] font-semibold">vs</span> 30%</p>
+            <p class="text-white/45 text-[14px] leading-relaxed">Tool adoption vs. real governance over the code AI produces</p>
+          </div>
+          <div>
+            <p class="font-display text-[2.25rem] font-bold tracking-[-0.03em] leading-none mb-2 text-white">81%</p>
+            <p class="text-white/45 text-[14px] leading-relaxed">Report more production issues since rolling AI out</p>
+          </div>
+        </div>
+        <p class="mt-6 text-white/25 text-[13px] font-mono">— CloudBees</p>
+      </div>
+    </div>
+
+    <p class="text-white/50 text-[17px] leading-relaxed max-w-2xl mb-16 reveal">
+      Code generation got fast. Review, testing, CI, and deploy didn't — that's a <span class="text-white font-semibold">systems problem, not a model problem.</span>
+    </p>
+
+    <div class="mb-12 reveal">
+      <p class="font-mono text-[11px] text-white/30 uppercase tracking-[0.2em] mb-6">The ladder, at a glance</p>
+      <div class="space-y-3">
+        {rungs.map((rung) => (
+          <div class="flex items-baseline gap-4 border-l-2 border-white/10 pl-4">
+            <span class="font-mono text-[12px] text-electric-400 shrink-0 w-8">{rung.step}</span>
+            <p class="text-[15px] leading-relaxed">
+              <span class="text-white font-semibold">{rung.name}.</span>
+              <span class="text-white/40"> {rung.line}</span>
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div class="reveal">
+      <a
+        href="/blog/the-ai-adoption-ladder/"
+        class="inline-flex items-center gap-2 text-[15px] text-electric-400 hover:text-electric-300 transition-colors duration-200 font-medium"
+      >
+        Read the full breakdown of the AI adoption ladder
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
