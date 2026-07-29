@@ -101,6 +101,6 @@ Here's the part that should create urgency without panic: the competitive advant
 
 The organizations that figure out effective AI adoption now will compound those advantages for years. The ones still stuck in compliance theater and tool mandates will spend those years catching up.
 
-The good news: it's not complicated. Find your champions. Give them real support. Let them spread what works. Measure outcomes, not activity.
+The good news: it's not complicated. Find your champions. Give them real support. Let them spread what works. Measure outcomes, not activity. If you want a map of the stages between "compliance theater" and genuinely AI-native, that's what [the AI adoption ladder](/blog/the-ai-adoption-ladder/) lays out.
 
 The hard part isn't knowing what to do. It's having the organizational courage to do it.

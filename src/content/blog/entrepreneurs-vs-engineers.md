@@ -19,7 +19,7 @@ It's not a skill gap. It's a posture gap. And it has consequences for hiring, fo
 
 ## What the Entrepreneurs Are Actually Doing
 
-Let's start with what we keep seeing on the non-engineer side, because it's stranger than it sounds in summary.
+Let's start with what we keep seeing on the non-engineer side, because it's stranger than it sounds in summary. It's the same pattern we saw up close with [a non-coder founder who went from Notepad to Claude](/blog/notepad-to-claude/) and never looked back.
 
 A retired bookkeeper in her seventies is running her clients' books through ChatGPT and shipping them a polished deliverable in half the time. A founder with no CS background is using a coding agent to build the booking flow for her event business — she didn't write a line of it, but she's the one driving the build, deciding the schema, picking the integrations. A mortuary owner has wired up an LLM to summarize incoming inquiries and is now asking us, unprompted, about staging environments. He didn't know the term "staging environment" three months ago. He learned it because his agent told him he needed one.
 
@@ -67,7 +67,7 @@ This is why the demographics of who is "ahead" in 2026 are inverted from what mo
 
 This isn't just an interesting sociological observation. It's a leadership problem, and the people who feel it first are CTOs.
 
-We've written before about [why most AI adoption rollouts fail](/blog/why-ai-adoption-fails/) — the short version is that "we bought everyone a license" is not a rollout, and senior leadership has to own the cultural change, not just the procurement line. The curiosity gap is the same problem, viewed from a different angle.
+We've written before about [why most AI adoption rollouts fail](/blog/why-ai-adoption-fails/) — the short version is that "we bought everyone a license" is not a rollout, and senior leadership has to own the cultural change, not just the procurement line. The curiosity gap is the same problem, viewed from a different angle — and it's a big part of [why your best engineers might be resisting AI](/blog/engineering-ai-resistance/) in the first place.
 
 If your senior engineers haven't adopted yet, asking them to adopt is not the move. What you actually need to do is *change what curiosity gets rewarded for*. Right now, in most engineering orgs, curiosity gets rewarded when it points at the internal stack — at the legacy service that's been bothering everybody, at the new database engine, at the framework upgrade. Curiosity that points outside that scope is treated as a hobby.
 
@@ -83,7 +83,7 @@ Selfishly, this is also why Dan and I built AppVitals in the first place.
 
 We wouldn't have AppVitals without agentic tooling. We've said this a few times, but it's worth saying once more concretely: our marketing site was redesigned by an AI assistant while one of us was driving home from a ski trip with a kid in the back seat. Our entire internal SaaS stack — accounts, calendar, time tracking, billing, invoicing, partner pay-outs — we deleted the four SaaS tools we used to pay for and rebuilt them ourselves, because we have an autonomous coding pipeline and we can. This podcast only exists because publishing it is one command. If publishing required work, we wouldn't be doing it. We've tried.
 
-Every single one of those wins came from being curious enough to ask the question "could we just build that?" The answer used to be no. The answer is now, almost always, yes — for two engineers, at the speed of a conversation, with most of the engineering ladder collapsed into the assistant.
+Every single one of those wins came from being curious enough to ask the question "could we just build that?" The answer used to be no. The answer is now, almost always, yes — for two engineers, at the speed of a conversation, with most of the engineering ladder collapsed into the assistant. It's the same instinct behind pushing Claude past engineering — [one tool for the whole company, not just the people who can read a diff](/blog/one-tool-for-everyone/).
 
 If we — two engineers — can do this, the founder running the mortuary business can do most of it too. And she will. That's not a threat to engineers; it's a reframing of what engineers should be doing. The work is no longer to write the code. The work is to know what to build, to make sure it works, to keep the lights on, to handle the cases the agent can't. That is still real, valuable work. But it's different work than the work we got hired to do five years ago, and the engineers who are going to thrive are the ones who recognize the difference quickly.
 

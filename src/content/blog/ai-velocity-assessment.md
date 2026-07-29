@@ -11,7 +11,7 @@ Here's a conversation we keep having with engineering leaders:
 
 "We rolled out AI coding tools six months ago. Our developers are using them. But honestly? I can't tell you we're shipping any faster."
 
-This isn't a failure of AI adoption. It's a failure of diagnosis. These teams did the right thing — they invested in AI tools, got engineers using them, and expected velocity gains. The tools delivered on their promise: code generation is genuinely faster. But the overall pipeline didn't speed up.
+This isn't a failure of AI adoption. It's a failure of diagnosis. These teams did the right thing — they invested in AI tools, got engineers using them, and expected velocity gains. The tools delivered on their promise: code generation is genuinely faster. But the overall pipeline didn't speed up. Most of them are further along [the AI adoption ladder](/blog/the-ai-adoption-ladder/) than they think, and further from the top than they'd like.
 
 Why? Because nobody looked at the whole system first.
 
@@ -82,4 +82,4 @@ If that sounds familiar, let's talk.
 
 ---
 
-*Dave O'Dell and Dan McAulay are the co-founders of App Vitals. They practice velocity engineering — accelerating the entire software development lifecycle, not just the code generation step. They've spent 20+ years building and scaling engineering platforms and now help teams ship 2-3x faster.*
+*Dave O'Dell and Dan McAulay are the co-founders of App Vitals. They practice velocity engineering — accelerating the entire software development lifecycle, not just the code generation step. They've spent 20+ years building and scaling engineering platforms and now help teams ship 2-3x faster. And DORA metrics are still one of the best diagnostic tools we have for this work — see [DORA metrics in the AI era](/blog/dora-metrics-ai-era/) for what they still get right and what they miss.*

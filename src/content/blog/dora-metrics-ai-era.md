@@ -47,7 +47,7 @@ None of this means you should throw out your DORA dashboard. The framework is me
 
 Deployment frequency is still meaningful — but now it needs to be paired with review cycle time and PR queue depth. If your deployment frequency is up and your review queue is also longer than it's ever been, you're not moving faster. You're accumulating risk while the queue is a pressure valve.
 
-Lead time is still meaningful — but now the interesting question is where time is actually being spent. Before AI, most lead time was in development. Now it's often in review, in CI, and in the gap between "code is ready" and "code is merged." The [velocity engineering](/blog/velocity-engineering/) insight here is that optimizing the wrong stage of the pipeline produces real numbers that describe a problem you haven't actually solved.
+Lead time is still meaningful — but now the interesting question is where time is actually being spent. Before AI, most lead time was in development. Now it's often in review, in CI, and in the gap between "code is ready" and "code is merged." The [velocity engineering](/blog/velocity-engineering/) insight here is that optimizing the wrong stage of the pipeline produces real numbers that describe a problem you haven't actually solved — we cover the full stage-by-stage breakdown in [the velocity engineering playbook](/blog/velocity-engineering-playbook/).
 
 Change failure rate is still the single most honest metric in the DORA set. It doesn't lie. If code is failing in production more often, something is wrong. It's just that the root cause in an AI-assisted team often points somewhere different than it used to.
 
@@ -81,7 +81,7 @@ Track change failure rate by code origin if you can. Even an imperfect proxy —
 
 The teams that get this right don't measure less. They measure smarter. They understand what each number is actually telling them about the system, and they don't confuse movement in the metrics with movement in the actual quality of software delivery.
 
-We see this mistake constantly — organizations that ran an [AI adoption rollout](/blog/enterprise-ai-adoption-mistakes/) and pronounced it successful based on DORA numbers that were technically correct and practically misleading. Deployment frequency was up. The engineering org was not, in any meaningful sense, healthier.
+We see this mistake constantly — organizations that ran an [AI adoption rollout](/blog/enterprise-ai-adoption-mistakes/) and pronounced it successful based on DORA numbers that were technically correct and practically misleading. Deployment frequency was up. The engineering org was not, in any meaningful sense, healthier. This is exactly the kind of gap our [AI velocity assessment](/blog/ai-velocity-assessment/) is built to catch before you present the wrong numbers to your board.
 
 The best way to know if your AI adoption is actually working is to look at whether outcomes improved — not just volume. DORA is a window into outcomes. It's just a window that requires more interpretation than it used to. If you're trying to build a measurement framework that accounts for this, the [ROI measurement approach](/blog/measure-ai-adoption-roi/) we use starts with outcomes and works backward to the metrics that actually connect to them.
 

@@ -11,7 +11,7 @@ I lived in the East Bay for years. There was a window when an Uber across the Ba
 
 This week, Anthropic pulled the same lever on us — and on every other team that's been running cloud agents on the Claude Code Max plan.
 
-If you're paying $200 a month and your code is being shipped by autonomous agents in the background, you should pay attention to what happened, because the bill is about to change a lot more than it looks like on the surface.
+If you're paying $200 a month and your code is being shipped by autonomous agents in the background, you should pay attention to what happened, because the bill is about to change a lot more than it looks like on the surface. We've made the case that [a free 10X is worth taking even when the token bill scales with it](/blog/choosing-not-to-10x/) — this is the part of that math that just got a lot less free.
 
 ## What actually changed
 

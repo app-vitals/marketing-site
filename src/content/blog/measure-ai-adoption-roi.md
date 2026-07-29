@@ -53,7 +53,7 @@ This is the single most important metric for AI adoption ROI, and most teams alr
 
 **What good looks like:** A 15-25% reduction in cycle time within 6 months of meaningful AI adoption. If you're not seeing movement, either adoption isn't real or there are bottlenecks elsewhere in the pipeline eating the gains.
 
-**Watch out for:** DORA metrics are showing something interesting right now — teams using AI are seeing a [91% increase in code review time and 154% increase in PR size](https://dora.dev/research/ai/). AI is shifting the bottleneck from writing to reviewing. If your cycle time isn't improving despite AI usage, this is probably why.
+**Watch out for:** DORA metrics are showing something interesting right now — teams using AI are seeing a [91% increase in code review time and 154% increase in PR size](https://dora.dev/research/ai/). AI is shifting the bottleneck from writing to reviewing. If your cycle time isn't improving despite AI usage, this is probably why. We've dug into [what DORA metrics still get right in the AI era, and what they miss entirely](/blog/dora-metrics-ai-era/), if you want the fuller picture.
 
 ### 2. Throughput (PRs Merged Per Engineer Per Week)
 
@@ -105,7 +105,7 @@ Here's what a real AI adoption ROI dashboard looks like:
 | Defects Per Release | 2.8 | 2.5 | ↓ 11% | < 2.5 |
 | Tier 3 Adoption | 0% | 12% | ↑ | > 25% |
 
-That's four numbers. You can put them on a single slide. Leadership can understand them. And they tell you something real about whether your AI investment is working.
+That's four numbers. You can put them on a single slide. Leadership can understand them. And they tell you something real about whether your AI investment is working — and roughly where you sit on [the AI adoption ladder](/blog/the-ai-adoption-ladder/), if you're trying to figure out what to fix next.
 
 ## When the Numbers Don't Move
 
@@ -127,7 +127,7 @@ That's a harder question to answer, but the four metrics above get you close. Cy
 
 If all four are moving in the right direction, your AI investment is working — and you have the data to prove it. If they're not, you know exactly where to focus.
 
-Stop measuring logins. Start measuring outcomes.
+Stop measuring logins. Start measuring outcomes. And once you're actually capturing that throughput, budget for what it costs — [the token math changed recently](/blog/anthropic-ended-ai-free-ride/), and it's worth knowing before it shows up in the ROI numbers.
 
 ---
 

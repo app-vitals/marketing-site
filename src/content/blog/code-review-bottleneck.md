@@ -125,7 +125,7 @@ Here's what I tell engineering leaders who show me their flat cycle time numbers
 
 That's actually good news. It means the technology delivers on its promise. The engineering practice around it just needs to catch up. And catching up on review processes, CI optimization, and deployment automation is a known problem with known solutions. It's not speculative — we've been solving these problems in DevOps for a decade.
 
-The companies that crack this see the results show up fast. Once you unclog the review bottleneck and [your pipeline can handle the throughput](/blog/ci-pipeline-bottleneck), all those developer productivity gains that were being absorbed by queue wait times suddenly flow through to actual delivery speed.
+The companies that crack this see the results show up fast. Once you unclog the review bottleneck and [your pipeline can handle the throughput](/blog/ci-pipeline-bottleneck), all those developer productivity gains that were being absorbed by queue wait times suddenly flow through to actual delivery speed. Watch your CI bill while you do it, too — [volume alone can quietly overload a pipeline](/blog/ai-tools-ci-pipeline-overload/) that was never actually queue-bound.
 
 The AI adoption story isn't "we made developers faster and everything got better." It's "we made developers faster, found the next bottleneck, fixed it, found the next one, fixed that." It's iterative. It's engineering. It's the whole point.
 

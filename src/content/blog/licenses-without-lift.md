@@ -15,7 +15,7 @@ Now check your dashboard. 15% utilization. Maybe 20% on a good week.
 
 The 5-8 engineers who were already tinkering with AI? They're flying. Everyone else went back to their old workflow within two weeks.
 
-**This is the most common pattern we see.** Not failed rollouts — successful purchases with failed adoption.
+**This is the most common pattern we see.** Not failed rollouts — successful purchases with failed adoption. It's the flip side of the argument we make in [choosing not to 10x your team for free](/blog/choosing-not-to-10x/) — the tool being free doesn't help you if nobody's actually using the seats you paid for.
 
 ## It's Not a Training Problem
 
@@ -37,7 +37,7 @@ Architecture docs, coding conventions, and project-specific patterns accessible 
 
 ### 2. Champions, Not Mandates
 
-You can't email your way to AI adoption. [Top-down mandates fail](/blog/why-tool-rollouts-fail). What works is one or two engineers who are genuinely excited, paired with real work — not demo projects — shipping to production and showing results their teammates can't ignore. We've seen this pattern enough times to write [a full playbook for building AI champion programs](/blog/ai-champion-playbook).
+You can't email your way to AI adoption. [Top-down mandates fail](/blog/why-tool-rollouts-fail). What works is one or two engineers who are genuinely excited, paired with real work — not demo projects — shipping to production and showing results their teammates can't ignore. We've seen this pattern enough times to write [a full playbook for building AI champion programs](/blog/ai-champion-playbook). If you want the whole phased rollout, not just the champion piece, we laid out [how to actually roll out Claude Code to an engineering team](/blog/how-to-roll-out-claude-code/) in detail.
 
 Champions create pull. Training creates push. Pull wins every time.
 
@@ -61,7 +61,7 @@ The question isn't "should we adopt AI tools?" Your competitors already have.
 
 The question is: are your engineers actually using them — or did you just buy the most expensive shelfware in your engineering budget?
 
-If your utilization numbers make you uncomfortable, that's a good sign. It means you're paying attention. The next step isn't buying more tools or scheduling more training. It's understanding why adoption stalled — and [measuring what actually matters](/blog/measure-ai-adoption-roi) so you can build the infrastructure to make it stick.
+If your utilization numbers make you uncomfortable, that's a good sign. It means you're paying attention. The next step isn't buying more tools or scheduling more training. It's understanding why adoption stalled — and [measuring what actually matters](/blog/measure-ai-adoption-roi) so you can build the infrastructure to make it stick. And once utilization is real, budget for the fact that [usage-based pricing changes the math](/blog/anthropic-ended-ai-free-ride/) once your team is actually using what you bought.
 
 ---
 

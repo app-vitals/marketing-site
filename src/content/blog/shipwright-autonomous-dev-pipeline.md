@@ -9,7 +9,7 @@ readTime: "7 min read"
 
 Last week, I pointed an AI at a product spec and walked away. When I came back, it had generated a 1,900-line task breakdown covering 7 features, 45 tasks, 5 development phases, and estimated 128 hours of work. Then it started building.
 
-No, this isn't hype. This is [Shipwright](https://github.com/app-vitals/shipwright), a Claude Code plugin we built at App Vitals that turns product requirements into shipped software through a structured, mostly autonomous pipeline.
+No, this isn't hype. This is [Shipwright](https://github.com/app-vitals/shipwright), a Claude Code plugin we built at App Vitals that turns product requirements into shipped software through a structured, mostly autonomous pipeline — and yes, [people keep comparing it to Devin](/blog/accidental-devin-alternative/), which is fair, even though that was never the plan.
 
 ## The Problem We Were Solving
 
@@ -65,7 +65,7 @@ Shipwright today is version three of this concept for us. The first version was 
 
 But it's still evolving. We just added automatic Playwright E2E test planning for UI projects. We're looking at integrating with project management tools so the task breakdown stays synced with your board. And the learning-loop integration means the pipeline literally improves itself with every project it ships.
 
-This is what [velocity engineering](/blog/velocity-engineering) looks like in practice. It's not just about making developers faster at writing code. It's about accelerating the entire pipeline — from requirements to production — so that the humans focus on the decisions that matter and the machines handle the mechanical work.
+This is what [velocity engineering](/blog/velocity-engineering) looks like in practice. It's not just about making developers faster at writing code. It's about accelerating the entire pipeline — from requirements to production — so that the humans focus on the decisions that matter and the machines handle the mechanical work. If you're weighing this against a commercial option, we've written an honest [Shipwright vs. Devin comparison](/blog/shipwright-vs-devin/) as well.
 
 ## Try It
 

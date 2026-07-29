@@ -91,4 +91,4 @@ Here's the honest version of the urgency argument: the competitive advantage fro
 
 The hard part isn't knowing any of this. The hard part is having the organizational patience to build the foundation before announcing the wins — to solve the context problem before the broad rollout, to invest in champions before the all-hands demo, to measure cycle time before you optimize for it.
 
-That's what the organizations that actually win on AI adoption do differently. They build the system, not just the license. And the difference in outcomes, once you've seen it from the inside, is not subtle.
+That's what the organizations that actually win on AI adoption do differently. They build the system, not just the license. And the difference in outcomes, once you've seen it from the inside, is not subtle. If you want a clearer picture of where your org actually sits, we mapped the whole progression out in [the AI adoption ladder](/blog/the-ai-adoption-ladder/).

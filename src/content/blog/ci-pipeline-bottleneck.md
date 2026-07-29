@@ -80,3 +80,5 @@ Before you optimize anything, measure where time actually goes. Track the journe
 The goal isn't to make developers type faster. It's to make the entire system flow. AI tools are one piece of that puzzle — an important piece — but if you're not looking at the full picture, you're optimizing the wrong thing.
 
 The teams that win in this era won't be the ones with the best AI tools. They'll be the ones who used AI adoption as the catalyst to fix everything else that was slowing them down. We've put together [a complete velocity engineering playbook](/blog/velocity-engineering-playbook) that covers how to accelerate every stage — from code generation to production.
+
+There's a related failure mode worth watching for even after you've fixed throughput: [AI coding tools can quietly overload your CI pipeline](/blog/ai-tools-ci-pipeline-overload/) on sheer volume, independent of whether the queue itself is the bottleneck.

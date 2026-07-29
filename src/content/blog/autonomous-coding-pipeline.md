@@ -79,7 +79,7 @@ It's different from fully hands-off autonomous tools where you're on your own wh
 
 ## The Metrics That Tell the Real Story
 
-392 pull requests. 90% test coverage enforced on every single one. Two human contributors out of a team that is almost entirely agents.
+392 pull requests. 90% test coverage enforced on every single one. Two human contributors out of a team that is almost entirely agents. A few months later that number was [85 pull requests in a single week](/blog/85-prs-a-week/) — the same system, just further along the curve.
 
 But the metric we're actually tracking isn't PR count — that's an output, not an outcome. What we're tracking is cycle time: how long from task definition to merged, tested, deployed code. And we're capturing it on every run through PostHog so we can see where the pipeline slows down, where it fails, and how it improves over time.
 

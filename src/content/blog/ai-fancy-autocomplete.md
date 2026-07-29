@@ -17,7 +17,7 @@ Congratulations — you just experienced what 90% of engineering teams experienc
 
 ## The Autocomplete Spectrum
 
-There's a spectrum of AI-assisted development that nobody talks about. On one end, you've got glorified autocomplete — the AI predicts the next few tokens based on general programming knowledge and whatever's in the current file. On the other end, you've got genuine AI-assisted engineering — where the tool understands your architecture, respects your conventions, and produces code that a senior engineer on your team would actually approve.
+There's a spectrum of AI-assisted development that nobody talks about. On one end, you've got glorified autocomplete — the AI predicts the next few tokens based on general programming knowledge and whatever's in the current file. On the other end, you've got genuine AI-assisted engineering — where the tool understands your architecture, respects your conventions, and produces code that a senior engineer on your team would actually approve. That's really the difference between [an AI coding assistant and an agent](/blog/ai-coding-assistant-vs-agent/): one predicts tokens, the other operates with context and judgment.
 
 Most teams are stuck on the autocomplete end and don't realize there's another option.
 

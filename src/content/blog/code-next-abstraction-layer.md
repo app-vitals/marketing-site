@@ -37,7 +37,7 @@ That's not laziness. That's the abstraction layer doing its job.
 
 So if syntax is being abstracted away, what's the new layer that engineers actually work at?
 
-The term that's emerging is "harness engineering." Your harness is the scaffolding you build around an agentic coding system — the prompts, constraints, validation gates, review loops, and orchestration logic that steer the AI toward outputs that actually work and hold up over time.
+The term that's emerging is "harness engineering." Your harness is the scaffolding you build around an agentic coding system — the prompts, constraints, validation gates, review loops, and orchestration logic that steer the AI toward outputs that actually work and hold up over time. This is also roughly the line we'd draw between [a coding assistant and an actual agent](/blog/ai-coding-assistant-vs-agent/): the harness is what turns token prediction into something that can be trusted to operate independently.
 
 Think of it this way: the AI writes the code, but you write the rules the AI plays by. You define what "correct" means. You set up the validation that proves it's correct. You design the feedback loops that keep quality high over hundreds of iterations.
 
@@ -93,7 +93,7 @@ The abstraction layer is shifting upward. The engineers who thrive will be the o
 
 We're not losing software engineering. We're getting a more powerful version of it, where the constraint is no longer "how fast can I write code" but "how clearly can I think about the system I'm trying to build."
 
-That's a better constraint to optimize against.
+That's a better constraint to optimize against. It's also, bluntly, why [no one is paying you to code anymore](/blog/no-one-is-paying-you-to-code-anymore/) — they're paying you for the judgment that used to be hidden inside the typing.
 
 ---
 

@@ -17,7 +17,7 @@ Something changed about a month ago. The voice recognition got meaningfully bett
 
 The setup is dead simple. Run `claude /config` and you'll see the option to enable voice globally. Or toggle it per session with `/voice`. Once it's on, you hold the spacebar to speak. That's it.
 
-Dave has been using this constantly—building presentations from the command line entirely through voice, walking through Trello cards on the go and ending up with pull requests. We had a client session over Zoom recently where Dave built the entire presentation by holding the spacebar and talking. Not one keystroke. The transcription handles technical terminology surprisingly well, and when it misses a word, the corrections are minor.
+Dave has been using this constantly—building presentations from the command line entirely through voice, walking through Trello cards on the go and ending up with pull requests. We had a client session over Zoom recently where Dave built the entire presentation by holding the spacebar and talking. Not one keystroke. The transcription handles technical terminology surprisingly well, and when it misses a word, the corrections are minor. It's the same open-mic dynamic that led to [our Google Meet epiphany](/blog/google-meet-epiphany/) a few weeks later, just with one voice instead of two.
 
 The bigger picture here is the integration story. Six months ago, teams were building custom voice plugins—stitching together speech detection libraries and piping them into Claude. That works, but it's setup overhead, it's another thing to maintain, and it creates a gap between "people who bothered to set this up" and "everyone else on the team." Now it ships with Claude Code. That gap disappears.
 
@@ -75,7 +75,7 @@ This is how tooling maturation works. The early adopters do the custom integrati
 
 That said, there's a category of advantage that doesn't get absorbed: how you use the tool, not what the tool can do. Shipwright-style sub-agent orchestration. Tight CLAUDE.md files that carry team context across sessions. PR review workflows tuned to your actual standards. Voice habits that mean you're capturing thoughts while you're on a walk instead of losing them. None of that ships in a Claude Code release. It's learned, built, and embedded in your team's muscle memory.
 
-The teams that will still have an edge six months from now aren't the ones with the best plugins. They're the ones that figured out how to [build genuine engineering velocity](/blog/velocity-engineering-playbook/)—the kind that compounds.
+The teams that will still have an edge six months from now aren't the ones with the best plugins. They're the ones that figured out how to [build genuine engineering velocity](/blog/velocity-engineering-playbook/)—the kind that compounds. That edge stops being an engineering-only story once you look at what happens when [the rest of the company gets on the same tool](/blog/one-tool-for-everyone/).
 
 ## Summary: What to Enable Today
 

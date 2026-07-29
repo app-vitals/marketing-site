@@ -9,7 +9,7 @@ readTime: "8 min read"
 
 Devin has a $26 billion valuation. They're raising a billion dollars. They're doing autonomous coding, and Dan and I — through luck or bad luck — built an open-source alternative.
 
-We didn't set out to compete with anyone. We built Shipwright in November because we needed it for ourselves and our clients. We believed you could do autonomous coding on Claude Code, so we built the harness to make it work. Now we're running 100 pull requests a week and we have clients doing the same.
+We didn't set out to compete with anyone. We built Shipwright in November because we needed it for ourselves and our clients — [the origin story is a lot less strategic than it sounds](/blog/accidental-devin-alternative/). We believed you could do autonomous coding on Claude Code, so we built the harness to make it work. Now we're running 100 pull requests a week and we have clients doing the same.
 
 It turns out what we built competes directly with Devin. So let's talk about how they compare.
 
@@ -67,7 +67,7 @@ One agent per developer is the model we believe in. Every developer should have 
 
 We think the most compelling thing we can show you isn't a benchmark or a demo. It's the public commit history.
 
-Since we open-sourced Shipwright a few months ago, the last 1,000 pull requests in the repository were all written by Shipwright itself. Dan and I aren't writing code in the background. We create PRDs, hand them to our agent in Slack, and Shipwright creates the task list, executes the work, reviews its own PRs, and merges them.
+Since we open-sourced Shipwright a few months ago, the last 1,000 pull requests in the repository were all written by Shipwright itself — the same system that opened [85 pull requests in a single week](/blog/85-prs-a-week/) for us. Dan and I aren't writing code in the background. We create PRDs, hand them to our agent in Slack, and Shipwright creates the task list, executes the work, reviews its own PRs, and merges them.
 
 If you go to `proof.shipwrightharness.com`, you can see exactly what Shipwright is working on for itself right now. It's dogfooding in public, continuously.
 

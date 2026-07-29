@@ -7,7 +7,7 @@ excerpt: "Dan and I shipped 254 PRs in seven days using AI agents — most while
 readTime: "8 min read"
 ---
 
-Last Friday, Dan and I finished recording our podcast, went home, and started building. By the following Friday, our AI agents had opened and closed 254 pull requests — roughly 37 a day, sustained across seven days, with a 90% minimum test coverage gate enforced on every single one.
+Last Friday, Dan and I finished recording our podcast, went home, and started building. By the following Friday, our AI agents had opened and closed 254 pull requests — roughly 37 a day, sustained across seven days, with a 90% minimum test coverage gate enforced on every single one. (Months later, the pace was still climbing — we broke it down again in [85 pull requests in a week](/blog/85-prs-a-week/).)
 
 Dan and I combined probably spent 10 hours actively involved.
 
