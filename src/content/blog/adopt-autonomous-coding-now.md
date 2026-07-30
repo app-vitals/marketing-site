@@ -63,4 +63,4 @@ Ship it.
 
 ---
 
-*This post is adapted from [The Velocity Lab](https://share.transistor.fm/e/adopt-autonomous-coding-now-or-find-a-new-vp-of-engineering) — Dave O'Dell and Dan McAulay on shipping faster with AI. If you want help adopting autonomous coding, [book time with us](https://app-vitals.com).*
+*This post is adapted from [The Velocity Lab](https://share.transistor.fm/e/adopt-autonomous-coding-now-or-find-a-new-vp-of-engineering) — Dave O'Dell and Dan McAulay on shipping faster with AI. [Watch this episode on YouTube](https://youtu.be/r1F4NcxjcyQ), or listen wherever you get your podcasts. If you want help adopting autonomous coding, [book time with us](https://app-vitals.com).*
