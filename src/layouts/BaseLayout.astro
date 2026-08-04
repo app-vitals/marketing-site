@@ -75,6 +75,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
+    <!-- RSS -->
+    <link rel="alternate" type="application/rss+xml" title="App Vitals Blog" href="/rss.xml" />
+
     <!-- Structured Data -->
     <StructuredData />
     {extraSchema && (Array.isArray(extraSchema) ? extraSchema : [extraSchema]).map((schema) => (
