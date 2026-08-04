@@ -1,6 +1,46 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { BOOKING_URL } from '../../consts';
+
+// FAQPage structured data — answers drawn only from claims already on this page.
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'What is Shipwright?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Shipwright is a free, MIT-licensed, spec-to-deploy autonomous delivery agent built on Claude Code that runs entirely in your own cloud. Created and maintained by App Vitals.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Is Shipwright a Devin alternative?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes. Shipwright is the open-source alternative to Devin — instead of a black box, the whole harness is MIT-licensed and runs on your own infrastructure, on your codebase.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Is Shipwright really free and open source?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes. Shipwright is free and MIT-licensed throughout — control plane included.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Does Shipwright work with Claude Code?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes. Shipwright is Claude Code native — it runs as a plugin inside Claude Code and as a cloud agent you deploy to your own infrastructure.',
+      },
+    },
+  ],
+};
 ---
 
 <BaseLayout
@@ -23,8 +63,8 @@ import { BOOKING_URL } from '../../consts';
           </a>
         </div>
         <h1 class="font-display text-[clamp(2.5rem,5vw,4.5rem)] font-bold leading-[1.05] tracking-[-0.03em] opacity-0 animate-fade-in-up-delay-1">
-          The open source alternative<br />
-          <span class="gradient-text">to Devin.</span>
+          Shipwright: the open-source<br />
+          alternative <span class="gradient-text">to Devin.</span>
         </h1>
         <p class="mt-8 text-[18px] text-white/50 max-w-xl leading-[1.7] opacity-0 animate-fade-in-up-delay-2">
           Shipwright is the only MIT-throughout, spec-to-deploy autonomous delivery agent that runs entirely in your own cloud — control plane included. It runs on your infrastructure, on your codebase; your code never leaves your control. Created and maintained by App Vitals.
@@ -62,6 +102,19 @@ import { BOOKING_URL } from '../../consts';
       </div>
     </div>
   </section>
+
+  <!-- What is Shipwright? — definitional answer block (SEO: "what is shipwright") -->
+  <section class="relative">
+    <div class="max-w-6xl mx-auto px-6 pb-4 md:pb-8">
+      <div class="max-w-3xl reveal">
+        <h2 class="font-display text-[clamp(1.5rem,3vw,2.25rem)] font-bold tracking-[-0.02em] leading-[1.2] mb-4">What is Shipwright?</h2>
+        <p class="text-[18px] text-white/50 leading-[1.7]">
+          Shipwright is a free, MIT-licensed autonomous delivery agent built on Claude Code. It takes a spec through plan, build, review, and ship — running entirely in your own cloud, on your codebase, so your code never leaves your control. Created and maintained by App Vitals, who ship with it daily. For a feature-by-feature breakdown, read the full <a href="/blog/shipwright-vs-devin/" class="text-electric-400 underline underline-offset-4 hover:text-electric-300 transition-colors">Shipwright vs. Devin comparison</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
   <!-- Built and maintained by App Vitals -->
   <section class="relative">

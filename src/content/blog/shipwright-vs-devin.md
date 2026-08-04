@@ -23,7 +23,7 @@ This isn't just a philosophical difference. It has practical consequences.
 
 When something goes wrong with Devin, you wait for their support team. When something goes wrong with Shipwright, you open the skill file and fix it. When you need a new behavior — a custom deployment flow, a client-specific code review process, a bespoke security check — with Devin you put in a feature request. With Shipwright, you write a skill and ship it this afternoon.
 
-## Why We Built on Claude Code
+## Why We Built Our Harness on Claude Code
 
 One thing Dan and I keep coming back to: Claude Code feels like it was built by developers for developers. The same is true of Shipwright. We're developers. We built this tool for developers.
 
@@ -83,7 +83,7 @@ If no: it's more nuanced. Devin is a mature, well-resourced product with enterpr
 
 The thing about Shipwright is that because it's built on Claude Code, any time Claude Code improves — any time Anthropic ships a better model, a new capability, a faster execution path — Shipwright gets better automatically. We're riding that curve, not trying to keep up with it.
 
-That's a different kind of competitive advantage. And it's one we're happy to put in your hands for free.
+That's a different kind of competitive advantage. And it's one we're happy to put in your hands for free — you can [try Shipwright yourself](/products/shipwright/).
 
 ---
 
