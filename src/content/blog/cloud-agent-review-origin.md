@@ -7,6 +7,8 @@ excerpt: "I built a system to run Claude Code in isolated cloud sandboxes, chasi
 readTime: "7 min read"
 ---
 
+*This is the first post in a series on how Shipwright actually came together. Not to flex — because every piece of it exists for a reason, and I'd rather show you the reason than ask you to trust it blind.*
+
 I built the whole thing to get an agent doing work for me in the background. That was the entire goal. Not "AI helps me code faster" — I already had that. I wanted work happening while I wasn't looking at it.
 
 I started with reviews, because reviews were the first real blocker. Once you're using AI to write code, PR review becomes the thing that doesn't scale with you. I'd queue up a batch, come back, and work through each one — read it, decide if it held up, have Claude post it. I tuned that pipeline until I was actually happy with it. I thought my curated reviews were better than what the generic AI review tools were putting out, and I still think that's true. But I was doing every part of it by hand — queuing, reading, posting — one at a time, in the loop the whole way.
@@ -53,4 +55,6 @@ I'd been reviewing Dave's code manually since before any of this, because he cam
 
 We've since written more generally about [why AI-generated code turns review into the new bottleneck](/blog/code-review-bottleneck/) and [why review time gets worse before it gets better](/blog/ai-pr-review-bottleneck/). Both of those posts describe the pattern. This post is the specific tool we built before we knew it was a pattern.
 
-This is the first in a series unpacking [the real story behind Shipwright](https://shipwrightharness.com/story/) — the parts the timeline doesn't have room for. Next up: OpenClaw, and the original `todos.json` I was using to queue up work with cron jobs before any of this had a name.
+Every piece of scaffolding in Shipwright has to earn its place the way this one did. I'm not trying to build a platform — I want the thinnest layer on top of Claude Code that still fixes real problems. The review skill isn't there because "AI needs review tooling" in the abstract. It's there because I personally couldn't keep up with my own queue, and a slash command that batches to the cloud and hands me results one coffee at a time fixed exactly that, nothing more. If a piece of Shipwright can't point back to a moment like this — one person, drowning in one specific problem — it probably doesn't belong.
+
+Next up: [the real story behind Shipwright](https://shipwrightharness.com/story/) continues with OpenClaw, and the original `todos.json` I was using to queue up work with cron jobs before any of this had a name.
