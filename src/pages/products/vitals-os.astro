@@ -1,5 +1,21 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+
+// FAQPage structured data — answers drawn only from claims already on this page.
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'What is Vitals OS?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Vitals OS is the operating system for an AI-augmented consultancy — scheduling, time tracking, invoicing, and an always-on agent in one place, built and run by App Vitals.',
+      },
+    },
+  ],
+};
 ---
 
 <BaseLayout
@@ -42,6 +58,19 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       </div>
     </div>
   </section>
+
+  <!-- What is Vitals OS? — definitional answer block (SEO: "vital os") -->
+  <section class="relative">
+    <div class="max-w-6xl mx-auto px-6 pb-4 md:pb-8">
+      <div class="max-w-3xl reveal">
+        <h2 class="font-display text-[clamp(1.5rem,3vw,2.25rem)] font-bold tracking-[-0.02em] leading-[1.2] mb-4">What is Vitals OS?</h2>
+        <p class="text-[18px] text-white/50 leading-[1.7]">
+          Vitals OS is the operating system for an AI-augmented consultancy — scheduling, time tracking, invoicing, and an always-on agent, all in one place, built and run by App Vitals.
+        </p>
+      </div>
+    </div>
+  </section>
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
   <!-- What it does -->
   <section id="what-it-does" class="relative">
