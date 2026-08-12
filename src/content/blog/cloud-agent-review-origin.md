@@ -17,7 +17,7 @@ So I built a system to run Claude Code in isolated cloud sandboxes — FastAPI a
 
 ## The Dream vs. the Reality
 
-I didn't have a crisp spec for it, though — just the shape of it. Asleep, skiing, on a walk with the dog, heads-down on something else entirely: work happening whether or not I was watching. In my head that looked something like cron jobs queuing PR reviews overnight so they'd be sitting there in the morning, or Trello issues picked up automatically with PRs already open and ready to merge. Vague shapes, not a plan.
+I didn't have a crisp spec for it, though — just the shape of it. Asleep, skiing, on a walk with the dog, heads-down on something else entirely: work happening whether or not I was watching.
 
 The reality was narrower. Sending Claude off to build a real feature, unsupervised, and trusting what came back — I couldn't get there. Maybe my prompting wasn't tight enough yet. Maybe I'm just too picky about implementation. But it wasn't just me — most of the industry wasn't there yet either. We'd stopped writing the code by hand. We hadn't stopped supervising it. Trust in the system was something you built up, not something you started with. So I was still in hands-on, human-in-the-loop mode for anything that touched actual feature work.
 
