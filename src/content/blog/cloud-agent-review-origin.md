@@ -59,7 +59,7 @@ Cron didn't show up until OpenClaw — which is funny, because cron jobs have be
 
 That slash command shipped as a real plugin on February 4, 2026 — `pr-review`, with `/ca-review-prs` as one of its commands, local review drafts, CLAUDE.md compliance scoring, the works. Not a designed feature. A personal workflow I built because I was drowning in my own review queue, generalized once it started working.
 
-I'd been reviewing Dave's code manually since before any of this, because he came up as a devops guy and was becoming an AI systems engineer in real time — a lot of code, a lot of it new territory for both of us. The review pipeline wasn't abstract. It was built to keep up with one specific person's output.
+I was already spending most of my time reviewing PRs instead of writing code by then — that's where you tend to land as a senior IC. But once AI entered the picture, I really felt like the bottleneck. I couldn't keep up with the volume of changes coming in anymore. The review pipeline wasn't abstract. It was built because I genuinely couldn't keep pace.
 
 We've since written more generally about [why AI-generated code turns review into the new bottleneck](/blog/code-review-bottleneck/) and [why review time gets worse before it gets better](/blog/ai-pr-review-bottleneck/). Both of those posts describe the pattern. This post is the specific tool we built before we knew it was a pattern.
 
