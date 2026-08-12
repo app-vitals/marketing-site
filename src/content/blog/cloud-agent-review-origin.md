@@ -11,7 +11,7 @@ readTime: "7 min read"
 
 I built the whole thing to get an agent doing work for me in the background. That was the entire goal. Not "AI helps me code faster" — I already had that. I wanted work happening while I wasn't looking at it.
 
-I started with reviews, because reviews were the first real blocker. Once you're using AI to write code, PR review becomes the thing that doesn't scale with you. I'd queue up a batch, come back, and work through each one — read it, decide if it held up, have Claude post it. I tuned that pipeline until I was actually happy with it. I thought my curated reviews were better than what the generic AI review tools were putting out, and I still think that's true. But I was doing every part of it by hand — queuing, reading, posting — one at a time, in the loop the whole way.
+I started with reviews, because reviews were the first real blocker. Once you're using AI to write code, PR review becomes the thing that doesn't scale with you. I'd kick one off, go do something else, then come back and work through it — read it, decide if it held up, have Claude post it. It wasn't parallel — no worktrees, one PR at a time — but it was less babysitting than reviewing synchronously, and I tuned that pipeline until I was actually happy with it. I thought my curated reviews were better than what the generic AI review tools were putting out, and I still think that's true. (These days I don't curate them by hand — that's a later chapter.)
 
 So I built a system to run Claude Code in isolated cloud sandboxes — FastAPI and Celery on the backend, Novita for the actual sandbox compute. Send it off, it fixes tests against a local Postgres inside the sandbox, opens a PR when it's done. We [put out a tutorial on it in November](https://www.youtube.com/watch?v=OCA8iInD1x8) when it was fresh. It was genuinely fun to build. I geeked out on it.
 
@@ -19,9 +19,9 @@ So I built a system to run Claude Code in isolated cloud sandboxes — FastAPI a
 
 The dream was full autonomy: cron jobs queuing PR reviews overnight so they'd be sitting there in the morning, Trello issues picked up automatically with PRs already open and ready to merge.
 
-The reality was narrower. Sending Claude off to build a real feature, unsupervised, and trusting what came back — I couldn't get there. Maybe my prompting wasn't tight enough yet. Maybe I'm just too picky about implementation. Either way, I was still in hands-on, human-in-the-loop mode for anything that touched actual feature work.
+The reality was narrower. Sending Claude off to build a real feature, unsupervised, and trusting what came back — I couldn't get there. Maybe my prompting wasn't tight enough yet. Maybe I'm just too picky about implementation. But it wasn't just me — most of the industry wasn't there yet either. We'd stopped writing the code by hand. We hadn't stopped supervising it. Trust in the system was something you built up, not something you started with. So I was still in hands-on, human-in-the-loop mode for anything that touched actual feature work.
 
-But one piece of the dream worked exactly as advertised: PR review.
+But one piece of the dream worked exactly as advertised: PR review. Claude Code would load the context and hand me a starting point — I'd still work it human-in-the-loop from there before anything got posted.
 
 AI was writing a lot of code by then. The PRs I was reviewing had doubled, some had tripled in size. Large PRs are hard to review under the best conditions — you miss things. Even Claude misses things. So the parallel-cloud-sandbox idea, which was overkill for "build me a feature," turned out to be exactly the right shape for "review four PRs while I'm not looking."
 
@@ -46,6 +46,14 @@ I'd grab coffee. Come back, and the first review would be sitting there ready. I
 I don't ship what Claude flags without looking at it first. Realistically, maybe half of what it catches is worth acting on. The rest gets thrown away. It's a filter, not a replacement for judgment.
 
 And it wasn't one-directional. During my own manual pass, if something bugged me, I'd bounce it off Claude right there — "can we simplify this?" or "is this actually worth blocking on?" Because Claude already had the full context of the PR loaded, those conversations were useful instead of cold starts. Sometimes I was right. Sometimes I got talked out of it. Either way, the comments I actually posted were better for the back-and-forth.
+
+## Why Not Just Cron It?
+
+The obvious question, in hindsight: why not write a cron job that polls GitHub for pending reviews and works through them in the background? I could have. But that wasn't really the point of the cloud agent — the point was queuing up work and coming back to it, not scheduling it to run without me.
+
+At the time, most of what filled that queue was PR review. So instead of stepping back and designing "an automated review system," I did what actually happens when you're heads-down: I made the thing I kept doing easier to do, one iteration at a time. The tooling followed the habit, not the other way around.
+
+Cron didn't show up until OpenClaw — which is funny, because cron jobs have been around forever. They're arguably the original way people automated work with computers, long before anyone was pointing an LLM at a codebase. I had the oldest automation primitive there is sitting right there the whole time, and it took a second system before I actually reached for it.
 
 ## Where This Actually Went
 
