@@ -73,6 +73,8 @@ If you go to `proof.shipwrightharness.com`, you can see exactly what Shipwright 
 
 That's the proof we can offer that Devin can't: an open, auditable, live record of autonomous coding running on real infrastructure. Not a controlled demo. Not cherry-picked examples. The actual work.
 
+Comparing against Anthropic's own surfaces instead? We wrote up [Shipwright vs. Claude in Slack](/blog/shipwright-vs-claude-code-slack/) — same delivery-system-not-a-session lens, applied to the Claude-in-Slack integration.
+
 ## How to Choose
 
 If someone asks Dan and me whether they should use Shipwright or Devin, the first question we ask is: are you currently using Claude Code?
