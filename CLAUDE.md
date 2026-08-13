@@ -39,7 +39,7 @@ planning/       # PRD, task breakdown, clarifying questions
 ## Content Rules
 - NO client names (anonymize everything)
 - NO specific pricing or rates
-- NO email capture forms
+- Email capture: ONLY the content-subscription form (double opt-in, with the frequency promise shown). NO lead-gen gates, gated downloads, popups, or interstitials.
 - Booking link lives in `src/consts.ts` as `BOOKING_URL` — import it, never hardcode a booking URL
 - Co-founders: Dan McAulay + Dave O'Dell
 
