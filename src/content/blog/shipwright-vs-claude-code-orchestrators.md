@@ -25,16 +25,16 @@ is the second thing.
 
 | | claude-queue | Dispatch | Shipwright |
 |---|---|---|---|
-| Persistent task queue (priorities, dependencies) | Yes | Per-task checklist, per session | Yes |
-| Runs tasks unattended | Yes (manual worker start) | Background workers | Yes (scheduled loop) |
-| Parallel workers / worktree isolation | No | Yes | Yes |
-| Plan to decompose a goal into reviewable tasks | No, you enqueue tasks | Into a checklist | Into a durable queue |
-| Opens PRs | No (per README) | Not its job | Yes |
-| Runs review + reconciles PR/review state | No | No | Yes, across the whole queue |
-| Survives across days / restarts | Yes, queue persists | Session-scoped | Yes |
-| Scheduled autonomy (pulls ready work on a cron) | No, manual worker start | No | Yes |
-| Talks to Claude via the official `claude` CLI | Also hits Claude.ai internal endpoints* | CLI | CLI, only |
-| Open source, self-hostable | Yes | Yes | Yes, whole harness, MIT |
+| Persistent task queue (priorities, dependencies) | ✅ Yes | ⚠️ Per-task checklist, per session | ✅ Yes |
+| Runs tasks unattended | ✅ Yes (manual worker start) | ✅ Background workers | ✅ Yes (scheduled loop) |
+| Parallel workers / worktree isolation | ❌ | ✅ Yes | ✅ Yes |
+| Plan → decompose a goal into reviewable tasks | ❌ You enqueue tasks | ✅ Into a checklist | ✅ Into a durable queue |
+| Opens PRs | ❌ No (per README) | ❌ Not its job | ✅ Yes |
+| Runs review + reconciles PR/review state | ❌ No | ❌ No | ✅ Across the whole queue |
+| Survives across days / restarts | ✅ Queue persists | ⚠️ Session-scoped | ✅ Yes |
+| Scheduled autonomy (pulls ready work on a cron) | ❌ Manual worker start | ❌ | ✅ Yes |
+| Talks to Claude via the official `claude` CLI | ⚠️ Also hits Claude.ai internal endpoints* | ✅ CLI | ✅ CLI, only |
+| Open source, self-hostable | ✅ | ✅ | ✅ Whole harness, MIT |
 
 <sub>*claude-queue's own README notes it "accesses Claude.ai internal web endpoints for usage limit monitoring, which may violate Anthropic's Terms of Service." Worth knowing before you run it on a work account; verify current behavior at its source.</sub>
 
@@ -78,7 +78,7 @@ The last bullet is the gap. claude-queue's README is explicit that it does **not
 open PRs or run reviews, and its worker is started by hand rather than on a schedule.
 Dispatch's job ends when the background work merges back into your session. In both
 cases *the task runs*; in neither does *the delivery loop close itself*. Shipwright's
-`plan to queue to shipwright-loop` is built for that closing — the same "delivery
+`plan → queue → shipwright-loop` is built for that closing — the same "delivery
 system, not a session" lens we used comparing Shipwright to [Claude in Slack](/blog/shipwright-vs-claude-code-slack/).
 
 ## Three concrete differences
