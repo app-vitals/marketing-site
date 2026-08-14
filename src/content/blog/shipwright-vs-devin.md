@@ -85,7 +85,7 @@ If no: it's more nuanced. Devin is a mature, well-resourced product with enterpr
 
 The thing about Shipwright is that because it's built on Claude Code, any time Claude Code improves — any time Anthropic ships a better model, a new capability, a faster execution path — Shipwright gets better automatically. We're riding that curve, not trying to keep up with it.
 
-That's a different kind of competitive advantage. And it's one we're happy to put in your hands for free — you can [try Shipwright yourself](/products/shipwright/).
+That's a different kind of competitive advantage. And it's one we're happy to put in your hands for free — you can [try Shipwright yourself](/products/shipwright/). Want the people who built it to install and tune it on your pipeline instead? Look at the [design partner program](/shipwright/design-partners/).
 
 ---
 

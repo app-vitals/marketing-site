@@ -75,6 +75,6 @@ There is no lock-in to defend to anyone. You're not betting the company on a bla
 
 You didn't need this post to tell you autonomous delivery is coming. If you've built even part of it yourself, you've already felt where the wall is. The wall is orchestration — and it's built.
 
-If you need a committee to try this, we're probably too early for you. If you don't — let's run Shipwright on your pipeline. We're taking a small number of design partners and working directly with each one. **[Talk to us.](/contact)**
+If you need a committee to try this, we're probably too early for you. If you don't — let's run Shipwright on your pipeline. We're taking a small number of [design partners](/shipwright/design-partners/) and working directly with each one. **[Talk to us.](/contact)**
 
 Or if you'd rather kick the tires first, the whole thing is open source — the proof is in the commit history. **[Star it and read the code.](https://github.com/app-vitals/shipwright)**
