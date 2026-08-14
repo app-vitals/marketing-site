@@ -1,5 +1,6 @@
 ---
 import { BOOKING_URL } from '../consts';
+import SubscribeForm from './SubscribeForm.astro';
 
 const year = new Date().getFullYear();
 ---
@@ -53,7 +54,10 @@ const year = new Date().getFullYear();
         </div>
       </div>
     </div>
-    <div class="mt-16 pt-8 border-t border-white/[0.06] text-[13px] text-white/20">
+    <div class="mt-16 pt-8 border-t border-white/[0.06]">
+      <SubscribeForm variant="footer" />
+    </div>
+    <div class="mt-10 pt-8 border-t border-white/[0.06] text-[13px] text-white/20">
       &copy; {year} App Vitals. All rights reserved.
     </div>
   </div>
