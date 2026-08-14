@@ -1,0 +1,74 @@
+---
+import { KIT_SUBSCRIBE_FORM_ACTION } from '../consts';
+
+interface Props {
+  /** "primary" for the standalone blog placement, "footer" for the compact footer CTA. */
+  variant?: 'primary' | 'footer';
+}
+
+const { variant = 'primary' } = Astro.props;
+const isFooter = variant === 'footer';
+---
+
+{isFooter ? (
+  <div class="space-y-3">
+    <p class="text-white/20 font-mono text-xs uppercase tracking-[0.2em]">Subscribe</p>
+    <p class="text-white/40 text-[13px] leading-relaxed max-w-xs">
+      At most one email a week, only when there's something worth reading.
+    </p>
+    <form
+      action={KIT_SUBSCRIBE_FORM_ACTION}
+      method="post"
+      class="flex flex-col gap-2 max-w-xs"
+    >
+      <label for="subscribe-email-footer" class="sr-only">Email address</label>
+      <input
+        id="subscribe-email-footer"
+        type="email"
+        name="email_address"
+        required
+        placeholder="you@company.com"
+        class="w-full px-3.5 py-2.5 rounded-lg bg-white/[0.04] border border-white/[0.08] text-white text-sm placeholder:text-white/25 focus:outline-none focus:border-electric-400/50 focus:bg-white/[0.06] transition-colors duration-300"
+      />
+      <button
+        type="submit"
+        class="inline-flex items-center justify-center px-4 py-2.5 rounded-lg bg-electric-500 text-white text-sm font-semibold tracking-wide transition-all duration-300 hover:bg-electric-400 hover:shadow-[0_0_30px_rgba(59,130,246,0.3)]"
+      >
+        Subscribe
+      </button>
+    </form>
+  </div>
+) : (
+  <div class="reveal card-glow p-8 md:p-10 rounded-2xl border border-white/[0.06] bg-navy-900/40 relative overflow-hidden">
+    <div class="relative z-10">
+      <p class="font-mono text-[13px] tracking-widest uppercase text-electric-400 mb-4">Subscribe</p>
+      <h2 class="font-display text-2xl md:text-3xl font-bold tracking-tight mb-3">
+        Get the next post in your <span class="gradient-text">inbox</span>
+      </h2>
+      <p class="text-white/40 text-[15px] leading-relaxed mb-6 max-w-md">
+        At most one email a week, only when there's something worth reading.
+      </p>
+      <form
+        action={KIT_SUBSCRIBE_FORM_ACTION}
+        method="post"
+        class="flex flex-col sm:flex-row gap-3 max-w-md"
+      >
+        <label for="subscribe-email-primary" class="sr-only">Email address</label>
+        <input
+          id="subscribe-email-primary"
+          type="email"
+          name="email_address"
+          required
+          placeholder="you@company.com"
+          class="w-full sm:flex-1 px-4 py-3 rounded-full bg-white/[0.04] border border-white/[0.08] text-white text-[15px] placeholder:text-white/25 focus:outline-none focus:border-electric-400/50 focus:bg-white/[0.06] transition-colors duration-300"
+        />
+        <button
+          type="submit"
+          class="inline-flex items-center justify-center px-6 py-3 rounded-full bg-white text-navy-950 text-[15px] font-semibold tracking-wide transition-all duration-300 hover:shadow-[0_0_40px_rgba(59,130,246,0.3)] hover:scale-[1.02] whitespace-nowrap"
+        >
+          Subscribe
+        </button>
+      </form>
+    </div>
+  </div>
+)}

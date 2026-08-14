@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import SubscribeForm from '../../components/SubscribeForm.astro';
 import { getCollection } from 'astro:content';
 
 const posts = (await getCollection('blog')).sort(
@@ -41,6 +42,11 @@ const categoryColors: Record<string, string> = {
         <p class="text-lg text-white/50 max-w-2xl">
           Field notes from building and running autonomous programming inside real engineering orgs — the thinking that shaped <a href="/products/shipwright/" class="text-electric-400 hover:text-electric-300 underline underline-offset-4">Shipwright</a>, and what we're still learning as we install it.
         </p>
+      </div>
+
+      <!-- Subscribe -->
+      <div class="mb-16">
+        <SubscribeForm variant="primary" />
       </div>
 
       <!-- Posts -->
