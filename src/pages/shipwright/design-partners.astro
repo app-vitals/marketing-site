@@ -1,0 +1,348 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { BOOKING_URL } from '../../consts';
+
+// Service/Offer schema — provider reuses the same Organization shape as StructuredData.astro.
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Shipwright Design Partner Program',
+  serviceType: 'Autonomous delivery installation and pilot program',
+  description:
+    "Dan and Dave install Shipwright in your cloud, tune it to your stack, and run alongside your team for the first 8–10 weeks — install, tune, hand off.",
+  provider: {
+    '@type': 'Organization',
+    name: 'App Vitals',
+    url: 'https://app-vitals.com',
+  },
+  areaServed: 'US',
+  offers: {
+    '@type': 'Offer',
+    availability: 'https://schema.org/LimitedAvailability',
+  },
+};
+
+// FAQPage structured data — answers drawn only from claims already on this page.
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Is Shipwright free?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes — MIT-licensed, install it yourself, no accounts. The design-partner program is the done-with-you option for teams who want it running fast and tuned to their stack.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Does our code leave our environment?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'No. Shipwright runs entirely in your own cloud, on your codebase.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What happens when the pilot ends?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'You own the loop and keep every artifact it produced. The exit is clean by design.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What if we just want to try it ourselves first?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Do — that\'s the invitation. shipwrightharness.com, five-minute quickstart. Come back when you want it tuned.',
+      },
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title="Shipwright Design Partners - Autonomous Delivery, Installed & Tuned | App Vitals"
+  description="Have the team that built Shipwright install and run autonomous delivery on your pipeline. An 8-10 week, hands-on design-partner pilot with Dan and Dave."
+  extraSchema={[serviceSchema, faqSchema]}
+>
+  <!-- Hero -->
+  <section class="relative overflow-hidden">
+    <div class="glow-orb w-[500px] h-[500px] bg-electric-500/[0.07] top-[-10%] right-[-5%] animate-glow-drift" aria-hidden="true"></div>
+    <div class="glow-orb w-[400px] h-[400px] bg-accent-violet/[0.05] bottom-[0%] left-[-10%] animate-glow-drift-slow" aria-hidden="true"></div>
+
+    <div class="max-w-6xl mx-auto px-6 pt-24 pb-20 md:pt-32 md:pb-24 relative z-10">
+      <div class="max-w-3xl">
+        <p class="font-mono text-[13px] text-electric-400 tracking-[0.25em] uppercase mb-6 opacity-0 animate-fade-in-up">
+          Design Partner Program · App Vitals
+        </p>
+        <h1 class="font-display text-[clamp(2.5rem,5vw,4.5rem)] font-bold leading-[1.05] tracking-[-0.03em] opacity-0 animate-fade-in-up-delay-1">
+          Have the people who built <span class="gradient-text">Shipwright</span> run it on your pipeline.
+        </h1>
+        <p class="mt-8 text-[18px] text-white/50 max-w-xl leading-[1.7] opacity-0 animate-fade-in-up-delay-2">
+          Shipwright is free and MIT-licensed — install it yourself in five minutes. But if you'd rather have autonomous delivery working in your repo in weeks, not quarters, Dan and Dave install it, tune it to your stack, and run alongside your team for the first 8–10 weeks. A small cohort at a time, hands-on.
+        </p>
+        <div class="mt-10 flex flex-col gap-4 opacity-0 animate-fade-in-up-delay-3 sm:flex-row sm:items-center sm:gap-3">
+          <a
+            href={BOOKING_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center px-10 py-4 bg-white text-navy-950 rounded-full text-[16px] font-semibold tracking-wide transition-all duration-300 hover:shadow-[0_0_60px_rgba(59,130,246,0.3)] hover:scale-[1.02]"
+          >
+            Book a Discovery Call
+            <svg class="ml-2 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+            </svg>
+          </a>
+          <a
+            href="https://shipwrightharness.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center px-8 py-4 rounded-full border border-white/[0.12] bg-white/[0.04] text-[14px] text-white/70 font-mono tracking-wider transition-all duration-300 hover:border-white/25 hover:text-white"
+          >
+            Prefer to self-serve? Install it free →
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The wedge -->
+  <section class="relative">
+    <div class="gradient-divider"></div>
+    <div class="max-w-6xl mx-auto px-6 py-24 md:py-32">
+      <div class="mb-16 reveal">
+        <p class="font-mono text-[12px] text-electric-400 uppercase tracking-[0.3em] mb-4">Why a design partner, not a fullstack vendor</p>
+        <h2 class="font-display text-[clamp(1.75rem,4vw,3rem)] font-bold tracking-[-0.02em] max-w-2xl leading-[1.15]">
+          The delivery layer.<br />
+          <span class="text-white/40">Not another fullstack agent.</span>
+        </h2>
+        <p class="mt-6 text-[16px] text-white/40 max-w-2xl leading-[1.7]">
+          Shipwright is a thin, open-source harness on top of Claude Code — it ships zero model or inference code, runs entirely in your cloud on your codebase, and your code never leaves your control. That means a design-partner engagement is not a lock-in bet.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="card-glow p-8 rounded-2xl border border-white/[0.06] bg-white/[0.02] hover:border-white/[0.12] transition-all duration-500 reveal">
+          <h3 class="font-display text-[20px] font-semibold mb-3 tracking-tight">Transparent trial</h3>
+          <p class="text-[15px] text-white/40 leading-[1.7]">
+            The whole harness is open source. You can read exactly how it works before you commit to anything — nothing hidden behind a black box.
+          </p>
+        </div>
+
+        <div class="card-glow p-8 rounded-2xl border border-white/[0.06] bg-white/[0.02] hover:border-white/[0.12] transition-all duration-500 reveal" style="transition-delay: 100ms;">
+          <h3 class="font-display text-[20px] font-semibold mb-3 tracking-tight">Clean, cheap exit</h3>
+          <p class="text-[15px] text-white/40 leading-[1.7]">
+            If you ever leave, you lose Shipwright the engine — plan → queue → loop. But you keep everything it wrote: your CLAUDE.md, docs, skills, and commands, all vanilla Claude Code primitives that keep working on plain Claude Code. Leaving Devin, Cursor, or Copilot strands your whole workflow in their stack. Leaving Shipwright leaves your repo better than it found it.
+          </p>
+        </div>
+
+        <div class="card-glow p-8 rounded-2xl border border-white/[0.06] bg-white/[0.02] hover:border-white/[0.12] transition-all duration-500 reveal" style="transition-delay: 200ms;">
+          <h3 class="font-display text-[20px] font-semibold mb-3 tracking-tight">Learn it, then own it</h3>
+          <p class="text-[15px] text-white/40 leading-[1.7]">
+            The point of the partnership is that you end it able to run the loop yourselves. We hand off; we don't create a dependency.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="gradient-divider"></div>
+  </section>
+
+  <!-- Who this is for -->
+  <section class="max-w-6xl mx-auto px-6 py-24 md:py-32">
+    <div class="grid md:grid-cols-[1fr,1.5fr] gap-16 items-start">
+      <div class="reveal">
+        <p class="font-mono text-[12px] text-electric-400 uppercase tracking-[0.3em] mb-4">Who this is for</p>
+        <h2 class="font-display text-[clamp(1.5rem,3vw,2.25rem)] font-bold tracking-[-0.02em] leading-[1.2]">
+          A real backlog you want shipped.
+        </h2>
+      </div>
+      <div class="space-y-6 reveal" style="transition-delay: 150ms;">
+        <ul class="space-y-4">
+          <li class="flex items-start gap-3">
+            <span class="text-electric-400 mt-0.5 font-mono text-[13px]">→</span>
+            <span class="text-[15px] text-white/50 leading-[1.7]">Remote-first, US-based teams</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-electric-400 mt-0.5 font-mono text-[13px]">→</span>
+            <span class="text-[15px] text-white/50 leading-[1.7]">Engineering orgs of roughly 40–100+ engineers</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-electric-400 mt-0.5 font-mono text-[13px]">→</span>
+            <span class="text-[15px] text-white/50 leading-[1.7]">Already a Claude Code shop (or ready to become one) — adopting Shipwright is an extension, not a migration</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-electric-400 mt-0.5 font-mono text-[13px]">→</span>
+            <span class="text-[15px] text-white/50 leading-[1.7]">A real backlog you want shipped, not a demo you want to watch</span>
+          </li>
+        </ul>
+        <p class="text-[15px] text-white/40 leading-[1.7] pt-2">
+          If you need a committee to try this, we're probably too early for you. If you don't — let's run Shipwright on your pipeline.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Engagement phases -->
+  <section class="relative">
+    <div class="gradient-divider"></div>
+    <div class="max-w-6xl mx-auto px-6 py-24 md:py-32">
+      <div class="mb-16 reveal">
+        <p class="font-mono text-[12px] text-electric-400 uppercase tracking-[0.3em] mb-4">The engagement</p>
+        <h2 class="font-display text-[clamp(1.75rem,4vw,3rem)] font-bold tracking-[-0.02em] max-w-2xl leading-[1.15]">
+          8–10 weeks.<br />
+          <span class="text-white/40">Install → Tune → Hand off.</span>
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="card-glow p-8 rounded-2xl border border-electric-500/20 bg-electric-500/[0.03] reveal">
+          <p class="font-mono text-[12px] text-electric-400 uppercase tracking-[0.2em] mb-4">Weeks 1–2</p>
+          <h3 class="font-display text-[20px] font-semibold mb-3 tracking-tight">Install &amp; configure</h3>
+          <p class="text-[15px] text-white/40 leading-[1.7]">
+            Dan and Dave stand up Shipwright in your cloud, wire it to your repo, CI, and review process. Metrics dashboard live.
+          </p>
+        </div>
+
+        <div class="card-glow p-8 rounded-2xl border border-white/[0.06] bg-white/[0.02] reveal" style="transition-delay: 100ms;">
+          <p class="font-mono text-[12px] text-electric-400 uppercase tracking-[0.2em] mb-4">Weeks 3–6</p>
+          <h3 class="font-display text-[20px] font-semibold mb-3 tracking-tight">Tune to your stack</h3>
+          <p class="text-[15px] text-white/40 leading-[1.7]">
+            We customize the knobs, extensions, plan/queue config, and review policy to your product and your codebase — the last-mile infrastructure work off-the-shelf tools don't touch. Agents start shipping real, human-reviewed PRs against your backlog.
+          </p>
+        </div>
+
+        <div class="card-glow p-8 rounded-2xl border border-white/[0.06] bg-white/[0.02] reveal" style="transition-delay: 200ms;">
+          <p class="font-mono text-[12px] text-electric-400 uppercase tracking-[0.2em] mb-4">Weeks 7–10</p>
+          <h3 class="font-display text-[20px] font-semibold mb-3 tracking-tight">Hand off</h3>
+          <p class="text-[15px] text-white/40 leading-[1.7]">
+            Your team owns the loop. We step back to advisory. You keep everything — the harness config, the primitives, the artifacts.
+          </p>
+        </div>
+      </div>
+
+      <p class="mt-12 max-w-2xl text-[16px] text-white/45 leading-[1.8] reveal">
+        <span class="text-white/70">What you get:</span> the software plus Dan and Dave, hands-on, for the whole pilot — not a license and a docs link.
+      </p>
+    </div>
+    <div class="gradient-divider"></div>
+  </section>
+
+  <!-- Proof -->
+  <section class="max-w-6xl mx-auto px-6 py-24 md:py-32">
+    <div class="mb-16 reveal">
+      <p class="font-mono text-[12px] text-electric-400 uppercase tracking-[0.3em] mb-4">Proof</p>
+      <h2 class="font-display text-[clamp(1.75rem,4vw,3rem)] font-bold tracking-[-0.02em] max-w-2xl leading-[1.15]">
+        We ship with it every day.<br />
+        <span class="text-white/40">On our own metrics.</span>
+      </h2>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      <a href="/blog/85-prs-a-week/" class="card-glow block p-8 rounded-2xl border border-white/[0.06] bg-white/[0.02] hover:border-white/[0.12] transition-all duration-500 reveal">
+        <p class="font-display text-[28px] font-bold text-white mb-3">85 PRs a week</p>
+        <p class="text-[15px] text-white/40 leading-[1.7]">
+          Planned and reviewed by humans, written and shipped by agents — the same pipeline running against App Vitals' own business.
+        </p>
+        <span class="inline-flex items-center mt-4 text-[13px] text-electric-400 font-mono">Read the post →</span>
+      </a>
+
+      <a href="/blog/we-code-autonomously/" class="card-glow block p-8 rounded-2xl border border-white/[0.06] bg-white/[0.02] hover:border-white/[0.12] transition-all duration-500 reveal" style="transition-delay: 100ms;">
+        <p class="font-display text-[28px] font-bold text-white mb-3">393 PRs in two weeks</p>
+        <p class="text-[15px] text-white/40 leading-[1.7]">
+          We personally opened fewer than 10 of them.
+        </p>
+        <span class="inline-flex items-center mt-4 text-[13px] text-electric-400 font-mono">Read the post →</span>
+      </a>
+
+      <a href="/blog/the-three-month-bet/" class="card-glow block p-8 rounded-2xl border border-white/[0.06] bg-white/[0.02] hover:border-white/[0.12] transition-all duration-500 reveal" style="transition-delay: 200ms;">
+        <p class="font-display text-[28px] font-bold text-white mb-3">In production in six weeks</p>
+        <p class="text-[15px] text-white/40 leading-[1.7]">
+          Clients running it in production — not a demo, not a branch nobody merges.
+        </p>
+        <span class="inline-flex items-center mt-4 text-[13px] text-electric-400 font-mono">Read the post →</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="relative">
+    <div class="gradient-divider"></div>
+    <div class="max-w-6xl mx-auto px-6 py-24 md:py-32">
+      <div class="mb-16 reveal">
+        <p class="font-mono text-[12px] text-electric-400 uppercase tracking-[0.3em] mb-4">FAQ</p>
+        <h2 class="font-display text-[clamp(1.75rem,4vw,3rem)] font-bold tracking-[-0.02em] max-w-2xl leading-[1.15]">
+          Questions, answered honestly.
+        </h2>
+      </div>
+
+      <div class="max-w-3xl space-y-6">
+        <div class="card-glow p-8 rounded-2xl border border-white/[0.06] bg-white/[0.02] reveal">
+          <h3 class="font-display text-[18px] font-semibold mb-3 tracking-tight">Is Shipwright free?</h3>
+          <p class="text-[15px] text-white/45 leading-[1.7]">
+            Yes — MIT-licensed, install it yourself, no accounts. The design-partner program is the <em>done-with-you</em> option for teams who want it running fast and tuned to their stack.
+          </p>
+        </div>
+
+        <div class="card-glow p-8 rounded-2xl border border-white/[0.06] bg-white/[0.02] reveal" style="transition-delay: 75ms;">
+          <h3 class="font-display text-[18px] font-semibold mb-3 tracking-tight">Does our code leave our environment?</h3>
+          <p class="text-[15px] text-white/45 leading-[1.7]">
+            No. Shipwright runs entirely in your own cloud, on your codebase.
+          </p>
+        </div>
+
+        <div class="card-glow p-8 rounded-2xl border border-white/[0.06] bg-white/[0.02] reveal" style="transition-delay: 150ms;">
+          <h3 class="font-display text-[18px] font-semibold mb-3 tracking-tight">What happens when the pilot ends?</h3>
+          <p class="text-[15px] text-white/45 leading-[1.7]">
+            You own the loop and keep every artifact it produced. The exit is clean by design.
+          </p>
+        </div>
+
+        <div class="card-glow p-8 rounded-2xl border border-white/[0.06] bg-white/[0.02] reveal" style="transition-delay: 225ms;">
+          <h3 class="font-display text-[18px] font-semibold mb-3 tracking-tight">What if we just want to try it ourselves first?</h3>
+          <p class="text-[15px] text-white/45 leading-[1.7]">
+            Do — that's the invitation. <code class="text-electric-400 bg-electric-500/10 px-1.5 py-0.5 rounded text-[14px]">shipwrightharness.com</code>, five-minute quickstart. Come back when you want it tuned.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="gradient-divider"></div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="relative py-24 md:py-32">
+    <div class="glow-orb w-[600px] h-[400px] bg-electric-500/[0.05] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate-glow-drift" aria-hidden="true"></div>
+
+    <div class="max-w-6xl mx-auto px-6 relative z-10 text-center">
+      <div class="reveal">
+        <h2 class="font-display text-[clamp(1.75rem,4vw,3rem)] font-bold tracking-[-0.02em] leading-[1.15] max-w-2xl mx-auto">
+          Book a 30-minute discovery call with Dan and Dave.
+        </h2>
+        <p class="mt-6 text-[16px] text-white/40 max-w-xl mx-auto leading-[1.7]">
+          No pitch deck, no pressure — an honest assessment of whether autonomous programming fits your shape.
+        </p>
+        <div class="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center sm:gap-3">
+          <a
+            href={BOOKING_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center px-10 py-4 bg-white text-navy-950 rounded-full text-[16px] font-semibold tracking-wide transition-all duration-300 hover:shadow-[0_0_60px_rgba(59,130,246,0.3)] hover:scale-[1.02]"
+          >
+            Book a Discovery Call
+            <svg class="ml-2 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+            </svg>
+          </a>
+          <a
+            href="/contact"
+            class="inline-flex items-center justify-center px-8 py-4 rounded-full border border-white/[0.12] bg-white/[0.04] text-[14px] text-white/70 font-mono tracking-wider transition-all duration-300 hover:border-white/25 hover:text-white"
+          >
+            Have questions first? Contact us →
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
