@@ -71,7 +71,7 @@ So the exit is cheap and non-punitive. We're not betting you can't leave — we'
 - **Reach for the Slack integration / Claude Tag** when you want to *start* a discrete task fast — a fix, a review, a prototype — and you're happy to drive.
 - **Reach for Shipwright** when you have a *backlog* you want run: a queue of tasks that should get planned, built, PR'd, reviewed, and reconciled on a schedule while you stay at the approval gate.
 
-If you're weighing autonomous coding tools more broadly, the same "delivery system, not a session" lens is why we wrote [We Accidentally Built an Open-Source Alternative to Devin](/blog/shipwright-vs-devin/).
+If you're weighing autonomous coding tools more broadly, the same "delivery system, not a session" lens is why we wrote [We Accidentally Built an Open-Source Alternative to Devin](/blog/shipwright-vs-devin/). If it's community Claude Code task-queue tools you're weighing instead — [claude-queue](https://github.com/vasiliyk/claude-queue) or [Dispatch](https://github.com/bassimeledath/dispatch) — see the same lens applied in [Shipwright vs. Claude Code Task-Queue Tools](/blog/shipwright-vs-claude-code-orchestrators/).
 
 ---
 
