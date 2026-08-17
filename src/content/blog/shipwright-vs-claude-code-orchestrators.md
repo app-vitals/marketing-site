@@ -111,4 +111,4 @@ closes before you trust it with a backlog.
 
 ---
 
-*Shipwright is the open-source autonomous delivery agent for Claude Code. It's free, MIT-licensed, and runs in your own cloud — [see how it works](/products/shipwright/).*
+*Shipwright is the open-source autonomous delivery agent for Claude Code. It's free, MIT-licensed, and runs in your own cloud — [see how it works](/products/shipwright/). Want Dan and Dave to install and tune it on your pipeline? See the [design partner program](/shipwright/design-partners/).*
