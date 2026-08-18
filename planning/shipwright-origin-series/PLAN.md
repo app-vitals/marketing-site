@@ -368,6 +368,16 @@ dev-task are Dave's too, and only get mentioned in Dan's posts as things being
   surfaced") for anything Dan actually did by hand** — attribution of who-found-what
   matters a lot in this series, since the whole trust narrative hinges on human
   verification, not autonomous correctness.
+- **"I found the reason why" had no stated object — Dan: "the reason why what?"**
+  The phrase forward-referenced a point ("so the pipeline got careful") that hadn't
+  been stated yet, instead of connecting back to something already established
+  (the prior paragraph's "forced the whole pipeline to get reliable"). Fixed to "I
+  found out why it needed to be reliable" — ties back to an antecedent the reader
+  already has, instead of dangling forward toward one they don't have yet. **General
+  lesson, same family as the earlier dangling-negation fixes:** any clause shaped
+  like "the reason why," "that's why," or "here's what changed" needs its referent
+  either already on the page or immediately following in the same sentence — never
+  two-plus sentences ahead.
 - **Cut low-value specificity Dan flagged directly:**
   - The `~/.bodhi/workspace`-creation-date / mtime-preservation paragraph — Dan:
     "not sure we need this." Cut it from the post entirely.
