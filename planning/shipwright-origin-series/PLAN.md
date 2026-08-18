@@ -74,10 +74,24 @@ closing "earns its place" paragraph).
   - `2026-02-04` (commit `655a412`, authored by Dan) — `pr-review` plugin ships,
     including `/ca-review-prs` — this is where post 1's origin story becomes a real
     shipped tool
-- **`app-vitals/bodhi`** (access granted 2026-08-12) — Dan's personal Slack bot repo
-  ("Responds to DMs and @mentions, maintains per-thread conversation sessions, and
-  runs scheduled jobs via cron"). Source for post 2 — has the `todos.json` and cron
-  history. Not yet explored in depth; next step when starting post 2.
+- **`app-vitals/bodhi`** — this is the harness **code** repo (the Slack bot service
+  itself: `claude.ts`, `config.ts`, `cron.ts`, `sessions.ts`, `slack.ts`) — the
+  original harness that became Shipwright's agent harness. It does **not** contain
+  Dan's personal workspace state (no `SOUL.md`, `IDENTITY.md`, `todos.json`,
+  `crons.json` content, `comp-calc.ts`, billing scripts). Useful for structural
+  comparison (file-naming lineage into `agent/src/` in shipwright), not for the
+  personal-ops timeline.
+- **`dmcaulay/bodhi-workspace`** — Dan's actual `~/.bodhi/workspace`, analogous to
+  this agent's own PVC: a local git repo, never pushed to GitHub, so it can't be
+  cloned or granted as repo access. First commit `a3fb42b` "initial snapshot"
+  (2026-03-04) — **confirmed**, this is the real hash (an earlier attempt to match it
+  against `app-vitals/bodhi` failed because that's the wrong repo entirely). To
+  verify claims sourced from here: ask Dan to have Bodhi run `git log` locally and
+  paste the raw output back — see PR #99+ follow-up thread for the prompt template
+  used for post 2. Commit subject lines in this repo are unusually specific (ticket
+  IDs, exact file/flag names), so a plain `git log --format="%h %ad %s" --date=short
+  --reverse` was sufficient to verify post 2's claims without needing `--name-status`
+  or file-level history.
 - **Confirmed chronology** (from Dan directly + git evidence):
   - `2025-11-13` — first YouTube tutorial on the cloud agent system (FastAPI, Celery,
     Novita sandboxes; agent fixes tests against local Postgres, opens PR from sandbox)
@@ -86,8 +100,14 @@ closing "earns its place" paragraph).
   - `~2026-01` — LinkedIn post "the one thing I actually use my cloud agent for"
     (Dan: "7 months ago" as of 2026-08-05) — the post post-1 is built around
   - `2026-02-04` — `pr-review` plugin ships to the marketplace repo
-  - `~2026-02` — OpenClaw installed (Dan: uncertain of exact date)
-  - `~2026-03` — OpenClaw replaced by a Claude Code wrapper
+  - `2026-02-28` — Bodhi's first boot, on OpenClaw. `SOUL.md`/`IDENTITY.md` authored
+    (filesystem birth time + Dan's direct account; predates the workspace's own git
+    history, so not git-verifiable, but nothing in the repo contradicts it)
+  - `2026-03-04` — OpenClaw replaced by Claude Code, four days after first boot.
+    `~/.bodhi/workspace` created fresh; `bodhi-workspace` repo's first commit
+    (`a3fb42b`, "initial snapshot") lands same day
+  - `2026-03-27` — `vitals-os` added to the bodhi-workspace as a synced shared repo
+    (commit `e91bc46`), same day as vitals-os's own first commit
 
 ## Scope Note: Whose Story Is This?
 
@@ -103,7 +123,7 @@ dev-task are Dave's too, and only get mentioned in Dan's posts as things being
 | # | Topic | Status | Links |
 |---|-------|--------|-------|
 | 1 | Cloud agent → PR review origin (`/ca-review-prs`, ships as `pr-review` plugin Feb 4 2026) | **Published** | [#89](https://github.com/app-vitals/marketing-site/pull/89) (merged), [#90](https://github.com/app-vitals/marketing-site/pull/90) (merged, accuracy pass), [#91](https://github.com/app-vitals/marketing-site/pull/91) (open, further accuracy passes) — `src/content/blog/cloud-agent-review-origin.md` |
-| 2 | OpenClaw + the original `todos.json` — queuing work with cron jobs before any of this had a name | Planned, not started | Source: `app-vitals/bodhi` repo history |
+| 2 | OpenClaw + the original `todos.json` — queuing work with cron jobs before any of this had a name | Drafted, PR open | `src/content/blog/openclaw-todos-origin.md`, branch `content/openclaw-todos-origin` |
 | 3+ | TBD — likely where plan-session/dev-task get pulled in as Dan's and Dave's threads start to merge into one pipeline | Not planned yet | — |
 
 ## Lessons From Post 1 (apply going forward)
@@ -120,3 +140,24 @@ dev-task are Dave's too, and only get mentioned in Dan's posts as things being
   was revised three times: cron/Trello specifics → "vague shapes" reframe → cut
   entirely → restored with real categories). Re-read the full post after each batch
   of edits, not just the diff, to catch redundancy with nearby paragraphs.
+
+## Lessons From Post 2 (apply going forward)
+
+- **A repo mentioned by name may not be the repo that has the data.** Initial research
+  cloned `app-vitals/bodhi` expecting Dan's workspace history and found none of it —
+  that repo is the harness *code*, not Dan's personal workspace. The workspace lives
+  in `dmcaulay/bodhi-workspace`, a local-only git repo never pushed to GitHub (same
+  shape as this agent's own PVC). When a claim can't be found where expected, say so
+  and ask, rather than assuming the claim is wrong or the repo is stale.
+- **Same-day claims get compressed in retelling.** Two of Dan's recalled details were
+  off once checked against the actual commit timestamps: the marketplace repo was
+  vendored into the workspace and moved back out *the same day* (Mar 12), not "two
+  days later"; the weekly billing cron was a single Mar 25 commit, not a Mar 25–27
+  span. Neither was wrong in substance, just compressed — worth a quick date check
+  even when the story sounds precise.
+- **When direct repo access isn't possible, ask for a raw `git log` paste instead of
+  giving up on verification.** Handing over a specific, copy-pasteable prompt (for
+  Dan to relay to Bodhi) got a 645-commit raw log back, which was enough to confirm
+  nearly every claim in the post — including the exact commit hash and message for
+  the vitals-os handoff (`e91bc46`) that looked fabricated when checked against the
+  wrong repo.
