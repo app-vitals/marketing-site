@@ -157,7 +157,8 @@ dev-task are Dave's too, and only get mentioned in Dan's posts as things being
 |---|-------|--------|-------|
 | 1 | Cloud agent → PR review origin (`/ca-review-prs`, ships as `pr-review` plugin Feb 4 2026) | **Published** | [#89](https://github.com/app-vitals/marketing-site/pull/89) (merged), [#90](https://github.com/app-vitals/marketing-site/pull/90) (merged, accuracy pass), [#91](https://github.com/app-vitals/marketing-site/pull/91) (open, further accuracy passes) — `src/content/blog/cloud-agent-review-origin.md` |
 | 2 | OpenClaw + the original `todos.json` — queuing work with cron jobs before any of this had a name | **Published**, follow-up corrections in progress | [#100](https://github.com/app-vitals/marketing-site/pull/100) (merged) — `src/content/blog/openclaw-todos-origin.md`; see `content/openclaw-todos-followup` branch for post-merge corrections |
-| 3+ | TBD — likely where plan-session/dev-task get pulled in as Dan's and Dave's threads start to merge into one pipeline | Not planned yet | — |
+| 3 | The vitals-os merge — Dave brings plan-session/dev-task, Dan brings Bodhi's todos/crons/review habit, they stop being two side projects and become one pipeline | Not planned yet | — |
+| 4+ | The task store's real origin: `todos.json` got put behind an interface, a GitHub Issues–backed implementation was built alongside it, running both was "split-brained" (the agent got confused switching between them), and multi-agent-on-one-repo needs (shared task queue, tighter concurrency control) forced ripping both out and building the task store from scratch | Not planned yet — **don't fold this into post 3**, Dan confirmed 2026-08-18 it's its own post | — |
 
 ## Lessons From Post 1 (apply going forward)
 
@@ -320,6 +321,14 @@ dev-task are Dave's too, and only get mentioned in Dan's posts as things being
   other manually) wasn't disputed and stayed in. If Dan wants the "things had just
   gotten more complicated" color back in, ask what specifically changed before
   writing it in.
+- **Considered, then decided against, teasing the task store's origin at the end of
+  post 2.** Asked whether `todos.json` directly became today's shared task store —
+  it didn't, not directly. See the Post Roster's new row 4+ for the real arc
+  (interface → GitHub Issues implementation → split-brain confusion → multi-agent
+  concurrency needs → task store built from scratch to replace both). That's its own
+  post, not part of post 3's vitals-os merge. Don't add a task-store hint to post 2's
+  closing line — the real story is too specific to tease accurately in one sentence,
+  and it would either oversimplify or get ahead of a post that isn't next.
 - **Cut low-value specificity Dan flagged directly:**
   - The `~/.bodhi/workspace`-creation-date / mtime-preservation paragraph — Dan:
     "not sure we need this." Cut it from the post entirely.
