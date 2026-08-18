@@ -156,7 +156,7 @@ dev-task are Dave's too, and only get mentioned in Dan's posts as things being
 | # | Topic | Status | Links |
 |---|-------|--------|-------|
 | 1 | Cloud agent → PR review origin (`/ca-review-prs`, ships as `pr-review` plugin Feb 4 2026) | **Published** | [#89](https://github.com/app-vitals/marketing-site/pull/89) (merged), [#90](https://github.com/app-vitals/marketing-site/pull/90) (merged, accuracy pass), [#91](https://github.com/app-vitals/marketing-site/pull/91) (open, further accuracy passes) — `src/content/blog/cloud-agent-review-origin.md` |
-| 2 | OpenClaw + the original `todos.json` — queuing work with cron jobs before any of this had a name | **Published**, still taking accuracy/framing passes | [#100](https://github.com/app-vitals/marketing-site/pull/100), [#101](https://github.com/app-vitals/marketing-site/pull/101), [#102](https://github.com/app-vitals/marketing-site/pull/102) (all merged) — `src/content/blog/openclaw-todos-origin.md`; branch `content/openclaw-hardware-legacy` adding the OpenClaw-hardware/PVC-lineage section |
+| 2 | OpenClaw + the original `todos.json` — queuing work with cron jobs before any of this had a name | **Published**, stable | [#100](https://github.com/app-vitals/marketing-site/pull/100), [#101](https://github.com/app-vitals/marketing-site/pull/101), [#102](https://github.com/app-vitals/marketing-site/pull/102), [#103](https://github.com/app-vitals/marketing-site/pull/103) (all merged) — `src/content/blog/openclaw-todos-origin.md`; small post-#103 polish on branch `content/openclaw-final-polish` |
 | 3 | The vitals-os merge — Dave brings plan-session/dev-task, Dan brings Bodhi's todos/crons/review habit, they stop being two side projects and become one pipeline. **Note (2026-08-18, Dan):** the entire billing automation system was originally built inside Bodhi's own workspace (not partially — the whole thing) and was the first system eventually migrated out to vitals-os. That migration — what moved, why, what broke or had to change in the move — is worth its own beat in this post, likely the opening one. Post 2 (as published) doesn't claim billing ever left Bodhi's workspace, so no correction needed there — this is purely material for post 3. | Not planned yet | — |
 | 4+ | The task store's real origin: `todos.json` got put behind an interface, a GitHub Issues–backed implementation was built alongside it, running both was "split-brained" (the agent got confused switching between them), and multi-agent-on-one-repo needs (shared task queue, tighter concurrency control) forced ripping both out and building the task store from scratch | Not planned yet — **don't fold this into post 3**, Dan confirmed 2026-08-18 it's its own post | — |
 
@@ -177,6 +177,21 @@ dev-task are Dave's too, and only get mentioned in Dan's posts as things being
 
 ## Lessons From Post 2 (apply going forward)
 
+- **Post-merge polish, after PR #103 (2026-08-18):** two small fixes on a fresh
+  branch since #103 was already merged. (1) Added a link to
+  [openclaw.ai](https://openclaw.ai/) on first mention — the post references
+  OpenClaw extensively (including in the title) but never linked it; matches the
+  series' pattern of citing real external sources on first mention. (2) Dan flagged
+  "Nothing else in this post... works without that space underneath it" as
+  overstated — "works without" asserts strict impossibility, which doesn't hold for
+  every item listed (crons/schedules don't strictly require persistence the way the
+  todo list does). Softened to "assumes that space is there" — accurate to what's
+  actually true without the absolute claim. **Also considered and declined:**
+  visuals/diagrams for the post — genuinely could help the densest section (the
+  three-way entropy-patrol/task-store mapping), but no blog post on this site has
+  ever embedded an image (plain markdown only, `.prose img` CSS hook exists but
+  unused across all ~48 posts), so it'd be a first with no house style to match and
+  no image-generation capability on this side — Dan decided to skip it for now.
 - **Reordered the "echoes into Shipwright" paragraph to lead with execute cron/
   `todos.json`, per Dan's consistent preference (2026-08-18): "focus on eng execute
   and todos.json first and then audit cron."** The paragraph still had audit-cron-
