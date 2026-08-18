@@ -321,14 +321,30 @@ dev-task are Dave's too, and only get mentioned in Dan's posts as things being
   other manually) wasn't disputed and stayed in. If Dan wants the "things had just
   gotten more complicated" color back in, ask what specifically changed before
   writing it in.
-- **Considered, then decided against, teasing the task store's origin at the end of
-  post 2.** Asked whether `todos.json` directly became today's shared task store —
-  it didn't, not directly. See the Post Roster's new row 4+ for the real arc
-  (interface → GitHub Issues implementation → split-brain confusion → multi-agent
-  concurrency needs → task store built from scratch to replace both). That's its own
-  post, not part of post 3's vitals-os merge. Don't add a task-store hint to post 2's
-  closing line — the real story is too specific to tease accurately in one sentence,
-  and it would either oversimplify or get ahead of a post that isn't next.
+- **Task store hint: added, but light — a one-clause aside, not the mechanism.**
+  First instinct was to either omit it entirely (too complex to tease accurately) or
+  spell out the real arc (too much for one sentence). Dan's actual ask was simpler:
+  something as brief as the existing entropy-patrol aside in the same paragraph.
+  Landed on: "That queue is also an early ancestor of the shared task store the
+  whole pipeline runs on now, though the path between them is its own story, for
+  another post." No mechanism claim, just acknowledges the throughline exists. See
+  the Post Roster's row 4+ for the real arc (interface → GitHub Issues
+  implementation → split-brain confusion → multi-agent concurrency needs → task
+  store built from scratch) — that's still its own future post, not part of post 3.
+- **Billing section was changelog trivia, trimmed to the actual point.** Dan asked
+  "is this relevant? what's the point we're making?" about a paragraph listing six-
+  plus technical changes (payments/triggers/invoices/notes, Resend→Gmail, shared
+  calc library, date-range flags, bonus math fix, period-end fix). The section's own
+  point — stated in its closing line — is "small bugs = real money computed wrong,"
+  which only needs one or two concrete examples, not a full changelog. Trimmed to
+  the bonus-math bug and the period-end bug (the two that most vividly show "real
+  money wrong until found") plus the over-hours approval-gate detail (ties back to
+  the money-gets-approval-gates pattern from the crons section). Cut the Resend→
+  Gmail swap and the shared-calculation-library migration — accurate, but neither
+  serves the point being made. **Recurring pattern worth naming:** when a paragraph
+  is a list of technical changes, check whether it's illustrating the section's
+  actual point or just proving research was thorough — the latter belongs in
+  PLAN.md, not the post.
 - **Cut low-value specificity Dan flagged directly:**
   - The `~/.bodhi/workspace`-creation-date / mtime-preservation paragraph — Dan:
     "not sure we need this." Cut it from the post entirely.
