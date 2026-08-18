@@ -156,7 +156,7 @@ dev-task are Dave's too, and only get mentioned in Dan's posts as things being
 | # | Topic | Status | Links |
 |---|-------|--------|-------|
 | 1 | Cloud agent → PR review origin (`/ca-review-prs`, ships as `pr-review` plugin Feb 4 2026) | **Published** | [#89](https://github.com/app-vitals/marketing-site/pull/89) (merged), [#90](https://github.com/app-vitals/marketing-site/pull/90) (merged, accuracy pass), [#91](https://github.com/app-vitals/marketing-site/pull/91) (open, further accuracy passes) — `src/content/blog/cloud-agent-review-origin.md` |
-| 2 | OpenClaw + the original `todos.json` — queuing work with cron jobs before any of this had a name | **Published**, follow-up corrections in progress | [#100](https://github.com/app-vitals/marketing-site/pull/100) (merged) — `src/content/blog/openclaw-todos-origin.md`; see `content/openclaw-todos-followup` branch for post-merge corrections |
+| 2 | OpenClaw + the original `todos.json` — queuing work with cron jobs before any of this had a name | **Published**, still taking accuracy/framing passes | [#100](https://github.com/app-vitals/marketing-site/pull/100), [#101](https://github.com/app-vitals/marketing-site/pull/101), [#102](https://github.com/app-vitals/marketing-site/pull/102) (all merged) — `src/content/blog/openclaw-todos-origin.md`; branch `content/openclaw-hardware-legacy` adding the OpenClaw-hardware/PVC-lineage section |
 | 3 | The vitals-os merge — Dave brings plan-session/dev-task, Dan brings Bodhi's todos/crons/review habit, they stop being two side projects and become one pipeline | Not planned yet | — |
 | 4+ | The task store's real origin: `todos.json` got put behind an interface, a GitHub Issues–backed implementation was built alongside it, running both was "split-brained" (the agent got confused switching between them), and multi-agent-on-one-repo needs (shared task queue, tighter concurrency control) forced ripping both out and building the task store from scratch | Not planned yet — **don't fold this into post 3**, Dan confirmed 2026-08-18 it's its own post | — |
 
@@ -177,6 +177,23 @@ dev-task are Dave's too, and only get mentioned in Dan's posts as things being
 
 ## Lessons From Post 2 (apply going forward)
 
+- **Missed a main theme on the first pass: OpenClaw's own hardware is what became
+  the PVC pattern (Dan's words, 2026-08-18):** "one of the main things about
+  openclaw that carried over to shipwright agents. openclaw was running on it's own
+  hardware. in shipwright it's the pvc that survives shipwright... self modifying
+  software/agents that run in their own isolated environment." Added a dedicated
+  section, "The Part of OpenClaw That Actually Mattered," right after the Claude
+  Code migration and before the Slack section — Bodhi's Raspberry Pi wasn't just
+  a fun detail, it established the pattern (agent + durable, isolated, writable
+  space of its own) that everything else in the post depends on: the todo list, the
+  crons, the eng-audit loop all only work because that persistent space exists
+  underneath them. Also removed the vague "heartbeat crons, delegation axes... all
+  carried forward" clause from the Trust section — it was never explained and this
+  new section replaces it with something concrete. **Lesson for future posts:**
+  when Dan describes what "carried over" from one system to the next, ask whether
+  it's an infrastructure/architecture pattern (durable, load-bearing, worth its own
+  section) versus a feature-level detail (a clause is enough) — don't default to
+  folding everything into one aside.
 - **A repo mentioned by name may not be the repo that has the data.** Initial research
   cloned `app-vitals/bodhi` expecting Dan's workspace history and found none of it —
   that repo is the harness *code*, not Dan's personal workspace. The workspace lives
