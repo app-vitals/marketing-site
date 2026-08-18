@@ -204,12 +204,17 @@ dev-task are Dave's too, and only get mentioned in Dan's posts as things being
   machine, able to rewrite its own code, is exactly the kind of thing you should be
   nervous about handing real autonomy to — that's where trust actually had to
   start") so it sets up Trust's opening causally instead of Trust starting cold.
-  Also cut "the hardware changed, a Pi on my desk to a volume in the cloud" from the
-  section — that detail referenced the Claude Code migration, which now comes
-  *after* this section in reading order, so keeping it would have recreated the
-  exact forward-reference bug just fixed. **Lesson: reordering sections isn't just
-  cut-and-paste — recheck every sentence in a moved section for references to
-  content that used to be earlier but is now later** (or vice versa).
+  **Correction (still 2026-08-18):** initially also cut "the hardware changed, a Pi
+  on my desk to a volume in the cloud" out of caution about forward-referencing the
+  March 4 migration — overly cautious. On reflection with Dan, that detail isn't
+  about the March 4 OpenClaw→Claude Code migration at all (Bodhi likely stayed on
+  the physical Pi through that); it's a present-day comparison to today's cloud-PVC
+  Shipwright agents, same timeless "today" framing as the sentence right before it.
+  Restored. **Lesson: reordering sections isn't just cut-and-paste — recheck every
+  sentence in a moved section for references to content that used to be earlier but
+  is now later** (or vice versa) — but also distinguish a genuine forward-reference
+  from a present-day/timeless comparison before cutting; not every mention of a
+  later-feeling detail is actually unsafe to keep.
 - **A second, distinct "encoding" bug found on a full-article pass: forward-
   referencing later sections before they exist to the reader.** Dan: "in this
   statement we kind of get ahead of the article by talking about things other

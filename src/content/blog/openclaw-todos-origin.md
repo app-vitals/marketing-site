@@ -19,7 +19,7 @@ Bodhi booted for the first time on February 28, 2026, over Telegram — the easi
 
 OpenClaw ran on its own hardware. Bodhi had a Raspberry Pi that was just its machine — not a shared server, not a chat session that resets, an actual persistent home. It could write something to disk and expect it to still be there tomorrow. It could record what it learned and build on that instead of starting from zero every conversation.
 
-That's the same shape a Shipwright agent's own persistent storage is today — not a database it queries, a workspace it lives in. Self-modifying software needs somewhere of its own to actually be self-modifying: write code, run it, remember what happened, do it again tomorrow. Nothing else in this post — not the lists, not the schedules, not the safety rails — works without that space underneath it.
+That's the same shape a Shipwright agent's own persistent storage is today — not a database it queries, a workspace it lives in. The hardware changed, a Pi on my desk to a volume in the cloud, but the pattern didn't: self-modifying software needs somewhere of its own to actually be self-modifying. Write code, run it, remember what happened, do it again tomorrow. Nothing else in this post — not the lists, not the schedules, not the safety rails — works without that space underneath it.
 
 But an agent with its own machine — able to rewrite its own code, run it, and act on skills without a human in the loop unless it decided on its own to stop and ask — is exactly the kind of thing you should be nervous about handing real autonomy to. That's where trust actually had to start.
 
