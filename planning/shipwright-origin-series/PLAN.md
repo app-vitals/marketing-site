@@ -156,8 +156,8 @@ dev-task are Dave's too, and only get mentioned in Dan's posts as things being
 | # | Topic | Status | Links |
 |---|-------|--------|-------|
 | 1 | Cloud agent → PR review origin (`/ca-review-prs`, ships as `pr-review` plugin Feb 4 2026) | **Published** | [#89](https://github.com/app-vitals/marketing-site/pull/89) (merged), [#90](https://github.com/app-vitals/marketing-site/pull/90) (merged, accuracy pass), [#91](https://github.com/app-vitals/marketing-site/pull/91) (open, further accuracy passes) — `src/content/blog/cloud-agent-review-origin.md` |
-| 2 | OpenClaw + the original `todos.json` — queuing work with cron jobs before any of this had a name | **Published**, follow-up corrections in progress | [#100](https://github.com/app-vitals/marketing-site/pull/100) (merged) — `src/content/blog/openclaw-todos-origin.md`; see `content/openclaw-todos-followup` branch for post-merge corrections |
-| 3 | The vitals-os merge — Dave brings plan-session/dev-task, Dan brings Bodhi's todos/crons/review habit, they stop being two side projects and become one pipeline | Not planned yet | — |
+| 2 | OpenClaw + the original `todos.json` — queuing work with cron jobs before any of this had a name | **Published**, still taking accuracy/framing passes | [#100](https://github.com/app-vitals/marketing-site/pull/100), [#101](https://github.com/app-vitals/marketing-site/pull/101), [#102](https://github.com/app-vitals/marketing-site/pull/102) (all merged) — `src/content/blog/openclaw-todos-origin.md`; branch `content/openclaw-hardware-legacy` adding the OpenClaw-hardware/PVC-lineage section |
+| 3 | The vitals-os merge — Dave brings plan-session/dev-task, Dan brings Bodhi's todos/crons/review habit, they stop being two side projects and become one pipeline. **Note (2026-08-18, Dan):** the entire billing automation system was originally built inside Bodhi's own workspace (not partially — the whole thing) and was the first system eventually migrated out to vitals-os. That migration — what moved, why, what broke or had to change in the move — is worth its own beat in this post, likely the opening one. Post 2 (as published) doesn't claim billing ever left Bodhi's workspace, so no correction needed there — this is purely material for post 3. | Not planned yet | — |
 | 4+ | The task store's real origin: `todos.json` got put behind an interface, a GitHub Issues–backed implementation was built alongside it, running both was "split-brained" (the agent got confused switching between them), and multi-agent-on-one-repo needs (shared task queue, tighter concurrency control) forced ripping both out and building the task store from scratch | Not planned yet — **don't fold this into post 3**, Dan confirmed 2026-08-18 it's its own post | — |
 
 ## Lessons From Post 1 (apply going forward)
@@ -177,6 +177,200 @@ dev-task are Dave's too, and only get mentioned in Dan's posts as things being
 
 ## Lessons From Post 2 (apply going forward)
 
+- **Reordered the "echoes into Shipwright" paragraph to lead with execute cron/
+  `todos.json`, per Dan's consistent preference (2026-08-18): "focus on eng execute
+  and todos.json first and then audit cron."** The paragraph still had audit-cron-
+  first ordering left over from before the section was rebalanced. Reordering it
+  naively would have recreated the exact referent bug fixed two commits earlier
+  (moving the audit mention next to "the path from one to the other" makes that
+  closing line ambiguous again). Fixed by moving "the path from one to the other"
+  to sit directly after the list/execute-cron → task-store/loop mapping — its actual
+  referent — and pushing the audit-cron mention to the very end of the paragraph
+  ("The audit cron, meanwhile...— always the smaller half of the pair"), which also
+  reinforces the "audit is secondary" framing by literal position. **Reinforces the
+  standing lesson: reordering for emphasis and reordering for correctness aren't
+  independent — check both every time.**
+- **Added a synthesis beat to the billing section tying it back to everything
+  established earlier (Dan, 2026-08-18):** "make the point that bodhi wrote this
+  code in his workspace and executed it using crons... and used lint and test to
+  verify as well as the guardrails." Billing was introduced as if starting fresh;
+  it's actually the payoff of every pattern the post already built up — persistent
+  workspace, cron execution, lint/test verification, guardrails. Added: "Bodhi
+  wrote the fix the same way it did everything else by then: code living in its own
+  workspace, run on a cron, checked with lint and tests, bound by the same
+  guardrails as everything else it touched." Good general pattern for later
+  sections too — check whether a section's opening treats an established theme as
+  brand new instead of calling back to it.
+- **Rebalanced "The First Thing I Set Bodhi Up to Do in the Background" — execute
+  cron + `todos.json` are the story, the audit cron is a nice-to-have (Dan,
+  2026-08-18):** "the focus should be on todos.json and eng execute... the audit is
+  a nice to have and was inspired by openai['s harness engineering
+  writing'](https://openai.com/index/harness-engineering/)." Prior drafts treated
+  the audit/execute pair as co-equal. Reworked: execute cron + the general work
+  queue lead the section; the audit cron is introduced second, explicitly as a
+  nice-to-have, with a real citation to its source of inspiration (a genuine
+  external reference, fits the series' whole "specifics being true" thesis). Also
+  reworded the Crons section's bridge line from "two other crons... were exactly
+  that" to singular ("one more piece ran in parallel") to match the new emphasis.
+  **Caught a referent bug the reorder introduced:** moving the audit-cron/entropy-
+  patrol mention to right before "the path from one to the other" made that closing
+  line's "one"/"the other" ambiguous (audit↔entropy-patrol vs. list↔task-store).
+  Fixed by keeping the audit/entropy-patrol aside brief and early in that paragraph,
+  then building to the list/execute-cron → task-store/loop mapping right before the
+  closing sentence, so "one to the other" has an unambiguous, adjacent antecedent
+  again. **Standing lesson, reinforced again:** any time content gets reordered or
+  re-weighted, re-check every pronoun/comparative in the surrounding sentences —
+  this is now the single most common bug class in this post's edit history.
+- **Added Dan's real concrete evidence for "I knew Claude Code's internals a lot
+  better" (2026-08-18):** "the damage control plugin and knew how to configure
+  allow and deny lists" — he already had a damage-control plugin built for Claude Code
+  and already knew how to configure its allow/deny permission lists. The prior
+  version just asserted the claim abstractly; this makes it specific and verifiable
+  in spirit, matching the series' whole thesis (trust through specifics being true,
+  not assertion). Worked into the Trust section right where the abstract claim was.
+- **Bridge sentence into Trust needed a second dimension: autonomous execution, not
+  just self-modification (Dan, 2026-08-18):** "running code and/or skills without a
+  human being in the loop unless it decided to stop an ask for approval." Rewriting
+  its own code was already in the bridge line; the bigger point Dan wanted was that
+  *running* code/skills without a human checkpoint was the default, and human
+  approval was something the agent itself chose to invoke, not a structural gate
+  someone else controlled. Updated: "able to rewrite its own code, run it, and act
+  on skills without a human in the loop unless it decided on its own to stop and
+  ask." That's a scarier, more specific claim than self-modification alone, and it's
+  the more accurate reason trust had to be built deliberately.
+- **Moved "The Part of OpenClaw That Actually Mattered" earlier, before Trust, per
+  Dan's structural note (2026-08-18):** "maybe the part of openclaw that actually
+  matter should be before trust and could be altered slightly to help frame why
+  trust was important for an ai agent running on it's own hardware and capable of
+  modifying itself." New order: Who Bodhi Was → **The Part of OpenClaw That Actually
+  Mattered** → Trust Had to Be Built → Slack → Crons → eng-todos → Money → Handoff.
+  Added a closing bridge sentence to the hardware section ("an agent with its own
+  machine, able to rewrite its own code, is exactly the kind of thing you should be
+  nervous about handing real autonomy to — that's where trust actually had to
+  start") so it sets up Trust's opening causally instead of Trust starting cold.
+  **Correction (still 2026-08-18):** initially also cut "the hardware changed, a Pi
+  on my desk to a volume in the cloud" out of caution about forward-referencing the
+  March 4 migration — overly cautious. On reflection with Dan, that detail isn't
+  about the March 4 OpenClaw→Claude Code migration at all (Bodhi likely stayed on
+  the physical Pi through that); it's a present-day comparison to today's cloud-PVC
+  Shipwright agents, same timeless "today" framing as the sentence right before it.
+  Restored. **Lesson: reordering sections isn't just cut-and-paste — recheck every
+  sentence in a moved section for references to content that used to be earlier but
+  is now later** (or vice versa) — but also distinguish a genuine forward-reference
+  from a present-day/timeless comparison before cutting; not every mention of a
+  later-feeling detail is actually unsafe to keep.
+- **A second, distinct "encoding" bug found on a full-article pass: forward-
+  referencing later sections before they exist to the reader.** Dan: "in this
+  statement we kind of get ahead of the article by talking about things other
+  sections before introducing them." Two instances, both in "The Part of OpenClaw
+  That Actually Mattered": (1) "The crons... weren't the biggest thing that carried
+  over" named crons two sections before the Crons section actually exists; (2)
+  "Everything else in this post — the todo list, the crons, the eng-audit loop —
+  only works because..." named three specific concepts, none introduced yet at that
+  point (todo list and eng-audit loop don't appear until two sections later). Fixed
+  by (1) dropping the crons half of the comparison, keeping only the trust-building
+  callback (which *is* valid — it's the immediately preceding section), and (2)
+  genericizing the list to "not the lists, not the schedules, not the safety rails"
+  — vague common nouns that preview what's coming without requiring the reader to
+  already recognize them as named concepts. **This is a different failure mode from
+  edit-history leakage** (referencing our discarded drafts) even though both read as
+  "assumes context the reader doesn't have." Checklist for future full-article
+  passes: for every specific named thing a sentence references, confirm it's either
+  (a) already introduced earlier in *this* article, (b) a real-world present-day
+  fact needing no article context, or (c) an explicitly linked cross-post
+  reference — anything else needs to go generic or move.
+- **Dropped "fixed the small ones, broke the large ones down" from the execute-cron
+  description — agreed with Dan's read.** He confirmed the mapping nuance flagged
+  above was real, then asked whether to just gloss it: "the breaking things down is
+  key, but we don't really say why here." Rather than explain the decomposition
+  behavior's actual significance (which would need real space to do right — why
+  breaking large tasks down mattered, what happened to the pieces), cut it and let
+  the sentence focus purely on executing: "picked the next item... and worked
+  through it." Simpler and still accurate; doesn't assert a mapping to
+  today's shipwright-loop that isn't quite right. If a future post wants to tell
+  the decomposition story properly, it deserves its own explanation, not a
+  three-word aside.
+- **Same edit-history-leakage bug recurred in the very next sentence I wrote.**
+  "The audit cron was never more than entropy patrol is now" only makes sense as a
+  rebuttal of the "broader than entropy patrol" claim I'd just walked back — a
+  reader never saw that claim, so "was never more than" reads as an unexplained
+  defensive hedge. Dan: "you're doing it again." Fixed to a plain positive
+  statement ("did what entropy patrol does now"). **This is now a standing
+  self-check, not a one-off:** after any correction, reread the very next sentence
+  I write for "was never," "isn't just," "wasn't really," etc. — these constructions
+  are the tell that I'm still arguing against the discarded draft instead of just
+  stating the corrected fact.
+- **Re-verified the corrected mapping directly against the shipwright codebase**
+  (`plugins/shipwright/CLAUDE.md`) after Dan asked me to reread the section: entropy
+  patrol is explicitly documented as a "maintenance task" separate from "the core
+  shipwright loop (dev-task, review, patch, deploy)," and the loop dispatches work
+  from the task store regardless of source — both match what the post now says.
+  **One nuance not written into the post, flagged for awareness:** the execute
+  cron's "fixed the small ones, broke the large ones down" behavior doesn't map
+  purely onto today's shipwright-loop (a pure dispatcher) — the decomposition part
+  is closer to what plan-session/dev-task do now. Bodhi's single execute cron did
+  the work that's since split across multiple specialized pieces. Didn't add this
+  distinction to the post itself (it's more architectural precision than a blog
+  post needs), but worth knowing if post 3 or later posts dig into how the loop
+  actually evolved.
+- **Corrected the entropy-patrol/task-store architectural mapping — it's a
+  three-way split, not a two-way "broader" comparison (Dan, 2026-08-18):** "it's
+  bodhi split as well? the audit cron was just about finding things like entropy.
+  the todos.json and eng execute were the early versions of task store and the
+  shipwright loop." My first version said "what I built for Bodhi was broader than
+  entropy patrol" as a single comparison — wrong framing. Verified against the
+  actual skill definitions (`plugins/shipwright/skills/entropy-scan/SKILL.md`,
+  `entropy-fix/SKILL.md`) before Dan's correction: entropy-scan/entropy-fix really
+  is scan-and-report-only, same narrow scope as the audit cron. The correct mapping
+  is three pieces, not two: **audit cron ↔ entropy patrol** (both find-only, narrow),
+  **`todos.json` ↔ the shared task store** (the general queue), **execute cron ↔
+  the shipwright loop** (the thing that actually works items off the queue,
+  regardless of source). Entropy patrol today is just one feeder into the task
+  store, the same way the audit cron was just one feeder into `todos.json`
+  alongside things Dan added by hand — that's where "broader than just maintenance"
+  actually lives, not in a comparison between the audit cron and entropy patrol
+  directly. **Lesson:** verifying a claim's factual accuracy (entropy-scan really is
+  narrow) doesn't mean the *framing* built on top of it is correct — check the
+  structure of the comparison itself, not just whether each piece is independently
+  true.
+- **Another dangling-referent bug, same family as the earlier ones — "though this
+  was broader from day one" pointed at the wrong noun.** Dan: "what was broader?"
+  Grammatically "this" resolves to the closest antecedent, "entropy patrol" (the
+  sentence right before it) — implying entropy patrol was broader, when the
+  intended meaning was the opposite: Bodhi's original system was broader than
+  entropy patrol's current scope. Fixed by naming the subject explicitly ("what I
+  built for Bodhi was broader than that") instead of leaving a bare "this" to
+  resolve on its own. **Running tally of this exact failure mode in post 2:**
+  dangling "it" (crons vs. queue vs. execute cron, twice), "the reason why" with no
+  stated object, and now this — comparative/referential pronouns are consistently
+  the highest-yield thing to scrutinize on a self-review pass, not just a one-off.
+- **"Built within about a day of the first findings showing up" outgrew its own
+  premise.** Dan flagged it as feeling outdated — likely because the eng-todos
+  section now establishes `todos.json` as a general work queue used from day one
+  (not something that only existed once audit findings triggered it), so a timing
+  claim anchored to "the first findings" no longer fits cleanly with the broader
+  framing that replaced it. Cut rather than tried to patch — the paragraph's actual
+  point (deliberately designed, not autonomous initiative) doesn't need the date
+  anchor to land. **Pattern to watch:** when a section gets reframed (audit-only →
+  general work queue, here), go back and check whether earlier supporting details
+  still fit the new frame, not just whether they're independently still true.
+- **Missed a main theme on the first pass: OpenClaw's own hardware is what became
+  the PVC pattern (Dan's words, 2026-08-18):** "one of the main things about
+  openclaw that carried over to shipwright agents. openclaw was running on it's own
+  hardware. in shipwright it's the pvc that survives shipwright... self modifying
+  software/agents that run in their own isolated environment." Added a dedicated
+  section, "The Part of OpenClaw That Actually Mattered," right after the Claude
+  Code migration and before the Slack section — Bodhi's Raspberry Pi wasn't just
+  a fun detail, it established the pattern (agent + durable, isolated, writable
+  space of its own) that everything else in the post depends on: the todo list, the
+  crons, the eng-audit loop all only work because that persistent space exists
+  underneath them. Also removed the vague "heartbeat crons, delegation axes... all
+  carried forward" clause from the Trust section — it was never explained and this
+  new section replaces it with something concrete. **Lesson for future posts:**
+  when Dan describes what "carried over" from one system to the next, ask whether
+  it's an infrastructure/architecture pattern (durable, load-bearing, worth its own
+  section) versus a feature-level detail (a clause is enough) — don't default to
+  folding everything into one aside.
 - **A repo mentioned by name may not be the repo that has the data.** Initial research
   cloned `app-vitals/bodhi` expecting Dan's workspace history and found none of it —
   that repo is the harness *code*, not Dan's personal workspace. The workspace lives
