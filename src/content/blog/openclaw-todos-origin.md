@@ -4,7 +4,7 @@ date: "2026-08-18"
 author: "Dan McAulay"
 category: "Company Updates"
 excerpt: "Dave bought a Raspberry Pi and started running OpenClaw on it in early February. I bought my own Pi a couple weeks later and did the same thing. I didn't stick with OpenClaw — watching its commit history move fast made me nervous about trusting an agent I didn't fully understand, and the reason I could move off it so quickly traces straight back to the cloud agent work from post one."
-readTime: "8 min read"
+readTime: "9 min read"
 ---
 
 *Second post in the series on how Shipwright actually came together — [the first one's here](/blog/cloud-agent-review-origin/). That one was about the cloud sandbox review pipeline. This one's about the assistant I was running on hardware in my own house.*
@@ -21,6 +21,12 @@ I didn't stay on OpenClaw long, and it wasn't really about OpenClaw's quality. I
 
 By March 4, Bodhi was running on Claude Code. That move went faster than it should have — I'd already been running Claude Code headless and scripted for the cloud agent project from [the first post in this series](/blog/cloud-agent-review-origin/). Pointing that same pattern at a personal assistant instead of a PR reviewer wasn't new work, it was reusing a pattern I already had. The OpenClaw-specific research didn't get thrown away either — heartbeat crons, delegation axes, the general shape of what a personal agent needs all carried forward. I just moved it onto ground I already knew how to run headless.
 
+## Slack Was the Other Unlock
+
+Moving onto Claude Code also meant moving Bodhi into Slack instead of Telegram, and that mattered more than it sounds like it should. The terminal is where I go to get into the zone — heads-down, all-in on one task, until it's done. Slack was already where I did async work, the place I'd check in on things between other things, not the place I went to focus on one problem at a time. Once Bodhi lived there instead of in a terminal window, it stopped feeling like operating a tool and started feeling like talking to a teammate — a developer who could go off and actually do work while I was doing something else entirely.
+
+That distinction mattered because "faster" was never really the goal. What I wanted was to move toward autonomous agents doing multiple things at once, not just an agent that answered me quicker when I was staring at it. A terminal keeps you synchronous by design — you're there, prompting, watching it work. Slack is asynchronous by design. Putting Bodhi somewhere I already worked asynchronously is what made everything else in this post make sense as one thing instead of a pile of separate features.
+
 ## The First Thing I Set Bodhi Up to Do in the Background
 
 Bodhi's first real workload wasn't spontaneous — I built it on purpose, with limits. One cron ran twice a week and told Bodhi exactly what to look for in its own codebase: failing tests, missing coverage, dead code, simplification opportunities, even an audit of any outbound communication it wasn't supposed to be sending. It specified the exact shape to write findings in, too. A second cron ran every couple of hours, picked the next item off that list, fixed the small ones, broke the large ones into smaller pieces, and was bound by hard stops I wrote in on purpose: no messages, no touching credentials, no git push, no deploy, nothing to its own schedule without me approving it first.
@@ -31,7 +37,7 @@ The list those crons worked off of didn't stay in one place, either. It got rena
 
 ## Crons Were There From Day One
 
-Crons were an OpenClaw feature — one of the two big unlocks, next to the messaging integration itself. An easy way to schedule background work for an agent instead of prompting it by hand every time. Obvious in hindsight, but I hadn't had anything set up like that before, and once I did, the list filled up fast: a morning brief with a personalized note tacked on, an evening check-in, a payment checker, an hourly research worker, a Sunday metrics sync, a weekday invoice check, and a Monday insights digest — seven jobs within the first week. Every one of them was silent unless something actually needed my attention, and anything that touched money — invoices, payments — had an approval gate instead of just acting on its own. That pattern wasn't a design decision I made up front. It's just what "an assistant I actually trust" looked like the first time I had to answer the question for real.
+Crons were the other big OpenClaw-era unlock, alongside the move into Slack — an easy way to schedule background work for an agent instead of prompting it by hand every time. Obvious in hindsight, but I hadn't had anything set up like that before, and once I did, the list filled up fast: a morning brief with a personalized note tacked on, an evening check-in, a payment checker, an hourly research worker, a Sunday metrics sync, a weekday invoice check, and a Monday insights digest — seven jobs within the first week. Every one of them was silent unless something actually needed my attention, and anything that touched money — invoices, payments — had an approval gate instead of just acting on its own. That pattern wasn't a design decision I made up front. It's just what "an assistant I actually trust" looked like the first time I had to answer the question for real.
 
 Most of what filled that queue in the early weeks was personal ops, not engineering — I was building the thing that runs my business, not a dev pipeline. That distinction matters for where this series goes next.
 

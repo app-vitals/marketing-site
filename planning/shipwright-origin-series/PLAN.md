@@ -237,6 +237,18 @@ dev-task are Dave's too, and only get mentioned in Dan's posts as things being
   in, and — since it's just Dan and Dave with no W-2, only distributions — the two
   of them paying each other manually too. Worth stating this upfront in the "Money
   Made It Real" section as the *why*, before the March 23/25 technical specifics.
+- **The Slack move was a bigger deal than a channel swap (Dan's words, 2026-08-18):**
+  moving onto Claude Code also moved Bodhi from Telegram into Slack, and that was
+  "huge" for him — Slack was already where he did async work, unlike the terminal,
+  which is where he goes to get into the zone on one task at a time. Talking to
+  Bodhi in Slack started to feel like talking to a teammate/developer who could go
+  off and do work independently, not like operating a tool. This is directly tied to
+  his actual goal — moving toward async, autonomous, multi-task agents, not just
+  faster single-task execution — so it's worth treating as load-bearing, not a
+  footnote. Got its own section ("Slack Was the Other Unlock") placed right after
+  the Claude Code migration and before the crons/backlog sections, since it's the
+  structural reason the later async stuff (background crons, self-managed backlog,
+  approve-from-phone invoicing) hangs together as one thing.
 - **Cut low-value specificity Dan flagged directly:**
   - The `~/.bodhi/workspace`-creation-date / mtime-preservation paragraph — Dan:
     "not sure we need this." Cut it from the post entirely.
