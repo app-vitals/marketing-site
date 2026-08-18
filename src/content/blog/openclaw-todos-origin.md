@@ -3,21 +3,23 @@ title: "Dave Put OpenClaw on His Raspberry Pi First. I Didn't Stay on It Long."
 date: "2026-08-18"
 author: "Dan McAulay"
 category: "Company Updates"
-excerpt: "Dave bought a Raspberry Pi and started running OpenClaw on it in early February. I bought my own Pi a couple weeks later and did the same thing. I didn't stick with OpenClaw — and the reason I could move off it so fast traces straight back to the cloud agent work from post one."
+excerpt: "Dave bought a Raspberry Pi and started running OpenClaw on it in early February. I bought my own Pi a couple weeks later and did the same thing. I didn't stick with OpenClaw — watching its commit history move fast made me nervous about trusting an agent I didn't fully understand, and the reason I could move off it so quickly traces straight back to the cloud agent work from post one."
 readTime: "6 min read"
 ---
 
 *Second post in the series on how Shipwright actually came together — [the first one's here](/blog/cloud-agent-review-origin/). That one was about the cloud sandbox review pipeline. This one's about the assistant I was running on hardware in my own house.*
 
-Dave bought a Raspberry Pi and started running OpenClaw on it in early February. I bought my own Pi a couple weeks later and did the same thing — same platform, same idea: get an agent doing real work for me, autonomously, without me sitting there prompting it every time. I wasn't inventing anything by following him onto it. I just wanted the same thing he'd already started building for himself, running on my own machine.
+Dave bought a Raspberry Pi and started running OpenClaw on it in early February. I bought my own Pi a couple weeks later and did the same thing — same platform, same starting point. We talked about it the whole way through, the way we always do, but what each of us actually built diverged fast, because our day-to-day work pulled us toward different problems. Mine turned into a Slack bot I named Bodhi, built to run my side of the business.
 
 ## Who Bodhi Was, Before Bodhi Had Code
 
 Bodhi booted for the first time on February 28, 2026, running on OpenClaw. The first thing I did wasn't write a feature — it was write `SOUL.md` and `IDENTITY.md`. Who is this thing. What does it sound like. What does it refuse to do. That's the moment it stopped being a script and started being an assistant with a name, even though at that point it could barely do anything yet.
 
-## I Didn't Stay on OpenClaw Long
+## Trust Had to Be Built, Not Assumed
 
-I didn't fully trust OpenClaw — not enough to build the business on top of it. By March 4, Bodhi was running on Claude Code instead. That move went faster than it should have, and the reason isn't really about Bodhi at all: by that point I'd already been running Claude Code in `-p` mode — headless, scripted, no one watching the terminal — for the cloud agent project from [the first post in this series](/blog/cloud-agent-review-origin/). Pointing that same pattern at a personal assistant instead of a PR reviewer wasn't a new skill, it was reusing one I already had. The OpenClaw-specific research didn't get thrown away either — heartbeat crons, delegation axes, the general shape of what a personal agent needs all carried forward. I just moved it onto ground I already knew how to run headless.
+I didn't stay on OpenClaw long, and it wasn't really about OpenClaw's quality. I was still new to the actual risks of turning an AI agent loose on my own machine without me approving every task it ran, and watching OpenClaw's own commit history move fast — a lot of changes landing quickly — made me nervous in a way I hadn't fully expected going in. I knew Claude Code's internals a lot better than I knew OpenClaw's, and trust in a system you're about to hand real autonomy to isn't something you assert — it's something you build. I ended up building it into Bodhi's own workflow later, the same way: lint, tests, a tightly controlled environment. At that point it was easier to build that trust on ground I already understood. There was a second, less defensive reason too — building this myself meant going deeper on Claude Code specifically, and that was directly useful. It's the tool we run for clients.
+
+By March 4, Bodhi was running on Claude Code. That move went faster than it should have — I'd already been running Claude Code in `-p` mode, headless and scripted, for the cloud agent project from [the first post in this series](/blog/cloud-agent-review-origin/). Pointing that same pattern at a personal assistant instead of a PR reviewer wasn't new work, it was reusing a pattern I already had. The OpenClaw-specific research didn't get thrown away either — heartbeat crons, delegation axes, the general shape of what a personal agent needs all carried forward. I just moved it onto ground I already knew how to run headless.
 
 `~/.bodhi/workspace` got created fresh that day. `SOUL.md` and `IDENTITY.md` came with it — copied over with their February 28 timestamps intact, because they weren't rewritten, just relocated. The workspace's own git history starts the same day too: `initial snapshot`. Everything after that is git history, which is a nice thing to be able to say about your own assistant's origin story.
 

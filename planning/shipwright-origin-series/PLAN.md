@@ -102,12 +102,27 @@ closing "earns its place" paragraph).
   - `2026-02-04` — `pr-review` plugin ships to the marketplace repo
   - **Correction (2026-08-18):** OpenClaw-on-Raspberry-Pi wasn't Dan's independent
     parallel path — Dave bought his Pi and ran OpenClaw on it first; Dan bought his
-    own Pi a couple weeks later and ran OpenClaw too, same platform. Bodhi is Dan's
-    build on that shared starting point, not a diverging one. Post 2's opening was
-    rewritten to reflect this; don't reintroduce the "two paths, same starting point"
-    framing for the OpenClaw-Pi thread specifically (that framing is accurate for the
-    *Nov 2025* Claude-Code-cloud vs. autonomous-workflow-plugin starting point, per
-    the top of this doc — it's a different milestone, don't conflate the two).
+    own Pi a couple weeks later and ran OpenClaw too, same platform, same starting
+    point. Dan clarified further: they were in regular communication throughout, not
+    working in silos — what diverged was which problems each of them applied it to,
+    driven by the different shape of their day-to-day work. Post 2's opening reflects
+    this (shared platform + shared starting point + ongoing communication + naturally
+    diverging applications). Don't reintroduce the "two paths, same starting point"
+    framing for the OpenClaw-Pi thread specifically as if it were independent
+    discovery (that framing belongs to the *Nov 2025* Claude-Code-cloud vs.
+    autonomous-workflow-plugin milestone, per the top of this doc — a different,
+    earlier starting point, don't conflate the two).
+  - **Why Dan actually moved off OpenClaw (his words, 2026-08-18) — don't lose this,
+    it's more specific and more honest than "I didn't trust the platform":** he was
+    new to the real risks of running an AI agent without approving every task, and
+    watching OpenClaw's own commit history move fast made him nervous in a way he
+    hadn't expected. He knew Claude Code's internals far better than OpenClaw's, and
+    — this is the line worth reusing verbatim in future posts — "trust in the system
+    is key for autonomous coding, it's very hard to let an agent write code if you
+    don't trust the system." He built that trust later into Bodhi's own workflow via
+    lint, tests, and a controlled environment — the same mechanism, applied to a
+    system he already understood. Secondary motive: building it himself meant going
+    deeper on Claude Code specifically, which is directly useful for client work.
   - `2026-02-28` — Bodhi's first boot, on OpenClaw. `SOUL.md`/`IDENTITY.md` authored
     (filesystem birth time + Dan's direct account; predates the workspace's own git
     history, so not git-verifiable, but nothing in the repo contradicts it)
