@@ -123,9 +123,15 @@ closing "earns its place" paragraph).
     lint, tests, and a controlled environment — the same mechanism, applied to a
     system he already understood. Secondary motive: building it himself meant going
     deeper on Claude Code specifically, which is directly useful for client work.
-  - `2026-02-28` — Bodhi's first boot, on OpenClaw. `SOUL.md`/`IDENTITY.md` authored
-    (filesystem birth time + Dan's direct account; predates the workspace's own git
-    history, so not git-verifiable, but nothing in the repo contradicts it)
+  - `2026-02-28` — Bodhi's first boot, over Telegram (the easiest way to get going
+    with OpenClaw — same channel Dave used). **Correction (2026-08-18):** the
+    identity-file creation isn't something Dan sat down and deliberately wrote — it's
+    OpenClaw's own onboarding flow, which runs automatically in-chat the first time
+    you talk to it (who is this thing, what should it sound like, what should it
+    refuse to do). Don't frame it as a deliberate authorial act in future posts;
+    frame it as standard OpenClaw behavior that happened to be the moment Bodhi got
+    a name. (Filesystem birth time still confirms the Feb 28 date; predates the
+    workspace's own git history, so not git-verifiable beyond that.)
   - `2026-03-04` — OpenClaw replaced by Claude Code. `~/.bodhi/workspace` created
     fresh; `bodhi-workspace` repo's first commit (`a3fb42b`, "initial snapshot")
     lands same day. **Don't frame this as a fast from-scratch rebuild** — Dan was
@@ -150,8 +156,9 @@ dev-task are Dave's too, and only get mentioned in Dan's posts as things being
 | # | Topic | Status | Links |
 |---|-------|--------|-------|
 | 1 | Cloud agent → PR review origin (`/ca-review-prs`, ships as `pr-review` plugin Feb 4 2026) | **Published** | [#89](https://github.com/app-vitals/marketing-site/pull/89) (merged), [#90](https://github.com/app-vitals/marketing-site/pull/90) (merged, accuracy pass), [#91](https://github.com/app-vitals/marketing-site/pull/91) (open, further accuracy passes) — `src/content/blog/cloud-agent-review-origin.md` |
-| 2 | OpenClaw + the original `todos.json` — queuing work with cron jobs before any of this had a name | Drafted, PR open | `src/content/blog/openclaw-todos-origin.md`, branch `content/openclaw-todos-origin` |
-| 3+ | TBD — likely where plan-session/dev-task get pulled in as Dan's and Dave's threads start to merge into one pipeline | Not planned yet | — |
+| 2 | OpenClaw + the original `todos.json` — queuing work with cron jobs before any of this had a name | **Published**, follow-up corrections in progress | [#100](https://github.com/app-vitals/marketing-site/pull/100) (merged) — `src/content/blog/openclaw-todos-origin.md`; see `content/openclaw-todos-followup` branch for post-merge corrections |
+| 3 | The vitals-os merge — Dave brings plan-session/dev-task, Dan brings Bodhi's todos/crons/review habit, they stop being two side projects and become one pipeline | Not planned yet | — |
+| 4+ | The task store's real origin: `todos.json` got put behind an interface, a GitHub Issues–backed implementation was built alongside it, running both was "split-brained" (the agent got confused switching between them), and multi-agent-on-one-repo needs (shared task queue, tighter concurrency control) forced ripping both out and building the task store from scratch | Not planned yet — **don't fold this into post 3**, Dan confirmed 2026-08-18 it's its own post | — |
 
 ## Lessons From Post 1 (apply going forward)
 
@@ -188,3 +195,197 @@ dev-task are Dave's too, and only get mentioned in Dan's posts as things being
   nearly every claim in the post — including the exact commit hash and message for
   the vitals-os handoff (`e91bc46`) that looked fabricated when checked against the
   wrong repo.
+
+## Post-Merge Corrections on Post 2 (Dan's notes, 2026-08-18 — apply to `content/openclaw-todos-followup`)
+
+- **The `todos.json`-lineage file's actual move history** (Dan relayed this from a
+  review with commit-level detail; the post's first cut had the sequence wrong —
+  don't repeat the wrong version):
+  1. `memory/engineering-todos.json` created Mar 7
+  2. Renamed to `state/engineering-todos.json` Mar 9 (`48904cf`, "introduce state/
+     dir") — still one file, engineering-flavored name carries over
+  3. Renamed again to `state/todos.json` Mar 14 (`b4e8c4b`) — still one file
+  4. Mar 16 (`f1d3ed5`): a genuinely *new* `state/engineering-todos.json` created
+     alongside the existing `state/todos.json` — this is the actual split moment,
+     two files side by side
+  5. Mar 18 (`d2a071d`, eng-111–114): split reversed — commit message: "eng-114:
+     delete state/engineering-todos.json — orphaned after eng-111 rename; todos now
+     live exclusively in state/todos.json." One file again.
+  For the post itself, narrate this as "renamed twice, briefly split into two files,
+  merged back into one" — the blog doesn't need the hashes, but don't reintroduce the
+  cleaner-than-reality linear version (single rename, then a permanent split) that
+  the original draft had.
+- **Bodhi didn't spontaneously audit itself — Dan designed a scoped, safety-railed
+  system on purpose, within about a day of the first findings.** Two crons, not one
+  emergent behavior: `eng-audit` (Mon/Thu 10am) with a detailed prompt telling Bodhi
+  exactly what to scan (tests, lint, coverage gaps, an "outbound communication
+  audit" for unapproved external calls, simplification opportunities, dead code,
+  cron integrity) and the exact JSON shape to write findings in; `eng-execute`
+  (every 2 hours) picks the next pending item, fixes small/medium ones, breaks large
+  ones down, and is bound by explicit hard-stops — no messages, no env/credential
+  changes, no git push, no deploy, no crons.json edits without approval. The
+  `eng-001`–`006` findings (Mar 6) look like they triggered the idea, but the cron
+  pair that formalized it was deliberate design, not autonomous initiative. Don't
+  undersell the design work or oversell Bodhi's autonomy at this point in the story
+  — this was prompt engineering with real thought about what Bodhi could and
+  couldn't touch on its own, not "Bodhi decided to."
+- **Crons are an OpenClaw feature, not something Bodhi/Claude Code invented.** One
+  of the two big OpenClaw unlocks, alongside the messaging integration itself — an
+  easy way to schedule background work for an agent. Attribute it to the platform
+  in the post, not to Bodhi's own design.
+- **Billing was the first real gap Dan automated, and it was genuinely manual
+  before Bodhi:** invoicing by hand, manually checking whether payments had come
+  in, and — since it's just Dan and Dave with no W-2, only distributions — the two
+  of them paying each other manually too. Worth stating this upfront in the "Money
+  Made It Real" section as the *why*, before the March 23/25 technical specifics.
+- **The Slack move was a bigger deal than a channel swap — but it's causally
+  unrelated to the Claude Code migration (Dan's words, 2026-08-18):** first pass
+  wrongly bundled the Telegram→Slack switch together with the OpenClaw→Claude Code
+  migration, as if one caused the other. Dan corrected this: he moved to Slack
+  because that's where he was already comfortable and already working — Telegram
+  was just an easy starting point for OpenClaw, and he didn't want to add another
+  tool to his life. **Don't imply timing/causality between the platform migration
+  and the channel switch in future drafts — they're two independent decisions,**
+  even though they both get covered in the same section. The substance of why it
+  mattered still stands: Slack was already where he did async work, unlike the
+  terminal (heads-down, one task at a time), and talking to Bodhi there started to
+  feel like talking to a teammate/developer who could go off and do work
+  independently — directly tied to his actual goal of moving toward async,
+  autonomous, multi-task agents, not just faster single-task execution. Section:
+  "Slack Was the Other Unlock," placed right after the Claude Code migration and
+  before the crons/backlog sections, since it's the structural reason the later
+  async stuff (background crons, self-managed backlog, approve-from-phone
+  invoicing) hangs together as one thing.
+- **The "hard stops" list wasn't as airtight as the post first made it sound (Dan's
+  words, 2026-08-18):** eng-execute was blocked from messaging, credentials, git
+  push, deploy, and unapproved schedule changes — but nothing stopped it from
+  freely rewriting the actual code in its own workspace, and whatever it wrote
+  would just run the next time a cron fired or Dan asked it to do something. No
+  review step sat between "Bodhi edits its own code" and "that code executes."
+  Added an honest "looking back, less airtight than it sounds" caveat right after
+  the hard-stops list — this fits the series' own ethos (real path, not a polished
+  safety story) better than leaving the hard-stops list sounding complete. Keep this
+  caveat if post 3 revisits eng-execute's evolution — it's the real gap, not a
+  detail to smooth over.
+- **Don't invent comparative value-judgments on Dan's behalf.** Wrote "the hard
+  stops mattered more to me than the automation did" as editorial synthesis — Dan
+  confirmed the hard stops were real and he wanted safety, but never said or implied
+  a ranking against the automation itself. This is the same failure mode as post 1's
+  "don't invent specificity to illustrate vagueness" lesson, just applied to
+  sentiment/values instead of concrete facts: extrapolating what someone *felt more
+  strongly about* is exactly as fabricable as inventing a fake cron name. Fixed to
+  "I wanted it done safely as much as I wanted it done at all" — additive, not
+  comparative, and matches what Dan actually said. When drafting interior states
+  (what mattered more, what he was proudest of, what worried him most), don't
+  extrapolate from adjacent facts — ask, or keep it non-comparative.
+- **eng-todos wasn't audit-only — Dan used it as a general work queue for building
+  things from the beginning (his words, 2026-08-18):** "this wasn't all about
+  finding issues and queueing up work... I was using eng todos to queue up work and
+  build things from the beginning." The post's first cut framed the backlog as fed
+  purely by the `eng-audit` cron's findings, which undersold it — closer to
+  Shipwright's entropy patrol (scan, find, queue) than what was actually broader:
+  a general backlog Dan added build work to directly, not just a remediation queue.
+  Drew the entropy-patrol comparison explicitly in the post but flagged it as
+  *narrower* than what eng-todos actually was, not equivalent.
+- **Cut the todos.json file-churn paragraph (renamed twice, split, merged back)
+  entirely** — Dan asked "is this relevant?" and on reflection it wasn't: granular
+  file-move detail with no payoff for the reader. The precise git-verified sequence
+  is still recorded above in this doc if it's ever needed again. Folded the
+  `todos.json` anchor into the section's opening sentence instead, where it
+  introduces the general work-queue concept rather than just naming a file that got
+  renamed a few times.
+- **Section order: crons before the eng-audit/eng-execute application, not after
+  (Dan's words, 2026-08-18):** "todos.json was built on crons," so introduce the
+  general mechanism before the specific composite built from it. Swapped "Crons
+  Were There From Day One" ahead of "The First Thing I Set Bodhi Up to Do in the
+  Background." The crons section now closes with a bridge line ("But two other
+  crons, running in parallel, were exactly [engineering]") into the eng-todos
+  section instead of pivoting straight to billing.
+- **Referent clarity: name the two crons explicitly and keep naming them.** Dan
+  couldn't tell which entity a given "it" referred to (the work queue, the audit
+  cron, the execute cron, or the guardrails) — the draft introduced three-plus
+  entities in one paragraph (workload, list, cron one, cron two) then used bare
+  pronouns in later paragraphs without re-establishing which one. Fixed by
+  consistently calling them "the audit cron" and "the execute cron" (plain English,
+  not the `eng-audit`/`eng-execute` slugs) every time the subject changes, and by
+  explicitly re-anchoring ("the execute cron's hard stops," "the execute cron could
+  rewrite that freely") instead of relying on "it" across paragraph breaks. General
+  rule for future posts: when a paragraph introduces more than one actor/entity,
+  don't lean on pronouns past the sentence that introduced them — re-name the
+  subject at the start of each new point, even if it reads slightly more repetitive.
+- **"No W-2, only distributions" was wrong for this timeframe.** Dan flagged it
+  (2026-08-18): "since this is feb 2026 i guess we had w-2s so things had just
+  become more complicated" — he wasn't fully sure himself, so don't reintroduce a
+  specific compensation-structure claim without confirming it first. Cut the clause
+  entirely rather than guess at a replacement; the underlying fact (paying each
+  other manually) wasn't disputed and stayed in. If Dan wants the "things had just
+  gotten more complicated" color back in, ask what specifically changed before
+  writing it in.
+- **Task store hint: added, but light — a one-clause aside, not the mechanism.**
+  First instinct was to either omit it entirely (too complex to tease accurately) or
+  spell out the real arc (too much for one sentence). Dan's actual ask was simpler:
+  something as brief as the existing entropy-patrol aside in the same paragraph.
+  Landed on: "That queue is also an early ancestor of the shared task store the
+  whole pipeline runs on now, though the path between them is its own story, for
+  another post." No mechanism claim, just acknowledges the throughline exists. See
+  the Post Roster's row 4+ for the real arc (interface → GitHub Issues
+  implementation → split-brain confusion → multi-agent concurrency needs → task
+  store built from scratch) — that's still its own future post, not part of post 3.
+- **Billing section was changelog trivia, trimmed to the actual point.** Dan asked
+  "is this relevant? what's the point we're making?" about a paragraph listing six-
+  plus technical changes (payments/triggers/invoices/notes, Resend→Gmail, shared
+  calc library, date-range flags, bonus math fix, period-end fix). The section's own
+  point — stated in its closing line — is "small bugs = real money computed wrong,"
+  which only needs one or two concrete examples, not a full changelog. Trimmed to
+  the bonus-math bug and the period-end bug (the two that most vividly show "real
+  money wrong until found") plus the over-hours approval-gate detail (ties back to
+  the money-gets-approval-gates pattern from the crons section). Cut the Resend→
+  Gmail swap and the shared-calculation-library migration — accurate, but neither
+  serves the point being made. **Recurring pattern worth naming:** when a paragraph
+  is a list of technical changes, check whether it's illustrating the section's
+  actual point or just proving research was thorough — the latter belongs in
+  PLAN.md, not the post.
+- **Even after trimming, the paragraph still "felt kinda random" to Dan** — the
+  bugs were listed first, then the thematic payoff ("you build careful approval
+  gates because...") landed two sentences later as a separate paragraph, so the
+  reader had to connect the dots themselves instead of the prose doing it. Fixed by
+  merging evidence and point into one flow: state that the bugs are *why* the
+  pipeline got careful, list them as direct support for that claim, then show what
+  "got careful" actually looked like (approval gate, over-hours flagging), before
+  the closing paycheck line. **General lesson:** don't separate concrete evidence
+  from the point it's supporting across a paragraph break and trust the reader to
+  link them — say the causal connection explicitly, in the same breath as the
+  evidence.
+- **"The bugs it turned up" had a dangling "it" and, worse, wrongly implied
+  autonomous discovery.** Dan: "you mean the bugs it introduced when coding and i
+  discovered, or are you saying bodhi found them? i actually found these issues
+  while testing and/or exploring and verifying the code output." Two separate
+  problems in one sentence: (1) "it" had no clean antecedent after the paragraph
+  merge, (2) even if it had, the phrasing credited discovery to the pipeline/Bodhi
+  rather than to Dan's own manual testing and verification. Fixed to state
+  explicitly that Dan found these himself, testing and verifying the code. **Don't
+  default to passive/agentless phrasing ("bugs it turned up," "issues that
+  surfaced") for anything Dan actually did by hand** — attribution of who-found-what
+  matters a lot in this series, since the whole trust narrative hinges on human
+  verification, not autonomous correctness.
+- **"I found the reason why" had no stated object — Dan: "the reason why what?"**
+  The phrase forward-referenced a point ("so the pipeline got careful") that hadn't
+  been stated yet, instead of connecting back to something already established
+  (the prior paragraph's "forced the whole pipeline to get reliable"). Fixed to "I
+  found out why it needed to be reliable" — ties back to an antecedent the reader
+  already has, instead of dangling forward toward one they don't have yet. **General
+  lesson, same family as the earlier dangling-negation fixes:** any clause shaped
+  like "the reason why," "that's why," or "here's what changed" needs its referent
+  either already on the page or immediately following in the same sentence — never
+  two-plus sentences ahead.
+- **Cut low-value specificity Dan flagged directly:**
+  - The `~/.bodhi/workspace`-creation-date / mtime-preservation paragraph — Dan:
+    "not sure we need this." Cut it from the post entirely.
+  - Internal filenames throughout (`SOUL.md`, `IDENTITY.md`, `crons.json`,
+    `comp-calc.ts`, `calculate.ts`, `claude.ts`, `config.ts`, etc.) — Dan: "not sure
+    how useful calling out actual file names is... people may not have a reference
+    point for them." **Style rule going forward:** describe internal implementation
+    files in plain language, not backticked filenames, unless the specific name is
+    a narrative anchor the reader was already promised (e.g. `todos.json`, named
+    explicitly in post 1's "next up" pointer — that one stays). Named third-party
+    products (Gmail, Resend, Claude Code) are fine to keep; they're not the issue.
