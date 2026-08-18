@@ -177,6 +177,26 @@ dev-task are Dave's too, and only get mentioned in Dan's posts as things being
 
 ## Lessons From Post 2 (apply going forward)
 
+- **Rebalanced "The First Thing I Set Bodhi Up to Do in the Background" — execute
+  cron + `todos.json` are the story, the audit cron is a nice-to-have (Dan,
+  2026-08-18):** "the focus should be on todos.json and eng execute... the audit is
+  a nice to have and was inspired by openai['s harness engineering
+  writing'](https://openai.com/index/harness-engineering/)." Prior drafts treated
+  the audit/execute pair as co-equal. Reworked: execute cron + the general work
+  queue lead the section; the audit cron is introduced second, explicitly as a
+  nice-to-have, with a real citation to its source of inspiration (a genuine
+  external reference, fits the series' whole "specifics being true" thesis). Also
+  reworded the Crons section's bridge line from "two other crons... were exactly
+  that" to singular ("one more piece ran in parallel") to match the new emphasis.
+  **Caught a referent bug the reorder introduced:** moving the audit-cron/entropy-
+  patrol mention to right before "the path from one to the other" made that closing
+  line's "one"/"the other" ambiguous (audit↔entropy-patrol vs. list↔task-store).
+  Fixed by keeping the audit/entropy-patrol aside brief and early in that paragraph,
+  then building to the list/execute-cron → task-store/loop mapping right before the
+  closing sentence, so "one to the other" has an unambiguous, adjacent antecedent
+  again. **Standing lesson, reinforced again:** any time content gets reordered or
+  re-weighted, re-check every pronoun/comparative in the surrounding sentences —
+  this is now the single most common bug class in this post's edit history.
 - **Added Dan's real concrete evidence for "I knew Claude Code's internals a lot
   better" (2026-08-18):** "the damage control plugin and knew how to configure
   allow and deny lists" — he already had a damage-control plugin built for Claude Code
