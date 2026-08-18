@@ -21,7 +21,7 @@ OpenClaw ran on its own hardware. Bodhi had a Raspberry Pi that was just its mac
 
 That's the same shape a Shipwright agent's own persistent storage is today — not a database it queries, a workspace it lives in. Self-modifying software needs somewhere of its own to actually be self-modifying: write code, run it, remember what happened, do it again tomorrow. Nothing else in this post — not the lists, not the schedules, not the safety rails — works without that space underneath it.
 
-But an agent with its own machine, able to rewrite its own code, is exactly the kind of thing you should be nervous about handing real autonomy to. That's where trust actually had to start.
+But an agent with its own machine — able to rewrite its own code, run it, and act on skills without a human in the loop unless it decided on its own to stop and ask — is exactly the kind of thing you should be nervous about handing real autonomy to. That's where trust actually had to start.
 
 ## Trust Had to Be Built, Not Assumed
 

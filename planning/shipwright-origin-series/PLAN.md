@@ -177,6 +177,16 @@ dev-task are Dave's too, and only get mentioned in Dan's posts as things being
 
 ## Lessons From Post 2 (apply going forward)
 
+- **Bridge sentence into Trust needed a second dimension: autonomous execution, not
+  just self-modification (Dan, 2026-08-18):** "running code and/or skills without a
+  human being in the loop unless it decided to stop an ask for approval." Rewriting
+  its own code was already in the bridge line; the bigger point Dan wanted was that
+  *running* code/skills without a human checkpoint was the default, and human
+  approval was something the agent itself chose to invoke, not a structural gate
+  someone else controlled. Updated: "able to rewrite its own code, run it, and act
+  on skills without a human in the loop unless it decided on its own to stop and
+  ask." That's a scarier, more specific claim than self-modification alone, and it's
+  the more accurate reason trust had to be built deliberately.
 - **Moved "The Part of OpenClaw That Actually Mattered" earlier, before Trust, per
   Dan's structural note (2026-08-18):** "maybe the part of openclaw that actually
   matter should be before trust and could be altered slightly to help frame why
