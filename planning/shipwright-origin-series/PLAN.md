@@ -177,6 +177,17 @@ dev-task are Dave's too, and only get mentioned in Dan's posts as things being
 
 ## Lessons From Post 2 (apply going forward)
 
+- **Dropped "fixed the small ones, broke the large ones down" from the execute-cron
+  description — agreed with Dan's read.** He confirmed the mapping nuance flagged
+  above was real, then asked whether to just gloss it: "the breaking things down is
+  key, but we don't really say why here." Rather than explain the decomposition
+  behavior's actual significance (which would need real space to do right — why
+  breaking large tasks down mattered, what happened to the pieces), cut it and let
+  the sentence focus purely on executing: "picked the next item... and worked
+  through it." Simpler and still accurate; doesn't assert a mapping to
+  today's shipwright-loop that isn't quite right. If a future post wants to tell
+  the decomposition story properly, it deserves its own explanation, not a
+  three-word aside.
 - **Same edit-history-leakage bug recurred in the very next sentence I wrote.**
   "The audit cron was never more than entropy patrol is now" only makes sense as a
   rebuttal of the "broader than entropy patrol" claim I'd just walked back — a
