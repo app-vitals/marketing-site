@@ -100,12 +100,24 @@ closing "earns its place" paragraph).
   - `~2026-01` — LinkedIn post "the one thing I actually use my cloud agent for"
     (Dan: "7 months ago" as of 2026-08-05) — the post post-1 is built around
   - `2026-02-04` — `pr-review` plugin ships to the marketplace repo
+  - **Correction (2026-08-18):** OpenClaw-on-Raspberry-Pi wasn't Dan's independent
+    parallel path — Dave bought his Pi and ran OpenClaw on it first; Dan bought his
+    own Pi a couple weeks later and ran OpenClaw too, same platform. Bodhi is Dan's
+    build on that shared starting point, not a diverging one. Post 2's opening was
+    rewritten to reflect this; don't reintroduce the "two paths, same starting point"
+    framing for the OpenClaw-Pi thread specifically (that framing is accurate for the
+    *Nov 2025* Claude-Code-cloud vs. autonomous-workflow-plugin starting point, per
+    the top of this doc — it's a different milestone, don't conflate the two).
   - `2026-02-28` — Bodhi's first boot, on OpenClaw. `SOUL.md`/`IDENTITY.md` authored
     (filesystem birth time + Dan's direct account; predates the workspace's own git
     history, so not git-verifiable, but nothing in the repo contradicts it)
-  - `2026-03-04` — OpenClaw replaced by Claude Code, four days after first boot.
-    `~/.bodhi/workspace` created fresh; `bodhi-workspace` repo's first commit
-    (`a3fb42b`, "initial snapshot") lands same day
+  - `2026-03-04` — OpenClaw replaced by Claude Code. `~/.bodhi/workspace` created
+    fresh; `bodhi-workspace` repo's first commit (`a3fb42b`, "initial snapshot")
+    lands same day. **Don't frame this as a fast from-scratch rebuild** — Dan was
+    already running Claude Code in `-p` (headless) mode for the cloud agent project
+    (post 1) by this point, which streamlined the move. Don't assert a specific
+    day-count ("N days after first boot") as a dramatic beat; Dan wasn't confident
+    that framing was accurate even though the calendar dates check out.
   - `2026-03-27` — `vitals-os` added to the bodhi-workspace as a synced shared repo
     (commit `e91bc46`), same day as vitals-os's own first commit
 

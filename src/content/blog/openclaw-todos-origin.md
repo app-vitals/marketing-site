@@ -1,23 +1,23 @@
 ---
-title: "OpenClaw Was Supposed to Be the Foundation. Four Days Later, I Rebuilt on Claude Code."
+title: "Dave Put OpenClaw on His Raspberry Pi First. I Didn't Stay on It Long."
 date: "2026-08-18"
 author: "Dan McAulay"
 category: "Company Updates"
-excerpt: "Dave started running OpenClaw in early February. I ordered a Raspberry Pi a couple weeks later, chasing the same goal from the other direction. Bodhi lasted four days on OpenClaw before I rebuilt it on Claude Code — and the todo list it wrote about itself is still shaping how we track work today."
+excerpt: "Dave bought a Raspberry Pi and started running OpenClaw on it in early February. I bought my own Pi a couple weeks later and did the same thing. I didn't stick with OpenClaw — and the reason I could move off it so fast traces straight back to the cloud agent work from post one."
 readTime: "6 min read"
 ---
 
-*Second post in the series on how Shipwright actually came together — [the first one's here](/blog/cloud-agent-review-origin/). That was Dave's cloud-sandbox review pipeline. This one starts on a different machine entirely.*
+*Second post in the series on how Shipwright actually came together — [the first one's here](/blog/cloud-agent-review-origin/). That one was about the cloud sandbox review pipeline. This one's about the assistant I was running on hardware in my own house.*
 
-Dave started running OpenClaw in early February. I ordered a Raspberry Pi a couple weeks later. Neither of us talked about it as "let's build the same thing" — we were both just chasing the same itch from opposite ends: how do I get an agent doing real work for me, autonomously, without me sitting there prompting it. His path went through a chairlift and a solitaire game. Mine went through a Pi on my desk and a Slack bot I named Bodhi.
+Dave bought a Raspberry Pi and started running OpenClaw on it in early February. I bought my own Pi a couple weeks later and did the same thing — same platform, same idea: get an agent doing real work for me, autonomously, without me sitting there prompting it every time. I wasn't inventing anything by following him onto it. I just wanted the same thing he'd already started building for himself, running on my own machine.
 
 ## Who Bodhi Was, Before Bodhi Had Code
 
 Bodhi booted for the first time on February 28, 2026, running on OpenClaw. The first thing I did wasn't write a feature — it was write `SOUL.md` and `IDENTITY.md`. Who is this thing. What does it sound like. What does it refuse to do. That's the moment it stopped being a script and started being an assistant with a name, even though at that point it could barely do anything yet.
 
-## Four Days In, I Didn't Trust the Foundation
+## I Didn't Stay on OpenClaw Long
 
-I didn't fully trust OpenClaw — not enough to build the business on top of it. Four days after Bodhi's first boot, on March 4, I rebuilt the whole thing on Claude Code instead. That's not as dramatic as it sounds: the OpenClaw research didn't get thrown away. Heartbeat crons, delegation axes, the general shape of what a personal agent needs — all of that carried forward. I just didn't trust the platform underneath it, so I moved what I'd learned onto ground I trusted more.
+I didn't fully trust OpenClaw — not enough to build the business on top of it. By March 4, Bodhi was running on Claude Code instead. That move went faster than it should have, and the reason isn't really about Bodhi at all: by that point I'd already been running Claude Code in `-p` mode — headless, scripted, no one watching the terminal — for the cloud agent project from [the first post in this series](/blog/cloud-agent-review-origin/). Pointing that same pattern at a personal assistant instead of a PR reviewer wasn't a new skill, it was reusing one I already had. The OpenClaw-specific research didn't get thrown away either — heartbeat crons, delegation axes, the general shape of what a personal agent needs all carried forward. I just moved it onto ground I already knew how to run headless.
 
 `~/.bodhi/workspace` got created fresh that day. `SOUL.md` and `IDENTITY.md` came with it — copied over with their February 28 timestamps intact, because they weren't rewritten, just relocated. The workspace's own git history starts the same day too: `initial snapshot`. Everything after that is git history, which is a nice thing to be able to say about your own assistant's origin story.
 
