@@ -177,6 +177,13 @@ dev-task are Dave's too, and only get mentioned in Dan's posts as things being
 
 ## Lessons From Post 2 (apply going forward)
 
+- **Added Dan's real concrete evidence for "I knew Claude Code's internals a lot
+  better" (2026-08-18):** "the damage control plugin and new who to configure allow
+  and deny lists" — he already had a damage-control plugin built for Claude Code
+  and already knew how to configure its allow/deny permission lists. The prior
+  version just asserted the claim abstractly; this makes it specific and verifiable
+  in spirit, matching the series' whole thesis (trust through specifics being true,
+  not assertion). Worked into the Trust section right where the abstract claim was.
 - **Bridge sentence into Trust needed a second dimension: autonomous execution, not
   just self-modification (Dan, 2026-08-18):** "running code and/or skills without a
   human being in the loop unless it decided to stop an ask for approval." Rewriting
