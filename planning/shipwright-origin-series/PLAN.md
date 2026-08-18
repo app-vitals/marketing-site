@@ -277,6 +277,22 @@ dev-task are Dave's too, and only get mentioned in Dan's posts as things being
   comparative, and matches what Dan actually said. When drafting interior states
   (what mattered more, what he was proudest of, what worried him most), don't
   extrapolate from adjacent facts — ask, or keep it non-comparative.
+- **eng-todos wasn't audit-only — Dan used it as a general work queue for building
+  things from the beginning (his words, 2026-08-18):** "this wasn't all about
+  finding issues and queueing up work... I was using eng todos to queue up work and
+  build things from the beginning." The post's first cut framed the backlog as fed
+  purely by the `eng-audit` cron's findings, which undersold it — closer to
+  Shipwright's entropy patrol (scan, find, queue) than what was actually broader:
+  a general backlog Dan added build work to directly, not just a remediation queue.
+  Drew the entropy-patrol comparison explicitly in the post but flagged it as
+  *narrower* than what eng-todos actually was, not equivalent.
+- **Cut the todos.json file-churn paragraph (renamed twice, split, merged back)
+  entirely** — Dan asked "is this relevant?" and on reflection it wasn't: granular
+  file-move detail with no payoff for the reader. The precise git-verified sequence
+  is still recorded above in this doc if it's ever needed again. Folded the
+  `todos.json` anchor into the section's opening sentence instead, where it
+  introduces the general work-queue concept rather than just naming a file that got
+  renamed a few times.
 - **Cut low-value specificity Dan flagged directly:**
   - The `~/.bodhi/workspace`-creation-date / mtime-preservation paragraph — Dan:
     "not sure we need this." Cut it from the post entirely.
