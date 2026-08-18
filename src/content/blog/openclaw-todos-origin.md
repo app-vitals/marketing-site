@@ -27,19 +27,19 @@ Bodhi also moved into Slack instead of Telegram, separately from the platform mi
 
 That distinction mattered because "faster" was never really the goal. What I wanted was to move toward autonomous agents doing multiple things at once, not just an agent that answered me quicker when I was staring at it. A terminal keeps you synchronous by design — you're there, prompting, watching it work. Slack is asynchronous by design. Putting Bodhi somewhere I already worked asynchronously is what made everything else in this post make sense as one thing instead of a pile of separate features.
 
-## The First Thing I Set Bodhi Up to Do in the Background
-
-Bodhi's first real workload wasn't spontaneous — I built it on purpose, with limits. From the start I was using a running list — `todos.json`, the one I promised at the end of the last post — as a general work queue: things I wanted built, plus whatever an audit turned up. One cron ran twice a week and told Bodhi exactly what to look for in its own codebase: failing tests, missing coverage, dead code, simplification opportunities, even an audit of any outbound communication it wasn't supposed to be sending, with the exact shape to write findings into that list. A second cron ran every couple of hours and picked the next item off the queue — an audit finding or something I'd added myself to get built — fixed the small ones, broke the large ones down, and was bound by hard stops I wrote in on purpose: no messages, no touching credentials, no git push, no deploy, nothing to its own schedule without me approving it first.
-
-It's a scoped, safety-railed system I designed on paper — prompt engineering, not autonomous initiative — built within about a day of the first findings showing up. Shipwright's entropy patrol does something similar today, scan and queue for code quality — but this was broader than that from day one, a general backlog for building things, not just a maintenance loop. I wanted it done safely as much as I wanted it done at all.
-
-Looking back, that list of stops was less airtight than it sounds. None of them covered the actual code sitting in its own workspace — it could rewrite that freely, and whatever it wrote would just run the next time a cron fired, or the next time I asked it to do something, with no review step in between. The guardrails were real, but narrower than I gave them credit for at the time.
-
 ## Crons Were There From Day One
 
 Crons were the other big unlock, alongside Slack itself — an easy way to schedule background work for an agent instead of prompting it by hand every time. Obvious in hindsight, but I hadn't had anything set up like that before, and once I did, the list filled up fast: a morning brief with a personalized note tacked on, an evening check-in, a payment checker, an hourly research worker, a Sunday metrics sync, a weekday invoice check, and a Monday insights digest — seven jobs within the first week. Every one of them was silent unless something actually needed my attention, and anything that touched money — invoices, payments — had an approval gate instead of just acting on its own. That pattern wasn't a design decision I made up front. It's just what "an assistant I actually trust" looked like the first time I had to answer the question for real.
 
-Most of what filled that queue in the early weeks was personal ops, not engineering — I was building the thing that runs my business, not a dev pipeline. That distinction matters for where this series goes next.
+Most of those seven were personal ops, not engineering — I was building the thing that runs my business, not a dev pipeline. But two other crons, running in parallel, were exactly that.
+
+## The First Thing I Set Bodhi Up to Do in the Background
+
+I built those two on purpose, with limits. From the start I kept a running list — `todos.json`, the one I promised at the end of the last post — as a general work queue: things I wanted built, plus whatever turned up on its own. The first cron, an audit job, ran twice a week and scanned Bodhi's own codebase for failing tests, missing coverage, dead code, simplification opportunities, even an audit of any outbound communication it wasn't supposed to be sending — writing findings onto that list in an exact shape I specified. The second cron, an execute job, ran every couple of hours, picked the next item off the same list — an audit finding or something I'd added myself to get built — fixed the small ones, broke the large ones down, and was bound by hard stops I wrote in on purpose: no messages, no touching credentials, no git push, no deploy, nothing to its own schedule without me approving it first.
+
+That pairing — the audit cron feeding the list, the execute cron working through it — was a scoped, safety-railed system I designed on paper, not autonomous initiative, built within about a day of the first findings showing up. Shipwright's entropy patrol does something similar today, scan and queue for code quality — but this was broader than that from day one, a general backlog for building things, not just a maintenance loop. I wanted it done safely as much as I wanted it done at all.
+
+Looking back, the execute cron's hard stops were less airtight than they sound. None of them covered the actual code sitting in Bodhi's own workspace — the execute cron could rewrite that freely, and whatever it wrote would just run the next time a cron fired, or the next time I asked it to do something, with no review step in between. The guardrails were real, but narrower than I gave them credit for at the time.
 
 ## Money Made It Real
 

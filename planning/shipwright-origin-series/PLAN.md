@@ -293,6 +293,25 @@ dev-task are Dave's too, and only get mentioned in Dan's posts as things being
   `todos.json` anchor into the section's opening sentence instead, where it
   introduces the general work-queue concept rather than just naming a file that got
   renamed a few times.
+- **Section order: crons before the eng-audit/eng-execute application, not after
+  (Dan's words, 2026-08-18):** "todos.json was built on crons," so introduce the
+  general mechanism before the specific composite built from it. Swapped "Crons
+  Were There From Day One" ahead of "The First Thing I Set Bodhi Up to Do in the
+  Background." The crons section now closes with a bridge line ("But two other
+  crons, running in parallel, were exactly [engineering]") into the eng-todos
+  section instead of pivoting straight to billing.
+- **Referent clarity: name the two crons explicitly and keep naming them.** Dan
+  couldn't tell which entity a given "it" referred to (the work queue, the audit
+  cron, the execute cron, or the guardrails) — the draft introduced three-plus
+  entities in one paragraph (workload, list, cron one, cron two) then used bare
+  pronouns in later paragraphs without re-establishing which one. Fixed by
+  consistently calling them "the audit cron" and "the execute cron" (plain English,
+  not the `eng-audit`/`eng-execute` slugs) every time the subject changes, and by
+  explicitly re-anchoring ("the execute cron's hard stops," "the execute cron could
+  rewrite that freely") instead of relying on "it" across paragraph breaks. General
+  rule for future posts: when a paragraph introduces more than one actor/entity,
+  don't lean on pronouns past the sentence that introduced them — re-name the
+  subject at the start of each new point, even if it reads slightly more repetitive.
 - **Cut low-value specificity Dan flagged directly:**
   - The `~/.bodhi/workspace`-creation-date / mtime-preservation paragraph — Dan:
     "not sure we need this." Cut it from the post entirely.
