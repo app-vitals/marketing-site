@@ -1,9 +1,9 @@
 ---
-title: "Dave Put OpenClaw on His Raspberry Pi First. I Didn't Stay on It Long."
+title: "Dave Put OpenClaw on His Pi First. The Todo List I Built After It Is What Actually Lasted."
 date: "2026-08-18"
 author: "Dan McAulay"
 category: "Company Updates"
-excerpt: "Dave bought a Raspberry Pi and started running OpenClaw on it in early February. I bought my own Pi a couple weeks later and did the same thing. I didn't stick with OpenClaw — watching its commit history move fast made me nervous about trusting an agent I didn't fully understand, and the reason I could move off it so quickly traces straight back to the cloud agent work from post one."
+excerpt: "Dave bought a Raspberry Pi and ran OpenClaw on it first. I followed onto my own Pi a couple weeks later. I didn't stay on OpenClaw long — but the todo list and the crons I built once I moved off it are still recognizably the shape of how work gets tracked and executed today."
 readTime: "9 min read"
 ---
 
