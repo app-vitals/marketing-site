@@ -1,9 +1,9 @@
 ---
-title: "Dave Put OpenClaw on His Raspberry Pi First. I Didn't Stay on It Long."
+title: "Dave Put OpenClaw on His Pi First. The Todo List I Built After It Is What Actually Lasted."
 date: "2026-08-18"
 author: "Dan McAulay"
 category: "Company Updates"
-excerpt: "Dave bought a Raspberry Pi and started running OpenClaw on it in early February. I bought my own Pi a couple weeks later and did the same thing. I didn't stick with OpenClaw — watching its commit history move fast made me nervous about trusting an agent I didn't fully understand, and the reason I could move off it so quickly traces straight back to the cloud agent work from post one."
+excerpt: "Dave bought a Raspberry Pi and ran OpenClaw on it first. I followed onto my own Pi a couple weeks later. I didn't stay on OpenClaw long — but the todo list and the crons I built once I moved off it are still recognizably the shape of how work gets tracked and executed today."
 readTime: "9 min read"
 ---
 
@@ -35,9 +35,11 @@ Most of those seven were personal ops, not engineering — I was building the th
 
 ## The First Thing I Set Bodhi Up to Do in the Background
 
-I built those two on purpose, with limits. From the start I kept a running list — `todos.json`, the one I promised at the end of the last post — as a general work queue: things I wanted built, plus whatever turned up on its own. The first cron, an audit job, ran twice a week and scanned Bodhi's own codebase for failing tests, missing coverage, dead code, simplification opportunities, even an audit of any outbound communication it wasn't supposed to be sending — writing findings onto that list in an exact shape I specified. The second cron, an execute job, ran every couple of hours, picked the next item off the same list — an audit finding or something I'd added myself to get built — fixed the small ones, broke the large ones down, and was bound by hard stops I wrote in on purpose: no messages, no touching credentials, no git push, no deploy, nothing to its own schedule without me approving it first.
+I built those two on purpose, with limits. From the start I kept a running list — `todos.json`, the one I promised at the end of the last post — as a general work queue: things I wanted built, plus whatever turned up on its own. The first, an audit cron, ran twice a week and scanned Bodhi's own codebase for failing tests, missing coverage, dead code, simplification opportunities, even an audit of any outbound communication it wasn't supposed to be sending — writing findings onto that list in an exact shape I specified. The second, an execute cron, ran every couple of hours, picked the next item off the same list — an audit finding or something I'd added myself to get built — fixed the small ones, broke the large ones down, and was bound by hard stops I wrote in on purpose: no messages, no touching credentials, no git push, no deploy, nothing to its own schedule without me approving it first.
 
-That pairing — the audit cron feeding the list, the execute cron working through it — was a scoped, safety-railed system I designed on paper, not autonomous initiative, built within about a day of the first findings showing up. Shipwright's entropy patrol does something similar today, scan and queue for code quality — but this was broader than that from day one, a general backlog for building things, not just a maintenance loop. I wanted it done safely as much as I wanted it done at all. That queue is also an early ancestor of the shared task store the whole pipeline runs on now, though the path between them is its own story, for another post.
+That pairing — the audit cron feeding the list, the execute cron working through it — was a scoped, safety-railed system I designed on paper, not autonomous initiative, built within about a day of the first findings showing up. I wanted it done safely as much as I wanted it done at all.
+
+It still echoes into Shipwright today, in two ways. Entropy patrol does something similar now — scan and queue for code quality — though this was broader from day one, a general backlog for building things, not just a maintenance loop. And that same list is an early ancestor of the shared task store the whole pipeline runs on, though the path between them is its own story, for another post.
 
 Looking back, the execute cron's hard stops were less airtight than they sound. None of them covered the actual code sitting in Bodhi's own workspace — the execute cron could rewrite that freely, and whatever it wrote would just run the next time a cron fired, or the next time I asked it to do something, with no review step in between. The guardrails were real, but narrower than I gave them credit for at the time.
 
@@ -45,13 +47,13 @@ Looking back, the execute cron's hard stops were less airtight than they sound. 
 
 Billing was the first real gap I automated, because it was a genuinely manual mess before Bodhi. I was invoicing by hand, checking by hand whether a payment had actually landed, and — since it's just the two of us — Dave and I were even paying each other manually. All of that moved onto Bodhi over the course of March, and the invoicing work specifically is what forced the whole pipeline to get reliable.
 
-Testing and verifying the code myself in March, I found out why it needed to be reliable: the bonus math was using a subset of hours instead of the total at one point, payroll history was storing the wrong end date for a pay period at another — both quietly computing real money wrong until I caught them. That's the kind of mistake you don't want to make twice. So the pipeline got careful: an approval gate on anything touching money, over-hours flagged instead of silently billed, nothing moving without me saying yes.
+Testing and verifying the code myself, I found out why it needed to be reliable: the bonus math was using a subset of hours instead of the total at one point, payroll history was storing the wrong end date for a pay period at another — both quietly computing real money wrong until I caught them. That's the kind of mistake you don't want to make twice. So the pipeline got careful: an approval gate on anything touching money, over-hours flagged instead of silently billed, nothing moving without me saying yes.
 
 You don't build that for a toy. You build it because you're about to trust the thing with your own paycheck, and being wrong once is enough to make you paranoid about it forever after.
 
 ## The Handoff
 
-On March 27, vitals-os entered the workspace as a synced shared repo — the same day vitals-os's own first commit landed. That's the seam where this stops being "my personal ops bot" and starts being part of something bigger. Dave had been building plan-session and dev-task in parallel the whole time, on his own thread. Mine was Bodhi, its todo list, its crons, and a review habit. Neither of us was building "Shipwright" yet. We were both just building the thing we personally needed, and it happened to start rhyming.
+On March 27, vitals-os entered the workspace as a synced shared repo — the same day vitals-os's own first commit landed. That's the seam where this stops being "my personal ops bot" and starts being part of something bigger. Dave had been building plan-session and dev-task in parallel the whole time, on his own thread. Mine was Bodhi, its todo list, its crons, and the [review habit from the last post](/blog/cloud-agent-review-origin/). Neither of us was building "Shipwright" yet. We were both just building the thing we personally needed, and it happened to start rhyming.
 
 If you look at Shipwright's agent code today, it has the same shape as what Bodhi had from week one — a wrapper around Claude Code, a config module, error handling for failed cron runs. That's not a coincidence and it's not a rewrite from scratch. It's the same harness, grown up. Every piece of it still traces back to a specific morning I needed a payment checked or an invoice approved. If it can't point back to something that concrete, I don't think it belongs.
 
