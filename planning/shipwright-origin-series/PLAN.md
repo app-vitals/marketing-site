@@ -157,7 +157,7 @@ dev-task are Dave's too, and only get mentioned in Dan's posts as things being
 |---|-------|--------|-------|
 | 1 | Cloud agent → PR review origin (`/ca-review-prs`, ships as `pr-review` plugin Feb 4 2026) | **Published** | [#89](https://github.com/app-vitals/marketing-site/pull/89) (merged), [#90](https://github.com/app-vitals/marketing-site/pull/90) (merged, accuracy pass), [#91](https://github.com/app-vitals/marketing-site/pull/91) (open, further accuracy passes) — `src/content/blog/cloud-agent-review-origin.md` |
 | 2 | OpenClaw + the original `todos.json` — queuing work with cron jobs before any of this had a name | **Published**, still taking accuracy/framing passes | [#100](https://github.com/app-vitals/marketing-site/pull/100), [#101](https://github.com/app-vitals/marketing-site/pull/101), [#102](https://github.com/app-vitals/marketing-site/pull/102) (all merged) — `src/content/blog/openclaw-todos-origin.md`; branch `content/openclaw-hardware-legacy` adding the OpenClaw-hardware/PVC-lineage section |
-| 3 | The vitals-os merge — Dave brings plan-session/dev-task, Dan brings Bodhi's todos/crons/review habit, they stop being two side projects and become one pipeline | Not planned yet | — |
+| 3 | The vitals-os merge — Dave brings plan-session/dev-task, Dan brings Bodhi's todos/crons/review habit, they stop being two side projects and become one pipeline. **Note (2026-08-18, Dan):** billing was actually the first thing moved to vitals-os — worth checking whether that's the right opening beat for this post | Not planned yet | — |
 | 4+ | The task store's real origin: `todos.json` got put behind an interface, a GitHub Issues–backed implementation was built alongside it, running both was "split-brained" (the agent got confused switching between them), and multi-agent-on-one-repo needs (shared task queue, tighter concurrency control) forced ripping both out and building the task store from scratch | Not planned yet — **don't fold this into post 3**, Dan confirmed 2026-08-18 it's its own post | — |
 
 ## Lessons From Post 1 (apply going forward)
@@ -177,6 +177,17 @@ dev-task are Dave's too, and only get mentioned in Dan's posts as things being
 
 ## Lessons From Post 2 (apply going forward)
 
+- **Added a synthesis beat to the billing section tying it back to everything
+  established earlier (Dan, 2026-08-18):** "make the point that bodhi wrote this
+  code in his workspace and executed it using crons... and used lint and test to
+  verify as well as the guardrails." Billing was introduced as if starting fresh;
+  it's actually the payoff of every pattern the post already built up — persistent
+  workspace, cron execution, lint/test verification, guardrails. Added: "Bodhi
+  wrote the fix the same way it did everything else by then: code living in its own
+  workspace, run on a cron, checked with lint and tests, bound by the same
+  guardrails as everything else it touched." Good general pattern for later
+  sections too — check whether a section's opening treats an established theme as
+  brand new instead of calling back to it.
 - **Rebalanced "The First Thing I Set Bodhi Up to Do in the Background" — execute
   cron + `todos.json` are the story, the audit cron is a nice-to-have (Dan,
   2026-08-18):** "the focus should be on todos.json and eng execute... the audit is
