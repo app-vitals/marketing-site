@@ -356,6 +356,18 @@ dev-task are Dave's too, and only get mentioned in Dan's posts as things being
   from the point it's supporting across a paragraph break and trust the reader to
   link them — say the causal connection explicitly, in the same breath as the
   evidence.
+- **"The bugs it turned up" had a dangling "it" and, worse, wrongly implied
+  autonomous discovery.** Dan: "you mean the bugs it introduced when coding and i
+  discovered, or are you saying bodhi found them? i actually found these issues
+  while testing and/or exploring and verifying the code output." Two separate
+  problems in one sentence: (1) "it" had no clean antecedent after the paragraph
+  merge, (2) even if it had, the phrasing credited discovery to the pipeline/Bodhi
+  rather than to Dan's own manual testing and verification. Fixed to state
+  explicitly that Dan found these himself, testing and verifying the code. **Don't
+  default to passive/agentless phrasing ("bugs it turned up," "issues that
+  surfaced") for anything Dan actually did by hand** — attribution of who-found-what
+  matters a lot in this series, since the whole trust narrative hinges on human
+  verification, not autonomous correctness.
 - **Cut low-value specificity Dan flagged directly:**
   - The `~/.bodhi/workspace`-creation-date / mtime-preservation paragraph — Dan:
     "not sure we need this." Cut it from the post entirely.
