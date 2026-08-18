@@ -45,7 +45,7 @@ I built those two on purpose, with limits. From the start I kept a running list 
 
 That pairing — the audit cron feeding the list, the execute cron working through it — was a scoped, safety-railed system I designed on paper, not autonomous initiative. I wanted it done safely as much as I wanted it done at all.
 
-It still echoes into Shipwright today, in two ways. Entropy patrol does something similar now — scan and queue for code quality — but what I built for Bodhi was broader than that from day one, a general backlog for building things, not just a maintenance loop. And that same list is an early ancestor of the shared task store the whole pipeline runs on, though the path between them is its own story, for another post.
+It still echoes into Shipwright today, split the same way it was back then. The audit cron was never more than entropy patrol is now — find things, report them, that's it. The real ancestors are the other two pieces: the list is an early version of the shared task store, and the execute cron working through it is an early version of what's now the shipwright loop — the thing that actually picks up tasks and works them, from entropy patrol or anywhere else. The path from one to the other is its own story, for another post.
 
 Looking back, the execute cron's hard stops were less airtight than they sound. None of them covered the actual code sitting in Bodhi's own workspace — the execute cron could rewrite that freely, and whatever it wrote would just run the next time a cron fired, or the next time I asked it to do something, with no review step in between. The guardrails were real, but narrower than I gave them credit for at the time.
 

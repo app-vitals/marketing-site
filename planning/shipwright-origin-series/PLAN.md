@@ -177,6 +177,26 @@ dev-task are Dave's too, and only get mentioned in Dan's posts as things being
 
 ## Lessons From Post 2 (apply going forward)
 
+- **Corrected the entropy-patrol/task-store architectural mapping — it's a
+  three-way split, not a two-way "broader" comparison (Dan, 2026-08-18):** "it's
+  bodhi split as well? the audit cron was just about finding things like entropy.
+  the todos.json and eng execute were the early versions of task store and the
+  shipwright loop." My first version said "what I built for Bodhi was broader than
+  entropy patrol" as a single comparison — wrong framing. Verified against the
+  actual skill definitions (`plugins/shipwright/skills/entropy-scan/SKILL.md`,
+  `entropy-fix/SKILL.md`) before Dan's correction: entropy-scan/entropy-fix really
+  is scan-and-report-only, same narrow scope as the audit cron. The correct mapping
+  is three pieces, not two: **audit cron ↔ entropy patrol** (both find-only, narrow),
+  **`todos.json` ↔ the shared task store** (the general queue), **execute cron ↔
+  the shipwright loop** (the thing that actually works items off the queue,
+  regardless of source). Entropy patrol today is just one feeder into the task
+  store, the same way the audit cron was just one feeder into `todos.json`
+  alongside things Dan added by hand — that's where "broader than just maintenance"
+  actually lives, not in a comparison between the audit cron and entropy patrol
+  directly. **Lesson:** verifying a claim's factual accuracy (entropy-scan really is
+  narrow) doesn't mean the *framing* built on top of it is correct — check the
+  structure of the comparison itself, not just whether each piece is independently
+  true.
 - **Another dangling-referent bug, same family as the earlier ones — "though this
   was broader from day one" pointed at the wrong noun.** Dan: "what was broader?"
   Grammatically "this" resolves to the closest antecedent, "entropy patrol" (the
