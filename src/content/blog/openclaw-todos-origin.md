@@ -23,9 +23,9 @@ By March 4, Bodhi was running on Claude Code. That move went faster than it shou
 
 ## The Part of OpenClaw That Actually Mattered
 
-The crons and the trust-building habits weren't the biggest thing that carried over from OpenClaw. It was simpler than that: OpenClaw ran on its own hardware. Bodhi had a Raspberry Pi that was just its machine — not a shared server, not a chat session that resets, an actual persistent home. It could write something to disk and expect it to still be there tomorrow. It could record what it learned and build on that instead of starting from zero every conversation.
+Trust-building habits weren't the biggest thing that carried over from OpenClaw, though. It was simpler than that: OpenClaw ran on its own hardware. Bodhi had a Raspberry Pi that was just its machine — not a shared server, not a chat session that resets, an actual persistent home. It could write something to disk and expect it to still be there tomorrow. It could record what it learned and build on that instead of starting from zero every conversation.
 
-That's the same shape a Shipwright agent's own persistent storage is today — not a database it queries, a workspace it lives in. The hardware changed, a Pi on my desk to a volume in the cloud, but the pattern didn't: self-modifying software needs somewhere of its own to actually be self-modifying. Write code, run it, remember what happened, do it again tomorrow. Everything else in this post — the todo list, the crons, the eng-audit loop — only works because that space existed underneath it.
+That's the same shape a Shipwright agent's own persistent storage is today — not a database it queries, a workspace it lives in. The hardware changed, a Pi on my desk to a volume in the cloud, but the pattern didn't: self-modifying software needs somewhere of its own to actually be self-modifying. Write code, run it, remember what happened, do it again tomorrow. Nothing else in this post — not the lists, not the schedules, not the safety rails — works without that space underneath it.
 
 ## Slack Was the Other Unlock
 

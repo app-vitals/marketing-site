@@ -177,6 +177,26 @@ dev-task are Dave's too, and only get mentioned in Dan's posts as things being
 
 ## Lessons From Post 2 (apply going forward)
 
+- **A second, distinct "encoding" bug found on a full-article pass: forward-
+  referencing later sections before they exist to the reader.** Dan: "in this
+  statement we kind of get ahead of the article by talking about things other
+  sections before introducing them." Two instances, both in "The Part of OpenClaw
+  That Actually Mattered": (1) "The crons... weren't the biggest thing that carried
+  over" named crons two sections before the Crons section actually exists; (2)
+  "Everything else in this post — the todo list, the crons, the eng-audit loop —
+  only works because..." named three specific concepts, none introduced yet at that
+  point (todo list and eng-audit loop don't appear until two sections later). Fixed
+  by (1) dropping the crons half of the comparison, keeping only the trust-building
+  callback (which *is* valid — it's the immediately preceding section), and (2)
+  genericizing the list to "not the lists, not the schedules, not the safety rails"
+  — vague common nouns that preview what's coming without requiring the reader to
+  already recognize them as named concepts. **This is a different failure mode from
+  edit-history leakage** (referencing our discarded drafts) even though both read as
+  "assumes context the reader doesn't have." Checklist for future full-article
+  passes: for every specific named thing a sentence references, confirm it's either
+  (a) already introduced earlier in *this* article, (b) a real-world present-day
+  fact needing no article context, or (c) an explicitly linked cross-post
+  reference — anything else needs to go generic or move.
 - **Dropped "fixed the small ones, broke the large ones down" from the execute-cron
   description — agreed with Dan's read.** He confirmed the mapping nuance flagged
   above was real, then asked whether to just gloss it: "the breaking things down is
