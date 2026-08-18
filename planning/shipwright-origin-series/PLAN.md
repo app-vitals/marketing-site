@@ -177,6 +177,17 @@ dev-task are Dave's too, and only get mentioned in Dan's posts as things being
 
 ## Lessons From Post 2 (apply going forward)
 
+- **Another dangling-referent bug, same family as the earlier ones — "though this
+  was broader from day one" pointed at the wrong noun.** Dan: "what was broader?"
+  Grammatically "this" resolves to the closest antecedent, "entropy patrol" (the
+  sentence right before it) — implying entropy patrol was broader, when the
+  intended meaning was the opposite: Bodhi's original system was broader than
+  entropy patrol's current scope. Fixed by naming the subject explicitly ("what I
+  built for Bodhi was broader than that") instead of leaving a bare "this" to
+  resolve on its own. **Running tally of this exact failure mode in post 2:**
+  dangling "it" (crons vs. queue vs. execute cron, twice), "the reason why" with no
+  stated object, and now this — comparative/referential pronouns are consistently
+  the highest-yield thing to scrutinize on a self-review pass, not just a one-off.
 - **"Built within about a day of the first findings showing up" outgrew its own
   premise.** Dan flagged it as feeling outdated — likely because the eng-todos
   section now establishes `todos.json` as a general work queue used from day one
