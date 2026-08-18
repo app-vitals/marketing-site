@@ -123,9 +123,15 @@ closing "earns its place" paragraph).
     lint, tests, and a controlled environment — the same mechanism, applied to a
     system he already understood. Secondary motive: building it himself meant going
     deeper on Claude Code specifically, which is directly useful for client work.
-  - `2026-02-28` — Bodhi's first boot, on OpenClaw. `SOUL.md`/`IDENTITY.md` authored
-    (filesystem birth time + Dan's direct account; predates the workspace's own git
-    history, so not git-verifiable, but nothing in the repo contradicts it)
+  - `2026-02-28` — Bodhi's first boot, over Telegram (the easiest way to get going
+    with OpenClaw — same channel Dave used). **Correction (2026-08-18):** the
+    identity-file creation isn't something Dan sat down and deliberately wrote — it's
+    OpenClaw's own onboarding flow, which runs automatically in-chat the first time
+    you talk to it (who is this thing, what should it sound like, what should it
+    refuse to do). Don't frame it as a deliberate authorial act in future posts;
+    frame it as standard OpenClaw behavior that happened to be the moment Bodhi got
+    a name. (Filesystem birth time still confirms the Feb 28 date; predates the
+    workspace's own git history, so not git-verifiable beyond that.)
   - `2026-03-04` — OpenClaw replaced by Claude Code. `~/.bodhi/workspace` created
     fresh; `bodhi-workspace` repo's first commit (`a3fb42b`, "initial snapshot")
     lands same day. **Don't frame this as a fast from-scratch rebuild** — Dan was
@@ -150,7 +156,7 @@ dev-task are Dave's too, and only get mentioned in Dan's posts as things being
 | # | Topic | Status | Links |
 |---|-------|--------|-------|
 | 1 | Cloud agent → PR review origin (`/ca-review-prs`, ships as `pr-review` plugin Feb 4 2026) | **Published** | [#89](https://github.com/app-vitals/marketing-site/pull/89) (merged), [#90](https://github.com/app-vitals/marketing-site/pull/90) (merged, accuracy pass), [#91](https://github.com/app-vitals/marketing-site/pull/91) (open, further accuracy passes) — `src/content/blog/cloud-agent-review-origin.md` |
-| 2 | OpenClaw + the original `todos.json` — queuing work with cron jobs before any of this had a name | Drafted, PR open | `src/content/blog/openclaw-todos-origin.md`, branch `content/openclaw-todos-origin` |
+| 2 | OpenClaw + the original `todos.json` — queuing work with cron jobs before any of this had a name | **Published**, follow-up corrections in progress | [#100](https://github.com/app-vitals/marketing-site/pull/100) (merged) — `src/content/blog/openclaw-todos-origin.md`; see `content/openclaw-todos-followup` branch for post-merge corrections |
 | 3+ | TBD — likely where plan-session/dev-task get pulled in as Dan's and Dave's threads start to merge into one pipeline | Not planned yet | — |
 
 ## Lessons From Post 1 (apply going forward)
@@ -188,3 +194,57 @@ dev-task are Dave's too, and only get mentioned in Dan's posts as things being
   nearly every claim in the post — including the exact commit hash and message for
   the vitals-os handoff (`e91bc46`) that looked fabricated when checked against the
   wrong repo.
+
+## Post-Merge Corrections on Post 2 (Dan's notes, 2026-08-18 — apply to `content/openclaw-todos-followup`)
+
+- **The `todos.json`-lineage file's actual move history** (Dan relayed this from a
+  review with commit-level detail; the post's first cut had the sequence wrong —
+  don't repeat the wrong version):
+  1. `memory/engineering-todos.json` created Mar 7
+  2. Renamed to `state/engineering-todos.json` Mar 9 (`48904cf`, "introduce state/
+     dir") — still one file, engineering-flavored name carries over
+  3. Renamed again to `state/todos.json` Mar 14 (`b4e8c4b`) — still one file
+  4. Mar 16 (`f1d3ed5`): a genuinely *new* `state/engineering-todos.json` created
+     alongside the existing `state/todos.json` — this is the actual split moment,
+     two files side by side
+  5. Mar 18 (`d2a071d`, eng-111–114): split reversed — commit message: "eng-114:
+     delete state/engineering-todos.json — orphaned after eng-111 rename; todos now
+     live exclusively in state/todos.json." One file again.
+  For the post itself, narrate this as "renamed twice, briefly split into two files,
+  merged back into one" — the blog doesn't need the hashes, but don't reintroduce the
+  cleaner-than-reality linear version (single rename, then a permanent split) that
+  the original draft had.
+- **Bodhi didn't spontaneously audit itself — Dan designed a scoped, safety-railed
+  system on purpose, within about a day of the first findings.** Two crons, not one
+  emergent behavior: `eng-audit` (Mon/Thu 10am) with a detailed prompt telling Bodhi
+  exactly what to scan (tests, lint, coverage gaps, an "outbound communication
+  audit" for unapproved external calls, simplification opportunities, dead code,
+  cron integrity) and the exact JSON shape to write findings in; `eng-execute`
+  (every 2 hours) picks the next pending item, fixes small/medium ones, breaks large
+  ones down, and is bound by explicit hard-stops — no messages, no env/credential
+  changes, no git push, no deploy, no crons.json edits without approval. The
+  `eng-001`–`006` findings (Mar 6) look like they triggered the idea, but the cron
+  pair that formalized it was deliberate design, not autonomous initiative. Don't
+  undersell the design work or oversell Bodhi's autonomy at this point in the story
+  — this was prompt engineering with real thought about what Bodhi could and
+  couldn't touch on its own, not "Bodhi decided to."
+- **Crons are an OpenClaw feature, not something Bodhi/Claude Code invented.** One
+  of the two big OpenClaw unlocks, alongside the messaging integration itself — an
+  easy way to schedule background work for an agent. Attribute it to the platform
+  in the post, not to Bodhi's own design.
+- **Billing was the first real gap Dan automated, and it was genuinely manual
+  before Bodhi:** invoicing by hand, manually checking whether payments had come
+  in, and — since it's just Dan and Dave with no W-2, only distributions — the two
+  of them paying each other manually too. Worth stating this upfront in the "Money
+  Made It Real" section as the *why*, before the March 23/25 technical specifics.
+- **Cut low-value specificity Dan flagged directly:**
+  - The `~/.bodhi/workspace`-creation-date / mtime-preservation paragraph — Dan:
+    "not sure we need this." Cut it from the post entirely.
+  - Internal filenames throughout (`SOUL.md`, `IDENTITY.md`, `crons.json`,
+    `comp-calc.ts`, `calculate.ts`, `claude.ts`, `config.ts`, etc.) — Dan: "not sure
+    how useful calling out actual file names is... people may not have a reference
+    point for them." **Style rule going forward:** describe internal implementation
+    files in plain language, not backticked filenames, unless the specific name is
+    a narrative anchor the reader was already promised (e.g. `todos.json`, named
+    explicitly in post 1's "next up" pointer — that one stays). Named third-party
+    products (Gmail, Resend, Claude Code) are fine to keep; they're not the issue.
