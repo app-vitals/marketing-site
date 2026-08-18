@@ -312,6 +312,14 @@ dev-task are Dave's too, and only get mentioned in Dan's posts as things being
   rule for future posts: when a paragraph introduces more than one actor/entity,
   don't lean on pronouns past the sentence that introduced them — re-name the
   subject at the start of each new point, even if it reads slightly more repetitive.
+- **"No W-2, only distributions" was wrong for this timeframe.** Dan flagged it
+  (2026-08-18): "since this is feb 2026 i guess we had w-2s so things had just
+  become more complicated" — he wasn't fully sure himself, so don't reintroduce a
+  specific compensation-structure claim without confirming it first. Cut the clause
+  entirely rather than guess at a replacement; the underlying fact (paying each
+  other manually) wasn't disputed and stayed in. If Dan wants the "things had just
+  gotten more complicated" color back in, ask what specifically changed before
+  writing it in.
 - **Cut low-value specificity Dan flagged directly:**
   - The `~/.bodhi/workspace`-creation-date / mtime-preservation paragraph — Dan:
     "not sure we need this." Cut it from the post entirely.

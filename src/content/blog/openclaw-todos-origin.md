@@ -43,7 +43,7 @@ Looking back, the execute cron's hard stops were less airtight than they sound. 
 
 ## Money Made It Real
 
-Billing was the first real gap I automated, because it was a genuinely manual mess before Bodhi. I was invoicing by hand, checking by hand whether a payment had actually landed, and — since it's just the two of us with no W-2, only distributions — Dave and I were even paying each other manually. All of that moved onto Bodhi over the course of March, and the invoicing work specifically is what forced the whole pipeline to get reliable.
+Billing was the first real gap I automated, because it was a genuinely manual mess before Bodhi. I was invoicing by hand, checking by hand whether a payment had actually landed, and — since it's just the two of us — Dave and I were even paying each other manually. All of that moved onto Bodhi over the course of March, and the invoicing work specifically is what forced the whole pipeline to get reliable.
 
 On March 23 I repaired the entire billing pipeline — payments, billing triggers, final invoices, note templates — and added auto-detection for over-hours work with a note in the approval prompt instead of silently billing it. Two days later was the biggest single push of the month: I replaced Resend with Gmail for draft-based invoicing, then spent the rest of the day rebuilding the payroll calculation — migrating it onto a shared calculation library as the single source of truth, adding date-range flags for partial periods, fixing the bonus math to use total hours instead of a subset, and fixing the payroll history to store an inclusive period end instead of the exclusive date the underlying API gave it. Small fixes, but each one was real money computed wrong until it was found.
 
