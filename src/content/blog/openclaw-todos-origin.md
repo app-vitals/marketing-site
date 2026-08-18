@@ -45,9 +45,9 @@ Looking back, the execute cron's hard stops were less airtight than they sound. 
 
 Billing was the first real gap I automated, because it was a genuinely manual mess before Bodhi. I was invoicing by hand, checking by hand whether a payment had actually landed, and — since it's just the two of us — Dave and I were even paying each other manually. All of that moved onto Bodhi over the course of March, and the invoicing work specifically is what forced the whole pipeline to get reliable.
 
-On March 23 I repaired the billing pipeline and added auto-detection for over-hours work, with a note in the approval prompt instead of silently billing it. Two days later was the biggest single push of the month, rebuilding the payroll calculation from the ground up — including a bug where the bonus math was using a subset of hours instead of the total, and another where payroll history was storing the wrong end date for a pay period. Small fixes, but each one was real money computed wrong until it was found.
+In March, the bugs it turned up were the reason why: the bonus math was using a subset of hours instead of the total at one point, payroll history was storing the wrong end date for a pay period at another — both quietly computing real money wrong until I went looking. That's the kind of mistake you don't want to make twice. So the pipeline got careful: an approval gate on anything touching money, over-hours flagged instead of silently billed, nothing moving without me saying yes.
 
-You don't build careful approval gates and inclusive-date fixes for a toy. You build them because you're about to trust the thing with your own paycheck, and being wrong once is enough to make you paranoid about it forever after.
+You don't build that for a toy. You build it because you're about to trust the thing with your own paycheck, and being wrong once is enough to make you paranoid about it forever after.
 
 ## The Handoff
 

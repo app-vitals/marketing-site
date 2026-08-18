@@ -345,6 +345,17 @@ dev-task are Dave's too, and only get mentioned in Dan's posts as things being
   is a list of technical changes, check whether it's illustrating the section's
   actual point or just proving research was thorough — the latter belongs in
   PLAN.md, not the post.
+- **Even after trimming, the paragraph still "felt kinda random" to Dan** — the
+  bugs were listed first, then the thematic payoff ("you build careful approval
+  gates because...") landed two sentences later as a separate paragraph, so the
+  reader had to connect the dots themselves instead of the prose doing it. Fixed by
+  merging evidence and point into one flow: state that the bugs are *why* the
+  pipeline got careful, list them as direct support for that claim, then show what
+  "got careful" actually looked like (approval gate, over-hours flagging), before
+  the closing paycheck line. **General lesson:** don't separate concrete evidence
+  from the point it's supporting across a paragraph break and trust the reader to
+  link them — say the causal connection explicitly, in the same breath as the
+  evidence.
 - **Cut low-value specificity Dan flagged directly:**
   - The `~/.bodhi/workspace`-creation-date / mtime-preservation paragraph — Dan:
     "not sure we need this." Cut it from the post entirely.
