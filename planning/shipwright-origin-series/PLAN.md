@@ -255,6 +255,17 @@ dev-task are Dave's too, and only get mentioned in Dan's posts as things being
   before the crons/backlog sections, since it's the structural reason the later
   async stuff (background crons, self-managed backlog, approve-from-phone
   invoicing) hangs together as one thing.
+- **The "hard stops" list wasn't as airtight as the post first made it sound (Dan's
+  words, 2026-08-18):** eng-execute was blocked from messaging, credentials, git
+  push, deploy, and unapproved schedule changes — but nothing stopped it from
+  freely rewriting the actual code in its own workspace, and whatever it wrote
+  would just run the next time a cron fired or Dan asked it to do something. No
+  review step sat between "Bodhi edits its own code" and "that code executes."
+  Added an honest "looking back, less airtight than it sounds" caveat right after
+  the hard-stops list — this fits the series' own ethos (real path, not a polished
+  safety story) better than leaving the hard-stops list sounding complete. Keep this
+  caveat if post 3 revisits eng-execute's evolution — it's the real gap, not a
+  detail to smooth over.
 - **Cut low-value specificity Dan flagged directly:**
   - The `~/.bodhi/workspace`-creation-date / mtime-preservation paragraph — Dan:
     "not sure we need this." Cut it from the post entirely.

@@ -33,6 +33,8 @@ Bodhi's first real workload wasn't spontaneous — I built it on purpose, with l
 
 It's a scoped, safety-railed system I designed on paper — prompt engineering, not autonomous initiative — built within about a day of the first findings actually showing up. The findings themselves were mundane: failing tests, gaps in coverage, missing basic project setup. But the two crons that turned "mundane findings" into an ongoing, self-managed backlog were the deliberate part, and the hard stops mattered more to me than the automation did.
 
+Looking back, that list of stops was less airtight than it sounds. None of them covered the actual code sitting in its own workspace — it could rewrite that freely, and whatever it wrote would just run the next time a cron fired, or the next time I asked it to do something, with no review step in between. The guardrails were real, but narrower than I gave them credit for at the time.
+
 That list — `todos.json`, the one I promised at the end of the last post — didn't stay in one place, either. The file itself got renamed twice in the first couple weeks, briefly split into two separate files once the general to-do list and the engineering backlog needed to stop being the same thing, then merged back into one a few days later once the split turned out to create more confusion than it solved. None of that was planned upfront. It's what actually happens when a system gets used instead of just designed.
 
 ## Crons Were There From Day One
