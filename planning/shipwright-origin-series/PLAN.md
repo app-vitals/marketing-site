@@ -237,18 +237,24 @@ dev-task are Dave's too, and only get mentioned in Dan's posts as things being
   in, and — since it's just Dan and Dave with no W-2, only distributions — the two
   of them paying each other manually too. Worth stating this upfront in the "Money
   Made It Real" section as the *why*, before the March 23/25 technical specifics.
-- **The Slack move was a bigger deal than a channel swap (Dan's words, 2026-08-18):**
-  moving onto Claude Code also moved Bodhi from Telegram into Slack, and that was
-  "huge" for him — Slack was already where he did async work, unlike the terminal,
-  which is where he goes to get into the zone on one task at a time. Talking to
-  Bodhi in Slack started to feel like talking to a teammate/developer who could go
-  off and do work independently, not like operating a tool. This is directly tied to
-  his actual goal — moving toward async, autonomous, multi-task agents, not just
-  faster single-task execution — so it's worth treating as load-bearing, not a
-  footnote. Got its own section ("Slack Was the Other Unlock") placed right after
-  the Claude Code migration and before the crons/backlog sections, since it's the
-  structural reason the later async stuff (background crons, self-managed backlog,
-  approve-from-phone invoicing) hangs together as one thing.
+- **The Slack move was a bigger deal than a channel swap — but it's causally
+  unrelated to the Claude Code migration (Dan's words, 2026-08-18):** first pass
+  wrongly bundled the Telegram→Slack switch together with the OpenClaw→Claude Code
+  migration, as if one caused the other. Dan corrected this: he moved to Slack
+  because that's where he was already comfortable and already working — Telegram
+  was just an easy starting point for OpenClaw, and he didn't want to add another
+  tool to his life. **Don't imply timing/causality between the platform migration
+  and the channel switch in future drafts — they're two independent decisions,**
+  even though they both get covered in the same section. The substance of why it
+  mattered still stands: Slack was already where he did async work, unlike the
+  terminal (heads-down, one task at a time), and talking to Bodhi there started to
+  feel like talking to a teammate/developer who could go off and do work
+  independently — directly tied to his actual goal of moving toward async,
+  autonomous, multi-task agents, not just faster single-task execution. Section:
+  "Slack Was the Other Unlock," placed right after the Claude Code migration and
+  before the crons/backlog sections, since it's the structural reason the later
+  async stuff (background crons, self-managed backlog, approve-from-phone
+  invoicing) hangs together as one thing.
 - **Cut low-value specificity Dan flagged directly:**
   - The `~/.bodhi/workspace`-creation-date / mtime-preservation paragraph — Dan:
     "not sure we need this." Cut it from the post entirely.
