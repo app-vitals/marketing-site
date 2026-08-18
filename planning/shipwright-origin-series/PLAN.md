@@ -177,6 +177,19 @@ dev-task are Dave's too, and only get mentioned in Dan's posts as things being
 
 ## Lessons From Post 2 (apply going forward)
 
+- **Reordered the "echoes into Shipwright" paragraph to lead with execute cron/
+  `todos.json`, per Dan's consistent preference (2026-08-18): "focus on eng execute
+  and todos.json first and then audit cron."** The paragraph still had audit-cron-
+  first ordering left over from before the section was rebalanced. Reordering it
+  naively would have recreated the exact referent bug fixed two commits earlier
+  (moving the audit mention next to "the path from one to the other" makes that
+  closing line ambiguous again). Fixed by moving "the path from one to the other"
+  to sit directly after the list/execute-cron → task-store/loop mapping — its actual
+  referent — and pushing the audit-cron mention to the very end of the paragraph
+  ("The audit cron, meanwhile...— always the smaller half of the pair"), which also
+  reinforces the "audit is secondary" framing by literal position. **Reinforces the
+  standing lesson: reordering for emphasis and reordering for correctness aren't
+  independent — check both every time.**
 - **Added a synthesis beat to the billing section tying it back to everything
   established earlier (Dan, 2026-08-18):** "make the point that bodhi wrote this
   code in his workspace and executed it using crons... and used lint and test to

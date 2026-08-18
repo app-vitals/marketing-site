@@ -49,7 +49,7 @@ The list itself was a general work queue from the start, not a bug tracker — m
 
 The execute cron and the list it worked through were a scoped, safety-railed system I designed on paper, not autonomous initiative. I wanted it done safely as much as I wanted it done at all.
 
-It still echoes into Shipwright today, split the same way it was back then. The audit cron did what entropy patrol does now — find things, report them, that's it — always the smaller half of the pair. The bigger half is what actually matters: the list is an early version of the shared task store, and the execute cron working through it is an early version of what's now the shipwright loop — the thing that actually picks up tasks and works them, from entropy patrol or anywhere else. The path from one to the other is its own story, for another post.
+It still echoes into Shipwright today, split the same way it was back then. The list is an early version of the shared task store, and the execute cron working through it is an early version of what's now the shipwright loop — the thing that actually picks up tasks and works them, from entropy patrol or anywhere else. The path from one to the other is its own story, for another post. The audit cron, meanwhile, did what entropy patrol does now — find things, report them, that's it — always the smaller half of the pair.
 
 Looking back, the execute cron's hard stops were less airtight than they sound. None of them covered the actual code sitting in Bodhi's own workspace — the execute cron could rewrite that freely, and whatever it wrote would just run the next time a cron fired, or the next time I asked it to do something, with no review step in between. The guardrails were real, but narrower than I gave them credit for at the time.
 
