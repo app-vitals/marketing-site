@@ -177,6 +177,16 @@ dev-task are Dave's too, and only get mentioned in Dan's posts as things being
 
 ## Lessons From Post 2 (apply going forward)
 
+- **"Built within about a day of the first findings showing up" outgrew its own
+  premise.** Dan flagged it as feeling outdated — likely because the eng-todos
+  section now establishes `todos.json` as a general work queue used from day one
+  (not something that only existed once audit findings triggered it), so a timing
+  claim anchored to "the first findings" no longer fits cleanly with the broader
+  framing that replaced it. Cut rather than tried to patch — the paragraph's actual
+  point (deliberately designed, not autonomous initiative) doesn't need the date
+  anchor to land. **Pattern to watch:** when a section gets reframed (audit-only →
+  general work queue, here), go back and check whether earlier supporting details
+  still fit the new frame, not just whether they're independently still true.
 - **Missed a main theme on the first pass: OpenClaw's own hardware is what became
   the PVC pattern (Dan's words, 2026-08-18):** "one of the main things about
   openclaw that carried over to shipwright agents. openclaw was running on it's own
