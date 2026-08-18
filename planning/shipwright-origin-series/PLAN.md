@@ -266,6 +266,17 @@ dev-task are Dave's too, and only get mentioned in Dan's posts as things being
   safety story) better than leaving the hard-stops list sounding complete. Keep this
   caveat if post 3 revisits eng-execute's evolution — it's the real gap, not a
   detail to smooth over.
+- **Don't invent comparative value-judgments on Dan's behalf.** Wrote "the hard
+  stops mattered more to me than the automation did" as editorial synthesis — Dan
+  confirmed the hard stops were real and he wanted safety, but never said or implied
+  a ranking against the automation itself. This is the same failure mode as post 1's
+  "don't invent specificity to illustrate vagueness" lesson, just applied to
+  sentiment/values instead of concrete facts: extrapolating what someone *felt more
+  strongly about* is exactly as fabricable as inventing a fake cron name. Fixed to
+  "I wanted it done safely as much as I wanted it done at all" — additive, not
+  comparative, and matches what Dan actually said. When drafting interior states
+  (what mattered more, what he was proudest of, what worried him most), don't
+  extrapolate from adjacent facts — ask, or keep it non-comparative.
 - **Cut low-value specificity Dan flagged directly:**
   - The `~/.bodhi/workspace`-creation-date / mtime-preservation paragraph — Dan:
     "not sure we need this." Cut it from the post entirely.
