@@ -177,6 +177,22 @@ dev-task are Dave's too, and only get mentioned in Dan's posts as things being
 
 ## Lessons From Post 2 (apply going forward)
 
+- **Moved "The Part of OpenClaw That Actually Mattered" earlier, before Trust, per
+  Dan's structural note (2026-08-18):** "maybe the part of openclaw that actually
+  matter should be before trust and could be altered slightly to help frame why
+  trust was important for an ai agent running on it's own hardware and capable of
+  modifying itself." New order: Who Bodhi Was → **The Part of OpenClaw That Actually
+  Mattered** → Trust Had to Be Built → Slack → Crons → eng-todos → Money → Handoff.
+  Added a closing bridge sentence to the hardware section ("an agent with its own
+  machine, able to rewrite its own code, is exactly the kind of thing you should be
+  nervous about handing real autonomy to — that's where trust actually had to
+  start") so it sets up Trust's opening causally instead of Trust starting cold.
+  Also cut "the hardware changed, a Pi on my desk to a volume in the cloud" from the
+  section — that detail referenced the Claude Code migration, which now comes
+  *after* this section in reading order, so keeping it would have recreated the
+  exact forward-reference bug just fixed. **Lesson: reordering sections isn't just
+  cut-and-paste — recheck every sentence in a moved section for references to
+  content that used to be earlier but is now later** (or vice versa).
 - **A second, distinct "encoding" bug found on a full-article pass: forward-
   referencing later sections before they exist to the reader.** Dan: "in this
   statement we kind of get ahead of the article by talking about things other

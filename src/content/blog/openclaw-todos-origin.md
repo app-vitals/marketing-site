@@ -15,17 +15,19 @@ Dave bought a Raspberry Pi and started running OpenClaw on it in early February.
 
 Bodhi booted for the first time on February 28, 2026, over Telegram — the easiest way to get going with OpenClaw, and the same channel Dave used. The first real interaction wasn't me writing a feature. It was OpenClaw's own onboarding, which happens right there in the chat: who is this thing, what should it sound like, what should it refuse to do. The answers get written down as the assistant's identity before it can do much else. That's standard OpenClaw behavior, not something I invented — but it's still the moment Bodhi stopped being an empty shell and became something with a name.
 
+## The Part of OpenClaw That Actually Mattered
+
+OpenClaw ran on its own hardware. Bodhi had a Raspberry Pi that was just its machine — not a shared server, not a chat session that resets, an actual persistent home. It could write something to disk and expect it to still be there tomorrow. It could record what it learned and build on that instead of starting from zero every conversation.
+
+That's the same shape a Shipwright agent's own persistent storage is today — not a database it queries, a workspace it lives in. Self-modifying software needs somewhere of its own to actually be self-modifying: write code, run it, remember what happened, do it again tomorrow. Nothing else in this post — not the lists, not the schedules, not the safety rails — works without that space underneath it.
+
+But an agent with its own machine, able to rewrite its own code, is exactly the kind of thing you should be nervous about handing real autonomy to. That's where trust actually had to start.
+
 ## Trust Had to Be Built, Not Assumed
 
 I didn't stay on OpenClaw long, and it wasn't really about OpenClaw's quality. I was still new to the actual risks of turning an AI agent loose on my own machine without me approving every task it ran, and watching OpenClaw's own commit history move fast — a lot of changes landing quickly — made me nervous in a way I hadn't fully expected going in. I knew Claude Code's internals a lot better than I knew OpenClaw's, and trust in a system you're about to hand real autonomy to isn't something you assert — it's something you build. I ended up building it into Bodhi's own workflow later, the same way: lint, tests, a tightly controlled environment. At that point it was easier to build that trust on ground I already understood. There was a second, less defensive reason too — building this myself meant going deeper on Claude Code specifically, and that was directly useful. It's the tool we run for clients.
 
 By March 4, Bodhi was running on Claude Code. That move went faster than it should have — I'd already been running Claude Code headless and scripted for the cloud agent project from [the first post in this series](/blog/cloud-agent-review-origin/). Pointing that same pattern at a personal assistant instead of a PR reviewer wasn't new work, it was reusing a pattern I already had. I just moved it onto ground I already knew how to run headless.
-
-## The Part of OpenClaw That Actually Mattered
-
-Trust-building habits weren't the biggest thing that carried over from OpenClaw, though. It was simpler than that: OpenClaw ran on its own hardware. Bodhi had a Raspberry Pi that was just its machine — not a shared server, not a chat session that resets, an actual persistent home. It could write something to disk and expect it to still be there tomorrow. It could record what it learned and build on that instead of starting from zero every conversation.
-
-That's the same shape a Shipwright agent's own persistent storage is today — not a database it queries, a workspace it lives in. The hardware changed, a Pi on my desk to a volume in the cloud, but the pattern didn't: self-modifying software needs somewhere of its own to actually be self-modifying. Write code, run it, remember what happened, do it again tomorrow. Nothing else in this post — not the lists, not the schedules, not the safety rails — works without that space underneath it.
 
 ## Slack Was the Other Unlock
 
