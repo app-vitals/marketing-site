@@ -177,6 +177,29 @@ dev-task are Dave's too, and only get mentioned in Dan's posts as things being
 
 ## Lessons From Post 2 (apply going forward)
 
+- **Same edit-history-leakage bug recurred in the very next sentence I wrote.**
+  "The audit cron was never more than entropy patrol is now" only makes sense as a
+  rebuttal of the "broader than entropy patrol" claim I'd just walked back — a
+  reader never saw that claim, so "was never more than" reads as an unexplained
+  defensive hedge. Dan: "you're doing it again." Fixed to a plain positive
+  statement ("did what entropy patrol does now"). **This is now a standing
+  self-check, not a one-off:** after any correction, reread the very next sentence
+  I write for "was never," "isn't just," "wasn't really," etc. — these constructions
+  are the tell that I'm still arguing against the discarded draft instead of just
+  stating the corrected fact.
+- **Re-verified the corrected mapping directly against the shipwright codebase**
+  (`plugins/shipwright/CLAUDE.md`) after Dan asked me to reread the section: entropy
+  patrol is explicitly documented as a "maintenance task" separate from "the core
+  shipwright loop (dev-task, review, patch, deploy)," and the loop dispatches work
+  from the task store regardless of source — both match what the post now says.
+  **One nuance not written into the post, flagged for awareness:** the execute
+  cron's "fixed the small ones, broke the large ones down" behavior doesn't map
+  purely onto today's shipwright-loop (a pure dispatcher) — the decomposition part
+  is closer to what plan-session/dev-task do now. Bodhi's single execute cron did
+  the work that's since split across multiple specialized pieces. Didn't add this
+  distinction to the post itself (it's more architectural precision than a blog
+  post needs), but worth knowing if post 3 or later posts dig into how the loop
+  actually evolved.
 - **Corrected the entropy-patrol/task-store architectural mapping — it's a
   three-way split, not a two-way "broader" comparison (Dan, 2026-08-18):** "it's
   bodhi split as well? the audit cron was just about finding things like entropy.
