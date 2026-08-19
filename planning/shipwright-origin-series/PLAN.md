@@ -192,8 +192,14 @@ dev-task are Dave's too, and only get mentioned in Dan's posts as things being
   a separate lower-priority feedback channel.** Also: Dan's same reply had a second
   detail not yet used — "the biggest gap [after OpenClaw] was channels, the Slack
   integration and voice-to-text support. I never added voice, but Dave did a month
-  or two later" — ask before adding, since it wasn't explicitly requested and may
-  belong in the Slack section or a future post instead.
+  or two later." **Status: parked, undecided.** Dan: "i don't know if
+  slack and voice make it in to this series, but i could be convinced otherwise."
+  Doc's take when asked: the Slack half has a real home — it'd explain *why* the
+  Telegram→Slack transition (already covered in "Slack Was the Other Unlock") took
+  real effort, since there was a genuine gap right after leaving OpenClaw where
+  Bodhi had no channel at all. The voice-to-text half is Dave's thread, not Dan's —
+  the scope note above already draws that line for this series. Not added to the
+  post; revisit only if Dan decides he wants it, don't reintroduce unprompted.
 - **Post-merge polish, after PR #103 (2026-08-18):** two small fixes on a fresh
   branch since #103 was already merged. (1) Added a link to
   [openclaw.ai](https://openclaw.ai/) on first mention — the post references
