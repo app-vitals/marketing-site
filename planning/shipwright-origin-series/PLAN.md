@@ -177,6 +177,23 @@ dev-task are Dave's too, and only get mentioned in Dan's posts as things being
 
 ## Lessons From Post 2 (apply going forward)
 
+- **A LinkedIn commenter (Cole McIntosh) caught the same vagueness the blog post
+  had, post-publication (2026-08-18):** "Went from a Pi in February to a shared
+  task store running the whole pipeline — that's a fast jump." "Early version of
+  the shared task store" was honest but vague enough to read as more continuity
+  than actually existed. Dan's reply to the comment had the concrete grounding the
+  post itself was missing: the execute cron built locally, verified with lint and
+  tests, then stopped — no PR, no review or patch loop, no deploy at all. A
+  *separate* daily cron snapshotted to git purely for historical record. Added this
+  directly to the post (right where the execute cron is first described) rather
+  than leaving it implied by the "no git push, no deploy" hard-stops list.
+  **Lesson: real reader feedback post-publication is exactly the kind of accuracy
+  check this series relies on — treat it the same as Dan's own corrections, not as
+  a separate lower-priority feedback channel.** Also: Dan's same reply had a second
+  detail not yet used — "the biggest gap [after OpenClaw] was channels, the Slack
+  integration and voice-to-text support. I never added voice, but Dave did a month
+  or two later" — ask before adding, since it wasn't explicitly requested and may
+  belong in the Slack section or a future post instead.
 - **Post-merge polish, after PR #103 (2026-08-18):** two small fixes on a fresh
   branch since #103 was already merged. (1) Added a link to
   [openclaw.ai](https://openclaw.ai/) on first mention — the post references

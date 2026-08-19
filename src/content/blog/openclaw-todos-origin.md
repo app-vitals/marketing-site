@@ -43,7 +43,7 @@ Most of those seven were personal ops, not engineering — I was building the th
 
 ## The First Thing I Set Bodhi Up to Do in the Background
 
-I built an execute cron on purpose, with limits. It ran every couple of hours, picked the next item off a running list — `todos.json`, the one I promised at the end of the last post — and worked through it, bound by hard stops I wrote in myself: no messages, no touching credentials, no git push, no deploy, nothing to its own schedule without me approving it first.
+I built an execute cron on purpose, with limits. It ran every couple of hours, picked the next item off a running list — `todos.json`, the one I promised at the end of the last post — and worked through it, bound by hard stops I wrote in myself: no messages, no touching credentials, no git push, no deploy, nothing to its own schedule without me approving it first. What it actually did was modest: build locally, verify with lint and tests, then stop. A separate daily cron snapshotted the result to a git repo, purely for a historical record — there was no PR, no review or patch loop, no deploy step at all.
 
 The list itself was a general work queue from the start, not a bug tracker — most of what went on it, I added myself, things I wanted built. A second cron topped it up too: an audit job, a nice-to-have inspired by [OpenAI's writing on harness engineering](https://openai.com/index/harness-engineering/), that scanned Bodhi's own codebase twice a week for failing tests, missing coverage, and dead code, and wrote what it found onto the same list.
 
