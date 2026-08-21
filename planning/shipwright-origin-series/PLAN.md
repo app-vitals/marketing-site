@@ -740,3 +740,87 @@ dev-task are Dave's too, and only get mentioned in Dan's posts as things being
   only as a single light-touch paragraph, not the multi-commit deep dive
   research surfaced — closing the loop post 2 opened ("Dan brings... review
   habit") without turning it into its own subplot.
+
+## Context Gathered for Future Posts (2026-08-25 research session)
+
+Research done while scoping post 3 went well past what post 3 needed. Recording
+it here so posts 4-6 don't re-derive it from scratch.
+
+### Post 6 (open-sourcing Shipwright) is already substantially pre-researched
+
+Full verified timeline, in `vitals-os` repo history:
+
+- `2026-06-06` — Warchild scaffolds `app-vitals/shipwright` as a standalone OSS
+  repo from nothing (`0dd2b9d8` + follow-ups same day) — this is the actual
+  extraction moment, not a gradual drift.
+- `2026-06-08` — `sydecar-shipwright`, an early test/canary agent, decommissioned
+  (`e19a57d7`) — looks like a dry run to validate the new harness before
+  touching any real agent.
+- `2026-06-11` to `06-12` — migration tooling built: PR #1472 ("Bodhi→Shipwright
+  migration tooling") and PR #1478 (`shipwrightAgents[]` Helm block + 5 GCP
+  secrets). PR #1472's commit body is unusually rich — worth reading directly
+  when drafting, not just summarizing — includes a `migrate-agent-to-shipwright.ts`
+  script, DRY_RUN support, and a note that it was "verified read-only against
+  Bodhi's 30 live crons (19 user / 11 system)" before running for real. Explicit
+  phased rollout order stated in the commit: **okwow → fern-dan → sideby-dan →
+  warchild → keaunu** (client names in that list need anonymizing the same way
+  post 3 anonymized Fern/HiFriends — the *agent* names are fine, the engagements
+  behind fern-dan/keaunu are not).
+- `2026-06-12` — okwow migrated first, explicitly as the canary (runbook:
+  "okwow-canary lessons before fern-dan rollout").
+- `2026-06-16` — sideby-dan + warchild flipped onto Shipwright; secrets for the
+  already-migrated okwow/fern-dan dropped.
+- `2026-06-17` — keaunu (last agent) enabled; migration runbook deleted same day,
+  marked complete.
+- `2026-06-18` — the decommission, one commit (`c427c7a6`, PR #1611): **17,165
+  lines deleted across 107 files** — the entire legacy `agent/` workspace (63
+  source files), the standalone `helm/agent-service/` chart, the interceptor
+  service, DB tables, the `AGENT` role, and the embedded shipwright plugin copy.
+  Commit message literally says *"All agents now run via Shipwright harness."*
+  Same day, two companion commits: `8167113f` (remove shipwright plugin
+  registration) and `3874b8fa` (drop agent DB tables + AGENT role) — all three
+  read like one deliberate, planned cutover day, not three unrelated cleanups
+  that happened to land together.
+- Corroborated independently by the public timeline at shipwrightharness.com/story:
+  *"June 2026: Shipwright transitions from marketplace to independent repository
+  with sanitized internal references."*
+
+### The named agent-persona fleet (relevant across posts 4-6, especially 6)
+
+Git author / co-author history in `vitals-os` shows a real multi-agent fleet,
+overlapping in time, not one persona renamed over and over:
+
+| Persona | Active (co-author date range) | Role |
+|---|---|---|
+| Sully | 2026-03-29 → 04-19 | Dave's hub agent — early planning/reconciliation, Cal features |
+| Bodhi | 2026-05-03 → 07-17 (bracket-tag commits from 03-28) | Dan's hub agent — infra maintenance, chart/BASE_TAG bumps, changelog sync |
+| Warchild | 2026-05-12 → still active as of 08-20 | Broadest scope — test coverage, canary CI, deploy, Shipwright pipeline internals, scaffolded the standalone shipwright repo |
+| Rosie | 2026-05-27 → 06-02 | Short-lived — built Shipwright's own check-patch/check-review-patch/test-readiness internals, right in the task-store-rebuild window (relevant to post 4/5) |
+| Doc | 2026-07-05 → present | Current identity — vitals-os + Shipwright ops, changelog sync, docs refresh |
+| The Dude | 2026-07-02 → still active as of 08-20 | Growth/marketing persona — even authored its own IDENTITY.md/SOUL.md |
+
+Underlying Claude model co-authorship also shifts across this whole window if a
+future post wants that texture: Opus 4.6 (03-27→04-16) → Opus 4.7 (04-16→05-27)
+→ Opus 4.8 (05-28→07-24), with Sonnet 4.6 running in parallel 03-27→07-17, then
+Fable 5 taking over 07-03→08-20.
+
+### Open threads — unresolved, flag for whoever picks these up
+
+- **`app-vitals/bodhi` 404s for current repo access**, despite being cited as a
+  research resource for post 2. Either needs the same explicit access grant the
+  `marketplace` repo got (2026-08-12), or it's genuinely gone. Check before
+  assuming it's usable.
+- **"OpenClaude" (Dave's `accidental-devin-alternative.md`) vs. "OpenClaw"
+  (Dan's `openclaw-todos-origin.md`, linked to openclaw.ai)** — naming
+  discrepancy between the two already-published posts, never resolved this
+  session. Worth reconciling before it gets cited a third time in a future post.
+- **`feature-dev:code-reviewer`** — an external agent-type dependency in
+  shipwright's original `review.md` (marketplace repo, commit `212143e`,
+  2026-03-19), never traced to any repo in `app-vitals`. Possibly related to
+  the `docs/superpowers/` convention referenced elsewhere in `vitals-os`, not
+  confirmed. Low priority unless a future post needs to explain review's full
+  lineage in more depth than post 3 did.
+- **"Dan owns all architecture decisions"** — was in `vitals-os` CLAUDE.md at
+  some point, cut from post 3 at Dan's request because provenance is uncertain
+  ("maybe an outage," his words 2026-08-25). Don't reuse in a future post
+  without first re-verifying where it actually came from.
