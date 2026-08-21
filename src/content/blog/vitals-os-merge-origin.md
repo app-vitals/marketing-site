@@ -7,7 +7,7 @@ excerpt: "37signals' whole philosophy is build what you need. Turns out that one
 readTime: "10 min read"
 ---
 
-*Third post in the series on how Shipwright actually came together — [the first one](/blog/cloud-agent-review-origin/) covered the cloud review pipeline, [the second](/blog/openclaw-todos-origin/) covered OpenClaw, Bodhi, and the original todo list. This one is where those two threads actually meet.*
+*Third post in the series on how Shipwright actually came together — [the first one](/blog/cloud-agent-review-origin/) covered the cloud review pipeline, [the second](/blog/openclaw-todos-origin/) covered OpenClaw, Bodhi, and the original todo list. This one is where Dave's thread — the shipwright plugin — and mine — the Bodhi service — actually meet.*
 
 We try to meet in person once a week, and that week it meant driving up to Truckee. In a meeting room at [Lift Workspace](https://www.liftworkspace.com/), Dave told me he wanted to build a product. I didn't — I wasn't there to make a bet on a product, I wanted to build things that made our own business actually run better. I was already sold on 37signals by then, so I made the case: build what you need, for yourselves, first. See later whether it's useful to anyone else. Dave came around. Vitals-os was born in that room, before either of us had written a line of code — and by the end of that same day, it already had its first commits, with Bodhi's workspace synced in as a shared repo.
 
