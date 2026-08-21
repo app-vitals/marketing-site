@@ -153,12 +153,26 @@ dev-task are Dave's too, and only get mentioned in Dan's posts as things being
 
 ## Post Roster
 
+Rows 7-9 added 2026-08-25 as a topic dump from Dan, not yet scoped individually
+— his framing for all of them, verbatim: "all part of the things that earn
+their spot in shipwright. the why behind the features." Same thesis as the
+series' original "justify complexity" goal at the top of this doc, just
+applied to newer, more granular pieces of the system than the original roster
+anticipated. Treat rows 7-9 as a backlog, not a commitment to write them in
+that order or as three separate posts — scope each one for real when its turn
+comes, the way rows 4-6 already got a first pass this session.
+
 | # | Topic | Status | Links |
 |---|-------|--------|-------|
 | 1 | Cloud agent → PR review origin (`/ca-review-prs`, ships as `pr-review` plugin Feb 4 2026) | **Published** | [#89](https://github.com/app-vitals/marketing-site/pull/89) (merged), [#90](https://github.com/app-vitals/marketing-site/pull/90) (merged, accuracy pass), [#91](https://github.com/app-vitals/marketing-site/pull/91) (open, further accuracy passes) — `src/content/blog/cloud-agent-review-origin.md` |
 | 2 | OpenClaw + the original `todos.json` — queuing work with cron jobs before any of this had a name | **Published, done** — LinkedIn companion also live | [#100](https://github.com/app-vitals/marketing-site/pull/100), [#101](https://github.com/app-vitals/marketing-site/pull/101), [#102](https://github.com/app-vitals/marketing-site/pull/102), [#103](https://github.com/app-vitals/marketing-site/pull/103), [#104](https://github.com/app-vitals/marketing-site/pull/104) (all merged) — `src/content/blog/openclaw-todos-origin.md`. LinkedIn post published 2026-08-18 (final as-posted text recorded in PR #104's description, not duplicated here) |
-| 3 | The vitals-os merge — Dave brings plan-session/dev-task, Dan brings Bodhi's todos/crons/review habit, they stop being two side projects and become one pipeline. **Note (2026-08-18, Dan):** the entire billing automation system was originally built inside Bodhi's own workspace (not partially — the whole thing) and was the first system eventually migrated out to vitals-os. That migration — what moved, why, what broke or had to change in the move — is worth its own beat in this post, likely the opening one. Post 2 (as published) doesn't claim billing ever left Bodhi's workspace, so no correction needed there — this is purely material for post 3. | Not planned yet | — |
-| 4+ | The task store's real origin: `todos.json` got put behind an interface, a GitHub Issues–backed implementation was built alongside it, running both was "split-brained" (the agent got confused switching between them), and multi-agent-on-one-repo needs (shared task queue, tighter concurrency control) forced ripping both out and building the task store from scratch | Not planned yet — **don't fold this into post 3**, Dan confirmed 2026-08-18 it's its own post | — |
+| 3 | The vitals-os merge — Dave brings plan-session/dev-task, Dan brings Bodhi's todos/crons/review habit, they stop being two side projects and become one pipeline. Titled "Build What You Need," built around a 37signals throughline: the Truckee meeting (Lift Workspace) where Dan sold Dave on the model → billing code moving out of Bodhi's workspace to get a real API → the Toggl/Cal.com replacement decision → the two tools merging → Keanu as the first agent deployed for a client to use directly. Timeline: March 19 (Dave's plugin already live via the marketplace) → March 27 (vitals-os born) → April 20 (Keanu). | **PR open** | [#112](https://github.com/app-vitals/marketing-site/pull/112) — `src/content/blog/vitals-os-merge-origin.md` |
+| 4 | The task store's real origin: `todos.json` got put behind an interface, a GitHub Issues–backed implementation was built alongside it (a GitHub Projects v2 backend was also tried, per git — `TS-2.1`, 2026-05-25 — before Issues won out), running both was "split-brained" (the agent got confused switching between them), and multi-agent-on-one-repo needs (shared task queue, tighter concurrency control) forced ripping both out and building the task store from scratch. **Expanded scope (Dan, 2026-08-25):** should also cover the task store's actual state model (ready / in-progress / blocked / closed), filtering, and claiming — specifically what happens when multiple agents go after the same task. | Not planned yet — **don't fold this into post 3**, Dan confirmed 2026-08-18 it's its own post | — |
+| 5 | System crons + the shipwright-loop dispatcher — see dedicated notes under "Context Gathered for Future Posts" below, they'd outgrown this table cell. | Not planned yet | — |
+| 6 | Open-sourcing Shipwright — the plugin's extraction from the vitals-os monorepo into its own repo (`app-vitals/shipwright`, scaffolded 2026-06-06) and the ~10-day phased migration of every live production agent off the homegrown runtime and onto the new harness (canary-first on `okwow`, then `fern-dan`, `sideby-dan`, `warchild`, `keaunu` in that order), ending in a single commit deleting the entire legacy `agent/` workspace (17,165 lines, 107 files, 2026-06-18). Well-documented in git already — see this session's research. Matches the public timeline's "June 2026: Shipwright transitions from marketplace to independent repository." | Not planned yet | — |
+| 7 | The metrics journey — PostHog first, then a move to Postgres, then a series of accuracy improvements. Why each move happened, not just that it happened. | Not planned yet, topic only (Dan, 2026-08-25) | — |
+| 8 | Observability across a fleet of autonomous agents — agent cron logs, the work queue itself, Sentry logs, shipwright-loop's own logs, PR findings, PR events. How they gained visibility into what a fleet of agents was actually doing, not just what it shipped. | Not planned yet, topic only (Dan, 2026-08-25) | — |
+| 9 | HITL (human-in-the-loop) — what actually needs a human in an otherwise autonomous pipeline, and when/why a task gets blocked pending one. Likely pairs well with the task store's state model (row 4) since `blocked` is a task-store state, but Dan listed it separately — worth checking at scoping time whether it's its own post or a chapter of row 4. | Not planned yet, topic only (Dan, 2026-08-25) | — |
 
 ## Lessons From Post 1 (apply going forward)
 
@@ -621,3 +635,236 @@ dev-task are Dave's too, and only get mentioned in Dan's posts as things being
     a narrative anchor the reader was already promised (e.g. `todos.json`, named
     explicitly in post 1's "next up" pointer — that one stays). Named third-party
     products (Gmail, Resend, Claude Code) are fine to keep; they're not the issue.
+
+## Lessons From Post 3 (apply going forward)
+
+- **Structure problem caught by Dan mid-draft: a list of facts isn't an origin
+  story.** First full draft had one section per topic (billing move, Toggl/Cal
+  decision, tool merge, PR stats, planning gap, review, state of Shipwright,
+  Keanu) with no causal connection between them — each one a fact, not a
+  consequence of the fact before it. Dan: "that kinda reads as a series of
+  bullet points rather than an origin story. how can we improve the flow."
+  Fixed by getting an actual spine from Dan rather than guessing at one — see
+  next entry. **General lesson:** if a draft feels like a list, it's missing a
+  throughline, not missing more content. Ask for the spine directly instead of
+  adding more transition sentences to paper over its absence.
+- **The real spine came from Dan directly, as a causal chain, not a theme:**
+  "the 37 signal piece — led us to building what we need — led us to combining
+  what we'd built — led us to landing our first client using our product
+  (shipwright) — and we still use every single piece of what we built daily."
+  Restructured the whole post around this chain (merged the billing-move and
+  Toggl/Cal sections into one "build what we needed" beat; made the tool-merge
+  section open with an explicit causal bridge — "building real things meant we
+  needed a real way to build them" — instead of arriving as an unrelated new
+  topic; folded PR stats, the planning-quality gap, and the state-of-Shipwright
+  snapshot into one "fast wasn't the same as good" arc instead of three
+  standalone data sections; added a closing paragraph explicitly naming all
+  four links in the chain). **Lesson for future posts in this series:** ask for
+  the causal chain in the user's own words before restructuring — post 2 had an
+  equivalent single-sentence spine ("trust had to be built, not assumed") from
+  the start; post 3 didn't, and the draft suffered for it until asked for
+  directly.
+- **The actual origin scene wasn't in git and had to be asked for directly.**
+  The whole post opened on the dry fact ("On March 27, 2026, vitals-os got its
+  first commit") until Dan volunteered the real scene: a weekly in-person
+  meeting at [Lift Workspace](https://www.liftworkspace.com/) in Truckee, where
+  Dave wanted to build a product and Dan didn't — he wanted to optimize the
+  business — and Dan sold Dave on the 37signals model as the resolution. That
+  became the actual opening of the post, with the causal-chain spine (above)
+  following directly from it. **Lesson, same family as post 2's `bodhi-workspace`
+  finding:** the load-bearing scene for an origin post is very often not
+  git-verifiable at all — it's a conversation, in a room, that git has no record
+  of. Ask "was there a specific moment" directly and early, don't wait for it to
+  surface as an aside.
+- **Same pattern, second instance: the Keanu onboarding scene.** Initial draft
+  described Keanu's first-client deployment abstractly (per-client isolation,
+  architecture requirement). Dan supplied the actual scene — provisioning done
+  ahead of an onboarding call, waiting for the client to message first, Keanu
+  running the onboarding ritual, the client skipping the back-and-forth and
+  pasting in a complete markdown file he'd already built himself in Claude —
+  and asked to verify the mechanism against the code rather than take his
+  memory as the final word. Found it exactly as described in
+  `agent/src/setup.ts`'s `BOOTSTRAP_TEMPLATE` (`vitals-os` repo, commit
+  `68158957`, 2026-04-14): the scripted opening line is verbatim "Hey. I just
+  came online. Who am I? Who are you?" That commit's sibling plan
+  (`9c019159`, same day) is explicitly titled "openclaw-inspired workspace
+  bootstrap" — meaning this onboarding ritual is a direct, provable callback to
+  the OpenClaw onboarding beat from post 2, not just a thematic echo. **Lesson:**
+  when a scene is offered as memory with "maybe check it in the code," always
+  check — this one turned a good anecdote into a verified, quotable detail with
+  a real cross-post callback.
+- **"Parallel work" framing on Toggl was cut at Dan's request as potentially
+  controversial, with no further explanation given or asked for.** Original
+  draft said Toggl's single-timer limit broke "the moment you have agents and
+  humans working the same client in parallel" (extrapolated from the actual
+  README wording, "broken for parallel agent work across clients" — the draft
+  added "and humans" and "same client," neither in the source). Dan: "we don't
+  need to mention parallel work re: toggl. it may still be controversial."
+  Removed the elaboration entirely rather than press for the reason. **Lesson:**
+  when a correction comes with "it may still be controversial" and no further
+  detail, that's a stop sign, not an invitation to ask why — cut and move on.
+- **The billing-code-moving beat needed a real "why," not just "it moved."**
+  Original draft framed the migration as inevitable ("it moved because it was
+  needed") without saying what was actually missing. Dan supplied the concrete
+  gap: the code already worked, tested and linted, but only Bodhi could touch
+  it, and only through chat — no API, no way for another agent to hit it, no
+  web interface. That's what "make it real" meant. Rewrote the section around
+  that specific limitation instead of the vaguer "it needed to move."
+- **The Toggl/Cal.com replacement vision needed the actual end-to-end loop
+  spelled out, not just "these tools were broken."** Dan supplied the real
+  shape: schedule an event with a client's email address → routes to the
+  correct calendar → time tracking against the engagement → invoicing off the
+  actual hours (including drafting the invoice emails themselves) → payment
+  tracking with reminders. Also added Dave's specific, human complaint about
+  Cal.com — hating a separate browser tab open per calendar, wanting one
+  surface — alongside the calendar-routing-bug detail already sourced from the
+  README/PRD. Both replaced a more generic "these tools were broken" framing.
+- **"Out of a mobile project he didn't know how to ship" — cut on Dan's
+  question, not correction.** Dan asked "should we say this?" rather than
+  flagging it as wrong. On reflection: it's Dave's own origin beat from his own
+  published post, and the series' scope note already says Dave's material only
+  gets mentioned as "pulled in," not retold in detail. Replaced with a link to
+  Dave's post instead of restating his story in Dan's voice. **Lesson:** when a
+  detail is accurate but sourced from a co-author's own post, prefer linking
+  over retelling, even under a scope note that would technically permit a brief
+  mention — restating someone else's beat in your voice reads as claiming it.
+- **PR-volume stat needed an honest caveat, added after the number was already
+  in the post.** Dan, after seeing the 628-PRs-in-25-days stat drafted: "the
+  sheer volume of prs was partially shipwright and partially us being stoked on
+  it. but it was still part time work. we were delivering work for clients
+  throughout the entire process." Added directly after the stat rather than
+  letting it imply full-time, tooling-only velocity. **Lesson, consistent with
+  post 2's "no invented specificity" rule applied to the opposite direction:**
+  a true, sourced number can still mislead by omission — ask what context the
+  number needs before publishing it standalone, don't wait for the correction.
+- **A factual correction that came from research, not from Dan:** the draft's
+  transition — "before either of us called any of this Shipwright" — was
+  wrong. Dan: "it kinda did have a name? shipwright was the plugin name, but
+  didn't become the name of the entire project until later." The name existed
+  from the plugin's actual first commit (`212143e`, 2026-03-19); what changed
+  later was the plugin becoming *the* system rather than *a* plugin among
+  several in the shared marketplace. Dropped the "before it had a name" hook
+  entirely rather than patch it — the 628-PR stat didn't need that framing to
+  land.
+- **Scope check, mid-conversation, before drafting:** Dan confirmed (2026-08-25)
+  the review-merge story (`pr-review` vs. shipwright's original bundled review
+  command, converging via Dan's 2026-04-15 rewrite) should stay in the post
+  only as a single light-touch paragraph, not the multi-commit deep dive
+  research surfaced — closing the loop post 2 opened ("Dan brings... review
+  habit") without turning it into its own subplot.
+
+## Context Gathered for Future Posts (2026-08-25 research session)
+
+Research done while scoping post 3 went well past what post 3 needed. Recording
+it here so posts 4-6 don't re-derive it from scratch.
+
+### Post 6 (open-sourcing Shipwright) is already substantially pre-researched
+
+Full verified timeline, in `vitals-os` repo history:
+
+- `2026-06-06` — Warchild scaffolds `app-vitals/shipwright` as a standalone OSS
+  repo from nothing (`0dd2b9d8` + follow-ups same day) — this is the actual
+  extraction moment, not a gradual drift.
+- `2026-06-08` — `sydecar-shipwright`, an early test/canary agent, decommissioned
+  (`e19a57d7`) — looks like a dry run to validate the new harness before
+  touching any real agent.
+- `2026-06-11` to `06-12` — migration tooling built: PR #1472 ("Bodhi→Shipwright
+  migration tooling") and PR #1478 (`shipwrightAgents[]` Helm block + 5 GCP
+  secrets). PR #1472's commit body is unusually rich — worth reading directly
+  when drafting, not just summarizing — includes a `migrate-agent-to-shipwright.ts`
+  script, DRY_RUN support, and a note that it was "verified read-only against
+  Bodhi's 30 live crons (19 user / 11 system)" before running for real. Explicit
+  phased rollout order stated in the commit: **okwow → fern-dan → sideby-dan →
+  warchild → keaunu** (client names in that list need anonymizing the same way
+  post 3 anonymized Fern/HiFriends — the *agent* names are fine, the engagements
+  behind fern-dan/keaunu are not).
+- `2026-06-12` — okwow migrated first, explicitly as the canary (runbook:
+  "okwow-canary lessons before fern-dan rollout").
+- `2026-06-16` — sideby-dan + warchild flipped onto Shipwright; secrets for the
+  already-migrated okwow/fern-dan dropped.
+- `2026-06-17` — keaunu (last agent) enabled; migration runbook deleted same day,
+  marked complete.
+- `2026-06-18` — the decommission, one commit (`c427c7a6`, PR #1611): **17,165
+  lines deleted across 107 files** — the entire legacy `agent/` workspace (63
+  source files), the standalone `helm/agent-service/` chart, the interceptor
+  service, DB tables, the `AGENT` role, and the embedded shipwright plugin copy.
+  Commit message literally says *"All agents now run via Shipwright harness."*
+  Same day, two companion commits: `8167113f` (remove shipwright plugin
+  registration) and `3874b8fa` (drop agent DB tables + AGENT role) — all three
+  read like one deliberate, planned cutover day, not three unrelated cleanups
+  that happened to land together.
+- Corroborated independently by the public timeline at shipwrightharness.com/story:
+  *"June 2026: Shipwright transitions from marketplace to independent repository
+  with sanitized internal references."*
+
+### Post 5 (system crons + shipwright-loop) — notes from Dan, 2026-08-25
+
+Angles that need to be in this post, not just the mechanics of what shipped:
+
+- **Why polling, not events.** The loop wakes up every minute and checks for
+  work across dev-task/review/patch/deploy, rather than reacting to something
+  becoming ready. The reasoning behind that choice is part of the story, not
+  just a description of how polling works.
+- **Why the preCheck scripts exist.** A cheap check runs before an expensive
+  agent gets dispatched — specifically to confirm there's real work before
+  spending on a full agent invocation, and to avoid an agent running when
+  there's genuinely nothing to do. Token-cost motivated, not just a
+  correctness gate.
+- **Introducing `patch` narrowed what other commands were responsible for.**
+  Before `patch` existed, other commands/skills were doing work outside their
+  actual core purpose, just to get things through the pipeline — overlap that
+  existed to compensate for a missing piece. Adding `patch` let those commands
+  narrow back down to what they were actually supposed to do. This is a real
+  "why this shape" story, not just "we added a command."
+- **This one shipped carefully, on purpose.** Dan's words: "i had to wait
+  until i was on to ship those because i knew things would break and they
+  did." Big structural changes to the loop (the patch-driven narrowing, the
+  loop itself) weren't shipped-and-walked-away — they needed active human
+  supervision because breakage was expected, not hypothetical. Worth stating
+  plainly rather than smoothing into "it worked."
+- **Scoping note:** per git, the patch/deploy/four-cron work happened in the
+  *same week* as the task store rebuild (`SWC-1.1` patch command 2026-05-26,
+  `SWD-2.1` deploy command 2026-05-26, `SWC-1.5` four-cron model 2026-05-27 —
+  task store work spans 2026-05-25–28). Not clearly a separate era from post 4
+  chronologically — undecided whether this is its own post or a chapter of
+  post 4, flag for scoping when we get there.
+
+### The named agent-persona fleet (relevant across posts 4-6, especially 6)
+
+Git author / co-author history in `vitals-os` shows a real multi-agent fleet,
+overlapping in time, not one persona renamed over and over:
+
+| Persona | Active (co-author date range) | Role |
+|---|---|---|
+| Sully | 2026-03-29 → 04-19 | Dave's hub agent — early planning/reconciliation, Cal features |
+| Bodhi | 2026-05-03 → 07-17 (bracket-tag commits from 03-28) | Dan's hub agent — infra maintenance, chart/BASE_TAG bumps, changelog sync |
+| Warchild | 2026-05-12 → still active as of 08-20 | Broadest scope — test coverage, canary CI, deploy, Shipwright pipeline internals, scaffolded the standalone shipwright repo |
+| Rosie | 2026-05-27 → 06-02 | Short-lived — built Shipwright's own check-patch/check-review-patch/test-readiness internals, right in the task-store-rebuild window (relevant to post 4/5) |
+| Doc | 2026-07-05 → present | Current identity — vitals-os + Shipwright ops, changelog sync, docs refresh |
+| The Dude | 2026-07-02 → still active as of 08-20 | Growth/marketing persona — even authored its own IDENTITY.md/SOUL.md |
+
+Underlying Claude model co-authorship also shifts across this whole window if a
+future post wants that texture: Opus 4.6 (03-27→04-16) → Opus 4.7 (04-16→05-27)
+→ Opus 4.8 (05-28→07-24), with Sonnet 4.6 running in parallel 03-27→07-17, then
+Fable 5 taking over 07-03→08-20.
+
+### Open threads — unresolved, flag for whoever picks these up
+
+- **`app-vitals/bodhi` 404s for current repo access**, despite being cited as a
+  research resource for post 2. Either needs the same explicit access grant the
+  `marketplace` repo got (2026-08-12), or it's genuinely gone. Check before
+  assuming it's usable.
+- **"OpenClaude" (Dave's `accidental-devin-alternative.md`) vs. "OpenClaw"
+  (Dan's `openclaw-todos-origin.md`, linked to openclaw.ai)** — naming
+  discrepancy between the two already-published posts, never resolved this
+  session. Worth reconciling before it gets cited a third time in a future post.
+- **`feature-dev:code-reviewer`** — an external agent-type dependency in
+  shipwright's original `review.md` (marketplace repo, commit `212143e`,
+  2026-03-19), never traced to any repo in `app-vitals`. Possibly related to
+  the `docs/superpowers/` convention referenced elsewhere in `vitals-os`, not
+  confirmed. Low priority unless a future post needs to explain review's full
+  lineage in more depth than post 3 did.
+- **"Dan owns all architecture decisions"** — was in `vitals-os` CLAUDE.md at
+  some point, cut from post 3 at Dan's request because provenance is uncertain
+  ("maybe an outage," his words 2026-08-25). Don't reuse in a future post
+  without first re-verifying where it actually came from.
