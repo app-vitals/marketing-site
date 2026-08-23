@@ -3,7 +3,7 @@ title: "We Accidentally Built an Open-Source Alternative to Devin. Here's How Th
 date: "2026-07-16"
 author: "Dave O'Dell"
 category: "Engineering Velocity"
-excerpt: "Devin has a $26B valuation and a billion dollars in funding. We built something that does most of the same things for free. Here's an honest comparison."
+excerpt: "Devin has a $26B valuation and a billion dollars in funding. We built something open-source and self-hosted that does most of the same things, with no per-ACU metering. Here's an honest comparison."
 readTime: "8 min read"
 ---
 
@@ -55,13 +55,13 @@ We default to deployment off, because there's real work required for an engineer
 
 ## The Cost Difference
 
-Devin charges per seat. Every developer who uses it is a recurring licensing cost, on top of your existing AI token costs.
+Devin's pricing has moved since we first wrote this comparison, so let's be precise about where it stands today: Pro is $20/month, Max is $200/month, and Team is $500/month for 250 ACUs (their metering unit) at $2/ACU. That $20/month entry tier means "Devin is expensive" isn't the sharpest argument anymore — Team is the ceiling, not the floor. So the real difference isn't cheaper-vs-pricier. It's metered-and-opaque vs. yours-to-run.
 
-Shipwright has no licensing cost. Your only expense is the token cost of the Claude API calls the agent makes. And we've worked hard to keep those low — we almost never use Opus by default. We route to cheaper models for straightforward tasks, and reserve the heavy lifting for work that genuinely needs it.
+Devin bills you in ACUs — a unit they define, that you consume against a metered plan. You don't own the loop; you rent capacity inside it. Shipwright has no licensing cost and no per-ACU meter. It's MIT licensed, it runs inside your own Claude Code, and your only expense is the token cost of the Claude API calls the agent makes. And we've worked hard to keep those low — we almost never use Opus by default. We route to cheaper models for straightforward tasks, and reserve the heavy lifting for work that genuinely needs it.
 
-Scale that across an org. One developer with Shipwright versus one developer with Devin: the costs are comparable. Scale to 200 developers, each with their own agent — that's 200 pods running in Kubernetes at near-zero infrastructure cost, versus 200 Devin seats at whatever they're charging this year.
+That's the part that compounds. Because you own the loop, you can see exactly what it costs, what it's doing, and why — no black-box consumption model to budget against. Scale to 200 developers, each with their own agent — that's 200 pods running in Kubernetes at near-zero infrastructure cost, fully auditable, versus 200 metered Devin seats consuming ACUs against whatever plan you're on.
 
-One agent per developer is the model we believe in. Every developer should have their own agent, with its own name and personality, that learns how that developer wants to work. That's not a luxury — it's the model that makes autonomous coding actually stick inside an organization.
+One agent per developer is the model we believe in. Every developer should have their own agent, with its own name and personality, that learns how that developer wants to work. That's not a luxury — it's the model that makes autonomous coding actually stick inside an organization, and it's a lot easier to justify when you're not watching a metering dashboard to do it.
 
 ## Shipwright Built Shipwright
 
@@ -75,6 +75,8 @@ That's the proof we can offer that Devin can't: an open, auditable, live record 
 
 Comparing against Anthropic's own surfaces instead? We wrote up [Shipwright vs. Claude in Slack](/blog/shipwright-vs-claude-code-slack/) — same delivery-system-not-a-session lens, applied to the Claude-in-Slack integration.
 
+You don't have to take our word for any of this — the repo's right there. **[Star it and read the code.](https://github.com/app-vitals/shipwright)**
+
 ## How to Choose
 
 If someone asks Dan and me whether they should use Shipwright or Devin, the first question we ask is: are you currently using Claude Code?
@@ -87,7 +89,11 @@ The thing about Shipwright is that because it's built on Claude Code, any time C
 
 If Devin isn't actually your comparison set — if you're weighing Shipwright against Claude-Code-native tools like claude-queue or Dispatch instead — see [Shipwright vs. Claude Code Task-Queue Tools](/blog/shipwright-vs-claude-code-orchestrators/), which asks the same "queue vs. delivery system" question of that comparison.
 
-That's a different kind of competitive advantage. And it's one we're happy to put in your hands for free — you can [try Shipwright yourself](/products/shipwright/). Want the people who built it to install and tune it on your pipeline instead? Look at the [design partner program](/shipwright/design-partners/).
+That's a different kind of competitive advantage, and it's one we're happy to put in your hands. Three ways to go from here:
+
+1. **[Star the repo on GitHub](https://github.com/app-vitals/shipwright)** — read the code before you trust it with anything.
+2. **[Try Shipwright yourself](/products/shipwright/)** — install it and run it on your own pipeline.
+3. **[Get design-partner help](/shipwright/design-partners/)** — have Dan and me install and tune it for you instead.
 
 ---
 
