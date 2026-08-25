@@ -1,0 +1,301 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { BOOKING_URL } from '../../consts';
+
+// Service/Offer schema: provider reuses the same Organization shape as StructuredData.astro.
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Shipwright Managed',
+  serviceType: 'Managed autonomous software delivery',
+  description:
+    'A hosted AI coding agent that plans in Slack and ships production code through a hardened pipeline, run with the App Vitals engineers who built it.',
+  provider: {
+    '@type': 'Organization',
+    name: 'App Vitals',
+    url: 'https://app-vitals.com',
+  },
+  areaServed: 'US',
+  offers: {
+    '@type': 'Offer',
+    availability: 'https://schema.org/LimitedAvailability',
+  },
+};
+
+// FAQPage structured data: answers drawn only from claims already on this page.
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'What actually runs the code?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'A hardened autonomous pipeline: research, tests-first, review, and CI gates on every change, with a human-approved plan up front.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Do we have to host it with you?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'No. Hosted by us, single-tenant, or on your own cloud, whichever fits your security and scale needs.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How involved are your engineers?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Always in the loop. For founders we ship the hard stuff with you; for teams we drive adoption and the culture shift so the tool actually sticks.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Is this just Shipwright the open-source tool?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'The open-source Shipwright pipeline is the engine. Managed adds hosting, tuning, and our engineers, because installing the tool is not the same as changing how you ship.',
+      },
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title="Shipwright Managed: a hosted AI engineer, run with you"
+  description="Shipwright Managed is a hosted AI coding agent that plans in Slack and ships production code through a hardened pipeline, run with the App Vitals engineers who built it. Installing the tool is the easy part."
+  extraSchema={[serviceSchema, faqSchema]}
+>
+  <!-- Hero -->
+  <section class="relative overflow-hidden">
+    <div class="glow-orb w-[500px] h-[500px] bg-electric-500/[0.07] top-[-10%] right-[-5%] animate-glow-drift" aria-hidden="true"></div>
+    <div class="glow-orb w-[400px] h-[400px] bg-accent-violet/[0.05] bottom-[0%] left-[-10%] animate-glow-drift-slow" aria-hidden="true"></div>
+
+    <div class="max-w-6xl mx-auto px-6 pt-24 pb-20 md:pt-32 md:pb-24 relative z-10">
+      <div class="max-w-3xl">
+        <p class="font-mono text-[13px] text-electric-400 tracking-[0.25em] uppercase mb-6 opacity-0 animate-fade-in-up">
+          Managed
+        </p>
+        <h1 class="font-display text-[clamp(2.5rem,5vw,4.5rem)] font-bold leading-[1.05] tracking-[-0.03em] opacity-0 animate-fade-in-up-delay-1">
+          Installing the tool is the <span class="gradient-text">easy part</span>.
+        </h1>
+        <p class="mt-8 text-[18px] text-white/50 max-w-xl leading-[1.7] opacity-0 animate-fade-in-up-delay-2">
+          A hosted AI engineer that plans in Slack and ships production code through a hardened pipeline, run with the engineers who built it. Because the agent is not the hard part. Getting it shipping real work, and getting your team executing with it, is. That is what we do.
+        </p>
+        <div class="mt-10 flex flex-col gap-4 opacity-0 animate-fade-in-up-delay-3 sm:flex-row sm:items-center sm:gap-3">
+          <a
+            href={BOOKING_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center px-10 py-4 bg-white text-navy-950 rounded-full text-[16px] font-semibold tracking-wide transition-all duration-300 hover:shadow-[0_0_60px_rgba(59,130,246,0.3)] hover:scale-[1.02]"
+          >
+            Book a call
+            <svg class="ml-2 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="relative">
+    <div class="gradient-divider"></div>
+    <div class="max-w-6xl mx-auto px-6 py-24 md:py-32">
+      <div class="mb-16 reveal">
+        <p class="font-mono text-[12px] text-electric-400 uppercase tracking-[0.3em] mb-4">How it works</p>
+        <h2 class="font-display text-[clamp(1.75rem,4vw,3rem)] font-bold tracking-[-0.02em] max-w-2xl leading-[1.15]">
+          Two agents.<br />
+          <span class="text-white/40">One team in the loop.</span>
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="card-glow p-8 rounded-2xl border border-white/[0.06] bg-white/[0.02] hover:border-white/[0.12] transition-all duration-500 reveal">
+          <h3 class="font-display text-[20px] font-semibold mb-3 tracking-tight">Talk to it in Slack</h3>
+          <p class="text-[15px] text-white/40 leading-[1.7]">
+            A planning agent turns your ideas into a reviewable plan. You approve it.
+          </p>
+        </div>
+
+        <div class="card-glow p-8 rounded-2xl border border-white/[0.06] bg-white/[0.02] hover:border-white/[0.12] transition-all duration-500 reveal" style="transition-delay: 100ms;">
+          <h3 class="font-display text-[20px] font-semibold mb-3 tracking-tight">It ships on a loop</h3>
+          <p class="text-[15px] text-white/40 leading-[1.7]">
+            A separate, stateless dev agent picks up approved work and ships PRs through research, tests-first, review, and CI, on its own cadence.
+          </p>
+        </div>
+
+        <div class="card-glow p-8 rounded-2xl border border-white/[0.06] bg-white/[0.02] hover:border-white/[0.12] transition-all duration-500 reveal" style="transition-delay: 200ms;">
+          <h3 class="font-display text-[20px] font-semibold mb-3 tracking-tight">We are in the loop with you</h3>
+          <p class="text-[15px] text-white/40 leading-[1.7]">
+            Hosting, credentials, pipeline tuning, and monitoring are ours. For founders, we come in and ship the hard stuff alongside the agent. For engineering teams, we drive the adoption and the culture shift so your team is executing on Shipwright in weeks, not fighting a new tool.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="gradient-divider"></div>
+  </section>
+
+  <!-- Who this is for -->
+  <section class="max-w-6xl mx-auto px-6 py-24 md:py-32">
+    <div class="mb-16 reveal">
+      <p class="font-mono text-[12px] text-electric-400 uppercase tracking-[0.3em] mb-4">Who it is for</p>
+      <h2 class="font-display text-[clamp(1.75rem,4vw,3rem)] font-bold tracking-[-0.02em] max-w-2xl leading-[1.15]">
+        Founders through engineering teams.
+      </h2>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="card-glow p-8 rounded-2xl border border-white/[0.06] bg-white/[0.02] hover:border-white/[0.12] transition-all duration-500 reveal">
+        <h3 class="font-display text-[20px] font-semibold mb-3 tracking-tight">Founders and small teams</h3>
+        <p class="text-[15px] text-white/40 leading-[1.7]">
+          Who want to ship faster without staffing up. We help you ship the hard stuff.
+        </p>
+      </div>
+
+      <div class="card-glow p-8 rounded-2xl border border-white/[0.06] bg-white/[0.02] hover:border-white/[0.12] transition-all duration-500 reveal" style="transition-delay: 100ms;">
+        <h3 class="font-display text-[20px] font-semibold mb-3 tracking-tight">Engineering teams</h3>
+        <p class="text-[15px] text-white/40 leading-[1.7]">
+          Who want to adopt autonomous delivery for real. We handle the culture shift and get the team executing fast, because installing a tool is not the same as changing how you ship.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Deployment on your terms -->
+  <section class="relative">
+    <div class="gradient-divider"></div>
+    <div class="max-w-6xl mx-auto px-6 py-24 md:py-32">
+      <div class="grid md:grid-cols-[1fr,1.5fr] gap-16 items-start">
+        <div class="reveal">
+          <p class="font-mono text-[12px] text-electric-400 uppercase tracking-[0.3em] mb-4">Deployment</p>
+          <h2 class="font-display text-[clamp(1.5rem,3vw,2.25rem)] font-bold tracking-[-0.02em] leading-[1.2]">
+            Deployment on your terms.
+          </h2>
+        </div>
+        <div class="reveal" style="transition-delay: 150ms;">
+          <p class="text-[16px] text-white/45 leading-[1.8]">
+            Hosted by us on shared infrastructure, single-tenant if you need isolation, or on your own cloud. We shape it to your security and scale requirements.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="gradient-divider"></div>
+  </section>
+
+  <!-- Who this is not for -->
+  <section class="max-w-6xl mx-auto px-6 py-24 md:py-32">
+    <div class="grid md:grid-cols-[1fr,1.5fr] gap-16 items-start">
+      <div class="reveal">
+        <p class="font-mono text-[12px] text-electric-400 uppercase tracking-[0.3em] mb-4">Who it is not for</p>
+        <h2 class="font-display text-[clamp(1.5rem,3vw,2.25rem)] font-bold tracking-[-0.02em] leading-[1.2]">
+          We will tell you if you are not a fit.
+        </h2>
+      </div>
+      <div class="space-y-6 reveal" style="transition-delay: 150ms;">
+        <ul class="space-y-4">
+          <li class="flex items-start gap-3">
+            <span class="text-electric-400 mt-0.5 font-mono text-[13px]">→</span>
+            <span class="text-[15px] text-white/50 leading-[1.7]">Anyone who wants to review every single change by hand. That is a copilot, not this.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-electric-400 mt-0.5 font-mono text-[13px]">→</span>
+            <span class="text-[15px] text-white/50 leading-[1.7]">A codebase with no tests and no appetite to add them. Autonomy without a safety net is dangerous, and we will say so.</span>
+          </li>
+        </ul>
+        <p class="text-[15px] text-white/40 leading-[1.7] pt-2">
+          We will tell you honestly if you are a better fit for something else.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why not just run Devin yourself -->
+  <section class="relative">
+    <div class="gradient-divider"></div>
+    <div class="max-w-6xl mx-auto px-6 py-24 md:py-32">
+      <div class="mb-10 reveal">
+        <p class="font-mono text-[12px] text-electric-400 uppercase tracking-[0.3em] mb-4">Why not just run Devin yourself</p>
+        <h2 class="font-display text-[clamp(1.75rem,4vw,3rem)] font-bold tracking-[-0.02em] max-w-2xl leading-[1.15]">
+          The managed version, run with you.
+        </h2>
+      </div>
+      <p class="max-w-2xl text-[16px] text-white/45 leading-[1.8] reveal">
+        Devin is a tool you manage, integrate, and patch yourself. This is the managed version: hosted, tuned, and run with you, by the engineers who built the pipeline. If you would rather DIY, we will happily point you at the right tool.
+      </p>
+    </div>
+    <div class="gradient-divider"></div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="max-w-6xl mx-auto px-6 py-24 md:py-32">
+    <div class="mb-16 reveal">
+      <p class="font-mono text-[12px] text-electric-400 uppercase tracking-[0.3em] mb-4">FAQ</p>
+      <h2 class="font-display text-[clamp(1.75rem,4vw,3rem)] font-bold tracking-[-0.02em] max-w-2xl leading-[1.15]">
+        Questions, answered honestly.
+      </h2>
+    </div>
+
+    <div class="max-w-3xl space-y-6">
+      <div class="card-glow p-8 rounded-2xl border border-white/[0.06] bg-white/[0.02] reveal">
+        <h3 class="font-display text-[18px] font-semibold mb-3 tracking-tight">What actually runs the code?</h3>
+        <p class="text-[15px] text-white/45 leading-[1.7]">
+          A hardened autonomous pipeline: research, tests-first, review, and CI gates on every change, with a human-approved plan up front.
+        </p>
+      </div>
+
+      <div class="card-glow p-8 rounded-2xl border border-white/[0.06] bg-white/[0.02] reveal" style="transition-delay: 75ms;">
+        <h3 class="font-display text-[18px] font-semibold mb-3 tracking-tight">Do we have to host it with you?</h3>
+        <p class="text-[15px] text-white/45 leading-[1.7]">
+          No. Hosted by us, single-tenant, or on your own cloud, whichever fits your security and scale needs.
+        </p>
+      </div>
+
+      <div class="card-glow p-8 rounded-2xl border border-white/[0.06] bg-white/[0.02] reveal" style="transition-delay: 150ms;">
+        <h3 class="font-display text-[18px] font-semibold mb-3 tracking-tight">How involved are your engineers?</h3>
+        <p class="text-[15px] text-white/45 leading-[1.7]">
+          Always in the loop. For founders we ship the hard stuff with you; for teams we drive adoption and the culture shift so the tool actually sticks.
+        </p>
+      </div>
+
+      <div class="card-glow p-8 rounded-2xl border border-white/[0.06] bg-white/[0.02] reveal" style="transition-delay: 225ms;">
+        <h3 class="font-display text-[18px] font-semibold mb-3 tracking-tight">Is this just Shipwright the open-source tool?</h3>
+        <p class="text-[15px] text-white/45 leading-[1.7]">
+          The open-source Shipwright pipeline is the engine. Managed adds hosting, tuning, and our engineers, because installing the tool is not the same as changing how you ship.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="relative py-24 md:py-32">
+    <div class="glow-orb w-[600px] h-[400px] bg-electric-500/[0.05] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate-glow-drift" aria-hidden="true"></div>
+
+    <div class="max-w-6xl mx-auto px-6 relative z-10 text-center">
+      <div class="reveal">
+        <h2 class="font-display text-[clamp(1.75rem,4vw,3rem)] font-bold tracking-[-0.02em] leading-[1.15] max-w-2xl mx-auto">
+          Limited spots.
+        </h2>
+        <p class="mt-6 text-[16px] text-white/40 max-w-xl mx-auto leading-[1.7]">
+          Tell us about your product and we will let you know if it is a fit.
+        </p>
+        <div class="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center sm:gap-3">
+          <a
+            href={BOOKING_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center px-10 py-4 bg-white text-navy-950 rounded-full text-[16px] font-semibold tracking-wide transition-all duration-300 hover:shadow-[0_0_60px_rgba(59,130,246,0.3)] hover:scale-[1.02]"
+          >
+            Book a call
+            <svg class="ml-2 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
