@@ -1,9 +1,9 @@
 ---
-title: "Everyone's Talking About Loop Engineering. We've Been Running the Loop for a Year."
+title: "What Loop Engineering's Failures Taught Us — and How Shipwright's Loop Compares"
 date: "2026-08-27"
 author: "Dan McAulay"
 category: "Engineering Velocity"
-excerpt: "Loop engineering — set a goal, let agents run unattended, wake up to finished work — is the term of the summer. The real incidents behind it are a lot sharper than the guides let on. Here's what separates the ones that worked from the ones that deleted a production database, and how much of it we'd already built before the term existed."
+excerpt: "Loop engineering — set a goal, let agents run unattended, wake up to finished work — is the term of the summer. The real incidents behind it are a lot sharper than the guides let on. Here's what separates the ones that worked from the ones that deleted a production database, and how it lines up against Shipwright's own delivery loop."
 readTime: "8 min read"
 ---
 
@@ -39,7 +39,7 @@ None of these are model failures. Every one of those agents did something defens
 
 ## We Just Called It Shipwright
 
-`shipwright-loop` is the cron that drives our whole delivery pipeline, and once I had that "enforced state, not a sentence" line in my head, it was obvious our own architecture had been built around it from the start — not because we read it in a guide, but because we hit versions of these same incidents at smaller scale ourselves and had to fix them.
+`shipwright-loop` is the cron that drives our whole delivery pipeline, and once I had that "enforced state, not a sentence" line in my head, I went back and checked our own architecture against it. It holds up almost line for line — not because we set out to build to spec, but because none of it works, once you're actually running unattended changes against a real codebase, unless these pieces are structural rather than requested.
 
 **The stop condition is structural, not requested.** Every phase of our pipeline — build, review, patch, deploy — is an explicit-target-only command. It takes a task or a PR, checks current state against GitHub, and does nothing if there's nothing to do. `shipwright-loop` picks exactly one ready item per tick — strict FIFO, oldest first — dispatches it, and stops. No phase scans for its own work and free-runs on whatever it finds. An empty queue means the loop does nothing and says so, in code, not because an instruction told it to behave.
 
@@ -53,7 +53,7 @@ That's the distinction we ended up building around, before the category had a na
 
 ## It's Still Just a Loop You Can Read
 
-Here's the part I'd actually want to know if I were reading this cold: none of this is a black box you have to take on faith. Shipwright runs on Claude Code, the whole harness is open source and MIT-licensed, and the loop logic — the FIFO selector, the atomic claim, the state machine driving each phase — is code you can read end to end. If "loop engineering" is the skill everyone's suddenly trying to learn, the fastest way in isn't another guide. It's reading a loop that's already been running in production for a year, with the enforcement built into the code instead of the prompt.
+Here's the part I'd actually want to know if I were reading this cold: none of this is a black box you have to take on faith. Shipwright runs on Claude Code, the whole harness is open source and MIT-licensed, and the loop logic — the FIFO selector, the atomic claim, the state machine driving each phase — is code you can read end to end. If "loop engineering" is the skill everyone's suddenly trying to learn, the fastest way in isn't another guide. It's reading a loop that's already running in production, with the enforcement built into the code instead of the prompt.
 
 If you want to run it on your own pipeline, we're taking a small number of [design partners](/shipwright/design-partners/) and working directly with each one. **[Talk to us.](/contact)**
 
