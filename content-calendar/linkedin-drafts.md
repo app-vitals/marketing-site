@@ -169,7 +169,7 @@ https://app-vitals.com/blog/harness-is-all-you-need/
 
 ---
 
-"I don't prompt Claude anymore. I have loops running. They're the ones prompting Claude and figuring out what to do. My job is to write loops." — Boris Cherny, Anthropic
+"I don't prompt Claude anymore. I have loops running. They're the ones prompting Claude and figuring out what to do. My job is to write loops." — Boris Cherny, Anthropic (Acquired Unplugged, June 2026: https://www.youtube.com/watch?v=RkQQ7WEor7w)
 
 That quote went viral in June. Everyone's calling it "loop engineering" now. Set a goal, walk away, wake up to finished work.
 
