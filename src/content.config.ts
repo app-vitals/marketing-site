@@ -10,6 +10,7 @@ const blog = defineCollection({
     category: z.enum(['AI Adoption', 'Engineering Velocity', 'Technical Leadership', 'Company Updates']),
     excerpt: z.string(),
     readTime: z.string(),
+    faq: z.array(z.object({ question: z.string(), answer: z.string() })).optional(),
   }),
 });
 

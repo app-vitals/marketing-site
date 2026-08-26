@@ -9,7 +9,7 @@ readTime: "8 min read"
 
 Devin has a $26 billion valuation. They're raising a billion dollars. They're doing autonomous coding, and Dan and I — through luck or bad luck — built an open-source alternative.
 
-We didn't set out to compete with anyone. We built Shipwright in November because we needed it for ourselves and our clients — [the origin story is a lot less strategic than it sounds](/blog/accidental-devin-alternative/). We believed you could do autonomous coding on Claude Code, so we built the harness to make it work. Now we're running 100 pull requests a week and we have clients doing the same.
+We didn't set out to compete with anyone. We built Shipwright in November because we needed it for ourselves and our clients — [the origin story is a lot less strategic than it sounds](/blog/accidental-devin-alternative/). We believed you could do autonomous coding on Claude Code, so we built the harness to make it work — the same [harness-is-all-you-need argument](/blog/harness-is-all-you-need/) we'd make later, just lived first. Now we're running 100 pull requests a week and we have clients doing the same.
 
 It turns out what we built competes directly with Devin. So let's talk about how they compare.
 

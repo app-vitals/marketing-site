@@ -16,7 +16,7 @@ Both are genuinely good at *starting* work. For a one-off task, either is a grea
 
 The question a lot of engineering teams ask next is the interesting one: **can it run the backlog for me?** Pick up the next ready task on its own, build it, open a PR, run the review, reconcile state, and move to the next one — on a schedule, without me re-prompting each step?
 
-That's a different job, and it's the one [Shipwright](/products/shipwright/) is built for.
+That's a different job, and it's the one [Shipwright](/products/shipwright/) is built for — the same [harness-is-all-you-need argument](/blog/harness-is-all-you-need/), applied to the Slack surface specifically.
 
 ## The short version
 

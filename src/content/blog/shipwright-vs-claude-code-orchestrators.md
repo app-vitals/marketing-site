@@ -19,7 +19,7 @@ list. This page is the honest comparison — including where they're a *better* 
 Shipwright — so you can tell which job you're actually hiring for.
 
 The short answer: **a queue schedules work; a delivery system finishes it.** Shipwright
-is the second thing.
+is the second thing — the same [harness-is-all-you-need argument](/blog/harness-is-all-you-need/) applied to a bare task queue instead of the model or the tools.
 
 ## The short version
 

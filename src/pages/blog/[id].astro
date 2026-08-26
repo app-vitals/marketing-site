@@ -27,6 +27,18 @@ const blogPostingSchema = {
   mainEntityOfPage: `https://app-vitals.com/blog/${post.id}/`,
 };
 
+// FAQPage structured data — only built when the post opts in via frontmatter.
+// Answers are drawn verbatim from on-page copy (see the post's `faq` field).
+const faqSchema = post.data.faq && {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: post.data.faq.map((f) => ({
+    '@type': 'Question',
+    name: f.question,
+    acceptedAnswer: { '@type': 'Answer', text: f.answer },
+  })),
+};
+
 const categoryColors: Record<string, string> = {
   'AI Adoption': 'text-accent-cyan border-accent-cyan/30',
   'Engineering Velocity': 'text-electric-400 border-electric-400/30',
@@ -35,7 +47,7 @@ const categoryColors: Record<string, string> = {
 };
 ---
 
-<BaseLayout title={`${post.data.title} — App Vitals`} description={post.data.excerpt} ogImage={ogImagePath} articleDate={post.data.date} articleAuthor={post.data.author} extraSchema={blogPostingSchema}>
+<BaseLayout title={`${post.data.title} — App Vitals`} description={post.data.excerpt} ogImage={ogImagePath} articleDate={post.data.date} articleAuthor={post.data.author} extraSchema={post.data.faq ? [blogPostingSchema, faqSchema] : blogPostingSchema}>
   <article class="py-24 md:py-32">
     <div class="max-w-3xl mx-auto px-6">
       <!-- Header -->
