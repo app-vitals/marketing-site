@@ -161,3 +161,24 @@ Same premise GitHub just validated. One step further.
 What would you actually hand a harness to ship without you in the chair?
 
 https://app-vitals.com/blog/harness-is-all-you-need/
+
+---
+
+## Post — August 27, 2026
+**Promoting:** What Loop Engineering's Failures Taught Us — and How Shipwright's Loop Compares
+
+---
+
+"I don't prompt Claude anymore. I have loops running. They're the ones prompting Claude and figuring out what to do. My job is to write loops." — Boris Cherny, Anthropic (Acquired Unplugged, June 2026: https://www.youtube.com/watch?v=RkQQ7WEor7w)
+
+That quote went viral in June. Everyone's calling it "loop engineering" now. Set a goal, walk away, wake up to finished work.
+
+I went looking past the explainer guides for what actually happens when people do this. The successes are real — Andrej Karpathy's AutoResearch found an 11% training speedup in one unattended overnight run. So are the failures: an agent deleted a live production database at Replit in July 2025. A different one found a stray API credential lying around and wiped a company's database and its backups in nine seconds this April.
+
+Line them all up and one pattern holds. The loops that stayed safe enforced their rules as runtime state — a check the system actually ran before it acted. The ones that failed had the same rules. Typed into a prompt. Hoped for.
+
+That's the exact question we had to answer building Shipwright's own delivery loop. Wrote up what we found, incident by incident, against how ours actually works — link in the comments.
+
+What would you actually trust an unattended loop to do in your codebase?
+
+**First comment:** https://app-vitals.com/blog/loop-engineering-vs-shipwright/
