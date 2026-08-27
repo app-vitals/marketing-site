@@ -43,56 +43,12 @@ The problem: self-reported time savings are wildly unreliable. People overestima
 
 Here's the framework we use. None of these require AI-specific tooling to measure — they use data you probably already have.
 
-### 1. Cycle Time (From Commit to Deploy)
-
-This is the single most important metric for AI adoption ROI, and most teams already track it through their CI/CD pipeline.
-
-**Why it works:** If AI tools are genuinely accelerating your engineering team, cycle time should decrease. Not just "time writing code" — the whole cycle. Because if AI writes code faster but [your CI pipeline takes 45 minutes](/blog/ci-pipeline-bottleneck) and your code review queue is backed up, the net effect on delivery speed is negligible.
-
-**How to measure:** Track median cycle time (commit to production deploy) monthly. Compare the 3-month trailing average before AI adoption to the current 3-month trailing average. Control for team size changes, major architectural work, and seasonal patterns.
-
-**What good looks like:** A 15-25% reduction in cycle time within 6 months of meaningful AI adoption. If you're not seeing movement, either adoption isn't real or there are bottlenecks elsewhere in the pipeline eating the gains.
-
-**Watch out for:** DORA metrics are showing something interesting right now — teams using AI are seeing a [91% increase in code review time and 154% increase in PR size](https://dora.dev/research/ai/). AI is shifting the bottleneck from writing to reviewing. If your cycle time isn't improving despite AI usage, this is probably why. We've dug into [what DORA metrics still get right in the AI era, and what they miss entirely](/blog/dora-metrics-ai-era/), if you want the fuller picture.
-
-### 2. Throughput (PRs Merged Per Engineer Per Week)
-
-Raw throughput is a blunt instrument, but directionally useful.
-
-**Why it works:** If engineers are using AI effectively, they should be completing more units of work. Not necessarily bigger PRs — in fact, smaller, more frequent PRs are a better signal. AI makes it easier to break work into smaller chunks because the overhead of setting up each change is lower.
-
-**How to measure:** Track PRs merged per engineer per week, segmented by team. Look at the trend line, not individual weeks. Compare teams with high AI adoption to teams with low adoption.
-
-**What good looks like:** A 20-40% increase in throughput for teams with genuine adoption. But only if quality metrics (next section) hold steady. Throughput without quality is just generating technical debt faster.
-
-**Important caveat:** This is where the "two engineers doing the output of twenty" narrative can be misleading. It's real in specific contexts — greenfield projects, well-documented codebases, teams with strong [context infrastructure](/blog/context-problem). But in legacy codebases with poor documentation, the gains are more modest. Don't let anyone sell you a 10x productivity story without checking the conditions.
-
-### 3. Defect Rate (Bugs Per Release)
-
-This is the metric that separates real AI adoption from AI theater.
-
-**Why it works:** If engineers are shipping faster but the defect rate is climbing, AI isn't making them more productive — it's making them faster at creating problems. The goal of AI-assisted development is to increase velocity *while maintaining or improving quality*. If you can't demonstrate that, you don't have ROI.
-
-**How to measure:** Track defects per release (or per sprint) normalized by throughput. If you're merging 30% more PRs, a 30% increase in absolute defect count means the rate is flat — which is acceptable. A decrease is excellent. An increase that outpaces throughput is a red flag.
-
-**What good looks like:** Flat or improving defect rates alongside throughput increases. The research shows [only 33% of developers fully trust AI-generated output](https://survey.stackoverflow.co/2024/) — which is actually healthy. The teams that do best are the ones where engineers treat AI output as a first draft that needs review, not finished code.
-
-**The nuance:** Early in adoption, defect rates sometimes spike as engineers learn to calibrate their trust in AI output. That's normal. If it persists beyond 2-3 months, you have a training or process problem — your engineers aren't reviewing AI output rigorously enough.
-
-### 4. Adoption Depth (Weekly Active Usage by Tier)
-
-This is the metric that replaces the useless "active users" number.
-
-**Why it works:** It tells you *how* AI is being adopted, not just *whether*. 50% tool login rate tells you nothing. Knowing that 20% of your engineers use AI for code generation, 15% use it for code review, and 5% use it for architecture and planning — that tells you where you are on the adoption curve and what to focus on next.
-
-**How to measure:** Define usage tiers based on depth of integration:
-- **Tier 1 — Autocomplete:** Engineer uses AI for inline suggestions. Low effort, low impact.
-- **Tier 2 — Generation:** Engineer uses AI to generate functions, tests, or boilerplate. Moderate effort, moderate impact.
-- **Tier 3 — Workflow:** Engineer uses AI across multiple steps — planning, coding, reviewing, debugging. High effort, high impact.
-
-Survey monthly (keep it to 3 questions, not 30). Cross-reference with the quantitative metrics above.
-
-**What good looks like:** Tier 1 is where most people start. You want to see movement from Tier 1 to Tier 2 within the first quarter, and Tier 2 to Tier 3 within two quarters. If people are stuck at Tier 1, they're getting autocomplete value — which is real but modest. The big productivity gains come at Tier 3.
+| Metric | Why it works | How to measure | What good looks like | Watch out for |
+|--------|---------------|-----------------|-----------------------|----------------|
+| **1. Cycle Time (From Commit to Deploy)**<br><br>This is the single most important metric for AI adoption ROI, and most teams already track it through their CI/CD pipeline. | If AI tools are genuinely accelerating your engineering team, cycle time should decrease. Not just "time writing code" — the whole cycle. Because if AI writes code faster but [your CI pipeline takes 45 minutes](/blog/ci-pipeline-bottleneck) and your code review queue is backed up, the net effect on delivery speed is negligible. | Track median cycle time (commit to production deploy) monthly. Compare the 3-month trailing average before AI adoption to the current 3-month trailing average. Control for team size changes, major architectural work, and seasonal patterns. | A 15-25% reduction in cycle time within 6 months of meaningful AI adoption. If you're not seeing movement, either adoption isn't real or there are bottlenecks elsewhere in the pipeline eating the gains. | DORA metrics are showing something interesting right now — teams using AI are seeing a [91% increase in code review time and 154% increase in PR size](https://dora.dev/research/ai/). AI is shifting the bottleneck from writing to reviewing. If your cycle time isn't improving despite AI usage, this is probably why. We've dug into [what DORA metrics still get right in the AI era, and what they miss entirely](/blog/dora-metrics-ai-era/), if you want the fuller picture. |
+| **2. Throughput (PRs Merged Per Engineer Per Week)**<br><br>Raw throughput is a blunt instrument, but directionally useful. | If engineers are using AI effectively, they should be completing more units of work. Not necessarily bigger PRs — in fact, smaller, more frequent PRs are a better signal. AI makes it easier to break work into smaller chunks because the overhead of setting up each change is lower. | Track PRs merged per engineer per week, segmented by team. Look at the trend line, not individual weeks. Compare teams with high AI adoption to teams with low adoption. | A 20-40% increase in throughput for teams with genuine adoption. But only if quality metrics (next section) hold steady. Throughput without quality is just generating technical debt faster. | **Important caveat:** This is where the "two engineers doing the output of twenty" narrative can be misleading. It's real in specific contexts — greenfield projects, well-documented codebases, teams with strong [context infrastructure](/blog/context-problem). But in legacy codebases with poor documentation, the gains are more modest. Don't let anyone sell you a 10x productivity story without checking the conditions. |
+| **3. Defect Rate (Bugs Per Release)**<br><br>This is the metric that separates real AI adoption from AI theater. | If engineers are shipping faster but the defect rate is climbing, AI isn't making them more productive — it's making them faster at creating problems. The goal of AI-assisted development is to increase velocity *while maintaining or improving quality*. If you can't demonstrate that, you don't have ROI. | Track defects per release (or per sprint) normalized by throughput. If you're merging 30% more PRs, a 30% increase in absolute defect count means the rate is flat — which is acceptable. A decrease is excellent. An increase that outpaces throughput is a red flag. | Flat or improving defect rates alongside throughput increases. The research shows [only 33% of developers fully trust AI-generated output](https://survey.stackoverflow.co/2024/) — which is actually healthy. The teams that do best are the ones where engineers treat AI output as a first draft that needs review, not finished code. | **The nuance:** Early in adoption, defect rates sometimes spike as engineers learn to calibrate their trust in AI output. That's normal. If it persists beyond 2-3 months, you have a training or process problem — your engineers aren't reviewing AI output rigorously enough. |
+| **4. Adoption Depth (Weekly Active Usage by Tier)**<br><br>This is the metric that replaces the useless "active users" number. | It tells you *how* AI is being adopted, not just *whether*. 50% tool login rate tells you nothing. Knowing that 20% of your engineers use AI for code generation, 15% use it for code review, and 5% use it for architecture and planning — that tells you where you are on the adoption curve and what to focus on next. | Define usage tiers based on depth of integration: **Tier 1 — Autocomplete:** Engineer uses AI for inline suggestions. Low effort, low impact. **Tier 2 — Generation:** Engineer uses AI to generate functions, tests, or boilerplate. Moderate effort, moderate impact. **Tier 3 — Workflow:** Engineer uses AI across multiple steps — planning, coding, reviewing, debugging. High effort, high impact.<br><br>Survey monthly (keep it to 3 questions, not 30). Cross-reference with the quantitative metrics above. | Tier 1 is where most people start. You want to see movement from Tier 1 to Tier 2 within the first quarter, and Tier 2 to Tier 3 within two quarters. If people are stuck at Tier 1, they're getting autocomplete value — which is real but modest. The big productivity gains come at Tier 3. | |
 
 ## Putting It Together: The ROI Dashboard
 
