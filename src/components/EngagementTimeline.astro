@@ -1,0 +1,64 @@
+---
+// Shared 3-phase engagement timeline (Install / Co-operate / Hand off).
+// Used by the homepage "How it works" section and the design-partners
+// "The engagement" section. Colors are looked up internally by phase index
+// so callers only pass content — keeps the Tailwind classes static (purge-safe)
+// and both call sites free of class-string prop bloat.
+interface Phase {
+  number: string;
+  title: string;
+  timing: string;
+  description: string;
+}
+
+interface Props {
+  phases: Phase[];
+}
+
+const { phases } = Astro.props;
+
+// Static, fully-written class strings per phase index — never interpolated,
+// so Tailwind's JIT purge can see them.
+const styles = [
+  {
+    card: "border-electric-500/20 bg-electric-500/[0.03]",
+    circle: "bg-electric-500/10",
+    number: "text-electric-400",
+    timing: "text-electric-400",
+  },
+  {
+    card: "border-white/[0.06] bg-white/[0.02]",
+    circle: "bg-accent-cyan/10",
+    number: "text-accent-cyan",
+    timing: "text-accent-cyan",
+  },
+  {
+    card: "border-white/[0.06] bg-white/[0.02]",
+    circle: "bg-accent-violet/10",
+    number: "text-accent-violet",
+    timing: "text-accent-violet",
+  },
+];
+---
+
+<div class="grid md:grid-cols-3 gap-6">
+  {phases.map((phase, i) => {
+    const style = styles[i % styles.length];
+    const delay = i * 100;
+    return (
+      <div
+        class={`card-glow p-8 rounded-2xl border ${style.card} reveal`}
+        style={delay ? `transition-delay: ${delay}ms;` : undefined}
+      >
+        <div class="flex items-center gap-3 mb-4">
+          <div class={`w-8 h-8 rounded-lg ${style.circle} flex items-center justify-center`}>
+            <span class={`font-mono text-[14px] ${style.number} font-bold`}>{phase.number}</span>
+          </div>
+          <h3 class="font-display text-[20px] font-semibold tracking-tight">{phase.title}</h3>
+        </div>
+        <p class={`font-mono text-[12px] ${style.timing} uppercase tracking-[0.2em] mb-4`}>{phase.timing}</p>
+        <p class="text-[15px] text-white/40 leading-[1.7]">{phase.description}</p>
+      </div>
+    );
+  })}
+</div>
