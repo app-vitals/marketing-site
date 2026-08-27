@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PhaseCard from '../components/PhaseCard.astro';
+import PhaseSummaryTable from '../components/PhaseSummaryTable.astro';
 import WhyUsCard from '../components/WhyUsCard.astro';
 import ProblemSection from '../components/ProblemSection.astro';
 import { BOOKING_URL } from '../consts';
@@ -84,6 +85,18 @@ const phases = [
   },
 ];
 
+// Table view sources the same description/outcome copy as the cards below —
+// no new copy, just a condensed (line-clamped) presentation for scanning.
+const phaseSummaries = phases.map(({ number, title, timing, description, outcome, numberClass, labelClass }) => ({
+  number,
+  title,
+  timing,
+  description,
+  outcome,
+  numberClass,
+  labelClass,
+}));
+
 const whyUsItems = [
   {
     lineClass: 'bg-electric-500',
@@ -151,6 +164,7 @@ const whyUsItems = [
           Installed isn't the same as faster.
         </h2>
       </div>
+      <PhaseSummaryTable phases={phaseSummaries} />
       <div class="space-y-8">
         {phases.map((phase) => <PhaseCard {...phase} />)}
       </div>
