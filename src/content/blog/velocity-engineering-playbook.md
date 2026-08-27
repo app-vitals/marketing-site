@@ -135,6 +135,8 @@ Making those teams fast requires changing expectations, not just changing tools.
 
 ## The Maturity Model
 
+This model measures delivery-pipeline optimization maturity — a different axis from the org-autonomy stages in the [AI adoption ladder](/blog/the-ai-adoption-ladder/), and the two aren't meant to line up level-for-level.
+
 Based on what I've seen across dozens of engineering organizations, here's how velocity engineering maturity typically looks:
 
 **Level 0: No Awareness.** Team doesn't measure velocity. "We ship when it's ready." Nobody knows where time goes.
