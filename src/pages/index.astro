@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ExecProofSection from '../components/ExecProofSection.astro';
+import EngagementTimeline from '../components/EngagementTimeline.astro';
 import { BOOKING_URL } from '../consts';
 ---
 
@@ -342,45 +343,29 @@ import { BOOKING_URL } from '../consts';
         </p>
       </div>
 
-      <div class="grid md:grid-cols-3 gap-6 max-w-5xl">
-        <div class="p-6 rounded-xl border border-electric-500/20 bg-electric-500/[0.03] reveal">
-          <div class="flex items-center gap-3 mb-3">
-            <div class="w-8 h-8 rounded-lg bg-electric-500/10 flex items-center justify-center">
-              <span class="text-electric-400 font-mono text-[14px] font-bold">1</span>
-            </div>
-            <h3 class="font-display text-[17px] font-semibold tracking-tight">Install</h3>
-          </div>
-          <p class="font-mono text-[12px] text-white/25 mb-3">~2 weeks</p>
-          <p class="text-[14px] text-white/40 leading-[1.7]">
-            Set up Shipwright in your environment. Integrate with repos, CI, and review. Configure guardrails. Ship a first production PR through the system inside the first two weeks.
-          </p>
-        </div>
-
-        <div class="p-6 rounded-xl border border-white/[0.06] bg-white/[0.02] reveal" style="transition-delay: 100ms;">
-          <div class="flex items-center gap-3 mb-3">
-            <div class="w-8 h-8 rounded-lg bg-accent-cyan/10 flex items-center justify-center">
-              <span class="text-accent-cyan font-mono text-[14px] font-bold">2</span>
-            </div>
-            <h3 class="font-display text-[17px] font-semibold tracking-tight">Co-operate</h3>
-          </div>
-          <p class="font-mono text-[12px] text-white/25 mb-3">~4–6 weeks</p>
-          <p class="text-[14px] text-white/40 leading-[1.7]">
-            Your engineers queue tasks, review the agents' PRs, and tune the guardrails. We pair on tricky tickets and turn one-off fixes into repeatable patterns in the system.
-          </p>
-        </div>
-
-        <div class="p-6 rounded-xl border border-white/[0.06] bg-white/[0.02] reveal" style="transition-delay: 200ms;">
-          <div class="flex items-center gap-3 mb-3">
-            <div class="w-8 h-8 rounded-lg bg-accent-violet/10 flex items-center justify-center">
-              <span class="text-accent-violet font-mono text-[14px] font-bold">3</span>
-            </div>
-            <h3 class="font-display text-[17px] font-semibold tracking-tight">Hand off</h3>
-          </div>
-          <p class="font-mono text-[12px] text-white/25 mb-3">~2 weeks</p>
-          <p class="text-[14px] text-white/40 leading-[1.7]">
-            Ownership transfers. Your team runs the system day-to-day. We stay reachable for new use cases, but there's no ongoing dependency on us to keep shipping.
-          </p>
-        </div>
+      <div class="max-w-5xl">
+        <EngagementTimeline
+          phases={[
+            {
+              number: "1",
+              title: "Install",
+              timing: "Weeks 1–2",
+              description: "Set up Shipwright in your environment. Integrate with repos, CI, and review. Configure guardrails. Ship a first production PR through the system inside the first two weeks.",
+            },
+            {
+              number: "2",
+              title: "Co-operate",
+              timing: "Weeks 3–6",
+              description: "Your engineers queue tasks, review the agents' PRs, and tune the guardrails. We pair on tricky tickets and turn one-off fixes into repeatable patterns in the system.",
+            },
+            {
+              number: "3",
+              title: "Hand off",
+              timing: "Weeks 7–10",
+              description: "Ownership transfers. Your team runs the system day-to-day. We stay reachable for new use cases, but there's no ongoing dependency on us to keep shipping.",
+            },
+          ]}
+        />
       </div>
     </div>
     <div class="gradient-divider mt-24"></div>

@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import EngagementTimeline from '../../components/EngagementTimeline.astro';
 import { BOOKING_URL } from '../../consts';
 
 // Service/Offer schema — provider reuses the same Organization shape as StructuredData.astro.
@@ -197,31 +198,28 @@ const faqSchema = {
         </h2>
       </div>
 
-      <div class="grid md:grid-cols-3 gap-6">
-        <div class="card-glow p-8 rounded-2xl border border-electric-500/20 bg-electric-500/[0.03] reveal">
-          <p class="font-mono text-[12px] text-electric-400 uppercase tracking-[0.2em] mb-4">Weeks 1–2</p>
-          <h3 class="font-display text-[20px] font-semibold mb-3 tracking-tight">Install &amp; configure</h3>
-          <p class="text-[15px] text-white/40 leading-[1.7]">
-            Dan and Dave stand up Shipwright in your cloud, wire it to your repo, CI, and review process. Metrics dashboard live.
-          </p>
-        </div>
-
-        <div class="card-glow p-8 rounded-2xl border border-white/[0.06] bg-white/[0.02] reveal" style="transition-delay: 100ms;">
-          <p class="font-mono text-[12px] text-electric-400 uppercase tracking-[0.2em] mb-4">Weeks 3–6</p>
-          <h3 class="font-display text-[20px] font-semibold mb-3 tracking-tight">Tune to your stack</h3>
-          <p class="text-[15px] text-white/40 leading-[1.7]">
-            We customize the knobs, extensions, plan/queue config, and review policy to your product and your codebase — the last-mile infrastructure work off-the-shelf tools don't touch. Agents start shipping real, human-reviewed PRs against your backlog.
-          </p>
-        </div>
-
-        <div class="card-glow p-8 rounded-2xl border border-white/[0.06] bg-white/[0.02] reveal" style="transition-delay: 200ms;">
-          <p class="font-mono text-[12px] text-electric-400 uppercase tracking-[0.2em] mb-4">Weeks 7–10</p>
-          <h3 class="font-display text-[20px] font-semibold mb-3 tracking-tight">Hand off</h3>
-          <p class="text-[15px] text-white/40 leading-[1.7]">
-            Your team owns the loop. We step back to advisory. You keep everything — the harness config, the primitives, the artifacts.
-          </p>
-        </div>
-      </div>
+      <EngagementTimeline
+        phases={[
+          {
+            number: "1",
+            title: "Install & configure",
+            timing: "Weeks 1–2",
+            description: "Dan and Dave stand up Shipwright in your cloud, wire it to your repo, CI, and review process. Metrics dashboard live.",
+          },
+          {
+            number: "2",
+            title: "Tune to your stack",
+            timing: "Weeks 3–6",
+            description: "We customize the knobs, extensions, plan/queue config, and review policy to your product and your codebase — the last-mile infrastructure work off-the-shelf tools don't touch. Agents start shipping real, human-reviewed PRs against your backlog.",
+          },
+          {
+            number: "3",
+            title: "Hand off",
+            timing: "Weeks 7–10",
+            description: "Your team owns the loop. We step back to advisory. You keep everything — the harness config, the primitives, the artifacts.",
+          },
+        ]}
+      />
 
       <p class="mt-12 max-w-2xl text-[16px] text-white/45 leading-[1.8] reveal">
         <span class="text-white/70">What you get:</span> the software plus Dan and Dave, hands-on, for the whole pilot — not a license and a docs link.
