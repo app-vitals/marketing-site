@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PhaseCard from '../components/PhaseCard.astro';
+import PhaseSummaryTable from '../components/PhaseSummaryTable.astro';
 import WhyUsCard from '../components/WhyUsCard.astro';
 import ProblemSection from '../components/ProblemSection.astro';
 import { BOOKING_URL } from '../consts';
@@ -151,6 +152,7 @@ const whyUsItems = [
           Installed isn't the same as faster.
         </h2>
       </div>
+      <PhaseSummaryTable phases={phases} />
       <div class="space-y-8">
         {phases.map((phase) => <PhaseCard {...phase} />)}
       </div>
