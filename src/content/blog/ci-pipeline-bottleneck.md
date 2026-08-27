@@ -56,6 +56,8 @@ If deploying to production requires courage, your deployment process is the bott
 
 ## The Velocity Stack
 
+**Developer Productivity → Integration Speed → Delivery Speed → Feedback Speed**
+
 Think of engineering velocity as a stack, not a single tool:
 
 - **Layer 1: Developer productivity** — AI tools, good DX, fast local builds

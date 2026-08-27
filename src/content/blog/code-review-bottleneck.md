@@ -67,6 +67,8 @@ This is the "[CI pipeline bottleneck](/blog/ci-pipeline-bottleneck)" pattern we 
 
 ## Three Ways to Actually Fix This
 
+**AI-Assisted Code Review → Smaller, More Frequent PRs → Fix the Review Process Itself**
+
 The fix isn't to slow down code generation. You paid for those AI tools, and they *are* making your developers more productive at writing code. The fix is to accelerate the stages that are now the constraint.
 
 ### 1. AI-Assisted Code Review
