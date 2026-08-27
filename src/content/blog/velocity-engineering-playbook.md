@@ -25,6 +25,8 @@ The teams that actually ship faster with AI aren't just using AI to write code. 
 
 ## The Four Stages of Delivery
 
+**Code Generation → Code Review → CI/CD → Deployment**
+
 Every piece of software passes through four stages on its way to production. Velocity engineering means making all four fast.
 
 ### Stage 1: Code Generation
