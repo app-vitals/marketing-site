@@ -13,6 +13,19 @@ We didn't set out to compete with anyone. We built Shipwright in November becaus
 
 It turns out what we built competes directly with Devin. So let's talk about how they compare.
 
+## The short version
+
+| | Devin | Shipwright |
+|---|---|---|
+| PRD → task list → autonomous execution → PR | ✅ Yes | ✅ Yes |
+| Deploys after merge | ❌ No — stops at the PR | ✅ Yes, via a customizable Claude Code skill |
+| Pricing model | ⚠️ Metered: Pro $20/mo, Max $200/mo, Team $500/mo for 250 ACUs at $2/ACU | ✅ No licensing cost, no per-ACU meter — pay only Claude API token cost |
+| Open source | ❌ Black box | ✅ MIT licensed, fully readable and forkable |
+| Self-hosted | ❌ Their cloud | ✅ Runs inside your own Claude Code |
+| Enterprise certifications / dedicated support | ✅ SOC 2, dedicated support contract | ⚠️ Not yet — we're not there |
+
+Devin's got the scale, resources, and enterprise checkboxes for organizations that need a fully managed, SOC 2-certified solution with a support contract. Shipwright's bet is different: open, self-hosted, and priced at the cost of the tokens you actually use. The sections below walk through each of these in more detail.
+
 ## The Fundamental Difference: Open Source vs. Black Box
 
 Devin is a black box. You have no idea what it's doing. The only knobs you can turn are the ones they give you.
