@@ -31,6 +31,8 @@ The reason isn't ideology. It's context. When the agent has everything in one wo
 
 ## The four crons that do the work
 
+**Dev task → Review → Patch → Deploy**
+
 Here's the part that makes 85 a believable number instead of a marketing stat. After you plan — and planning is the part you actually do — four cron jobs take over: **dev task, review, patch, and deploy.** They fire every 30 minutes to keep things moving, but they don't burn a single token unless there's real work pending. A sanity check runs first: *are there any PRs open by me? Any tasks in the queue?* No work, no spend.
 
 - **Dev task** is the heavy one. When it grabs the next item off the queue, it syncs the latest main, cuts a branch, does its research, writes tests first, writes the code, runs Claude Code Simplify, runs lint and the unit tests locally, and only *then* opens a PR. There are roughly 15 steps before that PR exists. Every one of them is a step a good engineer would do — and never skip — except the agent doesn't forget any of them, because they're written down. After the PR opens, it watches CI through up to six iterations, diagnosing and fixing failures by root cause until it's green or it gives up and waits for a human.
