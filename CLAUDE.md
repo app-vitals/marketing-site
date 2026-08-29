@@ -50,6 +50,11 @@ npm run build    # Production build
 npm run preview  # Preview production build
 ```
 
+## Deploy model
+**direct** — Vercel's GitHub integration auto-deploys `main` on merge (confirmed
+2026-08-28 via a real merge). There is no staging/canary/promote pipeline, and
+none is needed.
+
 ## Deploy
 ```bash
 source /home/pi/.openclaw/workspace/.secrets.env
