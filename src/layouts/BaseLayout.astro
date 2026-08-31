@@ -154,7 +154,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
           }
         });
 
-        if ([...utmParams].length === 0) {
+        if (utmParams.size === 0) {
           return;
         }
 
