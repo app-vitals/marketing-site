@@ -2,6 +2,7 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import StructuredData from '../components/StructuredData.astro';
+import { BOOKING_URL } from '../consts';
 import '../styles/global.css';
 
 interface Props {
@@ -177,33 +178,38 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     </script>
 
     <!-- UTM forwarding: carry campaign attribution onto outbound booking links -->
-    <script is:inline>
-      document.addEventListener('DOMContentLoaded', function () {
-        var UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
-        var pageParams = new URLSearchParams(window.location.search);
-        var utmParams = new URLSearchParams();
+    <script is:inline data-booking-url-host={new URL(BOOKING_URL).host} data-booking-url-pathname={new URL(BOOKING_URL).pathname}>
+      (function () {
+        var bookingUrlSubstring =
+          document.currentScript.dataset.bookingUrlHost + document.currentScript.dataset.bookingUrlPathname;
 
-        UTM_KEYS.forEach(function (key) {
-          var value = pageParams.get(key);
-          if (value) {
-            utmParams.set(key, value);
-          }
-        });
+        document.addEventListener('DOMContentLoaded', function () {
+          var UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
+          var pageParams = new URLSearchParams(window.location.search);
+          var utmParams = new URLSearchParams();
 
-        if (utmParams.size === 0) {
-          return;
-        }
-
-        document
-          .querySelectorAll('a[href*="vitals-os.com/cal/book/discovery"]')
-          .forEach(function (link) {
-            var url = new URL(link.href);
-            utmParams.forEach(function (value, key) {
-              url.searchParams.set(key, value);
-            });
-            link.href = url.toString();
+          UTM_KEYS.forEach(function (key) {
+            var value = pageParams.get(key);
+            if (value) {
+              utmParams.set(key, value);
+            }
           });
-      });
+
+          if (utmParams.size === 0) {
+            return;
+          }
+
+          document
+            .querySelectorAll('a[href*="' + bookingUrlSubstring + '"]')
+            .forEach(function (link) {
+              var url = new URL(link.href);
+              utmParams.forEach(function (value, key) {
+                url.searchParams.set(key, value);
+              });
+              link.href = url.toString();
+            });
+        });
+      })();
     </script>
   </body>
 </html>
