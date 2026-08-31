@@ -47,7 +47,7 @@ const categoryColors: Record<string, string> = {
 };
 ---
 
-<BaseLayout title={`${post.data.title} — App Vitals`} description={post.data.excerpt} ogImage={ogImagePath} articleDate={post.data.date} articleAuthor={post.data.author} extraSchema={post.data.faq ? [blogPostingSchema, faqSchema] : blogPostingSchema}>
+<BaseLayout title={`${post.data.title} — App Vitals`} description={post.data.excerpt} ogImage={ogImagePath} articleDate={post.data.date} articleAuthor={post.data.author} extraSchema={post.data.faq ? [blogPostingSchema, faqSchema!] : blogPostingSchema}>
   <article class="py-24 md:py-32">
     <div class="max-w-3xl mx-auto px-6">
       <!-- Header -->
