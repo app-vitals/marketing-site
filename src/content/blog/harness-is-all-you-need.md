@@ -5,11 +5,22 @@ author: "Dave O'Dell"
 category: "Engineering Velocity"
 excerpt: "GitHub says the harness — not the model, not the tools — is where the leverage is. They're right. Here's the step past where their argument stops, and why being a thin, open layer on Claude Code beats going fullstack."
 readTime: "5 min read"
+faq:
+  - question: "Is the harness really all you need?"
+    answer: "The harness is the leverage — that part of GitHub's argument is right. But the step past where their argument stops is closing the loop yourself: plan, queue, and loop turn the harness from a copilot you drive into a system that ships without you re-prompting it. Shipwright is a thin, open layer on top of Claude Code that does exactly that, and it's built to be easy to leave."
+  - question: "What does Shipwright add on top of the harness?"
+    answer: "Plan, queue, and loop: it decomposes a goal into a durable queue of reviewable tasks, holds them across sessions and days, and runs an autonomous cycle that pulls the next ready task, builds it, opens a PR, runs the review, reconciles state, and moves on — on a schedule, without a human re-prompting each step."
+  - question: "What happens if I stop using Shipwright?"
+    answer: "You lose Shipwright — the engine, the queue, the loop. But everything it wrote into your repo stays: the CLAUDE.md, the docs, the skills, the slash commands. Those are plain Claude Code primitives that keep working on vanilla Claude Code with Shipwright completely removed."
 ---
 
 GitHub's Burke Holland made an argument last week that we've believed for a while, so it was good to see it said out loud: the leverage in AI-assisted engineering isn't the model, and it isn't the pile of tools you bolt on. It's the **harness** — the layer that plans, picks the model, runs the subagents, and drives the loop. Master that, he argues, and you stop chasing the next shiny MCP. Chase tools instead, and you're collecting gimmicks.
 
 He's right. We'd just push the argument one step further than [the post](https://github.blog/ai-and-ml/github-copilot/the-harness-is-all-you-need-mostly/) does — and that step is the whole reason we built Shipwright.
+
+## Is the harness really all you need?
+
+The harness is the leverage — that part of GitHub's argument is right. But the step past where their argument stops is closing the loop yourself: plan, queue, and loop turn the harness from a copilot you drive into a system that ships without you re-prompting it. Shipwright is a thin, open layer on top of Claude Code that does exactly that, and it's built to be easy to leave. So the right harness is all you need — as long as something closes the loop around it.
 
 ## The ceiling in the argument
 
@@ -47,6 +58,6 @@ If you stop using Shipwright, you lose Shipwright — the engine, the queue, the
 
 Compare that to the fullstack agents. Leaving one of those means leaving your whole workflow behind — it lived in their stack, and it doesn't come with you. Lock-in is the business model. Ours is the opposite: **the exit is cheap, clean, and leaves your repo better than it found it.** We're not betting you can't leave. We're betting that once you've felt plan → queue → loop actually close, you won't want to.
 
-That's the ladder. Try it as a low-risk trial — it's open, you can read every line. Learn how a real harness is built. And if you ever walk away, you keep everything it taught your codebase.
+That's the ladder. [Try it as a low-risk trial](/shipwright/design-partners/) — it's open, you can read every line. Learn how a real harness is built. And if you ever walk away, you keep everything it taught your codebase.
 
 The harness really is (mostly) all you need. We just think you shouldn't have to build it from scratch — or get locked into someone else's to use one.
