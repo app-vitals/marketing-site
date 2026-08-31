@@ -99,6 +99,42 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
       gtag('js', new Date());
       gtag('config', 'G-H7QY6C7T1L');
     </script>
+
+    <!-- LinkedIn Insight Tag -->
+    <script>
+      declare global {
+        interface Window {
+          _linkedin_partner_id?: string;
+          _linkedin_data_partner_ids?: string[];
+          lintrk?: { (a: string, b?: unknown): void; q: unknown[][] };
+        }
+      }
+
+      if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+        window._linkedin_partner_id = '519276394';
+        window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
+        window._linkedin_data_partner_ids.push(window._linkedin_partner_id);
+
+        (function (l?: Window['lintrk']) {
+          if (!l) {
+            const lintrk = function (a: string, b?: unknown) {
+              lintrk.q.push([a, b]);
+            } as { (a: string, b?: unknown): void; q: unknown[][] };
+            lintrk.q = [];
+            window.lintrk = lintrk;
+          }
+          const s = document.getElementsByTagName('script')[0];
+          const b = document.createElement('script');
+          b.type = 'text/javascript';
+          b.async = true;
+          b.src = 'https://snap.licdn.com/li.lms-analytics/insight.min.js';
+          s.parentNode?.insertBefore(b, s);
+        })(window.lintrk);
+      }
+    </script>
+    <noscript>
+      <img height="1" width="1" style="display:none;" alt="" src="https://px.ads.linkedin.com/collect/?pid=519276394&fmt=gif" />
+    </noscript>
   </head>
   <body class="min-h-screen flex flex-col overflow-x-hidden">
     <!-- Grain texture overlay -->
