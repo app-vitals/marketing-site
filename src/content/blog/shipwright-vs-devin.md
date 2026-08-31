@@ -88,7 +88,7 @@ That's the proof we can offer that Devin can't: an open, auditable, live record 
 
 Comparing against Anthropic's own surfaces instead? We wrote up [Shipwright vs. Claude in Slack](/blog/shipwright-vs-claude-code-slack/) — same delivery-system-not-a-session lens, applied to the Claude-in-Slack integration.
 
-You don't have to take our word for any of this — the repo's right there. **[Star it and read the code.](https://github.com/app-vitals/shipwright)**
+You don't have to take our word for any of this — the repo's right there. **[Star it and read the code.](https://github.com/app-vitals/shipwright?utm_source=app-vitals&utm_medium=blog&utm_campaign=vs-devin&utm_content=star-repo)**
 
 ## How to Choose
 
@@ -104,9 +104,9 @@ If Devin isn't actually your comparison set — if you're weighing Shipwright ag
 
 That's a different kind of competitive advantage, and it's one we're happy to put in your hands. Three ways to go from here:
 
-1. **[Star the repo on GitHub](https://github.com/app-vitals/shipwright)** — read the code before you trust it with anything.
-2. **[Try Shipwright yourself](/products/shipwright/)** — install it and run it on your own pipeline.
-3. **[Get design-partner help](/shipwright/design-partners/)** — have Dan and me install and tune it for you instead.
+1. **[Star the repo on GitHub](https://github.com/app-vitals/shipwright?utm_source=app-vitals&utm_medium=blog&utm_campaign=vs-devin&utm_content=star-repo)** — read the code before you trust it with anything.
+2. **[Try Shipwright yourself](/products/shipwright/?utm_content=try)** — install it and run it on your own pipeline.
+3. **[Book a call](https://vitals-os.com/cal/book/discovery?utm_source=app-vitals&utm_medium=blog&utm_campaign=vs-devin&utm_content=book-a-call)** — have Dan and me install and tune it for you instead. Curious what that looks like first? [See how the design-partner program works](/shipwright/design-partners/).
 
 ---
 
