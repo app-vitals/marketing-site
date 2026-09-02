@@ -1,0 +1,46 @@
+---
+title: "We Built an Interface So We'd Never Have to Choose a Backend. We Ended Up Deleting All of Them."
+date: "2026-09-02"
+author: "Dan McAulay"
+category: "Company Updates"
+excerpt: "The plan was simple: put an interface in front of the todo list, swap backends whenever we wanted, never think about it again. Instead we got two backends an agent couldn't reliably choose between, a GitHub Issues implementation held together with labels and JSON stuffed in a comment, and a concurrency problem GitHub was never built to solve. Here's how that actually became the task store the whole pipeline runs on now."
+readTime: "8 min read"
+---
+
+*Fourth post in the series on how Shipwright actually came together — [the first one](/blog/cloud-agent-review-origin/) covered the cloud review pipeline, [the second](/blog/openclaw-todos-origin/) covered OpenClaw, Bodhi, and the original todo list, [the third](/blog/vitals-os-merge-origin/) covered the merge into VitalsOS. That post ended with a line I want to pick back up directly: what we were calling a task store back then was still a todo list with an interface bolted on, and it was already starting to crack under multiple agents working the same queue.*
+
+By the time VitalsOS existed, my todo list wasn't mine anymore. It was the shared queue several agents were reading from and writing to, across two people's work. Dave wanted something specific out of that: visibility. Not wanting to have to ask an agent what it was doing, or what was left — being able to just look. So Dave went and extracted an interface that satisfied the same contract my `todos.json` file had always honored — same shape, same operations — so that whatever sat behind it could change without anything that called it needing to know. That was the whole point of doing it this way. Swap the backend, keep the calling code exactly as it was.
+
+The assumption baked into that decision was that GitHub Issues wouldn't be the only thing behind the interface — Linear and Jira were supposed to follow eventually too, whichever platform a given team already lived in. Jira actually did get built, for real, a couple weeks later. Linear never did.
+
+## Two Backends, One Confused Agent
+
+Here's the part that didn't work: for a while, both backends existed behind that interface at once — the original JSON file and the new GitHub-backed one, side by side, neither one fully retired. An agent picking up work couldn't reliably tell which one it was supposed to trust. That's the actual split-brain, and it's the specific failure the interface was supposed to prevent, not cause — decoupling the caller from the backend didn't help once there were two live backends and no clear signal for which one was current.
+
+The GitHub side wasn't even settled on its own terms yet. The first attempt used GitHub Projects v2 — a real project board, fields and all — and it lasted about a day before getting replaced with something plainer: status tracked through labels, with the actual task data written into a fenced code block in the issue body and parsed back out on read. Projects v2 needed a wider PAT scope and a much messier field-mapping layer than a label swap did. Simpler won.
+
+## Visibility Cut Both Directions
+
+The visibility Dave wanted was real, and it worked — an agent (or a person) could look at GitHub and see the whole queue instead of asking someone to summarize it. But visibility for one agent meant visibility for every agent, and that cut a different way than either of us expected. Every issue was now visible to every agent with repo access, which meant we had to figure out assignment for the first time — and we were doing GitHub auth through personal access tokens, which have no concept of "which agent is this." Dave was running two agents off his own PAT, and there was no way to tell them apart at the auth layer, let alone assign an issue to one specifically. GitHub Issues has no built-in concurrency control either, so nothing stopped two agents from picking up the same task at the same time. That wasn't a new failure mode, exactly — the same thing was already happening with PRs — but the task queue was supposed to be the place that didn't have that problem, and now it did too.
+
+## The Fix Wasn't a Fourth Adapter
+
+We patched around all of this for weeks. A doctor check that warned if two backends looked configured at once. Enforcement that forced a single backend to be selected instead of guessed at. It helped, but it was still the same shape of system — an interface with a hole in the middle where a real data layer should be, and whatever plugged into that hole inheriting all its host's limitations, whether that host was a JSON file with no concurrency model at all or an issue tracker never designed to be one.
+
+The actual fix, when it came, wasn't a better adapter. It was walking away from the adapter pattern entirely. We scaffolded a real service — Postgres behind it, a proper schema for a task instead of a label soup and a JSON blob stuffed in a comment. Auth stopped being a shared PAT and became per-agent tokens, scoped to specific repos, so "which agent is this and what can it touch" finally had a real answer instead of an assumption. Claiming a task became an actual atomic operation against a database instead of a race against whichever agent's GitHub API call landed first, with a background job that reaps stale claims if an agent dies mid-task instead of leaving a task silently stuck. And once that service existed, we didn't phase the old backends out gradually — the JSON adapter, the GitHub adapter, and the Jira adapter all got deleted in the same commit. Not deprecated. Removed.
+
+## What That Actually Bought Us
+
+The honest version of this story isn't just "the old way was broken, so we fixed it" — a few things got real once there was an actual database under the task store that were never really possible before, not cleanly.
+
+Any agent with a token scoped to a repo can pick up work in that repo now, full stop — the old world couldn't offer that as a guarantee, because PAT-based auth had no concept of a scoped agent identity to check in the first place. It wasn't a limitation we worked around before; it's a capability that flatly didn't exist.
+
+We can also just look. The admin app has real tabs — ready, in progress, blocked, closed — backed by the actual state of the actual task, not a label someone remembered to apply. Before, seeing that picture meant different custom querying depending on which platform's API you were hitting that week. Now it's a page you load.
+
+Blocked and HITL are the two pieces of that state model we actually lean on day to day, not just theory. A task can land in `blocked` for two different reasons — a real, unresolved dependency on another task, or a `hitl` flag meaning it genuinely can't be finished by an agent alone. That second case runs through its own command now: it loads the task's context and its human-steps section, hands over full infra tooling — terraform, kubectl, whatever the task actually needs — walks through it with whoever's driving, and marks the task done once they confirm. That's not a hypothetical safety valve. It's a real, regularly-used path for the exact category of work that was never going to be agent-only.
+
+None of this rules out Jira, Linear, or GitHub Issues coming back — it just changes what role they'd play. The task store is what actually drives work now; if we ever build those integrations, they'd exist to propagate visibility out to teams already living in one of those tools, not to be a backend the task store depends on. That's still just an idea, not a line of code — but it's the correct shape for it, and it's the opposite direction of what we'd built before.
+
+We built an interface to avoid ever having to make this decision for real. It took building three backends behind it, watching agents get confused about which one to trust, and hitting a concurrency problem the whole point of a shared queue was supposed to solve, before we actually made it. Every piece of Shipwright has to earn its place by pointing back to a specific problem it solved for a specific person — this one earned it the slow way, by failing twice first.
+
+Next up: the crons and the loop that actually work this queue — why the whole system polls instead of reacting to events, and why a piece called `patch` had to exist before the rest of the pipeline could narrow back down to what it was actually supposed to do.
