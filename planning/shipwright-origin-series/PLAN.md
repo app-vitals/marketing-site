@@ -170,9 +170,14 @@ comes, the way rows 4-6 already got a first pass this session.
 | 4 | The task store's real origin: `todos.json` got put behind an interface, a GitHub Issues–backed implementation was built alongside it (a GitHub Projects v2 backend was also tried, per git — `TS-2.1`, 2026-05-25 — before Issues won out), running both was "split-brained" (the agent got confused switching between them), and multi-agent-on-one-repo needs (shared task queue, tighter concurrency control) forced ripping both out and building the task store from scratch. **Expanded scope (Dan, 2026-08-25):** should also cover the task store's actual state model (ready / in-progress / blocked / closed), filtering, and claiming — specifically what happens when multiple agents go after the same task. **Scoped 2026-09-02:** Dave extracted the original interface (not "an implementation built alongside" it — corrected by Dan); ends at the TSS-2.1 cutover + verified extension wins (repo-scoped tokens, admin state filtering, the `blocked`/HITL split via `/shipwright:hitl`) — no deep dive into today's audit-trail/TaskEvent mechanics (parked for the future observability post, row 8) or outbound Jira/Linear/GitHub-Issues propagation (confirmed no code or planning doc exists for that direction — stated future intent only). | **Drafted, PR open** | [#136](https://github.com/app-vitals/marketing-site/pull/136) — `src/content/blog/task-store-origin.md` |
 | 5 | System crons + the shipwright-loop dispatcher — see dedicated notes under "Context Gathered for Future Posts" below, they'd outgrown this table cell. | Not planned yet | — |
 | 6 | Open-sourcing Shipwright — the plugin's extraction from the vitals-os monorepo into its own repo (`app-vitals/shipwright`, scaffolded 2026-06-06) and the ~10-day phased migration of every live production agent off the homegrown runtime and onto the new harness (canary-first on `okwow`, then `fern-dan`, `sideby-dan`, `warchild`, `keaunu` in that order), ending in a single commit deleting the entire legacy `agent/` workspace (17,165 lines, 107 files, 2026-06-18). Well-documented in git already — see this session's research. Matches the public timeline's "June 2026: Shipwright transitions from marketplace to independent repository." | Not planned yet | — |
-| 7 | The metrics journey — PostHog first, then a move to Postgres, then a series of accuracy improvements. Why each move happened, not just that it happened. | Not planned yet, topic only (Dan, 2026-08-25) | — |
-| 8 | Observability across a fleet of autonomous agents — agent cron logs, the work queue itself, Sentry logs, shipwright-loop's own logs, PR findings, PR events. How they gained visibility into what a fleet of agents was actually doing, not just what it shipped. | Not planned yet, topic only (Dan, 2026-08-25) | — |
-| 9 | HITL (human-in-the-loop) — what actually needs a human in an otherwise autonomous pipeline, and when/why a task gets blocked pending one. Likely pairs well with the task store's state model (row 4) since `blocked` is a task-store state, but Dan listed it separately — worth checking at scoping time whether it's its own post or a chapter of row 4. | Not planned yet, topic only (Dan, 2026-08-25) | — |
+| 7 | The metrics journey. **Timeline verified 2026-09-02** (see Context Gathered below for full commit list): PostHog first (2026-04-03) → **premise correction needed**: not "PostHog then Postgres" — it was PostHog → three parallel backends behind a provider seam (PostHog/Postgres/SQLite, 2026-06-08, self-host-vs-local-dev portability move) → all three deleted in favor of a database-free `TaskStoreProvider` reading task-store/admin APIs directly (2026-06-27–28). Postgres was a rejected intermediate option, not the destination — current metrics service has no database at all. Real accuracy-fix material exists but inside the TaskStoreProvider migration itself (double-counting guard, phantom-field fix, envelope-parsing bug), not as a separate later "accuracy improvements" era. | Not planned yet, topic only (Dan, 2026-08-25) | — |
+| 8 | Observability across a fleet of autonomous agents. **Timeline verified 2026-09-02:** three separate, roughly-month-apart epics, not one coordinated initiative — Sentry wiring (2026-07-05/06, shared `lib/sentry.ts` + per-service rollout + `docs/observability.md`; "self-hosted Sentry" was in the doc from day one, not a later capability), agent cron run logging (`AgentCronRun`, 2026-06-24-25, first real cron-outcome tracking — before this only schedules existed, not run history), the work-queue-as-observability-surface (`AgentWorkQueueSnapshot`, 2026-07-17, explicitly designed to push even idle/empty snapshots since "an empty snapshot is itself meaningful"), shipwright-loop's own decision logging (no-op/skip-reason logging from 2026-07-22, Sentry dispatch tagging 2026-08-11), and PR/task findings as structured data (`PrFinding` 2026-08-17 → `PullRequestEvent` 2026-08-18 → `TaskEvent` 2026-08-31, explicitly each one built as a copy of the prior pattern — before `PrFinding`, GitHub comments were the *only* record of a review finding). | Not planned yet, topic only (Dan, 2026-08-25) | — |
+| 9 | HITL (human-in-the-loop). **Timeline verified 2026-09-02:** the `hitl` flag and `/shipwright:hitl` command both landed 2026-06-17, day-one scope already broad (terraform/helm/kubectl/gcloud/aws/az, "no tool restrictions") — **not** credential-rotation-specific at origin; credential rotation was a consumer added later. Two real-gap-driven additions came after: gitleaksignore suppression (2026-07-28, because nothing recorded a human's false-positive call anywhere gitleaks itself respected, so identical findings kept re-filing weekly) and the "PR resulted from this session" guard (2026-07-30/31, fixing a live bug where `hitl` stayed permanently stuck true). The `blocked`/HITL merge into one task-store status is more recent than expected — **2026-08-08** (HSR-1.1, authored by Dave), 7 weeks after `hitl` itself existed; also spawned and then fully retired a second concept, `requiresHumanApproval` ("Type B" merge-gate, added and later removed). Today ~6 distinct skills produce HITL tasks across secrets, ambiguous authz/fix judgment calls, recurring cross-service errors, and pure manual-execution tasks — credential rotation is one category among several. Likely pairs well with the task store's state model (row 4) since `blocked` is a task-store state, but Dan listed it separately — worth checking at scoping time whether it's its own post or a chapter of row 4. | Not planned yet, topic only (Dan, 2026-08-25) | — |
+| 10 | Shipwright's public OSS launch (~2026-06-24–29) — brand readiness pass, the 🚧-banner "for launch" strip from the README, the public read-only task board, the public metrics dashboard with a cost-efficiency card, public GHCR image publishing. Distinct from row 6 (the *internal* extraction into its own repo, 2026-06-06–18) — this is making that repo actually public-facing, about a week later. New candidate, surfaced by the 2026-09-02 gap-fill sweep. | Not planned yet, topic only — surfaced 2026-09-02 | — |
+| 11 | The Agent Type manifest system (2026-07-24, PRs #2191-#2207) — agents redefined as declarative Zod-schema manifests (`agent-types/coding/manifest.yaml`), manifest-driven cron reconciliation replacing hardcoded `SYSTEM_CRONS`. A real architecture pivot: what agent "types" even are and why they stopped being hardcoded. New candidate, surfaced 2026-09-02. | Not planned yet, topic only — surfaced 2026-09-02 | — |
+| 12 | The infra rewrite squeezed into VitalsOS's first month (2026-03-29–04-01, i.e. *during* post 3's own timeframe but never mentioned there): GKE Autopilot migration (Terraform, Helm, WIF-based CD, SQLite→Postgres), the "hub & spoke" agent architecture getting named/documented, and a monorepo→per-service DB split with its own rollback scripts. Could be its own post or a "what we didn't tell you in post 3" aside. New candidate, surfaced 2026-09-02. | Not planned yet, topic only — surfaced 2026-09-02 | — |
+| 13 | The Interceptor service's full arc: born 2026-04-11 as a K8s scale-0↔1 lifecycle manager routing Slack events to agent containers (effectively "serverless agents" pre-Shipwright), retired 2026-06-23 when Shipwright's own dynamic provisioning took over client-agent infra — a clean birth→retirement story with a real successor. New candidate, surfaced 2026-09-02. | Not planned yet, topic only — surfaced 2026-09-02 | — |
+| 14 | "Ship a new analytics service in days" as a repeated pattern, not a one-off: the Podcast analytics module (Transistor/YouTube sync + dashboard, ~3 days, 2026-05-21–24) and the Growth analytics service (GA4/Search Console/LinkedIn/YouTube/GitHub-traffic ingestion, 2026-07-02–03) both stood up full new services in days using the same pipeline. A pipeline-speed case study told through two examples instead of one. New candidate, surfaced 2026-09-02. | Not planned yet, topic only — surfaced 2026-09-02 | — |
 
 ## Lessons From Post 1 (apply going forward)
 
@@ -868,3 +873,171 @@ Fable 5 taking over 07-03→08-20.
   some point, cut from post 3 at Dan's request because provenance is uncertain
   ("maybe an outage," his words 2026-08-25). Don't reuse in a future post
   without first re-verifying where it actually came from.
+
+## Context Gathered for Future Posts (2026-09-02 research session)
+
+Dan asked, while scoping post 4, to fill in the series timeline and check what
+was happening in the gaps between known milestones. Four parallel research
+passes — full commit-level detail below, condensed into rows 7-14 above.
+
+### Row 7 (metrics journey) — full commit list
+
+- `b62d8664`/`623add7e` (PR #252, **2026-04-03**) — `feat(PH-1.1): metrics/
+  workspace with PostHog HogQL client`. Origin of the metrics dashboard.
+- `3f924852` (PR #148, **2026-06-08**, LDS-1.3) — backend-agnostic
+  `MetricsProvider` interface, PostHog + SQLite providers, SQLite default.
+- `b5c03870` (PR #155, **2026-06-08**, LDS-1.4) — Postgres provider added as a
+  third, optional self-hosted-tier backend. Design doc:
+  `docs/superpowers/specs/2026-06-08-metrics-backend-interface-design.md`
+  (now marked "Status: Superseded") explicitly lays out PostHog
+  hosted-default / Postgres self-hosted / SQLite local-dev, with Prometheus
+  rejected as the wrong data model (no event-level granularity).
+- `3eb72cf5` (PR #822, **2026-06-27**, MME-4) — `TaskStoreProvider` added,
+  reading task-store/admin APIs directly instead of any event-store backend.
+  Commit body notes an explicit no-double-counting design constraint for
+  combining cron-run + chat-daily token totals.
+- `ee4abd88` (PR #834, **2026-06-28**, MME-5.2/5.3) — old pipeline removed
+  (`posthog_send.py`, JSONL snapshotting).
+- `904ce409` (PR #837, **2026-06-28**, MME-5.3) — PostHog SDK, HogQL layer,
+  and all three event-store providers (including the just-added Postgres one)
+  deleted. Commit message: "no sqlite, postgres, or PostHog fallbacks
+  remain."
+- Accuracy fixes found embedded in the PR #822 migration itself (`d9ad7b38`
+  same day), not a separate later series: `reviewState` was matching a
+  PostHog-event-shaped string (`"SHIP IT"`) instead of live task-store values,
+  silently zeroing ship-it counts; a phantom `PrRecord.findings` field never
+  populated by the live API was removed; `listPrs` envelope parsing was
+  fixed against the real `{prs, total, limit, offset}` shape.
+- **Why**: PostHog → provider seam was a portability move (self-host +
+  zero-dependency-local-dev options) without abandoning the hosted default.
+  All three → `TaskStoreProvider` was driven by MIT open-sourcing — per
+  shipwright's own `CLAUDE.md` ("the metrics service... depend[s] on no
+  external platform service") — eliminating every database/event-store
+  dependency, Postgres included, right after it was added.
+
+### Row 8 (observability) — full commit list
+
+- **Sentry**: `8a8f6c20`/`bc82386a` (**2026-07-05**) shared `lib/sentry.ts`;
+  same-day-following rollout **2026-07-06** across task-store (`c4d83c5f`),
+  admin (`dfe337fa`), metrics (`5729a963`), agent (`48ca0521`/`7156ceb1`,
+  SEN-1.5); `docs/observability.md` created same day (`4a5097e0`/`131abc70`,
+  SEN-2.1) — "self-hosted Sentry" language was in this original doc commit,
+  not a later capability add. (Separately, vitals-os-the-product got its own
+  independent Sentry integration for `api`/`whisper-svc` the same day,
+  `75a26e79`/`427a16ad` — coincidental timing, unrelated codepath, don't
+  conflate the two in a future post.)
+- **Cron run logging**: `AgentCronRun` schema (`2dd28041`, **2026-06-24**,
+  CEL-1.1) — first actual execution-outcome tracking (started/completed/
+  skipped/skipReason/outcome/error); endpoints `982a790e` (**2026-06-25**,
+  CEL-1.2); per-model stats `a1837429` (**2026-07-01**). Before this, only
+  cron *schedules* existed, no run history.
+- **Work queue as observability surface** — designed in from day one,
+  **2026-07-17**: `AgentWorkQueueSnapshot` model + API (`8db3a219`),
+  `WorkQueueReporter` (`7a8fbc8e`) explicitly pushes even idle/empty
+  snapshots ("an empty snapshot is itself meaningful" — a deliberate
+  contrast with `CronRunReporter`'s dispatch-only noise guard), admin page
+  `22cea446` (AWQ-2.1) modeled directly on the cron-logs page. Predates
+  `PrFinding` by about a month.
+- **shipwright-loop's own logs**: `loop-orchestrator.ts` created
+  `2749758c` (**2026-07-10**, WL-3.3) with no decision logging yet; first
+  no-op reason logging **2026-07-22** (`38c5e7a7`/`bf192ed8`); skip-reasons
+  surfaced for silent cron dispatches same day (`a2501b84`, DBV-1.1);
+  busy-skip escalated to `console.error` past a safety margin **2026-07-23**
+  (`caa90dc2`, LPF-7.2); per-dispatch Sentry tagging (`task_id`/`pr_number`)
+  **2026-08-11** (`2d876dce`/`b26e80a1`).
+- **PR/task findings as structured data** — one coherent, sequential
+  initiative, each step explicitly built as a copy of the last:
+  `PrFinding` model `a8381cb0` (**2026-08-17**, PFL-1.1) — before this,
+  GitHub comments were the *only* record of a review finding, and the
+  commit body explains the model choice (plain INSERT is race-safe where a
+  JSON-array read-modify-write PATCH isn't, since review/patch write
+  concurrently); `PullRequestEvent` `28e357f9`/`40801f0d`
+  (**2026-08-18**) "mirroring the PrFinding pattern," field-level
+  state-transition audit trail; `TaskEvent` `ac487458`/`c293566f`
+  (**2026-08-31**, TCS-1.1) ports the same pattern to `Task`,
+  `a564eed0` (TCS-1.3) wires the stale-claim reaper to emit it.
+- **Overall read**: three separate epics roughly a month apart (cron
+  logging → work queue → findings/events), each following the same
+  schema-model → write-through → API → UI/docs shape — a house style, not
+  one planned rollout.
+
+### Row 9 (HITL) — full commit list
+
+- `hitl` flag origin: `a11bc829` (**2026-06-17**, `hitl.md` created first)
+  then `0a42257e` same day (`hitl?: boolean` + `hitlNotifiedAt?: string`
+  added to `Task`; `resolveReadyTasks` skips `hitl === true`). Day-one
+  command scope was already broad infra execution — terraform, helm,
+  kubectl, gcloud, aws, az, "no tool restrictions" — not credential-specific
+  at origin.
+- Gitleaksignore suppression sub-step added **2026-07-28** (`d8e5e19d`/
+  `3f8a149f`, PR #2286) — real gap: nothing recorded a human's
+  false-positive call anywhere gitleaks itself respected, so the same
+  findings kept re-filing weekly.
+- "PR resulted from this session" guard added **2026-07-30/31**
+  (`a00e185b`, PR #2383, HSR-2.1) — fixed a live bug (RBV-V.1) where `hitl`
+  stayed permanently true; added the now-clear-flag-not-mark-done branch.
+- `blocked`/HITL merge into one task-store status: **2026-08-08** (HSR-1.1,
+  `5503c817`/`556f0361`, PR #2382, **authored by Dave**) — "separate the
+  overloaded hitl signal into two distinct fields," ~7 weeks after `hitl`
+  itself existed. Also spawned `requiresHumanApproval` ("Type B" merge-gate
+  concept), which was later fully removed (`3587d957`/`4334e481`, RHA-1.4).
+- Today, ~6 skills produce HITL tasks: `security-fix` (secrets/credentials,
+  always; ambiguous authz, conditional), `entropy-fix` (hardcoded secrets,
+  always; ambiguous fixes, conditional), `consolidation-fix` (judgment-call
+  renames), `error-fix` (ambiguous/recurring cross-service root causes),
+  `test-fix` (secret provisioning, CI/branch-protection changes, ambiguous
+  fixture supersession), and `plan-session` ("Type A" pure-manual tasks with
+  no code diff at all). Credential rotation is one category among several,
+  not the origin case.
+
+### Gap-fill sweep — what was happening between known milestones
+
+- **2026-02-04 to 2026-03-19 (pr-review ships → shipwright plugin's first
+  commit) is unresearchable from `vitals-os`/`shipwright` git history** —
+  neither repo has any commits before `vitals-os`'s own initial commit,
+  2026-03-27. Whatever happened in this window (Bodhi's boot, the move to
+  Claude Code, the plugin's first marketplace commit) lived somewhere not in
+  this workspace — consistent with the known `dmcaulay/bodhi-workspace`
+  local-only-repo constraint from post 2's research. If a future post needs
+  this window, it needs a direct ask to Dan/Dave, not git.
+- **2026-03-27 to 2026-04-20 (VitalsOS born → Keanu deployed)** — a real
+  infra rewrite happened here that neither post 3 nor this doc previously
+  covered: GKE Autopilot migration (`7f9838e3`, PR #83, **2026-03-29** —
+  Terraform, Helm, WIF-based CD, SQLite→Postgres), the "hub & spoke" agent
+  architecture named/documented (`8a91d4ea`, **2026-03-30**), a
+  monorepo→per-service DB split with its own rollback scripts (`0ea37876`,
+  PR #225, **2026-04-01**), and the Interceptor service's birth (`ba052075`,
+  PR #446, **2026-04-11** — K8s scale-0↔1 lifecycle manager routing Slack
+  events to agent containers, effectively "serverless agents" pre-Shipwright).
+  Now rows 12 and 13 above.
+- **2026-04-20 to 2026-05-25 (Keanu → task store rewrite)** — Podcast
+  analytics module (Transistor/YouTube sync + dashboard) scaffolded and
+  shipped in ~3 days, **2026-05-21 to 05-24** (PA-1.x, e.g. `bb44056f`).
+  Now paired with Growth (below) as row 14.
+- **2026-06-18 to 2026-06-22 (legacy deleted → task-store service built)** —
+  mostly routine chart-bump/changelog noise, but also an Intel subsystem
+  (GCS bucket, new `app-vitals/intel` repo, WIF, `863dff79`/`55473a75`,
+  **2026-06-20/21**) and, right at the boundary, live client agents
+  (okwow/fern-dan/warchild/keaunu) migrated onto Shipwright's own dynamic
+  provisioning (`647d8f87`, **2026-06-23**) — the moment Shipwright started
+  running its own client-agent infra, directly superseding the Interceptor
+  service born in window 3. This is the retirement half of row 13's arc.
+- **2026-06-23 to 2026-09-02 (today) — the biggest unmapped window,
+  confirmed real content**: the Shipwright OSS public launch (~**2026-06-24
+  to 06-29** — brand pass, README launch-banner removal, public read-only
+  task board, public metrics dashboard with a cost-efficiency card, public
+  GHCR image publishing — now row 10, distinct from row 6's internal
+  extraction); the Agent Type manifest system (**2026-07-24**, PRs
+  #2191-#2207 — agents redefined as declarative Zod-schema manifests,
+  manifest-driven cron reconciliation replacing hardcoded `SYSTEM_CRONS` —
+  now row 11); GitHub App provisioning flow (**2026-08-21**, `44402b6b`);
+  Growth analytics service (GA4/Search Console/LinkedIn/YouTube/GitHub
+  traffic, **2026-07-02/03** — paired with Podcast as row 14); PWA/mobile
+  shell (**2026-08-31 to 09-01**, part of the already-tracked CFB epic). No
+  incidents or outages surfaced — only routine dependency-bump noise beyond
+  what's listed here.
+- **Top candidates for standalone future posts, ranked by the research
+  session**: (1) Shipwright OSS public launch, (2) Agent Type manifest
+  system, (3) the Mar 29–Apr 1 infra rewrite, (4) the Interceptor
+  service's full birth→retirement arc, (5) "ship a new analytics service in
+  days" as a repeated pipeline-speed pattern (Podcast + Growth).
