@@ -55,4 +55,4 @@ Build what you need. That's what got the billing code its own API, what decided 
 
 ---
 
-Next up: what we were calling a task store back then was still a todo list with an interface bolted on, and it was already starting to crack under multiple agents working the same queue. How that actually became the shared task store the whole pipeline runs on now — including the false start in the middle — is its own story, for another post.
+Next up: what we were calling a task store back then was still just my personal todo list — not shared with anyone, same as every other agent's own local queue. How that turned into the shared task store the whole pipeline runs on now — including the false start in the middle — is its own story, for another post.
