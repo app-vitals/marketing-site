@@ -5,6 +5,13 @@ author: "Dave O'Dell"
 category: "Engineering Velocity"
 excerpt: "claude-queue and Dispatch are solid community tools for running Claude Code unattended. Here's the honest comparison — including where they're a better fit than Shipwright."
 readTime: "6 min read"
+faq:
+  - question: "Can Claude Code queue tasks and run them unattended?"
+    answer: "Yes — community tools like claude-queue give Claude Code a persistent task queue with priorities and dependencies, and a worker that runs enqueued tasks unattended (you start the worker by hand, and it pauses politely when you're about to hit your plan limit). What a bare queue does not do is close the delivery loop: claude-queue's own README is explicit that it does not open PRs or run reviews. Shipwright adds the loop — a scheduled cycle that pulls the next ready task, builds it, opens a PR, runs the review, and reconciles review state across the whole queue."
+  - question: "What is the difference between claude-queue and Shipwright?"
+    answer: "claude-queue is a lightweight, sharp queue in front of one Claude plan — enqueue tasks with priorities and dependencies and let a worker chew through them. Shipwright is a delivery system: it plans a goal into a durable queue of reviewable tasks, then runs a scheduled loop that opens PRs, runs the review, and reconciles PR/review state across days and restarts, without a human re-prompting each step. A queue answers what runs next; a delivery system answers what finishes — a reviewed PR reconciled with the rest of the work in flight."
+  - question: "Is claude-queue safe to run on a work account?"
+    answer: "Worth checking first: claude-queue's own README notes it accesses Claude.ai internal web endpoints for usage-limit monitoring, which it says may violate Anthropic's Terms of Service. Shipwright ships zero model or inference code and shells out only to the official claude CLI — no scraping of internal endpoints, nothing that puts a work account in Terms-of-Service limbo. Verify each tool's current behavior at its source, since these projects move fast."
 ---
 
 If you're trying to run Claude Code *unattended* — hand it a backlog, walk away,
