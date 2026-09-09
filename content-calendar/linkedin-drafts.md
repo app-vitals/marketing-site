@@ -190,15 +190,17 @@ What would you actually trust an unattended loop to do in your codebase?
 
 ---
 
-DHH said over-specifying an agent backfires — tell it exactly how to do its job and you get worse output, same as a team does under a boss who micromanages every line. An Anthropic engineer backed it up: Claude Code's own system prompt got cut by roughly 70-80%, and the model did fine without it.
+DHH said something a few weeks back that got under my skin: over-specifying an agent backfires. Tell it exactly how to do its job and you get worse output — the same way a team gets worse output from a boss who micromanages every line.
 
-That landed hard. I build a tool whose entire pitch is process — task queue, review gates, merge policy, claim locks. Was I the pointy-haired boss?
+An Anthropic engineer backed it up with real numbers: Claude Code's own system prompt got cut by roughly 70-80%, moving fixed rules into on-demand skills instead of upfront instructions. The model did fine without the parts humans had added for their own comfort.
+
+That one landed hard, because I build a tool whose entire pitch is process. Task queue, review gates, merge policy, claim locks — a whole pipeline an agent moves through before code reaches main. Was I the pointy-haired boss?
 
 I audited it expecting to find bloat. Didn't find much — everything traces back to a day something actually broke. That should've settled it. It didn't: if nothing's removable and it still feels like too much, the question was wrong.
 
 Shipwright isn't over-specified. It's two different systems wearing one name — the delivery lifecycle everyone recognizes, and the fleet-operations layer that runs it unattended — taught as if they were the same thing.
 
-The fix isn't fewer skills. It's drawing the seam on purpose.
+The fix isn't fewer skills. It's naming the two systems on purpose — starting with how we onboard people onto it.
 
 Where do you draw the line between structure that earns its keep and structure you built because it felt responsible?
 

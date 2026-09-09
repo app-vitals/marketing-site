@@ -4,7 +4,7 @@ date: "2026-09-03"
 author: "Dan McAulay"
 category: "Company Updates"
 excerpt: "DHH's argument that over-specifying an agent makes it worse got under my skin. The audit came back clean — and that was the tell. The real complexity wasn't in any single piece. It was in teaching two different systems as if they were one."
-readTime: "7 min read"
+readTime: "8 min read"
 ---
 
 *This one isn't part of the numbered origin series — [cloud review](/blog/cloud-agent-review-origin/), [OpenClaw](/blog/openclaw-todos-origin/), [the VitalsOS merge](/blog/vitals-os-merge-origin/), [the task store](/blog/task-store-origin/) — but it runs on the same test that series set up. I said it plainly in the first one: every piece of Shipwright has to earn its place by pointing back to a specific problem it solved for a specific person. If it can't, it probably doesn't belong. I don't just apply that test when I'm building something new. I apply it whenever I catch myself worried I've built too much — which is most weeks, and which is what this post actually is.*
@@ -49,6 +49,14 @@ That's the actual shape of the fear DHH's video put a name to. Not that Shipwrig
 
 ## The fix isn't fewer skills
 
-If this had turned up bloat, the fix would have been deletion — cut the step, trim the gate, ship a smaller CLAUDE.md. It didn't, so that's not the fix. The fix is drawing the seam on purpose: teaching the delivery lifecycle as its own complete story, and the fleet-operations layer as a separate one, instead of letting a newcomer discover the seam by tripping over it.
+If this had turned up bloat, the fix would have been deletion — cut the step, trim the gate, ship a smaller CLAUDE.md. It didn't, so that's not the fix. The fix is naming the two systems on purpose: teaching the delivery lifecycle as its own complete story, and the fleet-operations layer as a separate one, instead of letting a newcomer discover the seam by tripping over it.
 
 That's not a hypothetical next step. It's already turning into a real change to how we onboard people onto Shipwright — naming the two systems explicitly, before either one turns into a wall of setup instructions. I went looking for a reason to make Shipwright smaller. I came out with a reason to make it clearer instead. That's a different fix than the one I was afraid I needed, and I think it's the better one.
+
+## The queue got the same treatment
+
+A day into sitting with that, I turned the same question on myself: not "is the doc legible," but "is the thing I actually touch every day legible." It wasn't. The task board was a dense table nobody could scan at a glance. The work queue and the cron-run history — two views of the same fleet-operations layer — lived on separate pages per agent, so answering "what's this agent doing right now and what has it been doing" meant two page loads and holding both in your head.
+
+Neither of those was over-specified either. They were just as buried as the docs were, in a different medium. So they got the same fix: the task board is a five-column view now — Queued, Claimed, In Progress, Blocked/HITL, Done — with the linked PR's status inline, so you're not clicking through to find out something's stuck. Work queue and cron logs are one page per agent now, upcoming above past, instead of two.
+
+Not more rigor. Not fewer skills. Just making the two systems as easy to see as they are to build.
