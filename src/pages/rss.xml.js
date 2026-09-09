@@ -9,10 +9,15 @@ function postDate(post) {
   return new Date(post.data.date || FALLBACK_DATE);
 }
 
+// NaN-safe: a malformed/missing date would otherwise make the comparator
+// return NaN, which breaks V8's sort into independently-ordered runs.
+function time(post) {
+  const t = postDate(post).getTime();
+  return Number.isNaN(t) ? 0 : t;
+}
+
 export async function GET(context) {
-  const posts = (await getCollection('blog')).sort(
-    (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
-  );
+  const posts = (await getCollection('blog')).sort((a, b) => time(b) - time(a));
 
   return rss({
     title: 'App Vitals Blog',

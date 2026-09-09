@@ -1,6 +1,6 @@
 ---
 title: "Why Your Best Engineers Are Resisting AI (And What That's Actually Telling You)"
-date: ""
+date: "2026-04-14"
 author: "Dave O'Dell"
 category: "AI Adoption"
 excerpt: "When your strongest engineers push back on AI tooling, most orgs treat it as a change management problem. They're missing the signal entirely."
