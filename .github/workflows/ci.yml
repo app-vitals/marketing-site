@@ -27,6 +27,9 @@ jobs:
       - name: Lint (astro check)
         run: npm run check
 
+      - name: Remove broken google-chrome apt source (known GH Actions runner issue)
+        run: sudo rm -f /etc/apt/sources.list.d/google-chrome.list
+
       - name: Install Playwright chromium
         run: npx playwright install --with-deps chromium
 
