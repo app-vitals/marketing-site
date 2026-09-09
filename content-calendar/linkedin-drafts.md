@@ -182,3 +182,26 @@ That's the exact question we had to answer building Shipwright's own delivery lo
 What would you actually trust an unattended loop to do in your codebase?
 
 **First comment:** https://app-vitals.com/blog/loop-engineering-vs-shipwright/
+
+---
+
+## Post — September 3, 2026
+**Promoting:** Am I Building the Pointy-Haired Boss?
+
+---
+
+DHH said something a few weeks back that got under my skin: over-specifying an agent backfires. Tell it exactly how to do its job and you get worse output — the same way a team gets worse output from a boss who micromanages every line.
+
+An Anthropic engineer backed it up with real numbers: Claude Code's own system prompt got cut by roughly 70-80%, moving fixed rules into on-demand skills instead of upfront instructions. The model did fine without the parts humans had added for their own comfort.
+
+That one landed hard, because I build a tool whose entire pitch is process. Task queue, review gates, merge policy, claim locks — a whole pipeline an agent moves through before code reaches main. Was I the pointy-haired boss?
+
+I audited it expecting to find bloat. I didn't find much — almost every rigid piece traces back to a specific day something actually broke.
+
+That should've been the end of it. It wasn't. If nothing's removable and it still feels like too much to explain to someone, the question was wrong. Shipwright isn't over-specified. It's two different systems wearing one name — the delivery lifecycle everyone already recognizes, and the fleet-operations layer that runs it unattended — taught as if they were the same thing.
+
+The fix isn't fewer skills. It's drawing the seam on purpose.
+
+Where do you draw the line between structure that earns its keep and structure you built because it felt responsible?
+
+https://app-vitals.com/blog/pointy-haired-boss/
