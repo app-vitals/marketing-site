@@ -49,7 +49,7 @@ That's the actual shape of the fear DHH's video put a name to. Not that Shipwrig
 
 ## The fix isn't fewer skills
 
-If this had turned up bloat, the fix would have been deletion — cut the step, trim the gate, ship a smaller CLAUDE.md. It didn't, so that's not the fix. The fix is drawing the seam on purpose: teaching the delivery lifecycle as its own complete story, and the fleet-operations layer as a separate one, instead of letting a newcomer discover the seam by tripping over it.
+If this had turned up bloat, the fix would have been deletion — cut the step, trim the gate, ship a smaller CLAUDE.md. It didn't, so that's not the fix. The fix is naming the two systems on purpose: teaching the delivery lifecycle as its own complete story, and the fleet-operations layer as a separate one, instead of letting a newcomer discover the seam by tripping over it.
 
 That's not a hypothetical next step. It's already turning into a real change to how we onboard people onto Shipwright — naming the two systems explicitly, before either one turns into a wall of setup instructions. I went looking for a reason to make Shipwright smaller. I came out with a reason to make it clearer instead. That's a different fix than the one I was afraid I needed, and I think it's the better one.
 
