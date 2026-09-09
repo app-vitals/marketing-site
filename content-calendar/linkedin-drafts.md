@@ -198,7 +198,7 @@ I audited it expecting to find bloat. Didn't find much — everything traces bac
 
 Shipwright isn't over-specified. It's two different systems wearing one name — the delivery lifecycle everyone recognizes, and the fleet-operations layer that runs it unattended — taught as if they were the same thing.
 
-The fix isn't fewer skills. It's drawing the seam on purpose — starting with how we onboard people onto it.
+The fix isn't fewer skills. It's naming the two systems on purpose — starting with how we onboard people onto it.
 
 Then I turned the same question on myself: not "is the doc legible," but "is the thing I actually touch every day legible." It wasn't. The task board was a dense table nobody could scan. The work queue and cron history lived on separate pages, so answering "what's this agent doing" meant two page loads. Same problem, different medium. Redesigned both this week — the task board's a five-column view now, work queue and cron logs are one page instead of two.
 
