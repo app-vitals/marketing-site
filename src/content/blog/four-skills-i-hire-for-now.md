@@ -1,6 +1,6 @@
 ---
 title: "The Four Skills I Hire For Now, and Not One of Them Is Coding"
-date: "2026-09-10"
+date: "2026-09-11"
 author: "Dave O'Dell"
 category: "Technical Leadership"
 excerpt: "My wife overheard me talking to an AI agent and said I was good at articulating what I want. That offhand comment turned into the clearest interview rubric I've got: four skills that decide who stays an engineer, and none of them show up in a coding test."
