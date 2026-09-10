@@ -29,6 +29,6 @@ test('blog index lists posts in strict descending date order', async ({ page }) 
   }
 
   // The two newest posts must be first, matching the real frontmatter dates.
-  expect(hrefs[0]).toBe('/blog/pointy-haired-boss');
-  expect(hrefs[1]).toBe('/blog/task-store-origin');
+  expect(hrefs[0]).toBe('/blog/unlimited-resources-arent-the-bottleneck');
+  expect(hrefs[1]).toBe('/blog/pointy-haired-boss');
 });
