@@ -926,6 +926,44 @@ one commit, it's a sustained week. Commit volume touching just
   commit log once you look for volume/velocity instead of a single
   smoking-gun commit message.
 
+**Blast radius, not luck — but not a built safety mechanism either (Dan,
+2026-09-10).** The reflex is to read the ship-and-patch week as "we got away
+with it." Dan's correction: the exposure was already bounded, structurally,
+before any of this shipped — verified against git:
+
+- **Confirmed:** Keanu, the one client-facing agent live at the time
+  (deployed 2026-04-20, per post 3), never once appears as a commit author
+  or co-author anywhere in `vitals-os` history. Every commit during the
+  05-26–06-02 week was authored or co-authored by Dan/Dave's own hub agents
+  (Bodhi, Warchild, Rosie, Sully). Keanu does client work through a
+  completely different path than the dev-task/review/patch/deploy pipeline
+  that was breaking — it was never exposed to this churn because it never
+  touches this tooling at all.
+- **Checked and ruled out:** an automated propagation mechanism that could
+  have pushed the week's breakage onto a live deployment. The earliest one
+  found in git — a `BASE_TAG`-pinned Docker image bump process for
+  `vitals-os-agent` — didn't start until **2026-06-15**, and a node-cron
+  poller that auto-propagates chart/agent-tag bumps to GKE for the internal
+  fleet didn't land until **2026-07-13** — both weeks *after* this story,
+  and both are internal-fleet mechanisms, not client-specific.
+- **Dan's clarification, direct:** there was no safety net at the time, and
+  by his own account the gap was never deliberately filled — but it didn't
+  need to be, because **upgrading a client's deployment has never been
+  automated the way vitals-os's own fleet increasingly is.** Nothing pushes
+  new code onto a client's cluster just because main changed, then or now.
+  That's not a feature built for this moment — it's an absence of a feature
+  (push-based client deployment) that happens to make the blast radius
+  containment real regardless of intent. The one client running anything at
+  the time was notified in advance as a courtesy, not because a mechanism
+  required it.
+
+  **Post framing implication:** don't tell this as "we had a safety net" —
+  tell it as "the blast radius was already small because of who could
+  reach this code at all, and manual-only client upgrades meant it stayed
+  small by default, not by design." That's a more honest and more
+  interesting claim than either "we were reckless" or "we built a safety
+  system" — neither is true.
+
 ### The named agent-persona fleet (relevant across posts 4-6, especially 6)
 
 Git author / co-author history in `vitals-os` shows a real multi-agent fleet,
