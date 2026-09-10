@@ -819,8 +819,11 @@ Full verified timeline, in `vitals-os` repo history:
     at the same time.
   - `2026-06-17` is the spike day — 46 commits in vitals-os + 39 in shipwright,
     the day before the final cutover.
-  - **Don't use the raw author split (vitals-os: 138 Dan / 41 Dave; shipwright:
-    95 Dan / 147 Dave) to narrate who focused on which repo.** Corrected twice
+  - **Don't use the raw author split (vitals-os: 138 Dan / 41 Dave, summing
+    cleanly to the 179 total; shipwright: 95 Dan / 147 Dave, which only sums
+    to 242 — 8 short of the stated 250-commit total, likely bot commits or an
+    unaccounted remainder, unverified) to narrate who focused on which repo.**
+    Corrected twice
     by Dan: first, tasks were unassigned and grabbed from one shared queue, not
     manually divided by person; second and more precisely, these commits were
     largely **Shipwright's own loop** picking items off that queue and
@@ -839,7 +842,7 @@ Full verified timeline, in `vitals-os` repo history:
     git-verifiable, but consistent with the commit/PR volume above (both repos
     sustaining 15-30+ commits/day). Likely lands around the `06-16`–`06-18`
     crunch if a specific day is ever needed.
-- **Two more twists found in the window, both real and citable:**
+- **Three more twists found in the window, all real and citable:**
   1. **A false start, fully reverted.** Early in the window, infra went in for
      a standalone `shipwright` Kubernetes service (its own Terraform Cloud SQL
      DB, Helm deployment) — merged but never `terraform apply`'d. Reverted
