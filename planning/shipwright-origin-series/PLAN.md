@@ -964,6 +964,63 @@ before any of this shipped — verified against git:
   interesting claim than either "we were reckless" or "we built a safety
   system" — neither is true.
 
+#### Outline pass, 2026-09-10
+
+**Throughline:** two specific-case fixes (stagger cron times; fuse review+patch
+into one command) each worked briefly, then stopped scaling the moment a
+third variable showed up — replaced by one general fix (symmetric phases,
+one arbiter picks) that solved both at once. Same underlying instinct as
+post 4's task store thesis (stop bolting together bespoke coordination,
+build the one shared thing everything reads from) — worth an explicit
+cross-link in the post, not just a coincidence to notice while drafting.
+
+**Ending boundary:** stop at the `WL-3.3` loop orchestrator shipping
+(2026-07-10) plus the `review-patch`/manual `ship-loop`-skill retirement
+(2026-07-16/17) — that's the natural resolution: one dispatcher, symmetric
+phases, both workarounds gone. Do **not** go into HITL wiring into
+candidate providers (`HSR-1.x`) — that's row 9's territory — or the later
+native-module port of the precheck scripts (`WL-2.2`+, 2026-08 on) — park
+for a future post about the loop's own evolution if one ever gets scoped.
+
+**Section-level outline:**
+1. **Cold open:** the `review-patch` 36-hour arc — born 05-31, partial
+   revert within a day, fully scrapped for a "simple loop" by 06-01. Concrete
+   and visceral before any mechanism gets explained.
+2. **Where four crons came from:** two-cron model (execute/review, staggered
+   `:10`/`:45` on purpose) → review doing three jobs (evaluate + auto-fix +
+   deploy-gate) → patch and deploy split off → four-cron model lands
+   05-26/27, all four forced onto identical `*/30` because hand-staggering
+   four things doesn't scale the way it did for two.
+3. **Two specific fixes, both dead ends:** (a) staggering, abandoned at the
+   four-phase mark; (b) fusing review+patch into one command — worked days,
+   then needed its own List-A-skip logic added and reverted same day,
+   then got rewritten into a narrow two-phase loop within a week. Both are
+   the "why this shape" evidence — not chosen shapes, forced retreats.
+4. **The ship-and-patch week:** commit-velocity table, the 24-36hr
+   review-patch build/break/rebuild as the sharpest instance, Dan's "I had
+   to wait until I was on to ship those" quote.
+5. **Blast radius, not luck:** Keanu never touches this code; no automated
+   propagation existed anywhere yet; client upgrades were never
+   push-automated, so containment was real without being designed. Placed
+   here specifically so the previous section doesn't read as cowboy
+   engineering.
+6. **The general fix:** `shipwright-loop` (07-08/07-10) — four symmetric
+   phases, one busy-guarded dispatcher, one winning candidate per tick via
+   strict FIFO. `review-patch` and the manual `ship-loop` skill both retired
+   07-16/17 once review.md/patch.md got explicit-target modes, "making the
+   combined orchestrator fully redundant" (the removal commit's own words).
+7. **Close:** the thesis stated plainly — specific-case workarounds
+   (stagger, fuse) don't generalize, the fix that stuck was making every
+   phase symmetric and interchangeable behind one arbiter — and a "next up"
+   pointer.
+
+**Open, not yet decided:**
+- **Title** — no candidate chosen. Loose options to react to, not a
+  proposal: *"One Winner Per Tick"* / *"Four Crons, One Winner"* / *"The
+  Loop We Didn't Mean to Build"*.
+- **LinkedIn companion** — every published post shipped with one per the
+  series convention; not discussed yet for post 5.
+
 ### The named agent-persona fleet (relevant across posts 4-6, especially 6)
 
 Git author / co-author history in `vitals-os` shows a real multi-agent fleet,
