@@ -892,11 +892,39 @@ this precisely:
   findings *and* gate on stale unresolved comments *and* hand off to
   deploy — three jobs bolted onto a command whose actual job was
   evaluation. Splitting those into `patch` and `deploy` is what let review
-  narrow back down. No standalone "PR got stuck" incident commit turned up
-  in the pre-patch window (April–May) — that part of the story is Dan's
-  first-hand account of the pain, not something git independently
-  documents — but the cleanup commit is direct textual proof of the
-  overload it was fixing.
+  narrow back down.
+
+**"Shipped carefully" and "stuck PRs" are the same story, not two angles —
+Dan, 2026-09-10: "i think shipped carefully and stuck prs go hand and hand,
+it was a ship and patch."** Re-reading the git trail with that framing
+instead of treating it as a separate incident search: the correction isn't
+one commit, it's a sustained week. Commit volume touching just
+`patch.md`/`review.md`/`deploy.md`/the four check-scripts, by day:
+
+  | Date (2026-05-) | 25 | 26 | 27 | 28 | 29 | 30 | 31 | 06-01 | 06-02 |
+  |---|---|---|---|---|---|---|---|---|---|
+  | Commits | 2 | 14 | 5 | 13 | 8 | 11 | 11 | 8 | 2 |
+
+  Sustained double-digit-most-days commit volume on the exact surfaces that
+  had just shipped, for a full week, tapering off only by 06-02. That's the
+  literal shape of "ship and patch": not a launch followed by occasional
+  cleanup, but continuous live correction on the same files for seven days
+  straight.
+
+  The sharpest single illustration inside that week: `review-patch`
+  (`RPW-1.1`, `a0ed04d0`) — a whole new command plus its own precheck
+  script — was born 2026-05-31. Within roughly 24 hours it got a partial
+  revert (`RPO-1.3`, `9a49eb91`, "revert List A skip — restore exit 0 for
+  findings"), and by 2026-06-01 it was scrapped entirely and replaced by a
+  "simple loop orchestrator" (`RPO-1.1`/`RPO-1.2`, `6092a34e` /
+  `ab36a5e2`). A subsystem shipped, broke, and got rebuilt inside about 36
+  hours — not a hypothetical risk, an observed one, and exactly the kind of
+  breakage Dan's "I knew things would break and they did" quote is talking
+  about. This retires the earlier caveat in this doc that no "PR got stuck"
+  incident showed up in git — it wasn't in the *pre*-patch window because
+  the incidents are the *post*-launch week itself, and they're all over the
+  commit log once you look for volume/velocity instead of a single
+  smoking-gun commit message.
 
 ### The named agent-persona fleet (relevant across posts 4-6, especially 6)
 
