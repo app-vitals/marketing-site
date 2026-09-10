@@ -797,6 +797,78 @@ Full verified timeline, in `vitals-os` repo history:
   *"June 2026: Shipwright transitions from marketplace to independent repository
   with sanitized internal references."*
 
+### Post 6 — additional research + trigger scene (Slack scoping session, 2026-09-10)
+
+- **The actual trigger, in Dan's words — open here, not on a commit date:** a
+  client asked directly how they could trust Shipwright and know it'd still be
+  maintained in six months. Dan and Dave had already been circling open-sourcing
+  as an idea — they'd wanted an open-source product to sell, and with no VC
+  backing, saw open source as a way to let developers choose with confidence —
+  but the client's question is what tipped it from idea to action, not what
+  created the idea. **Same shape as post 3's Truckee-meeting scene and post 4's
+  real motivations:** the load-bearing starting point isn't git-verifiable, it's
+  a conversation — ask for it directly instead of opening cold on `0dd2b9d8`.
+- **Duration/scale stats for the 13-day window (`2026-06-06` to `06-18`),
+  verified via `git log` on both repos:**
+  - 429 commits combined — 250 in the new `shipwright` repo (built from zero),
+    179 in `vitals-os` (tearing the legacy `agent/` workspace out from
+    underneath). ~400+ merged PRs combined (239 shipwright / 167 vitals-os).
+  - Line churn: `shipwright` +124,954 / −7,283 (a repo inflating from nothing).
+    `vitals-os` +46,663 / −105,487 (net shrinking, as the old runtime gets
+    stripped out). Good visual: one repo balloons while the other hollows out,
+    at the same time.
+  - `2026-06-17` is the spike day — 46 commits in vitals-os + 39 in shipwright,
+    the day before the final cutover.
+  - **Don't use the raw author split (vitals-os: 138 Dan / 41 Dave; shipwright:
+    95 Dan / 147 Dave) to narrate who focused on which repo.** Corrected twice
+    by Dan: first, tasks were unassigned and grabbed from one shared queue, not
+    manually divided by person; second and more precisely, these commits were
+    largely **Shipwright's own loop** picking items off that queue and
+    committing under whichever of Dan/Dave's identities was attached — not
+    even "his agent vs. her agent," but the harness dogfooding its own
+    extraction. The author field is an artifact of the queue, not a record of
+    who did the work.
+  - **What Dan and Dave actually did, precisely (Dan's words):** planning,
+    queueing, unblocking, and verifying. They trusted the agents to run the
+    *entire* pipeline unattended — dev-task, review, patch, deploy — not just
+    code generation. That's the real claim worth making in the post: trust
+    extended to the review and deploy steps too, a bigger ask than most
+    "AI wrote the code" stories mean.
+  - Dan also mentioned paying ~$2,000 to Anthropic from blowing past his max
+    plan during this stretch — his own account, not independently
+    git-verifiable, but consistent with the commit/PR volume above (both repos
+    sustaining 15-30+ commits/day). Likely lands around the `06-16`–`06-18`
+    crunch if a specific day is ever needed.
+- **Two more twists found in the window, both real and citable:**
+  1. **A false start, fully reverted.** Early in the window, infra went in for
+     a standalone `shipwright` Kubernetes service (its own Terraform Cloud SQL
+     DB, Helm deployment) — merged but never `terraform apply`'d. Reverted
+     `2026-06-09` (`fcf96833`, PR #1457): *"The shipwright harness is being
+     decommissioned... verified GCP has no `vitals-agent` DB/user and none of
+     the shipwright secrets, so this revert is config-only."* A whole
+     architectural direction (shared standalone service) built and killed
+     before the real shape (agents as their own deployments) took over.
+  2. **An unrelated landmine, discovered mid-migration.** `2026-06-12`
+     (`8c6abec`, PR #1483): `whisper-svc` had been silently OOM-crashing on
+     every deploy attempt for **10 days, not weeks** (verified by tracing the
+     `whisperSvc.enabled` toggle history in `values-prod.yaml`: flipped true
+     `06-02 18:01`, stayed true continuously through the `06-12 11:01` fix —
+     an earlier same-day flip/unflip on `06-02` between 6am–6pm was a separate,
+     already-resolved build/tag issue, not part of the OOM window). Commit
+     message: *"the last 18+ deploys went red... including the shipwright-agent
+     bumps that had nothing to do with whisper."* A totally unrelated service's
+     bug had been quietly poisoning the exact deploy pipeline the migration
+     depended on, the whole time it was running.
+  3. **The four-failure night, two days before the finish line.** `2026-06-16`
+     (`e2997c83`, PR #1527), migrating `shipwright-deploy` itself to GKE:
+     encryption keys resetting on every upgrade (killing every live agent's
+     auth token), a missing `HealthCheckPolicy` causing 503s on the admin
+     service, OAuth redirects silently pointing at `localhost` in prod, and a
+     stuck `--wait` cascading one broken deploy into blocking everything else.
+     All four hit the same day; all four got written up afterward as a named
+     "failure catalog" in the migration runbook rather than quietly patched
+     and forgotten — a good, honest beat for the series' own ethos.
+
 ### Post 5 (system crons + shipwright-loop) — notes from Dan, 2026-08-25
 
 Angles that need to be in this post, not just the mechanics of what shipped:
