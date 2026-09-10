@@ -168,7 +168,7 @@ comes, the way rows 4-6 already got a first pass this session.
 | 2 | OpenClaw + the original `todos.json` — queuing work with cron jobs before any of this had a name | **Published, done** — LinkedIn companion also live | [#100](https://github.com/app-vitals/marketing-site/pull/100), [#101](https://github.com/app-vitals/marketing-site/pull/101), [#102](https://github.com/app-vitals/marketing-site/pull/102), [#103](https://github.com/app-vitals/marketing-site/pull/103), [#104](https://github.com/app-vitals/marketing-site/pull/104) (all merged) — `src/content/blog/openclaw-todos-origin.md`. LinkedIn post published 2026-08-18 (final as-posted text recorded in PR #104's description, not duplicated here) |
 | 3 | The vitals-os merge — Dave brings plan-session/dev-task, Dan brings Bodhi's todos/crons/review habit, they stop being two side projects and become one pipeline. Titled "Build What You Need," built around a 37signals throughline: the Truckee meeting (Lift Workspace) where Dan sold Dave on the model → billing code moving out of Bodhi's workspace to get a real API → the Toggl/Cal.com replacement decision → the two tools merging → Keanu as the first agent deployed for a client to use directly. Timeline: **Dave started building plan-session/dev-task in November 2025** (Dan, 2026-08-22 — matches the public shipwrightharness.com/story timeline's Nov 2025 entry; predates Dan's OpenClaw/Bodhi start in February) → it landed in the shared `app-vitals/marketplace` repo March 19, 2026 → VitalsOS born March 27 → Keanu deployed April 20. | **Published**, post-merge fixes ongoing | [#112](https://github.com/app-vitals/marketing-site/pull/112) (merged) — `src/content/blog/vitals-os-merge-origin.md`. [#113](https://github.com/app-vitals/marketing-site/pull/113) (merged) — post-merge continuity/accuracy fixes. [#137](https://github.com/app-vitals/marketing-site/pull/137) (open) — corrected the closing "next up" line's false premise that a shared queue already existed pre-task-store; caught while scoping post 4, see row 4 |
 | 4 | The task store's real origin: `todos.json` got put behind an interface, a GitHub Issues–backed implementation was built alongside it (a GitHub Projects v2 backend was also tried, per git — `TS-2.1`, 2026-05-25 — before Issues won out), running both was "split-brained" (the agent got confused switching between them), and multi-agent-on-one-repo needs (shared task queue, tighter concurrency control) forced ripping both out and building the task store from scratch. **Expanded scope (Dan, 2026-08-25):** should also cover the task store's actual state model (ready / in-progress / blocked / closed), filtering, and claiming — specifically what happens when multiple agents go after the same task. **Scoped 2026-09-02:** Dave extracted the original interface (not "an implementation built alongside" it — corrected by Dan); ends at the TSS-2.1 cutover + verified extension wins (repo-scoped tokens, admin state filtering, the `blocked`/HITL split via `/shipwright:hitl`) — no deep dive into today's audit-trail/TaskEvent mechanics (parked for the future observability post, row 8) or outbound Jira/Linear/GitHub-Issues propagation (confirmed no code or planning doc exists for that direction — stated future intent only). | **Drafted, PR open** | [#136](https://github.com/app-vitals/marketing-site/pull/136) — `src/content/blog/task-store-origin.md` |
-| 5 | System crons + the shipwright-loop dispatcher — see dedicated notes under "Context Gathered for Future Posts" below, they'd outgrown this table cell. | Not planned yet | — |
+| 5 | System crons + the shipwright-loop dispatcher — see dedicated notes under "Context Gathered for Future Posts" below, they'd outgrown this table cell. **Scoped 2026-09-10:** stands alone (Dan: "shipwright-loop is a different thing than task store," despite landing the same week). Core throughline: why polling beat events, why the preCheck scripts exist and became more load-bearing than planned, and how introducing `patch` (and `deploy`) let `review` narrow back down to its actual job — verified against the `SWC-1.1`/`SWD-2.1`/`SWC-1.3`/`SWC-2.1` commit trail, all landing 2026-05-26. | Scoped, not drafted | — |
 | 6 | Open-sourcing Shipwright — the plugin's extraction from the vitals-os monorepo into its own repo (`app-vitals/shipwright`, scaffolded 2026-06-06) and the ~10-day phased migration of every live production agent off the homegrown runtime and onto the new harness (canary-first on `okwow`, then `fern-dan`, `sideby-dan`, `warchild`, `keaunu` in that order), ending in a single commit deleting the entire legacy `agent/` workspace (17,165 lines, 107 files, 2026-06-18). Well-documented in git already — see this session's research. Matches the public timeline's "June 2026: Shipwright transitions from marketplace to independent repository." | Not planned yet | — |
 | 7 | The metrics journey — PostHog first, then a move to Postgres, then a series of accuracy improvements. Why each move happened, not just that it happened. | Not planned yet, topic only (Dan, 2026-08-25) | — |
 | 8 | Observability across a fleet of autonomous agents — agent cron logs, the work queue itself, Sentry logs, shipwright-loop's own logs, PR findings, PR events. How they gained visibility into what a fleet of agents was actually doing, not just what it shipped. | Not planned yet, topic only (Dan, 2026-08-25) | — |
@@ -828,6 +828,199 @@ Angles that need to be in this post, not just the mechanics of what shipped:
   task store work spans 2026-05-25–28). Not clearly a separate era from post 4
   chronologically — undecided whether this is its own post or a chapter of
   post 4, flag for scoping when we get there.
+
+#### Scoping session, 2026-09-10 (Dan's reasoning, expanded)
+
+**Scoping resolved: post 5 stands alone.** Dan: "shipwright-loop is a
+different thing than task store." Same week, same era as post 4, but not the
+same story — keep as its own post.
+
+**Why polling, not events — Dan's actual reasoning, not just "polling is
+simpler":**
+- Events would require hooking into every event source that could signal new
+  work, across four different kinds of work (dev-task/review/patch/deploy).
+- Crons were going to exist regardless, so an event system would be a
+  *second* concept running alongside them, not a replacement for them.
+- Dan treats event-based workflows as a future migration, not a rejected
+  idea — the preCheck-script pattern (see below) is deliberately shaped like
+  a trigger check, so the loop is already set up to move to events later if
+  it's ever worth it.
+- The real case *for* events: cost. An event-driven check could look at just
+  the one PR/task that changed, instead of a preCheck script re-scanning
+  everything on every tick.
+- The reason events lost anyway: Dan wasn't convinced the added complexity
+  (retry/redelivery handling, opening a public endpoint for the agent to
+  receive webhooks) was justified yet against that cost saving.
+
+**Why the preCheck scripts exist — confirmed via git, `SWC-2.1` /
+`0ae69973` (2026-05-26, same day as the patch command and one day before the
+four-cron model landed):** four standalone Bun/TS scripts
+(`check-dev-task.ts`, `check-review.ts`, `check-patch.ts`, `check-deploy.ts`,
+plus shared `check-helpers.ts`), each with a pure `run(deps)` function and
+injected I/O (41 unit tests across the four, per the commit), gating each
+cron on "is there actionable work" before a full Claude session spawns.
+Dan's framing, confirmed this session: they were originally just a
+token-cost gate, but ended up doing double duty as the mechanism that
+*picks* the next task/PR for the cron to act on — which made them more
+load-bearing than "just a cost gate." That dual role is also their gap: a
+static precheck can still miss things a live agent would catch by actually
+looking. Dan's open question, unresolved: whether that gap would matter less
+under an event model, where the trigger is scoped to one already-changed
+item instead of a periodic full-state rescan.
+
+**Patch narrowing scope — verified against git, not just recollection.**
+Dan: "we started seeing things fall through the cracks because some of our
+commands were doing a lot of things. we saw PRs get stuck — similar to
+getting concrete about PR states in our check scripts." The git trail backs
+this precisely:
+  1. `SWC-1.1` / `c55205d2` (2026-05-26) adds the `patch` command — scans an
+     agent's own open PRs for unaddressed review findings and fixes them.
+  2. The *same day*, `SWD-2.1` / `f6e60707` adds a dedicated `deploy`
+     command.
+  3. The *same day*, `SWC-1.3` / `73662f5d` — "review cleanup — remove
+     auto_fix, prior-unresolved skip, deploy logic" — strips
+     `auto_fix_review_findings` out of `review.md`'s policy table (it
+     existed, defaulted false, and is replaced by patch), deletes the
+     "Prior Comment Resolution Check" gate that blocked re-review on
+     unresolved prior comments, and removes the `task_store status=approved`
+     writes from review's own Steps 13/14 (deploy now reads GitHub state
+     directly instead). The commit's own header change makes the intent
+     explicit: review's scope becomes "evaluate PRs + post findings, nothing
+     else."
+  This is the "why this shape" evidence, in the commit body, not
+  reconstructed after the fact: `review` used to try to fix its own
+  findings *and* gate on stale unresolved comments *and* hand off to
+  deploy — three jobs bolted onto a command whose actual job was
+  evaluation. Splitting those into `patch` and `deploy` is what let review
+  narrow back down.
+
+**"Shipped carefully" and "stuck PRs" are the same story, not two angles —
+Dan, 2026-09-10: "i think shipped carefully and stuck prs go hand and hand,
+it was a ship and patch."** Re-reading the git trail with that framing
+instead of treating it as a separate incident search: the correction isn't
+one commit, it's a sustained week. Commit volume touching just
+`patch.md`/`review.md`/`deploy.md`/the four check-scripts, by day:
+
+  | Date (2026-05-) | 25 | 26 | 27 | 28 | 29 | 30 | 31 | 06-01 | 06-02 |
+  |---|---|---|---|---|---|---|---|---|---|
+  | Commits | 2 | 14 | 5 | 13 | 8 | 11 | 11 | 8 | 2 |
+
+  Sustained double-digit-most-days commit volume on the exact surfaces that
+  had just shipped, for a full week, tapering off only by 06-02. That's the
+  literal shape of "ship and patch": not a launch followed by occasional
+  cleanup, but continuous live correction on the same files for seven days
+  straight.
+
+  The sharpest single illustration inside that week: `review-patch`
+  (`RPW-1.1`, `a0ed04d0`) — a whole new command plus its own precheck
+  script — was born 2026-05-31. Within roughly 24 hours it got a partial
+  revert (`RPO-1.3`, `9a49eb91`, "revert List A skip — restore exit 0 for
+  findings"), and by 2026-06-01 it was scrapped entirely and replaced by a
+  "simple loop orchestrator" (`RPO-1.1`/`RPO-1.2`, `6092a34e` /
+  `ab36a5e2`). A subsystem shipped, broke, and got rebuilt inside about 36
+  hours — not a hypothetical risk, an observed one, and exactly the kind of
+  breakage Dan's "I knew things would break and they did" quote is talking
+  about. This retires the earlier caveat in this doc that no "PR got stuck"
+  incident showed up in git — it wasn't in the *pre*-patch window because
+  the incidents are the *post*-launch week itself, and they're all over the
+  commit log once you look for volume/velocity instead of a single
+  smoking-gun commit message.
+
+**Blast radius, not luck — but not a built safety mechanism either (Dan,
+2026-09-10).** The reflex is to read the ship-and-patch week as "we got away
+with it." Dan's correction: the exposure was already bounded, structurally,
+before any of this shipped — verified against git:
+
+- **Confirmed:** Keanu, the one client-facing agent live at the time
+  (deployed 2026-04-20, per post 3), never once appears as a commit author
+  or co-author anywhere in `vitals-os` history. Every commit during the
+  05-26–06-02 week was authored or co-authored by Dan/Dave's own hub agents
+  (Bodhi, Warchild, Rosie, Sully). Keanu does client work through a
+  completely different path than the dev-task/review/patch/deploy pipeline
+  that was breaking — it was never exposed to this churn because it never
+  touches this tooling at all.
+- **Checked and ruled out:** an automated propagation mechanism that could
+  have pushed the week's breakage onto a live deployment. The earliest one
+  found in git — a `BASE_TAG`-pinned Docker image bump process for
+  `vitals-os-agent` — didn't start until **2026-06-15**, and a node-cron
+  poller that auto-propagates chart/agent-tag bumps to GKE for the internal
+  fleet didn't land until **2026-07-13** — both weeks *after* this story,
+  and both are internal-fleet mechanisms, not client-specific.
+- **Dan's clarification, direct:** there was no safety net at the time, and
+  by his own account the gap was never deliberately filled — but it didn't
+  need to be, because **upgrading a client's deployment has never been
+  automated the way vitals-os's own fleet increasingly is.** Nothing pushes
+  new code onto a client's cluster just because main changed, then or now.
+  That's not a feature built for this moment — it's an absence of a feature
+  (push-based client deployment) that happens to make the blast radius
+  containment real regardless of intent. The one client running anything at
+  the time was notified in advance as a courtesy, not because a mechanism
+  required it.
+
+  **Post framing implication:** don't tell this as "we had a safety net" —
+  tell it as "the blast radius was already small because of who could
+  reach this code at all, and manual-only client upgrades meant it stayed
+  small by default, not by design." That's a more honest and more
+  interesting claim than either "we were reckless" or "we built a safety
+  system" — neither is true.
+
+#### Outline pass, 2026-09-10
+
+**Throughline:** two specific-case fixes (stagger cron times; fuse review+patch
+into one command) each worked briefly, then stopped scaling once more phases
+showed up — replaced by one general fix (symmetric phases,
+one arbiter picks) that solved both at once. Same underlying instinct as
+post 4's task store thesis (stop bolting together bespoke coordination,
+build the one shared thing everything reads from) — worth an explicit
+cross-link in the post, not just a coincidence to notice while drafting.
+
+**Ending boundary:** stop at the `WL-3.3` loop orchestrator shipping
+(2026-07-10) plus the `review-patch`/manual `ship-loop`-skill retirement
+(2026-07-16/17) — that's the natural resolution: one dispatcher, symmetric
+phases, both workarounds gone. Do **not** go into HITL wiring into
+candidate providers (`HSR-1.x`) — that's row 9's territory — or the later
+native-module port of the precheck scripts (`WL-2.2`+, 2026-08 on) — park
+for a future post about the loop's own evolution if one ever gets scoped.
+
+**Section-level outline:**
+1. **Cold open:** the `review-patch` 36-hour arc — born 05-31, partial
+   revert within a day, fully scrapped for a "simple loop" by 06-01. Concrete
+   and visceral before any mechanism gets explained.
+2. **Where four crons came from:** two-cron model (execute/review, staggered
+   `:10`/`:45` on purpose) → review doing three jobs (evaluate + auto-fix +
+   deploy-gate) → patch and deploy split off → four-cron model lands
+   05-26/27, all four forced onto identical `*/30` because hand-staggering
+   four things doesn't scale the way it did for two.
+3. **Two specific fixes, both dead ends:** (a) staggering, abandoned at the
+   four-phase mark; (b) fusing review+patch into one command — worked for
+   about a day, then needed its own List-A-skip logic added and reverted,
+   then got rewritten into a narrow two-phase loop, all inside the same
+   36-hour arc. Both are the "why this shape" evidence — not chosen shapes,
+   forced retreats.
+4. **The ship-and-patch week:** commit-velocity table, the 24-36hr
+   review-patch build/break/rebuild as the sharpest instance, Dan's "I had
+   to wait until I was on to ship those" quote.
+5. **Blast radius, not luck:** Keanu never touches this code; no automated
+   propagation existed anywhere yet; client upgrades were never
+   push-automated, so containment was real without being designed. Placed
+   here specifically so the previous section doesn't read as cowboy
+   engineering.
+6. **The general fix:** `shipwright-loop` (07-08/07-10) — four symmetric
+   phases, one busy-guarded dispatcher, one winning candidate per tick via
+   strict FIFO. `review-patch` and the manual `ship-loop` skill both retired
+   07-16/17 once review.md/patch.md got explicit-target modes, "making the
+   combined orchestrator fully redundant" (the removal commit's own words).
+7. **Close:** the thesis stated plainly — specific-case workarounds
+   (stagger, fuse) don't generalize, the fix that stuck was making every
+   phase symmetric and interchangeable behind one arbiter — and a "next up"
+   pointer.
+
+**Open, not yet decided:**
+- **Title** — no candidate chosen. Loose options to react to, not a
+  proposal: *"One Winner Per Tick"* / *"Four Crons, One Winner"* / *"The
+  Loop We Didn't Mean to Build"*.
+- **LinkedIn companion** — every published post shipped with one per the
+  series convention; not discussed yet for post 5.
 
 ### The named agent-persona fleet (relevant across posts 4-6, especially 6)
 
