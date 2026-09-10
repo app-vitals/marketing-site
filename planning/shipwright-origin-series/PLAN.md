@@ -967,8 +967,8 @@ before any of this shipped — verified against git:
 #### Outline pass, 2026-09-10
 
 **Throughline:** two specific-case fixes (stagger cron times; fuse review+patch
-into one command) each worked briefly, then stopped scaling the moment a
-third variable showed up — replaced by one general fix (symmetric phases,
+into one command) each worked briefly, then stopped scaling once more phases
+showed up — replaced by one general fix (symmetric phases,
 one arbiter picks) that solved both at once. Same underlying instinct as
 post 4's task store thesis (stop bolting together bespoke coordination,
 build the one shared thing everything reads from) — worth an explicit
@@ -992,10 +992,11 @@ for a future post about the loop's own evolution if one ever gets scoped.
    05-26/27, all four forced onto identical `*/30` because hand-staggering
    four things doesn't scale the way it did for two.
 3. **Two specific fixes, both dead ends:** (a) staggering, abandoned at the
-   four-phase mark; (b) fusing review+patch into one command — worked days,
-   then needed its own List-A-skip logic added and reverted same day,
-   then got rewritten into a narrow two-phase loop within a week. Both are
-   the "why this shape" evidence — not chosen shapes, forced retreats.
+   four-phase mark; (b) fusing review+patch into one command — worked for
+   about a day, then needed its own List-A-skip logic added and reverted,
+   then got rewritten into a narrow two-phase loop, all inside the same
+   36-hour arc. Both are the "why this shape" evidence — not chosen shapes,
+   forced retreats.
 4. **The ship-and-patch week:** commit-velocity table, the 24-36hr
    review-patch build/break/rebuild as the sharpest instance, Dan's "I had
    to wait until I was on to ship those" quote.
