@@ -1,14 +1,4 @@
-import { test, expect } from '@playwright/test';
-
-// Fulfill external font/analytics requests with an empty 200 response so the
-// page's 'load' event fires reliably even when the CI runner can't reach
-// external networks (Google Fonts, Fontshare, Google Tag Manager).
-test.beforeEach(async ({ page }) => {
-  await page.route(
-    /fonts\.googleapis\.com|fonts\.gstatic\.com|api\.fontshare\.com|googletagmanager\.com/,
-    (route) => route.fulfill({ status: 200, contentType: 'text/plain', body: '' })
-  );
-});
+import { test, expect } from './fixtures';
 
 test('home page loads and renders the hero heading', async ({ page }) => {
   const response = await page.goto('/');
