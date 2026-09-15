@@ -1130,20 +1130,31 @@ Revised chain, verified against git where possible:
    and made the whole staggering question moot — confirmed live schedule is
    `* * * * *`, i.e. the dispatcher ticks every single minute.
 
-**Open question, unresolved — flag before drafting:** step 3 (dropping
-stagger) happened 05-27; step 4/5 (OOMs forcing a re-stagger) happened
-around 07-02 — roughly **five weeks apart**, not the same tight arc as the
-`review-patch` collapse (which was 36 hours, within the 05-26–06-02
-ship-and-patch week). Need from Dan: was the OOM risk sitting there
-quietly that whole five weeks (nobody was hit until load happened to spike),
-or did something specific change in late June that made simultaneous firing
-start actually taking the service down? Also need to know whether the OOM
-incident had its own contained blast radius (did it ever touch a
-client-facing agent, e.g. Keanu?) — the post already makes a "blast radius,
-not luck" argument about the `review-patch` week; if the OOM incident had a
-different containment story (or none), that needs its own honest framing,
-not a silent assumption that the same argument still applies five weeks
-later.
+**Open question — resolved (Dan, 2026-09-15):**
+
+> "My memory about OOM was that it wasn't breaking things completely.
+> Things kept working, but Dave spotted OOMs when looking at k8s pod
+> restarts and adjusted crons — staggered them. So we happened to notice
+> it."
+
+This changes the shape of the incident, in a good way — not a dramatic
+outage, a quiet one. Nothing was down: Kubernetes was already restarting
+OOM-killed pods on its own, so the failure mode was self-healing by
+default, not by anything built for this specific risk. That's *why* the
+five-week gap exists — there was no alarm, no user-visible break, nothing
+forcing urgency. Dave caught it incidentally, while looking at pod restart
+counts for unrelated reasons, recognized the pattern, and staggered the
+crons as the fix. **Reframe section 6 around this:** not "OOMs took the
+service down," but "the risk was already being silently absorbed by k8s's
+own restart policy — until Dave happened to notice the restart count and
+went looking for why." This is a second instance of the same "blast
+radius, not luck" shape already established for the `review-patch` week
+(section 4) — worth naming as an explicit echo in the post: twice, a real
+mistake was contained by infrastructure that wasn't purpose-built for that
+mistake, not by a safety mechanism anyone designed for it. Client-facing
+exposure not separately re-checked here since the failure mode itself
+(pod restart, service kept working) means there's no outage to have a
+blast radius from in the first place.
 
 **New section: "Why We Didn't Just Go Event-Based."** Raw source (Dan
 relayed from a separate thread, 2026-09-15) — quoted close to verbatim
@@ -1219,11 +1230,14 @@ section 5 inserted, old sections 3/4 split, everything after renumbered):
    important if we had events?" left open. Evergreen reasoning, not
    date-anchored to a specific week — functions as a bridge/breather between
    the two incident acts, not a third incident.
-6. **The OOM incident:** the dropped stagger from section 2 sits as a quiet
-   risk, then causes real OOMs; Dave's 07-02 emergency re-stagger (five
-   crons, 5-minute offsets) buys 8 days. Pending Dan's answer on the
-   five-week gap and blast radius (see open question above) before this can
-   be drafted accurately.
+6. **The quiet OOM:** the dropped stagger from section 2 sits as a risk for
+   five weeks — no outage, because k8s was already restarting the
+   OOM-killed pods on its own. Dave notices the restart pattern incidentally
+   while looking at pod health for unrelated reasons, diagnoses it, and
+   re-staggers the five crons 5 minutes apart (07-02) as the fix — buys 8
+   days. Second instance of "contained by infrastructure, not by design,"
+   echoing section 4 — worth naming explicitly rather than leaving as a
+   coincidence.
 7. **The general fix:** `shipwright-loop` (07-08/07-10) — four symmetric
    phases, one busy-guarded dispatcher, one winning candidate per tick,
    ticking every minute. Explicitly pays off section 5: minute-level polling
