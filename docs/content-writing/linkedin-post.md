@@ -6,11 +6,9 @@
 > and `description`, drop this note).
 >
 > This doc covers **promotional LinkedIn posts tied to a blog post published
-> in this repo** — the pattern in `content-calendar/linkedin-drafts.md`. For
-> standalone personal thought-leadership posts on the three-account matrix
-> (Dave / Dan / App Vitals page, not tied to a specific blog post), see the
-> `linkedin-post` skill in the `goals` repo instead — that's a different
-> workflow with its own file locations and cadence rules.
+> in this repo** — the pattern in `content-calendar/linkedin-drafts.md`.
+> Standalone personal thought-leadership posts not tied to a specific blog
+> post follow a different, internal workflow — ask Dan or Dave.
 
 ## Before you start
 
@@ -79,8 +77,7 @@ pattern.
 2. **Draft the hook.** 2-3 options, pick the one truest to the post.
 3. **Draft the full post** following the structure above, in the matching
    author's register.
-4. **Self-edit** with the AI-tell checklist (`docs/content-writing/blog-post.md`
-   or `../goals/brand/VOICE.md`).
+4. **Self-edit** with the AI-tell checklist (`docs/content-writing/blog-post.md`).
 5. **Mechanical lint:**
    ```bash
    python3 brand/brand-lint.py --brand-dir brand content-calendar/linkedin-drafts.md
