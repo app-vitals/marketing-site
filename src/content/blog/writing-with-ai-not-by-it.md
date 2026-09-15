@@ -13,7 +13,7 @@ I write every post on this blog with AI. This one included.
 
 ## What the backlash gets right
 
-I'm not going to pretend that button exists because people are confused. Open LinkedIn on any given day and you can spot the tells inside thirty seconds — the same three-beat structure, "delve" and "leverage" and "unlock the power of," a question at the end that isn't actually curious about the answer. People got good at spotting it because there's a lot of it to practice on, and most of what they're flagging really is what it looks like: someone who didn't want to write anything, having a model do it for them, unedited and unowned. That's not a grey area. That deserves exactly the reaction it's getting.
+I'm not going to pretend that button exists because people are confused. Open LinkedIn on any given day and you can spot the tells inside thirty seconds — the same three-beat structure, "leverage" and "at the end of the day" and "it's important to note that," a question at the end that isn't actually curious about the answer. People got good at spotting it because there's a lot of it to practice on, and most of what they're flagging really is what it looks like: someone who didn't want to write anything, having a model do it for them, unedited and unowned. That's not a grey area. That deserves exactly the reaction it's getting.
 
 Here's the distinction I don't think the backlash is making, though, because most of what's out there doesn't give it a reason to: there's writing AI does *for* you, and there's writing you do *with* it. Those can look identical from the outside — same words, same publish button — which is exactly why one gets mistaken for the other.
 
