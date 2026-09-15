@@ -217,7 +217,7 @@ LinkedIn's "seems like AI slop" button has been clicked over a million times in 
 
 I write every post on this blog with AI. This one included.
 
-Most of what gets flagged deserves it — three-beat structure, "delve" and "leverage," a question at the end nobody's actually curious about. Unedited, unowned, written by someone who didn't want to write anything.
+Most of what gets flagged deserves it — three-beat structure, "unpack" and "leverage," a question at the end nobody's actually curious about. Unedited, unowned, written by someone who didn't want to write anything.
 
 Here's the distinction the backlash doesn't make: writing AI does for you, and writing you do with it. They look identical from outside.
 
