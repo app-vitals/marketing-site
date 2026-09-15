@@ -1097,6 +1097,144 @@ for a future post about the loop's own evolution if one ever gets scoped.
 - **LinkedIn companion** — every published post shipped with one per the
   series convention; not discussed yet for post 5.
 
+#### Refinement pass, 2026-09-15 (Dan's corrections + the event-vs-polling thread)
+
+**Correction to the stagger story (Dan, 2026-09-15) — it's not one dead end,
+it's two, with a real incident between them, and they're further apart in
+time than the outline implied:**
+
+> "yeah, this was just easy with two crons. once we had 4 they started to
+> overlap anyways. went to `*/30` mode because staggering didn't scale and
+> it felt hacky. then we had to stagger to prevent OOMs, then we went for
+> the real fix."
+
+Revised chain, verified against git where possible:
+1. Two crons, hand-staggered `:10`/`:45` (Apr 20) — easy, worked.
+2. Adding more crons made hand-staggering start overlapping on its own —
+   not a deliberate abandonment yet, just friction.
+3. **`*/30` identical for all four (`SWC-1.5`, 05-27) was a considered call
+   away from staggering, not neglect** — hand-staggering doesn't scale past
+   a couple of slots and felt hacky as a permanent mechanism. Correct this
+   in the post: don't frame `*/30` as "we forgot to stagger," frame it as
+   "we deliberately dropped staggering because it wasn't a real design."
+4. **That decision is what caused real OOMs** — four (later five, once
+   `review-patch` existed) crons firing on the same tick meant multiple full
+   Claude sessions spinning up at once and taking the agent service down.
+   This is a genuine incident, not a hypothetical risk — treat it with the
+   same weight as the `review-patch` 36-hour arc, not as a footnote to it.
+5. Dave's re-stagger (`62bdbbab`, 2026-07-02, "prevent simultaneous firing")
+   was an emergency stopgap to stop the OOMs, not a return to the original
+   Apr 20 design — five crons offset 5 minutes apart this time
+   (`0,30`/`5,35`/`10,40`/`15,45`/`20,50`).
+6. The general fix (`shipwright-loop`, 07-08/07-10) landed **8 days later**
+   and made the whole staggering question moot — confirmed live schedule is
+   `* * * * *`, i.e. the dispatcher ticks every single minute.
+
+**Open question, unresolved — flag before drafting:** step 3 (dropping
+stagger) happened 05-27; step 4/5 (OOMs forcing a re-stagger) happened
+around 07-02 — roughly **five weeks apart**, not the same tight arc as the
+`review-patch` collapse (which was 36 hours, within the 05-26–06-02
+ship-and-patch week). Need from Dan: was the OOM risk sitting there
+quietly that whole five weeks (nobody was hit until load happened to spike),
+or did something specific change in late June that made simultaneous firing
+start actually taking the service down? Also need to know whether the OOM
+incident had its own contained blast radius (did it ever touch a
+client-facing agent, e.g. Keanu?) — the post already makes a "blast radius,
+not luck" argument about the `review-patch` week; if the OOM incident had a
+different containment story (or none), that needs its own honest framing,
+not a silent assumption that the same argument still applies five weeks
+later.
+
+**New section: "Why We Didn't Just Go Event-Based."** Raw source (Dan
+relayed from a separate thread, 2026-09-15) — quoted close to verbatim
+rather than paraphrased, since these are Dan's own reasoning, not
+reconstructable from git:
+
+> Why polling not events?
+> - we have to hook to all necessary events
+> - we're going to have crons anyways, why introduce another concept?
+> - i treat event based workflows as triggers, so we're set up for it with
+>   the check pattern
+> - pro events: events would be cheaper because we can do less when
+>   looking for work — e.g. just look at a single PR
+> - i still wasn't sure if it justified the complexity of an event based
+>   system — retry management, opening a public endpoint to the agent, etc.
+>
+> Why the preCheck scripts exist:
+> - they also happened to help with determining the next task in the
+>   shipwright loop, so they became more important — but still missed
+>   things an agent could check and assess on the fly
+> - maybe less important if we had events?
+>
+> Patch narrowing scope:
+> - there were problems here too — we started seeing things fall through
+>   the cracks because some of our commands were doing a lot of things. we
+>   saw PRs get stuck — similar to getting concrete about PR states in our
+>   check scripts.
+
+This matches the "Scoping session, 2026-09-10" notes above almost exactly
+(same five polling-vs-events points, same preCheck dual-role framing) — it's
+the same reasoning restated from its original source, not new information.
+Two things it adds worth keeping:
+- **"Maybe less important if we had events?"** — an honest open question,
+  not a resolved one. Use it to close the section without pretending the
+  preCheck's job-picking role is obviously permanent.
+- **"Similar to getting concrete about PR states in our check scripts"** —
+  Dan draws this parallel explicitly: patch-narrowing (a command boundary
+  problem) and the preCheck scripts (a PR-state ambiguity problem) are the
+  same fix — replacing something fuzzy/overloaded with something concrete —
+  applied at two different layers. Worth an explicit line in the post; it's
+  also the same move as post 4's task-store thesis, so this is now a
+  three-way echo (task store / patch narrowing / preCheck scripts) worth
+  naming once, not three separate coincidences.
+
+**Missing piece, not yet in the thread:** everything Dan relayed above is
+his own case *against* full events. The actual trigger for the debate —
+Dave's ask for more immediate feedback/work, in Dave's own words — isn't
+captured anywhere yet. Dan's paraphrase ("Dave just wanted more immediate
+feedback/work") is being treated as sufficient sourcing for now, same as
+other secondhand context earlier in this doc, but if a sharper Dave quote
+exists it would make the section's opening stronger.
+
+**Revised section-level outline** (supersedes the 09-10 pass above — new
+section 5 inserted, old sections 3/4 split, everything after renumbered):
+
+1. **Cold open:** the `review-patch` 36-hour arc — unchanged.
+2. **Where four crons came from:** two-cron model, staggered `:10`/`:45` →
+   review doing three jobs → patch/deploy split off → four-cron model lands
+   05-26/27, staggering deliberately dropped for `*/30` because it doesn't
+   scale and felt hacky (not "forgot to," "chose not to").
+3. **The `review-patch` dead end + the ship-and-patch week:** fusing
+   review+patch — works for about a day, needs its own skip-logic, reverted,
+   rewritten into a narrow loop, all inside 36 hours — plus the
+   commit-velocity table for the surrounding week and Dan's "I had to wait
+   until I was on to ship those" quote.
+4. **Blast radius, not luck:** Keanu never touches this code; no automated
+   client-propagation mechanism existed yet. Closes out the May/June act.
+5. **NEW — Why We Didn't Just Go Event-Based:** Dave's ask for immediacy →
+   the honest case for events (cheaper, scoped to one item) → why it didn't
+   happen yet (four sources to hook, crons already exist, retry/webhook
+   complexity not justified) → preCheck scripts as a deliberate down payment
+   on a future event system, not a rejection of one → close on "maybe less
+   important if we had events?" left open. Evergreen reasoning, not
+   date-anchored to a specific week — functions as a bridge/breather between
+   the two incident acts, not a third incident.
+6. **The OOM incident:** the dropped stagger from section 2 sits as a quiet
+   risk, then causes real OOMs; Dave's 07-02 emergency re-stagger (five
+   crons, 5-minute offsets) buys 8 days. Pending Dan's answer on the
+   five-week gap and blast radius (see open question above) before this can
+   be drafted accurately.
+7. **The general fix:** `shipwright-loop` (07-08/07-10) — four symmetric
+   phases, one busy-guarded dispatcher, one winning candidate per tick,
+   ticking every minute. Explicitly pays off section 5: minute-level polling
+   is only affordable because the preCheck scripts made each tick cheap —
+   this is what actually answers Dave's responsiveness ask, without the
+   event machinery. `review-patch` and the manual `ship-loop` skill retired
+   07-16/17, "making the combined orchestrator fully redundant."
+8. **Close:** thesis stated plainly — specific-case workarounds (stagger,
+   fuse) don't generalize, the fix that stuck made every phase symmetric and
+   interchangeable behind one arbiter — plus a "next up" pointer.
+
 ### The named agent-persona fleet (relevant across posts 4-6, especially 6)
 
 Git author / co-author history in `vitals-os` shows a real multi-agent fleet,
