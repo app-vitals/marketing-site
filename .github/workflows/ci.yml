@@ -12,6 +12,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - uses: actions/setup-node@v4
         with:
@@ -26,6 +28,17 @@ jobs:
 
       - name: Lint (astro check)
         run: npm run check
+
+      - name: Brand lint (changed blog posts / LinkedIn drafts only)
+        run: |
+          git fetch origin "${{ github.base_ref }}" --depth=1
+          changed=$(git diff --name-only --diff-filter=d "origin/${{ github.base_ref }}" -- src/content/blog content-calendar | grep '\.md$' || true)
+          if [ -z "$changed" ]; then
+            echo "No blog/LinkedIn content changed — skipping."
+          else
+            echo "$changed"
+            python3 brand/brand-lint.py --brand-dir brand $changed
+          fi
 
       - name: Remove broken google-chrome apt source (known GH Actions runner issue)
         run: |

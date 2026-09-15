@@ -1,0 +1,119 @@
+# App Vitals terminology rules — machine-enforced by scripts/brand-lint.py.
+# Constrained YAML: sections, "- key: value" items, indented "key: value" lines.
+# Every entry needs `matches` (a Python regex) + its section's identity field.
+#
+# Scope note: this repository is PRIVATE and legitimately contains client names,
+# rates, and financials. Those are guardrails for OUTWARD artifacts (see
+# BRAND.md) and are deliberately NOT encoded as lint rules here — doing so would
+# flag every internal strategy and engagement file. What lives here is limited to
+# rules that are true on every surface, internal and external alike.
+
+# Exact casing (case-SENSITIVE regex of wrong forms). Severity: LOW.
+casing:
+  - correct: GitHub
+    matches: Github
+  - correct: Claude Code
+    matches: Claude code|claude Code
+    note: all-lowercase claude code is deliberately not flagged — it is legitimate in search-keyword lists and URL slugs
+  - correct: Boris Cherny
+    matches: Cherney
+    reason: misspelled in a published draft
+  - correct: shipwrightharness.com
+    matches: shipwright-harness\.com
+    note: the hyphenated domain is the 301 source, never the canonical destination — correct unless the sentence is specifically about the redirect
+
+# Product/feature names (case-SENSITIVE). Severity: LOW.
+product_names:
+  - correct: App Vitals
+    matches: AppVitals|App vitals|app vitals
+    note: app-vitals (hyphenated, lowercase) is correct for the domain, GitHub org, and repo paths
+  - correct: Vitals OS
+    matches: VitalsOS|Vitals-OS|Vitals os
+    note: vitals-os is correct for the domain, repo, and skill name
+  - correct: Shipwright Harness
+    matches: Shipwright harness|shipwright Harness
+    note: lowercase shipwright is correct for the repo, plugin, package, and install string
+  - correct: The Velocity Lab
+    matches: Velocity lab|velocity Lab|velocity lab
+  - correct: Design Partner
+    matches: Design partner
+
+# Never use (case-INSENSITIVE). Severity: HIGH.
+banned:
+  - term: world-class
+    matches: world[- ]class
+    reason: hype without evidence
+    use_instead: a specific, measurable claim
+  - term: game-changing
+    matches: game[- ]chang(?:ing|er)
+    reason: hype without evidence
+    use_instead: say what actually changes
+  - term: blazingly fast
+    matches: blazing(?:ly)? fast
+    reason: hype without evidence
+    use_instead: a real latency or throughput number
+  - term: best-in-class
+    matches: best[- ]in[- ]class
+    reason: unverifiable superiority claim
+    use_instead: name the specific capability and its evidence
+    note: banned as OUR claim — quoting a third party benchmark that uses the phrase is acceptable in internal analysis
+  - term: revolutionize
+    matches: revolutioni[sz]e|revolutionary
+    reason: hype register
+    use_instead: describe the concrete change
+  - term: cutting-edge
+    matches: cutting[- ]edge
+    reason: hype without evidence
+    use_instead: name the actual technology and why it matters
+  - term: works with everything
+    matches: works with everything
+    reason: vague and untrue
+    use_instead: list the languages or platforms actually supported
+
+# Prefer one term over another (case-INSENSITIVE). Severity: LOW.
+#
+# The two never-print entries below are LOW here on purpose. They are
+# outward-artifact rules, and this private repo legitimately discusses both in
+# competitive research. The judgment tier (/brand:review) reads the never-print
+# list in MESSAGING.md and applies it as a CRITICAL rule on public surfaces —
+# deterministic lint stays surface-agnostic, judgment stays surface-aware.
+preferred:
+  - use: our own pipeline metrics
+    matches: SWE-bench
+    note: never-print on any outward artifact — the benchmark was invalidated in February 2026; internal analysis may discuss it
+  - use: position generically against closed, hosted agents
+    matches: OpenCode
+    note: never-print on any outward artifact — do not name this project or cite its numbers; internal research may reference it
+
+  - use: open-source (hyphenate when it modifies a noun)
+    matches: open source (?:agent|system|delivery|autonomous|coding|tool|software|project|plugin)
+    note: the canonical headline The open source alternative to Devin. is a deliberate verbatim exception — leave it alone
+  - use: Design Partner program
+    matches: champion model
+    note: the champion model was retired in April 2026 — correct only in explicitly historical passages
+  - use: Shipwright pilot
+    matches: AI Velocity Assessment
+    note: retired as the front door in April 2026 — correct only in explicitly historical passages
+  - use: use
+    matches: utili[sz]e
+
+  # AI-tell markers below are LOW for the same reason as SWE-bench/OpenCode
+  # above: they have legitimate internal use (delve into a client's notes, a
+  # competitive landscape doc) but read as unedited AI prose on outward
+  # content, where /brand:review's judgment tier flags them per VOICE.md's
+  # AI-tell checklist.
+  - use: a specific verb (explore, dig into, look at)
+    matches: delve
+    note: outward-content AI tell — see VOICE.md AI-tell checklist
+  - use: a concrete description of what's actually connected
+    matches: tapestry
+    note: outward-content AI tell
+  - use: name the specific mechanism instead of this stock phrase
+    matches: unlock (?:the )?(?:full )?(?:power|potential) of
+    note: outward-content AI tell
+  - use: describe the actual integration or workflow
+    matches: seamless(?:ly)?
+    note: outward-content AI tell
+  - use: name what makes it robust (tests, gates, a number)
+    matches: robust solution
+    note: outward-content AI tell
