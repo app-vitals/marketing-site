@@ -43,6 +43,40 @@ planning/       # PRD, task breakdown, clarifying questions
 - Booking link lives in `src/consts.ts` as `BOOKING_URL` — import it, never hardcode a booking URL
 - Co-founders: Dan McAulay + Dave O'Dell
 
+## Brand & Voice
+
+Writing a blog post or a LinkedIn draft in this repo? Read
+`docs/content-writing/blog-post.md` or `docs/content-writing/linkedin-post.md`
+first — both walk through voice, structure, and the checks below so you don't
+have to hold this section in your head. (These are written as skill-ready
+docs — promoting them to real `.claude/skills/` entries is a follow-up; that
+directory can't be edited from every session, plain docs can.)
+
+- **Narrative source of truth lives in the private `goals` repo**, checked
+  out alongside this one at `../goals`: read `brand/VOICE.md` (voice traits,
+  signature moves, tone matrix, the AI-tell checklist) and `brand/MESSAGING.md`
+  (claims policy, competitor-naming rules) before writing. It stays private
+  because it carries internal performance data (impression counts, proof
+  gaps) alongside the voice guidance itself — see `../goals/CLAUDE.md`.
+- **Mechanical word-choice rules are vendored here** in `brand/terminology.yaml`,
+  checked by `brand/brand-lint.py` (stdlib-only Python 3, no deps). CI runs it
+  automatically against any changed file under `src/content/blog/` or
+  `content-calendar/` on every PR. Run it yourself before pushing:
+  ```bash
+  python3 brand/brand-lint.py --brand-dir brand $(git diff --name-only --diff-filter=d main -- src/content/blog content-calendar)
+  ```
+  It's a synced copy, not generated — if `goals/brand/terminology.yaml`
+  changes, re-copy it here (see `brand/README.md`).
+- **The AI-tell checklist** (`goals/brand/VOICE.md`, "AI-tell checklist"
+  section) is the pass that catches what the mechanical lint can't: uniform
+  sentence rhythm, connective-tissue filler, hollow use of our own signature
+  rhetorical moves, and the "only we could know" specificity test. Run it by
+  hand on every AI-assisted draft before it ships — the lint only catches
+  banned words, not generic prose shaped correctly.
+- **No `goals` checked out?** The two skills inline the essential checklist
+  so drafting still works without it — but the full narrative doc has more
+  context and worked examples, and is worth reading if you can.
+
 ## Commands
 ```bash
 npm run dev      # Local dev server
