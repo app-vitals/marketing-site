@@ -7,11 +7,10 @@
 
 ## Before you start
 
-1. **Read the voice guide.** If `../goals` is checked out alongside this
-   repo, read `../goals/brand/VOICE.md` (voice traits, signature moves, tone
-   matrix, the AI-tell checklist) and `../goals/brand/MESSAGING.md` (claims
-   policy, competitor-naming). If it isn't checked out, the condensed version
-   below covers the essentials.
+1. **Read the voice guide below.** "Voice, condensed" and "The AI-tell
+   checklist" cover the essentials. A fuller narrative version with worked
+   examples exists internally — ask Dan or Dave if you want it — but it's
+   not required to write a good post.
 2. **Check for overlap.** Skim `src/content/blog/` titles and
    `content-calendar/publishing-schedule.md` for posts covering similar
    ground recently. A new post should add a distinct angle, not restate one.
@@ -46,7 +45,7 @@ Valid `category` values (exact, case-sensitive): `AI Adoption`,
 
 ## Voice, condensed
 
-(Full version with worked examples: `../goals/brand/VOICE.md`.)
+(A fuller version with worked examples exists internally — ask Dan or Dave.)
 
 - **Direct, not harsh.** Name the failure plainly, aim it at a pattern —
   never a person, team, or named vendor.
@@ -64,8 +63,7 @@ Valid `category` values (exact, case-sensitive): `AI Adoption`,
 ## The AI-tell checklist
 
 Run this on the full draft before it ships — it catches what word-choice
-lint can't. (Full version, with the reasoning behind each item:
-`../goals/brand/VOICE.md`, "AI-tell checklist" section.)
+lint can't.
 
 - **Vary the rhythm.** Any three consecutive sentences of similar length —
   break the pattern. Uniform sentence length is a stronger AI tell than any
