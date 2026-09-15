@@ -21,7 +21,9 @@ Neither cron was doing one job, though. `shipwright-execute` reconciled merged P
 
 Late May, we pulled those apart for real. `patch` became its own command — scan your own open PRs, fix what review flagged. `deploy` became its own command — check approval and CI, ship it. `review` got stripped down to one job: evaluate PRs and post findings, nothing else. Four clean responsibilities where there used to be two messy ones. Which meant four crons where there used to be two — and hand-staggering four things doesn't work the way it did for two. So we didn't. All four went on identical thirty-minute schedules. That wasn't an oversight — staggering by hand doesn't scale past a couple of slots, and it felt like exactly the kind of hack we shouldn't be building permanent scheduling around. Better to run them together and deal with whatever that caused than keep hand-tuning cron offsets forever.
 
-What it caused showed up almost immediately.
+The same day, each of the four got something the two-cron model never had: a precheck script. A full agent session is the expensive part of any of this — spinning up Claude, giving it tools, letting it read and reason — and most ticks of most crons find nothing to do. So before any of that starts, a small, plain script runs first and answers one narrow question: is there actually work here? `check-dev-task.ts` looks for a ready task. `check-review.ts` looks for a PR that needs eyes. `check-patch.ts` and `check-deploy.ts` do the equivalent for their own commands. Each one is a pure function, no agent involved, cheap enough to run every tick and unit-testable on its own. If the answer's no, the cron goes silent without ever paying for a session. If it's yes, that's the signal to actually spend the money.
+
+What the schedule change caused showed up almost immediately.
 
 ## The Week We Shipped and Patched
 
