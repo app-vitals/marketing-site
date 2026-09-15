@@ -35,7 +35,7 @@ The four-cron model landed May 26th and 27th. The `review-patch` command — the
 
 That's not a launch followed by occasional cleanup. That's continuous, live correction on the same surfaces for a full week, tapering off only once June arrived. I knew that was coming, more or less — I waited until I was actually online to ship those changes, because I knew things would break, and they did.
 
-The sharpest single piece of it is the `review-patch` arc from the top of this post: a whole new command, broken within a day, rebuilt within two. But it wasn't the only thing moving that week — it's just the one you can point to and say "there, that's the shape of it."
+The sharpest single piece of it is `review-patch`'s own arc: a whole new command, broken within a day, rebuilt within two. But it wasn't the only thing moving that week — it's just the one you can point to and say "there, that's the shape of it."
 
 ## Blast Radius, Not Luck
 
@@ -47,7 +47,7 @@ None of that was built as a safety net for this moment. It's more accurate to sa
 
 ## Why We Didn't Just Go Event-Based
 
-Somewhere in all of this, Dave made the case that the whole model should change: instead of a cron waking up on a schedule and checking whether there's work, something should tell the pipeline the moment work exists. Queue a task, and it starts now — not whenever the next tick happens to land.
+Underneath all of it, Dave was making a different case entirely: instead of a cron waking up on a schedule and checking whether there's work, something should tell the pipeline the moment work exists. Queue a task, and it starts now — not whenever the next tick happens to land.
 
 He wasn't wrong about the upside. An event-driven check only has to look at the one PR or task that actually changed, instead of a precheck script rescanning everything on every tick. That's real, and it's cheaper.
 
@@ -61,7 +61,7 @@ It's worth naming the shape of this problem out loud, too, because it's the same
 
 ## The Quiet One
 
-The `*/30` schedule we settled on in late May sat there for five weeks without anyone touching it. Nothing was on fire. That's not because it was fine — it's because Kubernetes was already restarting pods that got killed for running out of memory, which is exactly what four crons firing on the same tick will occasionally do. The pipeline kept working. It just kept quietly crashing and coming back, and nobody was looking for it, because nothing a person would notice was actually broken.
+Back on the calendar: that `*/30` schedule from late May sat there for five weeks without anyone touching it. Nothing was on fire. That's not because it was fine — it's because Kubernetes was already restarting pods that got killed for running out of memory, which is exactly what four crons firing on the same tick will occasionally do. The pipeline kept working. It just kept quietly crashing and coming back, and nobody was looking for it, because nothing a person would notice was actually broken.
 
 Dave found it the way you'd expect something silent to get found: not chasing an incident, just looking at pod restart counts for an unrelated reason, and noticing they were higher than they should be. He traced it back to the simultaneous firing and fixed the immediate problem the same way we'd fixed it once before — stagger the schedules. Five crons this time, five minutes apart: `0,30`, `5,35`, `10,40`, `15,45`, `20,50`. That bought eight days.
 
@@ -79,6 +79,6 @@ Staggering stopped mattering the moment this shipped — there's only one schedu
 
 ## Why This Shape
 
-Two real problems ran under everything in this post: commands that kept doing more than one job, and work that had to wait for its turn instead of starting the moment it was ready. `review-patch` tried to fix the second by re-breaking the first, and it's not the only specific fix that failed for a similar reason — staggering schedules by hand solved crowding for exactly as long as the pipeline stayed small enough not to need it, then had to be rebuilt from scratch once it wasn't. Every attempt before the real fix was solving one of these two problems at the other's expense. The one that stuck didn't trade — four symmetric, single-purpose phases handle the first problem, and one arbiter checking in on all of them every single minute, instead of waiting for a scheduled turn, handles the second. Every piece of Shipwright has to earn its place by pointing back to a specific problem it solved for a specific person — this one earned it twice over, by refusing to solve either problem at the other's expense.
+Two real problems ran under everything in this post: commands that kept doing more than one job, and work that had to wait for its turn instead of starting the moment it was ready. Everything that came before the real fix targeted just one cron or just one command — stagger this schedule, fuse those two commands — and every one of those fixes held for exactly as long as the pipeline stayed small enough not to need something sturdier. `review-patch` is the sharpest version of that: Dave built it to fix the second problem and re-broke the first one doing it. The fix that actually stuck didn't patch a schedule or a command. It changed what all four phases were, structurally — symmetric, single-purpose, and read by one arbiter every single minute instead of ticking on their own — which is what let it solve both problems in the same move instead of trading one for the other. Every piece of Shipwright has to earn its place by pointing back to a specific problem it solved for a specific person — this one earned it twice over.
 
 Next up: pulling Shipwright out of the Vitals OS monorepo and putting it in front of anyone who wants to run it themselves.
