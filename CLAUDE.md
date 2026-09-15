@@ -77,6 +77,15 @@ directory can't be edited from every session, plain docs can.)
   so drafting still works without it — but the full narrative doc has more
   context and worked examples, and is worth reading if you can.
 
+## Testing
+
+Read `docs/testing.md` before touching `tests/` — it covers the Playwright
+smoke suite (the only test layer; there's no unit/integration layer on this
+static site), how to run it (`npm test`), the `tests/fixtures.ts`
+network-stubbing convention (and why: keeps CI from polluting GA4/LinkedIn
+analytics with synthetic traffic), and the CI wiring in
+`.github/workflows/ci.yml`.
+
 ## Commands
 ```bash
 npm run dev      # Local dev server
