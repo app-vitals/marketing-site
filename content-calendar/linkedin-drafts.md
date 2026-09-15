@@ -205,3 +205,28 @@ The fix isn't fewer skills. It's naming the two systems on purpose — starting 
 Where do you draw the line between structure that earns its keep and structure you built because it felt responsible?
 
 https://app-vitals.com/blog/pointy-haired-boss/
+
+---
+
+## Post — September 16, 2026
+**Promoting:** Writing With AI, Not By It
+
+---
+
+LinkedIn shipped a button in July for reporting posts as "seems like AI slop." People have clicked it over a million times in three weeks. Flagged posts lose something like 40% of their reach.
+
+I write every post on this blog with AI. This one included.
+
+I'm not going to pretend that button exists because people are confused. Open LinkedIn any day and you can spot the tells in thirty seconds — the same three-beat structure, "delve" and "leverage," a question at the end nobody's actually curious about. Most of what gets flagged really is what it looks like: someone who didn't want to write anything, having a model do it for them, unedited and unowned.
+
+Here's the distinction I don't think the backlash is making: there's writing AI does for you, and there's writing you do with it. They can look identical from the outside, which is exactly the problem.
+
+I'm not a writer. I can tell you what I think out loud in ninety seconds. Watching me type the same thing takes twenty minutes and comes out worse. For years that gap meant the thought just didn't get written down. Now I argue with a model until what's on the page is the thing I actually said — not an averaged-out version anyone could have written.
+
+The test I trust more than my own explanation: could someone else's byline sit on this paragraph and nobody would notice? If yes, that's the slop the LinkedIn button exists to catch. If no, that's the part a model can't originate on its own.
+
+We also finally did something about it instead of just arguing for it — wrote up the checklist and lint we built to keep our own posts honest.
+
+Where do you draw the line between writing with AI and writing by it?
+
+https://app-vitals.com/blog/writing-with-ai-not-by-it/
