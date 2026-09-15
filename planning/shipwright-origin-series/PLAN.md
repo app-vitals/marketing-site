@@ -1119,7 +1119,8 @@ Revised chain, verified against git where possible:
    "we deliberately dropped staggering because it wasn't a real design."
 4. **That decision is what caused real OOMs** — four (later five, once
    `review-patch` existed) crons firing on the same tick meant multiple full
-   Claude sessions spinning up at once and taking the agent service down.
+   Claude sessions spinning up at once and getting OOM-killed; Kubernetes
+   silently restarted the killed pods, so nothing was outward-facing down.
    This is a genuine incident, not a hypothetical risk — treat it with the
    same weight as the `review-patch` 36-hour arc, not as a footnote to it.
 5. Dave's re-stagger (`62bdbbab`, 2026-07-02, "prevent simultaneous firing")
