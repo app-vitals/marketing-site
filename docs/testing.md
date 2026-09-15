@@ -54,19 +54,42 @@ and `googletagmanager.com` — returning an empty 200 response — before any
 test navigates.
 
 **Why this matters:** CI runners have real network access (unlike some
-sandboxed dev environments), so without this stub, every CI run would load
-the real `gtag.js` from Google Tag Manager and the real LinkedIn Insight
-Tag pixel, reporting Playwright's synthetic page loads as live traffic in
-GA4 and skewing LinkedIn ad analytics. The font stubs exist for the same
-reason (avoid unnecessary real requests) and as a side effect make runs
-faster and less flaky.
+sandboxed dev environments). The GA4 snippet in
+`src/layouts/BaseLayout.astro` is unconditional — it fires on every page
+load, including `localhost` — so without this stub every CI run would load
+the real `gtag.js` from Google Tag Manager and report Playwright's
+synthetic page loads as live traffic in GA4. The stub is the only thing
+preventing that. The font stubs (`fonts.googleapis.com`,
+`fonts.gstatic.com`, `api.fontshare.com`) exist to avoid unnecessary real
+requests, and as a side effect make runs faster and less flaky.
+
+**LinkedIn is a separate mechanism — not this stub.** The stub's route
+pattern doesn't cover LinkedIn's domains (`snap.licdn.com`,
+`px.ads.linkedin.com`) at all. What keeps the LinkedIn Insight Tag quiet in
+CI is the hostname guard in `src/layouts/BaseLayout.astro` (around line
+114):
+
+```js
+if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+  // ...set _linkedin_partner_id, inject insight.min.js
+}
+```
+
+Playwright's `webServer` serves the site at `http://localhost:4321`, so
+that branch never runs during a test: the `insight.min.js` loader is never
+injected and no LinkedIn request is made, entirely independent of
+`fixtures.ts`. (The `<noscript>` tracking pixel is still present in the
+HTML — which is what `tests/linkedin-insight-tag.spec.ts` asserts against —
+but a JS-enabled browser never fetches it.)
 
 **If you add a new page or a new tracking/analytics pixel:** import from
 `./fixtures`, not `@playwright/test`, so this stubbing applies
 automatically. If you add a new third-party domain that fires on page load
 (another analytics vendor, another font CDN), add it to the route pattern
 in `tests/fixtures.ts` rather than letting it leak through to the real
-network in CI.
+network in CI. That applies to GA4-style trackers that fire on `localhost`;
+a tracker gated behind a hostname guard like LinkedIn's is already handled
+at the `BaseLayout.astro` level and needs no `fixtures.ts` entry.
 
 ## CI wiring
 
