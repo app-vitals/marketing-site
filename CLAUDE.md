@@ -94,3 +94,27 @@ none is needed.
 source /home/pi/.openclaw/workspace/.secrets.env
 npx vercel --prod --token "$VERCEL_TOKEN_APP_VITALS"
 ```
+
+## Third-Party Service Dependencies
+- **GA4** — `src/layouts/BaseLayout.astro`. Measurement id `G-H7QY6C7T1L`, hardcoded
+  twice: the `gtag.js` script `src` query param and the `gtag('config', ...)` call.
+  Rotating the property means updating both.
+- **LinkedIn Insight Tag** — `src/layouts/BaseLayout.astro`. Partner id `9897204`,
+  hardcoded in three places: `window._linkedin_partner_id`, the insight.js loader
+  snippet, and the `<noscript>` `<img>` pixel fallback (`px.ads.linkedin.com/collect/?pid=...`).
+- **Kit (ConvertKit) subscribe form** — `src/consts.ts`, `KIT_SUBSCRIBE_FORM_ACTION`
+  (form id `9823357`). Imported by `src/components/SubscribeForm.astro` and used as
+  the `action` on both form variants (`primary` and `footer`). Swap the constant, not
+  the component.
+- **Booking/cal destination** — `src/consts.ts`, `BOOKING_URL`
+  (`https://vitals-os.com/cal/book/discovery`, self-hosted). Import it; never hardcode
+  a booking URL (see Content Rules above).
+
+**UTM-forwarding contract on `BOOKING_URL`**: `BaseLayout.astro` injects an inline
+script that reads `utm_source`, `utm_medium`, `utm_campaign`, `utm_content`, and
+`utm_term` off the page URL and appends whichever are present onto every on-page link
+whose `href` contains the `BOOKING_URL` host+pathname — unrecognized query params are
+dropped, and if none of the UTM keys are present the booking link's `href` is left
+untouched (no trailing `?`). This is intentional, tested behavior — `tests/utm-forwarding.spec.ts`
+asserts it — not incidental. If you change how booking links are rendered or how
+`BOOKING_URL` is constructed, re-run that spec.
