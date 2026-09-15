@@ -16,7 +16,14 @@ No `tokens.json` here — this repo has its own design tokens in
 `src/styles/global.css`, unrelated to App Vitals' company-level brand colors.
 `brand-lint.py` runs fine without one; the color check just no-ops.
 
-**Keeping in sync:** `terminology.yaml` is a manual copy. When
-`goals/brand/terminology.yaml` changes, re-copy it here. There's no
-automation for this yet — if it drifts often enough to hurt, that's worth
-fixing, but a periodic manual sync is the honest starting point.
+**Keeping in sync:** `terminology.yaml` is a manual copy, not a straight
+copy-paste — this repo is **public**, and the source file in `goals` has a
+`preferred` block of "never-print" competitor/benchmark entries with their
+reasoning attached (why a specific name or benchmark is avoided). Do not
+vendor those here: stating that policy publicly, reasoning included, is
+itself the disclosure the policy exists to prevent. Everything else (casing,
+product names, banned hype words, the AI-tell markers) is fine to copy as-is.
+When `goals/brand/terminology.yaml` changes, re-copy it here **minus that
+block** — check the file header for the current exclusion list before
+syncing. There's no automation for this yet; a careful manual sync is the
+honest starting point.

@@ -1,12 +1,22 @@
-# App Vitals terminology rules — machine-enforced by scripts/brand-lint.py.
+# App Vitals terminology rules — machine-enforced by brand/brand-lint.py.
 # Constrained YAML: sections, "- key: value" items, indented "key: value" lines.
 # Every entry needs `matches` (a Python regex) + its section's identity field.
 #
-# Scope note: this repository is PRIVATE and legitimately contains client names,
-# rates, and financials. Those are guardrails for OUTWARD artifacts (see
-# BRAND.md) and are deliberately NOT encoded as lint rules here — doing so would
-# flag every internal strategy and engagement file. What lives here is limited to
-# rules that are true on every surface, internal and external alike.
+# This is a vendored SUBSET, synced from the private `goals` repo's
+# brand/terminology.yaml — see brand/README.md. THIS REPO AND THIS FILE ARE
+# PUBLIC. Two categories of entry from the source file are deliberately
+# excluded here and must stay excluded on every re-sync:
+#   1. Competitor/benchmark "never-print" entries and their reasoning
+#      (e.g. why a specific benchmark or project name is avoided) — stating
+#      that policy publicly, with the reasoning attached, is itself the
+#      competitive disclosure the policy exists to prevent.
+#   2. Anything that would reveal unpublished client, rate, or financial
+#      detail (none currently applies to the terminology rules, but check
+#      on every sync — the source file's own scope note flags this risk for
+#      its private context).
+# When in doubt about a specific competitor or benchmark reference in a
+# draft, that judgment call lives in the private goals/brand/MESSAGING.md
+# competitor-naming policy — ask a human, don't encode it here.
 
 # Exact casing (case-SENSITIVE regex of wrong forms). Severity: LOW.
 casing:
@@ -72,19 +82,8 @@ banned:
 
 # Prefer one term over another (case-INSENSITIVE). Severity: LOW.
 #
-# The two never-print entries below are LOW here on purpose. They are
-# outward-artifact rules, and this private repo legitimately discusses both in
-# competitive research. The judgment tier (/brand:review) reads the never-print
-# list in MESSAGING.md and applies it as a CRITICAL rule on public surfaces —
-# deterministic lint stays surface-agnostic, judgment stays surface-aware.
+# Entries excluded per the file header are deliberately not here.
 preferred:
-  - use: our own pipeline metrics
-    matches: SWE-bench
-    note: never-print on any outward artifact — the benchmark was invalidated in February 2026; internal analysis may discuss it
-  - use: position generically against closed, hosted agents
-    matches: OpenCode
-    note: never-print on any outward artifact — do not name this project or cite its numbers; internal research may reference it
-
   - use: open-source (hyphenate when it modifies a noun)
     matches: open source (?:agent|system|delivery|autonomous|coding|tool|software|project|plugin)
     note: the canonical headline The open source alternative to Devin. is a deliberate verbatim exception — leave it alone
@@ -97,11 +96,10 @@ preferred:
   - use: use
     matches: utili[sz]e
 
-  # AI-tell markers below are LOW for the same reason as SWE-bench/OpenCode
-  # above: they have legitimate internal use (delve into a client's notes, a
-  # competitive landscape doc) but read as unedited AI prose on outward
-  # content, where /brand:review's judgment tier flags them per VOICE.md's
-  # AI-tell checklist.
+  # AI-tell markers below are LOW on purpose: they have legitimate use in
+  # internal notes but read as unedited AI prose on outward content like
+  # this repo's blog posts and LinkedIn drafts. See VOICE.md's AI-tell
+  # checklist (private goals repo) for the reasoning.
   - use: a specific verb (explore, dig into, look at)
     matches: delve
     note: outward-content AI tell — see VOICE.md AI-tell checklist
