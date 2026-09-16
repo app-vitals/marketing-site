@@ -101,7 +101,7 @@ preferred:
   # docs/content-writing/blog-post.md's AI-tell checklist for the reasoning.
   - use: a specific verb (explore, dig into, look at)
     matches: delve
-    note: outward-content AI tell — see VOICE.md AI-tell checklist
+    note: outward-content AI tell — see docs/content-writing/blog-post.md's AI-tell checklist
   - use: a concrete description of what's actually connected
     matches: tapestry
     note: outward-content AI tell
