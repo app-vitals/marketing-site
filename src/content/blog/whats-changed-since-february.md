@@ -31,7 +31,7 @@ None of this is a "the AI isn't good enough yet" story. The February fear was re
 
 ## Why "Just Get the Tool" Was Always Going to Stall Here
 
-Go back to what adoption anxiety actually optimized for. Boards wanted evidence of movement. Procurement wanted a signed contract. Engineering wanted licenses distributed before the next all-hands. Every incentive in February pointed at the same finish line: get the tool in developers' hands. Nobody's incentive pointed at "and then build the review pipeline that can handle triple the PR volume," because in February nobody had triple the PR volume yet.
+Go back to what adoption anxiety actually optimized for. Boards wanted evidence of movement, which procurement translated into a signed contract. Engineering's version was licenses distributed before the next all-hands. Every incentive in February pointed at the same finish line: get the tool in developers' hands. Nobody's incentive pointed at "and then build the review pipeline that can handle triple the PR volume," because in February nobody had triple the PR volume yet.
 
 That's not a mistake anyone should feel bad about. It's just a different problem than the one sitting on desks now. [We wrote about the version of this we see most often](/blog/velocity-trap/) — a team hits 40% faster coding, applies it to a workflow where coding was already a small slice of total cycle time, and ends up with a number so small it barely shows up on a chart. The lever worked. It was attached to the wrong part of the machine.
 
