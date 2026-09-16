@@ -52,12 +52,11 @@ have to hold this section in your head. (These are written as skill-ready
 docs — promoting them to real `.claude/skills/` entries is a follow-up; that
 directory can't be edited from every session, plain docs can.)
 
-- **Narrative source of truth lives in the private `goals` repo**, checked
-  out alongside this one at `../goals`: read `brand/VOICE.md` (voice traits,
-  signature moves, tone matrix, the AI-tell checklist) and `brand/MESSAGING.md`
-  (claims policy, competitor-naming rules) before writing. It stays private
-  because it carries internal performance data (impression counts, proof
-  gaps) alongside the voice guidance itself — see `../goals/CLAUDE.md`.
+- **The fuller narrative voice guide lives in a private internal repo**, not
+  this one — ask Dan or Dave for it if you need the full version (voice
+  traits, signature moves, tone matrix, claims policy, competitor-naming
+  rules). It stays private on purpose. `docs/content-writing/` below inlines
+  the parts that matter for drafting here, so you don't need access to it.
 - **Mechanical word-choice rules are vendored here** in `brand/terminology.yaml`,
   checked by `brand/brand-lint.py` (stdlib-only Python 3, no deps). CI runs it
   automatically against any changed file under `src/content/blog/` or
@@ -65,17 +64,15 @@ directory can't be edited from every session, plain docs can.)
   ```bash
   python3 brand/brand-lint.py --brand-dir brand $(git diff --name-only --diff-filter=d main -- src/content/blog content-calendar)
   ```
-  It's a synced copy, not generated — if `goals/brand/terminology.yaml`
-  changes, re-copy it here (see `brand/README.md`).
-- **The AI-tell checklist** (`goals/brand/VOICE.md`, "AI-tell checklist"
-  section) is the pass that catches what the mechanical lint can't: uniform
-  sentence rhythm, connective-tissue filler, hollow use of our own signature
-  rhetorical moves, and the "only we could know" specificity test. Run it by
-  hand on every AI-assisted draft before it ships — the lint only catches
-  banned words, not generic prose shaped correctly.
-- **No `goals` checked out?** The two skills inline the essential checklist
-  so drafting still works without it — but the full narrative doc has more
-  context and worked examples, and is worth reading if you can.
+  It's a synced copy, not generated — see `brand/README.md` for how it's kept
+  in sync.
+- **The AI-tell checklist** (`docs/content-writing/blog-post.md`, "The
+  AI-tell checklist" section) is the pass that catches what the mechanical
+  lint can't: uniform sentence rhythm, connective-tissue filler, hollow use
+  of our own signature rhetorical moves, and the "only we could know"
+  specificity test. Run it by hand on every AI-assisted draft before it
+  ships — the lint only catches banned words, not generic prose shaped
+  correctly.
 
 ## Testing
 
