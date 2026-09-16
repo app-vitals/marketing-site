@@ -4,7 +4,7 @@ date: "2026-07-16"
 author: "Dave O'Dell"
 category: "Engineering Velocity"
 excerpt: "Devin has a $26B valuation and a billion dollars in funding. We built something open-source and self-hosted that does most of the same things, with no per-ACU metering. Here's an honest comparison."
-readTime: "8 min read"
+readTime: "10 min read"
 ---
 
 Devin has a $26 billion valuation. They're raising a billion dollars. They're doing autonomous coding, and Dan and I — through luck or bad luck — built an open-source alternative.
@@ -17,12 +17,14 @@ It turns out what we built competes directly with Devin. So let's talk about how
 
 | | Devin | Shipwright |
 |---|---|---|
-| PRD → task list → autonomous execution → PR | ✅ Yes | ✅ Yes |
+| PRD → task list → autonomous execution → PR | ✅ Yes — one fixed autonomous mode | ✅ Yes — plus a configurable path from human review to full autonomy* |
 | Deploys after merge | ❌ No — stops at the PR | ✅ Yes, via a customizable Claude Code skill |
 | Pricing model | ⚠️ Metered: Pro $20/mo, Max $200/mo, Team $500/mo for 250 ACUs at $2/ACU | ✅ No licensing cost, no per-ACU meter — pay only Claude API token cost |
 | Open source | ❌ Black box | ✅ MIT licensed, fully readable and forkable |
 | Self-hosted | ❌ Their cloud | ✅ Runs inside your own Claude Code |
 | Enterprise certifications / dedicated support | ✅ SOC 2, dedicated support contract | ⚠️ Not yet — we're not there |
+
+*\* See "The Autonomy Gap," below.*
 
 Devin's got the scale, resources, and enterprise checkboxes for organizations that need a fully managed, SOC 2-certified solution with a support contract. Shipwright's bet is different: open, self-hosted, and priced at the cost of the tokens you actually use. The sections below walk through each of these in more detail.
 
@@ -35,6 +37,16 @@ Shipwright is MIT licensed, free, and completely open. You can literally open a 
 This isn't just a philosophical difference. It has practical consequences.
 
 When something goes wrong with Devin, you wait for their support team. When something goes wrong with Shipwright, you open the skill file and fix it. When you need a new behavior — a custom deployment flow, a client-specific code review process, a bespoke security check — with Devin you put in a feature request. With Shipwright, you write a skill and ship it this afternoon.
+
+## The Autonomy Gap
+
+Devin ships as one mode: fully autonomous, from the first task you give it. You either trust it enough to hand over the keys or you don't use it yet. There's no in-between setting.
+
+Shipwright isn't a mode. It's a path. A team usually starts exactly where they already are — Claude Code, one engineer per agent, a human reviewing every diff before it merges. From there, [Human-in-the-Loop](/blog/on-ramp-to-autonomous-coding/) runs the same pipeline locally: it pulls the oldest task off your queue, executes it in front of you, and asks permission before it touches anything. You watch it work until watching feels like a waste of time. Then you queue tasks for Shipwright to run in the cloud instead — no terminal open, no approvals, straight through to a merged and deployed PR. Same engine at every step. What changes is how much of it you're standing over.
+
+That path is [documented and configurable](https://shipwrightharness.com/docs/configuring-autonomy/), not a leap of faith — dev task, review, patch, and deploy each have their own autonomy setting, so a team can automate code review months before they trust auto-deploy, or run patch autonomously while keeping review manual. You pick the order. Devin doesn't have an equivalent set of switches. If you're not ready for full autonomy on day one, your option isn't "dial it back" — it's "wait." And if you started cautious somewhere else and outgrew it, there's nothing to ratchet up either, because Devin was already running at its ceiling.
+
+That's the actual bet we're making: most engineering orgs aren't going to trust an agent with production on day one, and shouldn't. The way you earn that trust is by watching the system prove itself at each rung before you climb to the next one — not by being told it's safe and hoping that's true.
 
 ## Why We Built Our Harness on Claude Code
 
