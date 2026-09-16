@@ -3,7 +3,7 @@ title: "What's Changed Since February"
 date: "2026-09-18"
 author: "Dave O'Dell"
 category: "AI Adoption"
-excerpt: "In February, every call started with 'we're behind.' Now it starts with 'we bought the tools and nothing moved.' Same panic, different diagnosis — and only one of them points at the actual fix."
+excerpt: "In February, every call started with 'we're behind'; now it starts with 'we bought the tools and nothing moved.' Same panic, different diagnosis — and only one of them points at the actual fix."
 readTime: "6 min read"
 ---
 
@@ -21,7 +21,7 @@ That advice held. The tools kept improving. But "adopt now" was an answer to a F
 
 ## The Bill Came Due
 
-Here's what "adopted but not integrated" costs in practice. Faros AI tracked over 10,000 developers across 400+ orgs and found that in the teams with the heaviest AI adoption, PR volume went up 98%. Review time went up 91–441%, depending on the team. Bugs per developer rose 54%. Incidents per PR rose 243%. Org-level delivery didn't move the way any of that would suggest it should — the code got faster to write and slower to trust.
+Here's what "adopted but not integrated" costs in practice. Faros AI tracked over 10,000 developers across 400+ orgs and found that in the teams with the heaviest AI adoption, PR volume went up 98%. Review time went up 91–441%, depending on the team, and bugs per developer rose 54%. Incidents per PR rose 243%. Org-level delivery didn't move the way any of that would suggest it should — the code got faster to write and slower to trust.
 
 CloudBees put a cleaner number on the same story: 97% of orgs have adopted some AI coding tool, but only about 30% have real governance over the code it produces. 81% report *more* production issues since rolling it out, not fewer. Read those two numbers together and the pattern is obvious — everybody bought the tool, almost nobody built the thing around the tool that makes the output safe to ship at the new pace.
 
