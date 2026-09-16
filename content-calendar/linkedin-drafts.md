@@ -205,3 +205,30 @@ The fix isn't fewer skills. It's naming the two systems on purpose — starting 
 Where do you draw the line between structure that earns its keep and structure you built because it felt responsible?
 
 https://app-vitals.com/blog/pointy-haired-boss/
+
+---
+
+## Post — September 16, 2026
+**Promoting:** Writing With AI, Not By It
+
+---
+
+LinkedIn's "seems like AI slop" button has been clicked over a million times in three weeks. Flagged posts lose about 40% of their reach.
+
+I write every post on this blog with AI. This one included.
+
+Most of what gets flagged deserves it — three-beat structure, "unpack" and "leverage," a question at the end nobody's actually curious about. Unedited, unowned, written by someone who didn't want to write anything.
+
+Here's the distinction the backlash doesn't make: writing AI does for you, and writing you do with it. They look identical from outside.
+
+I can tell you what I think out loud in ninety seconds. Typing it takes twenty minutes and comes out worse. Now I argue with a model until the page says what I actually meant — not an averaged-out version anyone could've written.
+
+The test I trust: could someone else's byline sit on this and nobody would notice? If yes, that's the slop the button exists to catch. If no, that's the part a model can't originate.
+
+We also built the checklist and lint that keeps our own posts honest, instead of just arguing this in the abstract.
+
+Where do you draw the line between writing with AI and writing by it?
+
+Full post's in the comments.
+
+**First comment:** https://app-vitals.com/blog/writing-with-ai-not-by-it/
