@@ -9,7 +9,7 @@ readTime: "6 min read"
 
 In February, a VP of Engineering told me his board wanted an AI plan on the table in two weeks. Not a rollout — a plan. Something to point at. He wasn't asking whether to adopt AI coding tools. He was asking how fast he could look like he had.
 
-Seven months later, a different VP, same size company, told me something that sounded almost identical and meant the opposite thing. His team has Claude Code, Copilot, and a Cursor holdout in QA. Spend is up. Usage is up. His board wants to know why the roadmap hasn't moved. He wasn't asking how to adopt. He'd already done that. He wanted to know why it didn't work.
+Seven months later, a different VP, same size company, told me something that sounded almost identical and meant the opposite thing. His team has Claude Code, Copilot, and a Cursor holdout in QA. Spend is up. Usage is up. His board wants to know why the roadmap hasn't moved. He wasn't asking how to adopt — he'd already done that. The question was why it didn't work.
 
 That's the shift. Not from resistance to adoption — that part's basically done. From "we're behind" to "we did the thing and it didn't pay off." And the second problem is harder, because there's no vendor demo that fixes it.
 
@@ -39,6 +39,6 @@ This is the gap the [adoption ladder](/blog/the-ai-adoption-ladder/) exists to n
 
 ## What This Means If You're Reading This in September
 
-If your org is in the "we adopted and it didn't move the numbers" camp, you're not behind and you're not doing it wrong — you solved last quarter's problem and now you're staring at this quarter's. The fix isn't a better model or a fourth tool. It's the unglamorous work of building the review, testing, and deploy infrastructure that can absorb the volume the first tool already produces. That's rung two of the ladder, not rung zero, and it's a completely different project than the one your board approved in February.
+If your org is in the "we adopted and it didn't move the numbers" camp, you're not behind and you're not doing it wrong — you solved last quarter's problem and now you're staring at this quarter's. The fix isn't a better model or a fourth tool — it's the unglamorous work of building the review, testing, and deploy infrastructure that can absorb the volume the first tool already produces. That's rung two of the ladder, not rung zero, and it's a completely different project than the one your board approved in February.
 
 We still think adopting fast was the right call in July. We also think most of the orgs who did it are now sitting exactly where the data above says they'd be — more code, more spend, flat delivery — and mistaking that for a tool problem instead of the integration problem it actually is. If you can't tell your board right now what a normal PR costs, how long it should take, or who's actually reviewing the 98% more code you're producing, that's not an AI question. That's the next rung.
