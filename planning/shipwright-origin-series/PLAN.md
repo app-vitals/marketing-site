@@ -808,9 +808,9 @@ Full verified timeline, in `vitals-os` repo history:
   repo from nothing (`0dd2b9d8` + follow-ups same day) — this is the actual
   extraction moment, not a gradual drift.
 - `2026-06-08` — an early test/canary agent decommissioned
-  (`e19a57d7`, agent name matches a real client's name verbatim in
-  `vitals-os`'s `accounts/prisma/seed.ts` — scrubbed here 2026-09-21, same
-  issue as the first-migrated-agent name below) — looks like a dry run to
+  (`e19a57d7` — its name was not a pseudonym either and has been scrubbed
+  here, same issue as the first-migrated-agent name below; not restating
+  what it matched or where, per that note) — looks like a dry run to
   validate the new harness before
   touching any real agent.
 - `2026-06-11` to `06-12` — migration tooling built: PR #1472 ("Bodhi→Shipwright
@@ -823,11 +823,12 @@ Full verified timeline, in `vitals-os` repo history:
   `sideby-dan` → `warchild` → `keaunu`** (the *agent* names in that list need
   anonymizing the same way post 3 anonymized Fern/HiFriends where they trace back
   to a real engagement — **checked 2026-09-21 (Dan flagged the first one):
-  `fern-dan`/`sideby-dan`/`warchild`/`keaunu` are safe, no billing/client hits
-  anywhere in either repo; the first-migrated agent's name was the literal real
-  client company name (matches `clientName`, its email domain, and its billing
-  address verbatim in `vitals-os`'s `accounts/prisma/seed.ts`) and has been
-  scrubbed everywhere it appeared in this doc and in the post itself**).
+  `fern-dan`/`sideby-dan`/`warchild`/`keaunu` are safe to use; the
+  first-migrated agent's name was not a pseudonym and has been scrubbed
+  everywhere it appeared in this doc and in the post itself. Do not restate
+  what it matched or where in a future pass — a prior version of this note
+  did exactly that and turned a scrub into a bigger disclosure than the
+  original mistake.**).
 - `2026-06-12` — the first agent migrated, explicitly as the canary (the
   migration runbook referenced it by name directly as the canary lesson ahead of
   the `fern-dan` rollout — another spot that name got scrubbed from).
