@@ -807,8 +807,11 @@ Full verified timeline, in `vitals-os` repo history:
 - `2026-06-06` — Warchild scaffolds `app-vitals/shipwright` as a standalone OSS
   repo from nothing (`0dd2b9d8` + follow-ups same day) — this is the actual
   extraction moment, not a gradual drift.
-- `2026-06-08` — `sydecar-shipwright`, an early test/canary agent, decommissioned
-  (`e19a57d7`) — looks like a dry run to validate the new harness before
+- `2026-06-08` — an early test/canary agent decommissioned
+  (`e19a57d7`, agent name matches a real client's name verbatim in
+  `vitals-os`'s `accounts/prisma/seed.ts` — scrubbed here 2026-09-21, same
+  issue as the first-migrated-agent name below) — looks like a dry run to
+  validate the new harness before
   touching any real agent.
 - `2026-06-11` to `06-12` — migration tooling built: PR #1472 ("Bodhi→Shipwright
   migration tooling") and PR #1478 (`shipwrightAgents[]` Helm block + 5 GCP
