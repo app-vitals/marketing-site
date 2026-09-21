@@ -23,7 +23,7 @@ We queue tasks up, and any agent in the fleet with access to shipwright can pick
 
 ## The Four-Failure Night
 
-None of this went cleanly, and the honest version says so. Two days before the finish line, migrating `shipwright-deploy` itself to GKE — the service that deploys everything else — produced four separate failures in one night. Encryption keys reset on every upgrade, killing every live agent's auth token. A missing health check caused 503s on the admin service. OAuth redirects silently pointed at localhost in production. A stuck deploy cascaded into blocking everything behind it.
+Not every part of the rollout went this cleanly. Two days before the finish line, migrating `shipwright-deploy` itself to GKE — the service that deploys everything else — produced four separate failures in one night. Encryption keys reset on every upgrade, killing every live agent's auth token. A missing health check caused 503s on the admin service. OAuth redirects silently pointed at localhost in production. A stuck deploy cascaded into blocking everything behind it.
 
 All four hit the same night, and all four hit for the same underlying reason: the tool being migrated was the one doing the migrating. Every fix had to go out through the exact deploy path that was currently broken. That's the real risk in an extraction like this — not that something breaks, but that the thing you'd normally reach for to fix it is the thing that's down. All four got written up afterward as a named failure catalog in the migration runbook, not quietly patched and forgotten.
 
