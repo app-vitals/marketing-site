@@ -807,12 +807,17 @@ Full verified timeline, in `vitals-os` repo history:
 - `2026-06-06` — Warchild scaffolds `app-vitals/shipwright` as a standalone OSS
   repo from nothing (`0dd2b9d8` + follow-ups same day) — this is the actual
   extraction moment, not a gradual drift.
-- `2026-06-08` — an early test/canary agent decommissioned
-  (`e19a57d7` — its name was not a pseudonym either and has been scrubbed
-  here, same issue as the first-migrated-agent name below; not restating
-  what it matched or where, per that note) — looks like a dry run to
-  validate the new harness before
-  touching any real agent.
+- **Correction, 2026-09-21 (Dan pushed back on this one):** this doc previously
+  said a `2026-06-08` decommission (`e19a57d7`) was "a dry run to validate the
+  new harness" — checked the actual diff and that's wrong. It was a normal
+  client agent (real `engagementId`, added to the standard `clientAgents` Helm
+  block on `2026-06-03`, three days *before* the extraction even started), and
+  the decommission just removed its old-runtime config — nothing in the commit
+  touches the new `shipwright` repo. No changelog entry or PR explains why it
+  happened; it just falls in the same week. Pulled from the post entirely
+  rather than keep an unverified guess. (Its name was also not a pseudonym and
+  has been scrubbed here, same issue as the first-migrated-agent name below;
+  not restating what it matched or where, per that note.)
 - `2026-06-11` to `06-12` — migration tooling built: PR #1472 ("Bodhi→Shipwright
   migration tooling") and PR #1478 (`shipwrightAgents[]` Helm block + 5 GCP
   secrets). PR #1472's commit body is unusually rich — worth reading directly
