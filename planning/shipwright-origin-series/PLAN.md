@@ -755,6 +755,46 @@ comes, the way rows 4-6 already got a first pass this session.
   research surfaced — closing the loop post 2 opened ("Dan brings... review
   habit") without turning it into its own subplot.
 
+## Lessons From Post 6 (apply going forward)
+
+- **A research difficulty isn't a reader interest.** First draft had a full
+  section ("Whose Hands Were Actually on This") built around a genuinely hard
+  research finding — the commit-author split looks like a clean per-person
+  story but is actually a queue artifact, awkward to explain accurately. Dan,
+  2026-09-21: "we don't really care about the who hands piece... i think you
+  found you couldn't say that cleanly during research and added it." Correct
+  read — the difficulty of stating something cleanly is not the same signal as
+  a reader wanting to know it. The one genuinely interesting fact inside that
+  section (one shared queue, no manual task assignment, real throughput
+  numbers) survived by folding into the numbers section as a "how," not by
+  keeping the section that housed it.
+- **Cut anecdotes down to the one with real stakes, don't average them.** First
+  draft had three "almost went wrong" stories of uneven weight: a reverted
+  Kubernetes service that never actually got applied (no real stakes), an
+  unrelated service's OOM bug (real, but once-removed from the actual
+  migration), and a four-failure night migrating the deploy tool with itself
+  (real stakes, sharp point: the tool you'd reach for to fix it was the thing
+  that broke). Dan: "if i read the three failures section, i only find the
+  last failure interesting." Cut the other two entirely rather than trim all
+  three — a post is better served by one anecdote landing than three anecdotes
+  splitting attention across two thin ones and one strong one.
+- **Brand-lint's product-name casing rule can conflict with a verbatim quote of
+  a real commit message, and the repo's own CI-fix automation will "fix" the
+  quote into an inaccuracy without knowing the difference.** Draft quoted the
+  actual `c427c7a6` commit body verbatim: "All agents now run via Shipwright
+  harness" (lowercase h, confirmed against `git show`). `brand-lint`'s
+  `product_names` rule wants "Shipwright Harness" case-sensitively and has no
+  quote/code-span exception, so it failed CI on the open PR — and a CI-fix
+  pass (running as this same agent identity, "Doc") silently "corrected" the
+  quote's casing, which is a misquote, not a fix, in a series whose whole
+  premise is specifics being true. Caught only because the post got rewritten
+  anyway before merge. **Standing lesson: never quote a commit message
+  verbatim if the exact string could collide with a casing/preferred-term
+  rule in `brand/terminology.yaml`** — paraphrase the fact instead. The lint
+  tool has no way to mark an intentional exception, and an automated CI-fix
+  loop cannot tell a real prose error from an accurate quote it merely
+  doesn't recognize.
+
 ## Context Gathered for Future Posts (2026-08-25 research session)
 
 Research done while scoping post 3 went well past what post 3 needed. Recording
