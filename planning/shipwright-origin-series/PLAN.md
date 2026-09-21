@@ -820,11 +820,12 @@ Full verified timeline, in `vitals-os` repo history:
   `sideby-dan` → `warchild` → `keaunu`** (the *agent* names in that list need
   anonymizing the same way post 3 anonymized Fern/HiFriends where they trace back
   to a real engagement — **checked 2026-09-21 (Dan flagged the first one):
-  `fern-dan`/`sideby-dan`/`warchild`/`keaunu` are safe, no billing/client hits
-  anywhere in either repo; the first-migrated agent's name was the literal real
-  client company name (matches `clientName`, its email domain, and its billing
-  address verbatim in `vitals-os`'s `accounts/prisma/seed.ts`) and has been
-  scrubbed everywhere it appeared in this doc and in the post itself**).
+  `fern-dan`/`sideby-dan`/`warchild`/`keaunu` are safe to use; the
+  first-migrated agent's name was not a pseudonym and has been scrubbed
+  everywhere it appeared in this doc and in the post itself. Do not restate
+  what it matched or where in a future pass — a prior version of this note
+  did exactly that and turned a scrub into a bigger disclosure than the
+  original mistake.**).
 - `2026-06-12` — the first agent migrated, explicitly as the canary (the
   migration runbook referenced it by name directly as the canary lesson ahead of
   the `fern-dan` rollout — another spot that name got scrubbed from).
