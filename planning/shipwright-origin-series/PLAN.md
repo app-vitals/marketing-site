@@ -1411,6 +1411,15 @@ matter enough to glance at, not enough to bet a client conversation on —
 until they were the latter, at which point the manual, skippable capture
 path stopped being tolerable.
 
+**Third ingredient, Dan, 2026-09-22: "and the time."** Not just needing
+accuracy and finally having the structure to build it — also finally having
+the bandwidth to. Checked against git: post 6's OSS extraction ends 6/18
+(the legacy `agent/` deletion). `MME-1` starts 6/25 — exactly one week
+later. Worth stating plainly rather than leaving implicit: the metrics
+rebuild didn't happen the moment it became needed, it happened the moment
+need, structure, and freed-up bandwidth all lined up at once — right after
+the extraction that was post 6's own story wrapped.
+
 **The public "proof" dashboard is real and relevant, just not the cause —
 keep it as a secondary beat, not the opener.** Built by Dave as part of
 `site/` the same week (`PPL-1.1`/`PPL-1.2`, 6/28), still live today
