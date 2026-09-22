@@ -1397,6 +1397,29 @@ mitigation. This is the second time this series has landed on "not a built
 safety net, an honest ongoing gap" (see post 5's blast-radius section) —
 consistent with Dan's stated preference for that framing over overclaiming.
 
+**"Why now" — the real trigger, Dan, 2026-09-22 (this is the post's actual
+opening beat, not "it was on the todo list"):** not the public proof
+dashboard — that's Dave's, built the same week as part of `site/`, and
+relevant context but not the cause. The real trigger: **they were depending
+on these numbers for real decisions** — Dan's own read on how fast the team
+could actually ship with Shipwright, and claims made directly to clients —
+and "directionally accurate" stopped being good enough once real stakes rode
+on the answer. `TaskStoreProvider` isn't what created the need for accuracy;
+it's what finally made accuracy *possible* — "now we had the structure to
+do it," Dan's words. Post should open on that tension: numbers used to
+matter enough to glance at, not enough to bet a client conversation on —
+until they were the latter, at which point the manual, skippable capture
+path stopped being tolerable.
+
+**The public "proof" dashboard is real and relevant, just not the cause —
+keep it as a secondary beat, not the opener.** Built by Dave as part of
+`site/` the same week (`PPL-1.1`/`PPL-1.2`, 6/28), still live today
+(`/public/dashboard`, `docs/metrics.md`). Worth including as a "here's one
+thing this accuracy work made possible" note near the end, and it's a nice
+quiet callback to post 6's title ("Sharing Proof, Not Promises") since this
+dashboard is literally what "proof" refers to there — but don't frame it as
+why the metrics rebuild happened. That's backwards per Dan's correction.
+
 **The month-long docs tail, 7/2–7/13 (Dan: "unsure, check git logs") —
 checked, no distinct story here.** ~1,900 non-merge commits landed across
 the repo in that same two-week window — this is just ordinary docs debt
@@ -1405,6 +1428,13 @@ entropy-scan/docs-freshness patrols catching stale references elsewhere in
 this series' research), not a deliberate deferral or a blocked-on-something
 story. Skip this beat, or mention it only as a one-line texture note, not a
 plot point.
+
+**Normal post-launch fix cluster, 6/28–7/2 — one-line texture only, checked
+in git.** Same "ship and patch" shape seen elsewhere in this series: `cost_usd`
+missing from `tokensTotals`, graceful degradation added when the admin stats
+endpoint fails, a `TaskRecord` interface fix, an `effortLevel` type
+correction. Not dramatic enough to be a beat — a single sentence acknowledging
+the new pipeline needed a few days of settling is enough.
 
 **Framing/title instinct (Dan): accuracy, not dependency-removal, is the
 real driver.** His words: "when we need something to be accurate and always
