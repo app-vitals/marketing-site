@@ -170,7 +170,7 @@ comes, the way rows 4-6 already got a first pass this session.
 | 4 | The task store's real origin: `todos.json` got put behind an interface, a GitHub Issues–backed implementation was built alongside it (a GitHub Projects v2 backend was also tried, per git — `TS-2.1`, 2026-05-25 — before Issues won out), running both was "split-brained" (the agent got confused switching between them), and multi-agent-on-one-repo needs (shared task queue, tighter concurrency control) forced ripping both out and building the task store from scratch. **Expanded scope (Dan, 2026-08-25):** should also cover the task store's actual state model (ready / in-progress / blocked / closed), filtering, and claiming — specifically what happens when multiple agents go after the same task. **Scoped 2026-09-02:** Dave extracted the original interface (not "an implementation built alongside" it — corrected by Dan); ends at the TSS-2.1 cutover + verified extension wins (repo-scoped tokens, admin state filtering, the `blocked`/HITL split via `/shipwright:hitl`) — no deep dive into today's audit-trail/TaskEvent mechanics (parked for the future observability post, row 8) or outbound Jira/Linear/GitHub-Issues propagation (confirmed no code or planning doc exists for that direction — stated future intent only). | **Published** | [#136](https://github.com/app-vitals/marketing-site/pull/136) (merged) — `src/content/blog/task-store-origin.md` |
 | 5 | System crons + the shipwright-loop dispatcher — see dedicated notes under "Context Gathered for Future Posts" below, they'd outgrown this table cell. **Scoped 2026-09-10:** stands alone (Dan: "shipwright-loop is a different thing than task store," despite landing the same week). Core throughline: why polling beat events, why the preCheck scripts exist and became more load-bearing than planned, and how introducing `patch` (and `deploy`) let `review` narrow back down to its actual job — verified against the `SWC-1.1`/`SWD-2.1`/`SWC-1.3`/`SWC-2.1` commit trail, all landing 2026-05-26. | **Published** | [#147](https://github.com/app-vitals/marketing-site/pull/147) (merged, scoping notes), [#150](https://github.com/app-vitals/marketing-site/pull/150) (merged, arc refinement), [#151](https://github.com/app-vitals/marketing-site/pull/151) (merged) — `src/content/blog/shipwright-loop-origin.md`, [#158](https://github.com/app-vitals/marketing-site/pull/158) (merged, post-merge fix) |
 | 6 | Open-sourcing Shipwright — the plugin's extraction from the vitals-os monorepo into its own repo (`app-vitals/shipwright`, scaffolded 2026-06-06) and the ~10-day phased migration of every live production agent off the homegrown runtime and onto the new harness (canary-first — five agents migrated in sequence, ending with `warchild` and the last agent), ending in a single commit deleting the entire legacy `agent/` workspace (17,165 lines, 107 files, 2026-06-18). Well-documented in git already — see this session's research. Matches the public timeline's "June 2026: Shipwright transitions from marketplace to independent repository." Titled "Sharing Proof, Not Promises" — cold open on a client asking how they'd know Shipwright would still be maintained in six months, closes on the messy 13-day history now sitting in public git for anyone to go check. | **Published** | [#169](https://github.com/app-vitals/marketing-site/pull/169) (merged), [#170](https://github.com/app-vitals/marketing-site/pull/170)/[#172](https://github.com/app-vitals/marketing-site/pull/172)/[#173](https://github.com/app-vitals/marketing-site/pull/173)/[#174](https://github.com/app-vitals/marketing-site/pull/174) (merged, accuracy/hedge fixes) — `src/content/blog/shipwright-oss-origin.md` |
-| 7 | The metrics journey — PostHog first, then a move to Postgres/the task store, then a series of accuracy improvements. Why each move happened, not just that it happened. **Timeline verified 2026-09-21.** **Scoping session 2026-09-22 (see below) reframed the spine: this is an accuracy story, not a dependency-removal story** — `TaskStoreProvider` (`MME-4`, 2026-06-27) replaced two agent-executed metrics-capture steps (manual `posthog_send.py` calls in `dev-task.md`/`review.md`/`deploy.md`, and a session-JSONL token snapshot in `dev-task.md` Step 1) with harness code that runs automatically — direct evidence for Dan's "if it needs to always happen, write it in code, don't leave it to the agent" thesis. | **Scoped + outlined-pending** — timeline verified, scoping session done, outline pass next, **publishing 1st of the three backlog rows (Dan, 2026-09-21)** | — |
+| 7 | The metrics journey — PostHog first, then a move to Postgres/the task store, then a series of accuracy improvements. Why each move happened, not just that it happened. **Timeline verified 2026-09-21.** **Scoping session 2026-09-22 (see below) reframed the spine: this is an accuracy story, not a dependency-removal story** — `TaskStoreProvider` (`MME-4`, 2026-06-27) replaced two agent-executed metrics-capture steps (manual `posthog_send.py` calls in `dev-task.md`/`review.md`/`deploy.md`, and a session-JSONL token snapshot in `dev-task.md` Step 1) with harness code that runs automatically — direct evidence for Dan's "if it needs to always happen, write it in code, don't leave it to the agent" thesis. | **Outlined** — timeline + scoping + outline pass all done (2026-09-22), ready to draft, **publishing 1st of the three backlog rows (Dan, 2026-09-21)** | — |
 | 8 | Observability across a fleet of autonomous agents — agent cron logs, the work queue itself, Sentry logs, shipwright-loop's own logs, PR findings, PR events. How they gained visibility into what a fleet of agents was actually doing, not just what it shipped. **Timeline verified 2026-09-21:** two waves. Wave 1, 2026-07-05/06 — Sentry rolled out across the whole stack in about two days (`ErrorReporter` abstraction, SDK init at the API gateway, shared Sentry module, wired into task-store/admin/metrics), landing right as row 5's `shipwright-loop` (`WL-3.3`) was finishing on 07-10; spin detection (loop warns when it dispatches the same item repeatedly) followed 2026-07-16. Wave 2, much more recent — `PullRequestEvent` schema + `recordTransition()` audit trail 2026-08-18/19, `TaskEvent` audit log (`TCS-1.1`) + `GET /tasks/:id/events` 2026-08-31. The Aug 31 work is the freshest material anywhere in this series as of this session. | Scoped (timeline only, not outlined), **publishing 3rd/last of the three backlog rows (Dan, 2026-09-21) — deliberately last since its Aug 31 material is the most recent thing in the series** | — |
 | 9 | HITL (human-in-the-loop) — what actually needs a human in an otherwise autonomous pipeline, and when/why a task gets blocked pending one. Likely pairs well with the task store's state model (row 4) since `blocked` is a task-store state, but Dan listed it separately — row 4 shipped without covering it (see row 4's own scope note), so it needs its own post. **Timeline verified 2026-09-21:** `shipwright:hitl` skill created in vitals-os *and* ported to the new `shipwright` repo same day, 2026-06-17 — one day before row 6's final cutover commit — alongside migrating existing blocked CLA/SHI/ALM sessions onto it. `hitl`/`hitlNotifiedAt`/`blockedReason` added to the PR schema 2026-07-20; an actual HITL worker-loop command (today's `/shipwright:hitl`) shipped 2026-07-22. Real "why this shape" beat: `HSR-1.1`, 2026-08-08, splits one conflated signal into `requiresHumanApproval` and `blocked` as two separate columns — "needs a human" and "stuck" had been the same bit for weeks before anyone noticed they aren't the same thing. | Scoped (timeline only, not outlined), **publishing 2nd of the three backlog rows (Dan, 2026-09-21) — its 2026-06-17 origin sits one day inside row 6's own window, tightest continuity of the three** | — |
 
@@ -1455,6 +1455,73 @@ series so far — a literal before/after of "agent-executed step" replaced by
 "harness code that always runs." This should be the post's spine, with the
 self-hosting/PostHog-key angle as a secondary, earlier-arriving motivation
 rather than the main one.
+
+#### Outline pass, 2026-09-22
+
+**Throughline:** the numbers were fine to eyeball and never fine to bet
+on — until the moment they had to carry real weight (Dan's own read on
+shipping velocity, and specific claims made directly to clients), at which
+point a capture path built from agent-executed, individually-skippable
+steps stopped being tolerable. The fix wasn't a better analytics vendor,
+it was removing the steps entirely and writing the capture into code that
+runs whether or not anyone remembers it exists. Same underlying instinct as
+post 4's task-store thesis (stop trusting a process that depends on being
+followed correctly, build the thing that can't be skipped) — worth an
+explicit cross-link, not a coincidence to leave implicit.
+
+**Ending boundary:** stop at the honest, still-open token-loss-on-crash
+gap — that's the deliberate non-resolution this post ends on, mirroring
+post 5's blast-radius section. Do **not** dive into the `PCE`
+cost-efficiency provider work or the `TaskRecord`/admin-stats plumbing in
+any depth — mention the post-launch fix cluster in one sentence, nothing
+more. Do not re-derive post 4's task-store mechanics — cross-link instead.
+Do not touch HITL or observability (rows 9/8) even though they share this
+repo's June/July window.
+
+**Section-level outline:**
+1. **Cold open:** the shape of the old capture path itself, before naming
+   what replaced it — a task moves through the pipeline, and at each
+   milestone an agent is *told* to phone home (`python3 posthog_send.py`),
+   the same way it's told to run any other step. Six milestones, three
+   files, and nothing downstream that would ever notice if one got skipped.
+   Land the tension in the last line: fine, as long as nothing serious rode
+   on the number being right.
+2. **Where PostHog came from (4/3):** not a Shipwright decision — Dave's
+   reuse of a client project's free analytics setup. State plainly that the
+   task store didn't exist yet (earliest attempt seven weeks out) — this
+   was the only real option, not a road not taken.
+3. **Self-hosting forces a seam (6/8), briefly:** `MetricsProvider`, SQLite
+   default, Postgres alongside it same day. The obvious reason to tell this
+   story, and deliberately not the one the post hangs on — keep this
+   section short on purpose.
+4. **Why now, for real — three things arriving together:** needed for real
+   stakes (shipping-speed calls, client statements) + had the structure
+   (`TaskStoreProvider`) + had the time (bandwidth freed exactly one week
+   after post 6's OSS extraction wrapped, 6/18 → 6/25). This is the heart
+   of the post — Dan's "write it in code, don't leave it to the agent"
+   quote belongs here, earned rather than asserted.
+5. **What actually got deleted:** the `MME-1` → `MME-5` sequence in four
+   days, ending in one commit deleting `posthog_send.py`, every invocation
+   site, and the session-JSONL snapshot — "superseded by the task-store-
+   backed metrics pipeline," the commit's own words. One line acknowledging
+   the normal few-days settling period that followed (cost_usd, graceful
+   degradation, interface fixes) — texture, not a beat.
+6. **What it made possible:** the public, unauthenticated `/public/dashboard`
+   (Dave, `site/`, the same week) — one paragraph, framed as a consequence
+   of trustworthy numbers rather than the reason for them. Quiet callback to
+   post 6's title.
+7. **The honest gap, closing:** most tokens still don't survive a non-clean
+   exit. Actively being patched, not solved, not a built safety net —
+   stated plainly, no bow on it.
+8. **Close:** next-up pointer to HITL (row 9, per the 2026-09-21 sequencing
+   decision).
+
+**Open, not yet decided:**
+- **Title** — no candidate chosen. Loose options to react to: *"Directionally
+  Accurate Wasn't Good Enough Anymore"* / *"A Step an Agent Could Skip"* /
+  *"Numbers We Could Glance At, Not Bet On."*
+- **LinkedIn companion** — every published post shipped with one per the
+  series convention; not drafted yet for post 7.
 
 ### Open threads — unresolved, flag for whoever picks these up
 
