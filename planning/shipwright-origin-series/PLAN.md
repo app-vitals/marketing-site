@@ -1336,7 +1336,15 @@ Shipwright specifically — Dave had just built PostHog-backed analytics for
 another client project, it was free, so he reused it (`PH-1.1`, `#252`,
 authored by Dave/Sully — PR body literally frames it as "Task breakdown for
 full Custom Metrics Dashboard feature," a client-facing dashboard first, not
-a Shipwright-metrics-first decision).
+a Shipwright-metrics-first decision). **Continuity correction (Dan,
+2026-09-22): the task store didn't exist yet on 4/3.** Per row 4's own
+research, its earliest attempt (`TS-2.1`, GitHub Projects v2) doesn't show up
+until 2026-05-25, nearly two months later — so "query the task store
+directly" wasn't a road not taken in April, it wasn't a road that existed
+yet. Frame PostHog as the only real option on the table at the time, not an
+early misstep later corrected — the correction in June is a story about a
+better internal option coming into existence, not about re-litigating an old
+choice.
 
 **Why the `MetricsProvider` seam, 2026-06-08 (Dan):** self-hosting required
 running without a PostHog key, and metrics were considered crucial enough to
@@ -1372,21 +1380,22 @@ commit (`f88eca947`, 06-28), explicitly "superseded by the task-store-backed
 metrics pipeline." The commit message is direct evidence for the post's
 thesis, not reconstructed after the fact.
 
-**The "some averages await richer task records" gap (Dan, re: point 4 above)
-— refine before drafting.** Dan's answer names the known *current* gap as
-sub-agent token loss on a non-clean exit (Claude Code only streams usage on
-clean completion; sub-agent/delegated-task token usage isn't captured if the
-parent process is killed mid-run — not prioritized, Dan believes there are
-upstream Claude Code GitHub issues tracking the general limitation). **Worth
-noting for accuracy, found via code comment, not Dan:** this isn't quite
-"unsolved" for the *top-level* agent — `cron-handler.ts`'s `onProgress`
-callback (`CSU-1.1`) already pushes a debounced running token snapshot after
-every assistant turn specifically "so token totals survive an agent-process
-kill mid-run, not just a clean completion." So the real, narrower gap today
-is specifically **sub-agent (Task-tool-delegated) token usage**, which
-doesn't stream turn-by-turn the way top-level usage does — confirm this
-framing with Dan before drafting; don't imply the whole crash-loses-tokens
-problem is unsolved when the top-level-agent case already has a mitigation.
+**The "some averages await richer task records" gap — corrected by Dan,
+2026-09-22, this is a live open problem, not a solved-for-the-top-level
+case.** Original framing (from the first scoping answer plus a
+`cron-handler.ts` code comment about `CSU-1.1`'s debounced progress push)
+undersold it: that push is a genuine, active mitigation attempt — "we are
+trying to patch it," Dan's words — but **the majority of tokens still don't
+get streamed on a non-clean exit**, full stop, not just for sub-agent/
+Task-tool-delegated work. Claude Code only reliably reports usage on a clean
+completion; a killed or crashed session loses most of what it spent,
+top-level included, regardless of the debounced push existing. **Post
+framing implication:** don't tell this as "mostly solved, one narrow edge
+case remains" — tell it as an honest, still-open gap that's actively being
+worked, with the debounced push as a partial, real, but insufficient
+mitigation. This is the second time this series has landed on "not a built
+safety net, an honest ongoing gap" (see post 5's blast-radius section) —
+consistent with Dan's stated preference for that framing over overclaiming.
 
 **The month-long docs tail, 7/2–7/13 (Dan: "unsure, check git logs") —
 checked, no distinct story here.** ~1,900 non-merge commits landed across
