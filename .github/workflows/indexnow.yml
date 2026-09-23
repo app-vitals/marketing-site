@@ -1,0 +1,58 @@
+name: IndexNow
+
+# Vercel's GitHub integration auto-deploys `main` on merge (see CLAUDE.md "Deploy model") — there's
+# no deploy job in this repo to hook into. Instead: wait for the new deploy to actually be live by
+# polling the IndexNow key file (public/<key>.txt, part of every deploy) until it serves the key,
+# then submit every sitemap URL to IndexNow so Bing/DuckDuckGo/Seznam/Yandex pick up the change
+# without waiting for a recrawl. Non-fatal by design — an indexing ping must never be treated as a
+# required check.
+
+on:
+  push:
+    branches: [main]
+
+concurrency:
+  group: indexnow-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  ping:
+    name: submit sitemap to IndexNow
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Unit test sitemap/payload logic
+        run: npm run test:indexnow
+
+      - name: Wait for the deploy to be live
+        id: wait
+        run: |
+          key_url="https://app-vitals.com/d3dd28858177e41cc59346acba3eea63.txt"
+          expected="d3dd28858177e41cc59346acba3eea63"
+          for i in $(seq 1 40); do
+            body="$(curl -fsSL "$key_url" 2>/dev/null || true)"
+            if [ "$(echo "$body" | tr -d '[:space:]')" = "$expected" ]; then
+              echo "Deploy is live (key file served after $i attempt(s))."
+              echo "live=true" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+            echo "Attempt $i: key file not live yet, waiting 15s..."
+            sleep 15
+          done
+          echo "::warning::Timed out waiting for the deploy to go live; skipping IndexNow ping."
+          echo "live=false" >> "$GITHUB_OUTPUT"
+
+      - name: Submit sitemap URLs to IndexNow
+        if: steps.wait.outputs.live == 'true'
+        continue-on-error: true
+        run: node scripts/indexnow.mjs

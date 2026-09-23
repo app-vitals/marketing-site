@@ -13,6 +13,8 @@ interface Props {
   articleDate?: string;
   articleAuthor?: string;
   extraSchema?: Record<string, unknown> | Record<string, unknown>[];
+  /** Overrides `title` for <title>/og:title/twitter:title only (the on-page H1 is unaffected). */
+  seoTitle?: string;
 }
 
 const {
@@ -23,9 +25,22 @@ const {
   articleDate,
   articleAuthor,
   extraSchema,
+  seoTitle,
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
+// Search engines (Bing in particular) flag long <title> tags. `seoTitle` always wins when set
+// (e.g. blog frontmatter opting in explicitly). Otherwise, if `title` carries the standard
+// " — App Vitals" suffix and the combined string would run past 60 chars, drop the suffix rather
+// than truncate mid-word — the bare title alone is still meaningful in search results.
+const SITE_SUFFIX = ' — App Vitals';
+const MAX_TITLE_LENGTH = 60;
+const metaTitle =
+  seoTitle ??
+  (title.length > MAX_TITLE_LENGTH && title.endsWith(SITE_SUFFIX)
+    ? title.slice(0, -SITE_SUFFIX.length)
+    : title);
 ---
 
 <!doctype html>
@@ -35,7 +50,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="generator" content={Astro.generator} />
 
-    <title>{title}</title>
+    <title>{metaTitle}</title>
     <meta name="description" content={description} />
     <meta name="keywords" content={keywords} />
     <link rel="canonical" href={canonicalURL} />
@@ -43,7 +58,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <!-- Open Graph -->
     <meta property="og:type" content={articleDate ? "article" : "website"} />
     <meta property="og:url" content={canonicalURL} />
-    <meta property="og:title" content={title} />
+    <meta property="og:title" content={metaTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={new URL(ogImage, Astro.site)} />
     <meta property="og:image:width" content="1200" />
@@ -54,7 +69,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={title} />
+    <meta name="twitter:title" content={metaTitle} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={new URL(ogImage, Astro.site)} />
 
