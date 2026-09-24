@@ -29,6 +29,12 @@ the build:
 ```yaml
 ---
 title: "..."                              # string
+seoTitle: "..."                           # optional — overrides <title>/og:title/twitter:title
+                                           # only (H1 on the page is unaffected). Use when title
+                                           # is descriptive but too long for search results;
+                                           # otherwise BaseLayout auto-shortens by dropping the
+                                           # " — App Vitals" suffix once the combined string
+                                           # would run past 60 characters.
 date: "YYYY-MM-DD"                        # must match this exact format
 author: "Dan McAulay"                     # or "Dave O'Dell"
 category: "AI Adoption"                   # one of the four below, exact string
