@@ -9,7 +9,8 @@
     "preview": "astro preview",
     "astro": "astro",
     "check": "astro check",
-    "test": "playwright test"
+    "test": "playwright test",
+    "test:indexnow": "node scripts/indexnow.test.mjs"
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.19",
