@@ -24,7 +24,8 @@
 ## Frontmatter schema
 
 Enforced by `src/content.config.ts` — a post that doesn't match this fails
-the build:
+the build. That file is the source of truth for the field list below; if the
+two ever disagree, trust the schema and update this example.
 
 ```yaml
 ---
