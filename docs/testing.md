@@ -67,7 +67,7 @@ requests, and as a side effect make runs faster and less flaky.
 pattern doesn't cover LinkedIn's domains (`snap.licdn.com`,
 `px.ads.linkedin.com`) at all. What keeps the LinkedIn Insight Tag quiet in
 CI is the hostname guard in `src/layouts/BaseLayout.astro` (around line
-114):
+129):
 
 ```js
 if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
