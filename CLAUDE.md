@@ -116,6 +116,13 @@ npx vercel --prod --token "$VERCEL_TOKEN_APP_VITALS"
 - **Booking/cal destination** — `src/consts.ts`, `BOOKING_URL`
   (`https://vitals-os.com/cal/book/discovery`, self-hosted). Import it; never hardcode
   a booking URL (see Content Rules above).
+- **IndexNow** — `scripts/indexnow.mjs`, posted to `https://api.indexnow.org/indexnow`
+  on every push to `main` (`.github/workflows/indexnow.yml`, after the new deploy goes
+  live) so Bing/DuckDuckGo/Seznam/Yandex pick up sitemap changes without a recrawl
+  (Google does not consume IndexNow). Ownership is verified via the key file served at
+  `public/<key>.txt`; rotating the key means updating both that file and `KEY` in
+  `scripts/indexnow.mjs`. `npm run test:indexnow` (`scripts/indexnow.test.mjs`) unit-tests
+  the sitemap-parsing/payload-building logic and runs in CI before every workflow submission.
 
 **UTM-forwarding contract on `BOOKING_URL`**: `BaseLayout.astro` injects an inline
 script that reads `utm_source`, `utm_medium`, `utm_campaign`, `utm_content`, and
