@@ -3,7 +3,7 @@ title: "A Step an Agent Could Skip"
 date: "2026-09-22"
 author: "Dan McAulay"
 category: "Company Updates"
-excerpt: "PostHog was free, reused from a client project, and good enough — until we started using its numbers to decide how fast we could actually ship, and to back specific claims to clients. That's when a metrics pipeline built out of steps an agent could quietly skip stopped being tolerable, and we tore it out for code that can't be."
+excerpt: "We'd just built PostHog analytics for a client on a completely different kind of project, so it was the easy thing to reach for — until we started using its numbers to decide how fast we could actually ship, and to back specific claims to clients. That's when a metrics pipeline built out of steps an agent could quietly skip stopped being tolerable, and we tore it out for code that can't be."
 readTime: "6 min read"
 ---
 
@@ -13,7 +13,7 @@ Here's what reporting a task's progress used to look like. Somewhere in the midd
 
 ## Where It Came From
 
-PostHog wasn't chosen for Shipwright. Dave had just finished building PostHog-backed analytics for a client project — real dashboards, already paid for by being free — and reached for the same thing in April to answer a much smaller question: is our own pipeline doing anything at all. `PH-1.1` landed April 3rd, a typed HogQL client with eleven tests, folded into the monorepo that hadn't split into pieces yet. There wasn't a task store to query instead. The earliest attempt at one was still seven weeks out. PostHog wasn't the wrong tool, chosen over a better one already sitting on the shelf. It was the only tool on the shelf.
+PostHog wasn't chosen for Shipwright. Dave had just implemented PostHog analytics for a client, on a completely different kind of project, and it was the easy thing to reach for in April when we started thinking about our own metrics — to answer a much smaller question: is our own pipeline doing anything at all. `PH-1.1` landed April 3rd, a typed HogQL client with eleven tests, folded into the monorepo that hadn't split into pieces yet. There wasn't a task store to query instead. The earliest attempt at one was still seven weeks out. PostHog wasn't the wrong tool, chosen over a better one already sitting on the shelf. It was the only tool on the shelf.
 
 ## The Backend Nobody Needed Yet
 
