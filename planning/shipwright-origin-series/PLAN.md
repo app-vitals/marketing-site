@@ -1332,8 +1332,10 @@ Fable 5 taking over 07-03→08-20.
 ### Post 7 (the metrics journey) — scoping session, 2026-09-22
 
 **Why PostHog at all, 2026-04-03 (Dan):** it wasn't a considered choice for
-Shipwright specifically — Dave had just built PostHog-backed analytics for
-another client project, it was free, so he reused it (`PH-1.1`, `#252`,
+Shipwright specifically — Dave had just implemented PostHog analytics for a
+client (a completely different kind of project — noted here for context, but
+Dan doesn't want that detail in the post itself), so it was the easy thing
+to reach for (`PH-1.1`, `#252`,
 authored by Dave/Sully — PR body literally frames it as "Task breakdown for
 full Custom Metrics Dashboard feature," a client-facing dashboard first, not
 a Shipwright-metrics-first decision). **Continuity correction (Dan,
@@ -1486,9 +1488,12 @@ repo's June/July window.
    files, and nothing downstream that would ever notice if one got skipped.
    Land the tension in the last line: fine, as long as nothing serious rode
    on the number being right.
-2. **Where PostHog came from (4/3):** not a Shipwright decision — Dave's
-   reuse of a client project's free analytics setup. State plainly that the
-   task store didn't exist yet (earliest attempt seven weeks out) — this
+2. **Where PostHog came from (4/3):** not a Shipwright decision — Dave had
+   just implemented PostHog analytics for a client, so it was the easy thing
+   to reach for. (The client project was a completely different kind of
+   thing — Dan's context for us, deliberately left out of the post itself.)
+   State plainly that the task store didn't exist yet (earliest attempt
+   seven weeks out) — this
    was the only real option, not a road not taken.
 3. **Self-hosting forces a seam (6/8), briefly:** `MetricsProvider`, SQLite
    default, Postgres alongside it same day. The obvious reason to tell this
