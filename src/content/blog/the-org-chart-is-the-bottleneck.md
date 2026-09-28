@@ -69,7 +69,7 @@ And then there's trucking. Long-haul is going to be replaced, and that's million
 
 We're software people, we don't have a policy answer, and we're suspicious of anyone who claims to. But it reframes the software conversation. Engineers have spent two years arguing about whether their jobs are safe. That argument is already [settled in a narrow sense](/blog/your-engineering-career-was-never-safe/): the work changed, the people who adapted are fine, the ones waiting for it to blow over are not. What's coming for the physical economy is the same transition without the luxury of being early to it.
 
-The thing worth doing about it, in our own small corner, is the thing we're already doing: making it possible for people who are not career engineers to build real software. Dan isn't a traditional engineer and he ships production code through our factory every week. That's not a heartwarming detail, it's the point. When the leverage moves from typing to judgment, the set of people who can build expands enormously, and that's the most useful thing we can be building toward.
+The thing worth doing about it, in our own small corner, is the thing we're already doing: making it possible for people who are not career engineers to build real software. That's not a heartwarming detail, it's the point. When the leverage moves from typing to judgment, the set of people who can build expands enormously, and that's the most useful thing we can be building toward.
 
 Three years. The models will be ready well before that. The question is whether your org chart is.
 
