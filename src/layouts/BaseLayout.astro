@@ -102,16 +102,9 @@ const metaTitle =
 
     <!-- GA4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-H7QY6C7T1L"></script>
-    <script>
-      declare global {
-        interface Window {
-          dataLayer: unknown[];
-        }
-      }
+    <script is:inline>
       window.dataLayer = window.dataLayer || [];
-      function gtag(...args: unknown[]) {
-        window.dataLayer.push(args);
-      }
+      function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'G-H7QY6C7T1L');
     </script>
