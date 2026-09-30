@@ -18,6 +18,13 @@ preview of the site:
   forwarded, and hrefs are left unchanged when no UTM params are present.
 - `tests/linkedin-insight-tag.spec.ts` — the LinkedIn Insight Tag on `/`
   uses the correct partner ID and not a stale/wrong one.
+- `tests/ga4-tag.spec.ts` — the GA4 snippet on `/` ships inline and
+  unminified with the `gtag` identifier intact, defines `window.gtag`, and
+  queues its `config` command as an `arguments` object rather than an Array.
+  The Array/`arguments` distinction is the whole point: the 2026-08-29
+  outage (see below) shipped a `config` entry that looked present but was
+  Array-valued, so an assertion that merely finds a `config` entry would
+  pass on the broken code.
 
 ## Running tests
 
@@ -81,6 +88,31 @@ injected and no LinkedIn request is made, entirely independent of
 `fixtures.ts`. (The `<noscript>` tracking pixel is still present in the
 HTML — which is what `tests/linkedin-insight-tag.spec.ts` asserts against —
 but a JS-enabled browser never fetches it.)
+
+## Do not "modernise" the GA4 snippet
+
+The GA4 block in `src/layouts/BaseLayout.astro` is Google's canonical
+snippet, verbatim, on a `<script is:inline>` tag. Both of those properties
+are load-bearing, and breaking either one is silent — the page still renders,
+no build or type error fires, and only GA4 session counts reveal it:
+
+- **`function gtag(){dataLayer.push(arguments);}` must keep the `arguments`
+  object.** GA4's command queue identifies commands by `arguments`, so the
+  tidier-looking `function gtag(...args) { dataLayer.push(args) }` pushes a
+  plain Array that GA4 silently ignores.
+- **`is:inline` must stay.** Without it, Astro bundles the snippet into an ES
+  module, renaming `gtag` (to `a`, in the real incident) and scoping it away
+  from `window`, so `window.gtag` is undefined.
+
+PR #131 did both at once and took analytics dark on every BaseLayout page
+from 2026-08-29 until it was caught a month later. `tests/ga4-tag.spec.ts` is
+the regression guard; it runs against the built preview, so it catches the
+bundling failure mode and not just the source text.
+
+Because `is:inline` scripts are not type-checked, the snippet needs no
+`declare global { interface Window { dataLayer } }` block — `astro check` is
+clean without it. If a lint rule ever demands the type, declare it in
+`src/env.d.ts` rather than editing the snippet body.
 
 **If you add a new page or a new tracking/analytics pixel:** import from
 `./fixtures`, not `@playwright/test`, so this stubbing applies
