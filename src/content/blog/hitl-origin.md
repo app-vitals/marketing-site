@@ -57,4 +57,4 @@ Where it diverges is underneath that policy. Even inside a codebase area cleared
 
 None of this works without the thing [the task store post](/blog/task-store-origin/) already covered — a durable backlog that outlives any single session, which a human can classify once and a cron can keep dispatching against indefinitely. Take that away and there's no "during planning" to decide this at; there's just whatever's in front of whoever's typing, in the moment, same as everywhere else. The signal itself is small. What makes it worth having is everything underneath it that was already there.
 
-Next up: what it actually looks like to watch a fleet of agents work day to day — and a bug, fixed the same week I'm writing this, that let a stuck task hide from all of it.
+Next up: what it actually looks like to watch a fleet of agents work day to day.
