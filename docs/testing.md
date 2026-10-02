@@ -73,8 +73,8 @@ requests, and as a side effect make runs faster and less flaky.
 **LinkedIn is a separate mechanism — not this stub.** The stub's route
 pattern doesn't cover LinkedIn's domains (`snap.licdn.com`,
 `px.ads.linkedin.com`) at all. What keeps the LinkedIn Insight Tag quiet in
-CI is the hostname guard in `src/layouts/BaseLayout.astro` (around line
-129):
+CI is the hostname guard in `src/layouts/BaseLayout.astro` (the LinkedIn
+block right after the GA4 snippet):
 
 ```js
 if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
@@ -112,7 +112,7 @@ bundling failure mode and not just the source text.
 Because `is:inline` scripts are not type-checked, the snippet needs no
 `declare global { interface Window { dataLayer } }` block — `astro check` is
 clean without it. If a lint rule ever demands the type, declare it in
-`src/env.d.ts` rather than editing the snippet body.
+a new `src/env.d.ts` (none exists today) rather than editing the snippet body.
 
 **If you add a new page or a new tracking/analytics pixel:** import from
 `./fixtures`, not `@playwright/test`, so this stubbing applies
