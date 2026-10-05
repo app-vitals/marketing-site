@@ -5,17 +5,21 @@ on:
     branches:
       - main
 
+permissions:
+  contents: read
+
 jobs:
   build-lint-test:
     name: build / lint / smoke
     timeout-minutes: 20
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
         with:
           fetch-depth: 0
+          persist-credentials: false
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version: "20"
           cache: "npm"
@@ -30,9 +34,11 @@ jobs:
         run: npm run check
 
       - name: Brand lint (changed blog posts / LinkedIn drafts only)
+        env:
+          BASE_REF: ${{ github.base_ref }}
         run: |
-          git fetch origin "${{ github.base_ref }}" --depth=1
-          changed=$(git diff --name-only --diff-filter=d "origin/${{ github.base_ref }}" -- src/content/blog content-calendar | grep '\.md$' || true)
+          git fetch origin "$BASE_REF" --depth=1
+          changed=$(git diff --name-only --diff-filter=d "origin/$BASE_REF" -- src/content/blog content-calendar | grep '\.md$' || true)
           if [ -z "$changed" ]; then
             echo "No blog/LinkedIn content changed — skipping."
           else
