@@ -109,35 +109,27 @@ const metaTitle =
       gtag('config', 'G-H7QY6C7T1L');
     </script>
 
-    <!-- LinkedIn Insight Tag -->
-    <script>
-      declare global {
-        interface Window {
-          _linkedin_partner_id?: string;
-          _linkedin_data_partner_ids?: string[];
-          lintrk?: { (a: string, b?: unknown): void; q: unknown[][] };
-        }
-      }
-
+    <!-- LinkedIn Insight Tag (is:inline: Astro 7's bundler rewrites the partner-id quotes to backticks) -->
+    <script is:inline>
       if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
         window._linkedin_partner_id = '9897204';
         window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
         window._linkedin_data_partner_ids.push(window._linkedin_partner_id);
 
-        (function (l?: Window['lintrk']) {
+        (function (l) {
           if (!l) {
-            const lintrk = function (a: string, b?: unknown) {
+            var lintrk = function (a, b) {
               lintrk.q.push([a, b]);
-            } as { (a: string, b?: unknown): void; q: unknown[][] };
+            };
             lintrk.q = [];
             window.lintrk = lintrk;
           }
-          const s = document.getElementsByTagName('script')[0];
-          const b = document.createElement('script');
+          var s = document.getElementsByTagName('script')[0];
+          var b = document.createElement('script');
           b.type = 'text/javascript';
           b.async = true;
           b.src = 'https://snap.licdn.com/li.lms-analytics/insight.min.js';
-          s.parentNode?.insertBefore(b, s);
+          s.parentNode.insertBefore(b, s);
         })(window.lintrk);
       }
     </script>
