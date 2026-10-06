@@ -2,7 +2,7 @@
 
 ## Stack
 - **Framework**: Astro (static site generation, no SSR)
-- **Styling**: Tailwind CSS
+- **Styling**: Tailwind CSS 4 (CSS-first: `@import "tailwindcss"` + `@theme` tokens in `src/styles/global.css`, wired via `@tailwindcss/vite` in `astro.config.mjs` — no `tailwind.config.mjs`; scoped `<style>` blocks using `@apply` need `@reference`)
 - **Hosting**: Vercel
 - **Domain**: app-vitals.com
 

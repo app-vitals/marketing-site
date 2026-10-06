@@ -1,5 +1,5 @@
 import { defineConfig } from 'astro/config';
-import tailwind from '@astrojs/tailwind';
+import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 import fs from 'fs';
 import path from 'path';
@@ -26,7 +26,6 @@ export default defineConfig({
   // (see vercel.json) so only one URL per page is crawlable.
   trailingSlash: 'always',
   integrations: [
-    tailwind(),
     sitemap({
       serialize(item) {
         const lastmod = blogDateMap[item.url] ?? '2026-02-01';
@@ -35,4 +34,7 @@ export default defineConfig({
     }),
   ],
   output: 'static',
+  vite: {
+    plugins: [tailwindcss()],
+  },
 });
