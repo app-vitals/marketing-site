@@ -1,0 +1,4 @@
+# Suppressed via HITL task security-gitleaks-secret-marketing-site-2026-W41 on 2026-10-06 — confirmed false positive (public-by-design IndexNow key)
+0d66ebf45702f482f062af029fd2a6db2c0cee2d:scripts/indexnow.mjs:generic-api-key:14
+# Suppressed via HITL task security-gitleaks-secret-marketing-site-2026-W41 on 2026-10-06 — confirmed false positive (public-by-design IndexNow key)
+d9c56d4050617962a4f9992a4edd19f00731f0f3:scripts/indexnow.mjs:generic-api-key:14
