@@ -17,15 +17,13 @@ Upgrade to latest astro (7.x, >=7.2.8 fixes critical GHSA-26w7-cxv4-gfx2, AVIF/l
 ## Tasks
 | Task | Title | Layer | Hrs | Cx/Model | Deps | HITL |
 |---|---|---|---|---|---|---|
-| MSA-1.1 | Set Vercel project Node to 24.x | Shared | 0.5 | 1/haiku | - | HITL |
-| MSA-1.2 | Move CI/.nvmrc/engines to Node 24 + in-semver lockfile bump | Shared | 2 | 2/haiku | - | |
-| MSA-2.1 | Upgrade astro 5->7 and tailwind 3->4 (Vite plugin, @theme) | Frontend | 6 | 4/sonnet | 1.1, 1.2 | |
+| MSA-1.2 | Move CI/Vercel (engines 24.x)/.nvmrc to Node 24 + in-semver lockfile bump | Shared | 2 | 2/haiku | - | |
+| MSA-2.1 | Upgrade astro 5->7 and tailwind 3->4 (Vite plugin, @theme) | Frontend | 6 | 4/sonnet | 1.2 | |
 
 ```
 [START]
-  ├─ MSA-1.1 (HITL, no deps)
   └─ MSA-1.2 (no deps)
-        └─ MSA-2.1 (needs 1.1, 1.2)
+        └─ MSA-2.1 (needs 1.2)
 ```
 
 Astro 7 cannot use `@astrojs/tailwind` and Tailwind 4 needs the Vite plugin, so they ship in one atomic PR.
@@ -39,4 +37,4 @@ After MSA-2.1 merges, close both blocked security tasks with a note pointing at 
 ## Decision Log
 - TypeScript: kept at 5.9.x (astro check peer range).
 - Visual diff lives in the PR as screenshots, not permanent CI tests.
-- Node target: 24 (LTS), `engines` floor `>=22.12.0`.
+- Node target: 24 (LTS). `engines.node` = `24.x` (Vercel honors it over the dashboard), so the former HITL task MSA-1.1 (Vercel dashboard) was dropped and folded into MSA-1.2.
