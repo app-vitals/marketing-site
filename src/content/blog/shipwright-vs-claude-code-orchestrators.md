@@ -1,9 +1,9 @@
 ---
-title: "Shipwright vs. Claude Code Task-Queue Tools: A Queue Isn't a Delivery System"
+title: "claude-queue, Dispatch, and Shipwright: Running Claude Code Unattended"
 date: "2026-08-14"
 author: "Dave O'Dell"
 category: "Engineering Velocity"
-excerpt: "claude-queue and Dispatch are solid community tools for running Claude Code unattended. Here's the honest comparison — including where they're a better fit than Shipwright."
+excerpt: "claude-queue and Dispatch let you hand Claude Code a backlog and walk away. Here's what each one actually does, where they beat Shipwright, and the one thing a bare queue can't do: open the PR."
 readTime: "6 min read"
 faq:
   - question: "Can Claude Code queue tasks and run them unattended?"
@@ -13,6 +13,8 @@ faq:
   - question: "Is claude-queue safe to run on a work account?"
     answer: "Worth checking first: claude-queue's own README notes it accesses Claude.ai internal web endpoints for usage-limit monitoring, which it says may violate Anthropic's Terms of Service. Shipwright ships zero model or inference code and shells out only to the official claude CLI — no scraping of internal endpoints, nothing that puts a work account in Terms-of-Service limbo. Verify each tool's current behavior at its source, since these projects move fast."
 ---
+
+**Short answer:** yes, Claude Code can run a persistent task queue unattended today. [claude-queue](https://github.com/vasiliyk/claude-queue) gives you priorities, dependencies, and a worker that pauses before it burns through your plan limit. [Dispatch](https://github.com/bassimeledath/dispatch) fans one big task out to parallel workers in isolated worktrees. Both are good, and both stop at the same line: **neither opens a pull request.** If what you need is "the work gets queued," use claude-queue. If what you need is "the work gets *finished*," meaning built, PR'd, reviewed, and reconciled while nobody is watching, that's a different tool, and the rest of this page is the honest comparison.
 
 If you're trying to run Claude Code *unattended* — hand it a backlog, walk away,
 come back to opened PRs — you've probably found the community tools that got there
