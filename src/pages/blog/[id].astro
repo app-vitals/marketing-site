@@ -21,6 +21,7 @@ const blogPostingSchema = {
   '@type': 'BlogPosting',
   headline: post.data.title,
   datePublished: post.data.date,
+  dateModified: post.data.updated ?? post.data.date,
   description: post.data.excerpt,
   author: { '@type': 'Person', name: post.data.author },
   publisher: { '@type': 'Organization', name: 'App Vitals', url: 'https://app-vitals.com' },

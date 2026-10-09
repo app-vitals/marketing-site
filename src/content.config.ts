@@ -10,6 +10,10 @@ const blog = defineCollection({
     // BaseLayout otherwise auto-shortens by dropping the " — App Vitals" suffix.
     seoTitle: z.string().optional(),
     date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'date must be YYYY-MM-DD'),
+    // Set only when a post is substantively edited (title, claims, structure) —
+    // drives sitemap <lastmod> and BlogPosting dateModified. Don't bump it for
+    // typo fixes: an inflated lastmod teaches crawlers to ignore the signal.
+    updated: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'updated must be YYYY-MM-DD').optional(),
     author: z.string(),
     category: z.enum(['AI Adoption', 'Engineering Velocity', 'Technical Leadership', 'Company Updates']),
     excerpt: z.string(),

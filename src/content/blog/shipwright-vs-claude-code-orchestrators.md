@@ -1,6 +1,7 @@
 ---
 title: "claude-queue, Dispatch, and Shipwright: Running Claude Code Unattended"
 date: "2026-08-14"
+updated: "2026-10-07"
 author: "Dave O'Dell"
 category: "Engineering Velocity"
 excerpt: "claude-queue and Dispatch let you hand Claude Code a backlog and walk away. Here's what each one actually does, where they beat Shipwright, and the one thing a bare queue can't do: open the PR."
