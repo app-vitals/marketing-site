@@ -4,14 +4,17 @@ import sitemap from '@astrojs/sitemap';
 import fs from 'fs';
 import path from 'path';
 
-// Build a map of blog post URL → date from frontmatter at module load time
+// Build a map of blog post URL → lastmod from frontmatter at module load time.
+// `updated` (set only on substantive edits) wins over the publish `date`.
 const blogDateMap = {};
 const blogDir = path.resolve('./src/content/blog');
 if (fs.existsSync(blogDir)) {
   for (const file of fs.readdirSync(blogDir)) {
     if (!file.endsWith('.md')) continue;
     const content = fs.readFileSync(path.join(blogDir, file), 'utf-8');
-    const match = content.match(/^date:\s*"?(\d{4}-\d{2}-\d{2})"?/m);
+    const match =
+      content.match(/^updated:\s*"?(\d{4}-\d{2}-\d{2})"?/m) ??
+      content.match(/^date:\s*"?(\d{4}-\d{2}-\d{2})"?/m);
     if (match) {
       const slug = file.replace(/\.md$/, '');
       blogDateMap[`https://app-vitals.com/blog/${slug}/`] = match[1];

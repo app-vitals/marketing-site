@@ -12,6 +12,9 @@ preview of the site:
 - `tests/blog-index.spec.ts` — `/blog/` lists posts in strict descending
   date order, derived from the actual frontmatter on disk (not hardcoded
   slugs), so it stays correct as new posts are added.
+- `tests/blog-updated-date.spec.ts` — a post's optional `updated`
+  frontmatter drives both its sitemap `<lastmod>` and its BlogPosting
+  `dateModified`; posts without it fall back to the publish `date`.
 - `tests/utm-forwarding.spec.ts` — UTM params on the page URL get forwarded
   onto the booking CTA links (`vitals-os.com/cal/book/discovery`) on
   `/products/shipwright/` and `/contact/`, only recognized params are
