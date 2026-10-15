@@ -37,6 +37,10 @@ seoTitle: "..."                           # optional — overrides <title>/og:ti
                                            # " — App Vitals" suffix once the combined string
                                            # would run past 60 characters.
 date: "YYYY-MM-DD"                        # must match this exact format
+updated: "YYYY-MM-DD"                     # optional — set only on substantive edits (title,
+                                           # claims, structure), never typo fixes. Drives sitemap
+                                           # <lastmod> and BlogPosting dateModified; falls back
+                                           # to `date` when absent.
 author: "Dan McAulay"                     # or "Dave O'Dell"
 category: "AI Adoption"                   # one of the four below, exact string
 excerpt: "..."                            # 1-2 sentences, used in previews/SEO
