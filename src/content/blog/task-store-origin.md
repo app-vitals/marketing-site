@@ -2,7 +2,7 @@
 title: "We Built an Interface So We'd Never Have to Choose a Backend. We Ended Up Deleting All of Them."
 date: "2026-09-02"
 author: "Dan McAulay"
-category: "Company Updates"
+category: "Shipwright Origins"
 excerpt: "The plan was simple: put an interface in front of the todo list, swap backends whenever we wanted, never think about it again. Instead we got two backends an agent couldn't reliably choose between, a GitHub Issues implementation held together with labels and JSON stuffed in a comment, and a concurrency problem GitHub was never built to solve. Here's how that actually became the task store the whole pipeline runs on now."
 readTime: "8 min read"
 ---

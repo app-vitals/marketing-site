@@ -2,7 +2,7 @@
 title: "A Step an Agent Could Skip"
 date: "2026-09-22"
 author: "Dan McAulay"
-category: "Company Updates"
+category: "Shipwright Origins"
 excerpt: "We'd just built PostHog analytics for a client, so it was the easy thing to reach for — until we started using its numbers to decide how fast we could actually ship, and to back specific claims to clients. That's when a metrics pipeline built out of steps an agent could quietly skip stopped being tolerable, and we tore it out for code that can't be."
 readTime: "6 min read"
 ---

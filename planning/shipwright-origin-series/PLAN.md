@@ -44,7 +44,7 @@ closing "earns its place" paragraph).
 
 - **Byline:** Dan's name on his chapters ("my posts get my name," his words — most
   site posts default to Dave O'Dell, this series is the exception).
-- **Category:** `Company Updates` (enum-constrained in `src/content.config.ts`, no
+- **Category:** `Shipwright Origins` (enum-constrained in `src/content.config.ts`, no
   room to add a `series` field without a schema change — not worth it for one series).
 - **No formal series/tag system exists in the CMS.** Series continuity is carried by
   prose: a "next up" pointer at the end of each post, and inline cross-links between

@@ -2,7 +2,7 @@
 title: "Build What You Need: How Two Side Projects Became One Pipeline"
 date: "2026-08-25"
 author: "Dan McAulay"
-category: "Company Updates"
+category: "Shipwright Origins"
 excerpt: "37signals' whole philosophy is build what you need. Turns out that one instinct, followed honestly, is what forced our two separate tools together, got us our first client, and left us still running every piece of it, every day, five months later."
 readTime: "10 min read"
 ---
