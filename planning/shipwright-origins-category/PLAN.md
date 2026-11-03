@@ -23,3 +23,10 @@ Scope: add enum value; add badge color in `blog/index.astro` and `blog/[id].astr
 Tests: no new tests; `astro build` (CI) validates schema vs frontmatter.
 
 HITL scan: no tasks require human steps.
+
+## Addendum (Dan, 2026-11-03): Craft + Quality
+Second new category, 'Craft + Quality', the extension of Shipwright Origins (target ~1 post/week). Queued as SOC-1.2 (depends on SOC-1.1, which was already in progress; separate branch/PR to avoid mid-flight edits). Enum + badge color + docs list only; no posts yet.
+
+| ID | Title | Deps | Layer | Hours | Complexity | Model |
+|----|-------|------|-------|-------|-----------|-------|
+| SOC-1.2 | feat: add Craft + Quality blog category | SOC-1.1 | Frontend | 1 | 1 | haiku |
