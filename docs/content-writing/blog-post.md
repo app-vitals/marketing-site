@@ -52,7 +52,7 @@ faq:                                      # optional
 ```
 
 Valid `category` values (exact, case-sensitive): `AI Adoption`,
-`Engineering Velocity`, `Technical Leadership`, `Company Updates`, `Shipwright Origins`.
+`Engineering Velocity`, `Technical Leadership`, `Company Updates`, `Shipwright Origins`, `Craft + Quality`.
 
 ## Voice, condensed
 
