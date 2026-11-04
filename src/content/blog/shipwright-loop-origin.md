@@ -2,7 +2,7 @@
 title: "One Winner Per Tick"
 date: "2026-09-15"
 author: "Dan McAulay"
-category: "Company Updates"
+category: "Shipwright Origins"
 excerpt: "Two problems ran under our pipeline's crons for months: commands doing more than one job, and work waiting for its turn instead of starting the moment it was ready. Dave tried to fix the second by fusing two commands into one — and broke the first one doing it. Here's how both problems, colliding again and again, finally got solved by the same fix."
 readTime: "11 min read"
 ---

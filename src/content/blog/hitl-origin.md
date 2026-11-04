@@ -2,7 +2,7 @@
 title: "What Actually Needs a Human"
 date: "2026-10-01"
 author: "Dan McAulay"
-category: "Company Updates"
+category: "Shipwright Origins"
 excerpt: "In a pipeline built to run the rest of itself, two things turned out to need a human: a narrow slice of tasks an agent is deliberately kept away from, and a decision about which tasks those are, made before any agent starts, not inferred mid-run. Getting the first one right took an outage. Getting the second one right took three days to half-undo what we'd just shipped."
 readTime: "6 min read"
 ---

@@ -2,7 +2,7 @@
 title: "The Cloud Agent Was Supposed to Write Code. It Ended Up Reviewing It."
 date: "2026-08-05"
 author: "Dan McAulay"
-category: "Company Updates"
+category: "Shipwright Origins"
 excerpt: "I built a system to run Claude Code in isolated cloud sandboxes, chasing full autonomy — parallel features, overnight PRs, the works. Almost none of that survived contact with reality. The one piece that did became the review skill Shipwright runs on today."
 readTime: "7 min read"
 ---

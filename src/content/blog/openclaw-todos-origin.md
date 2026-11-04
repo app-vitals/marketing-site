@@ -2,7 +2,7 @@
 title: "Dave Put OpenClaw on His Pi First. The Todo List I Built After It Is What Actually Lasted."
 date: "2026-08-18"
 author: "Dan McAulay"
-category: "Company Updates"
+category: "Shipwright Origins"
 excerpt: "Dave bought a Raspberry Pi and ran OpenClaw on it first. I followed onto my own Pi a couple weeks later. I didn't stay on OpenClaw long — but the persistent space it gave Bodhi, and the todo list I built once I moved off it, are still recognizably the shape of how Shipwright agents work today."
 readTime: "11 min read"
 ---

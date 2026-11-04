@@ -2,7 +2,7 @@
 title: "Sharing Proof, Not Promises"
 date: "2026-09-21"
 author: "Dan McAulay"
-category: "Company Updates"
+category: "Shipwright Origins"
 excerpt: "A client asked how they'd know Shipwright would still be maintained in six months. I wasn't even ready to start the extraction that would answer it — Dave was, and he just began without me. Thirteen days later: 429 commits, a night four things broke at once, and all of it sitting in public git history for anyone to go check."
 readTime: "6 min read"
 ---
