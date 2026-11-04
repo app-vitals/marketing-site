@@ -15,7 +15,7 @@ const blog = defineCollection({
     // typo fixes: an inflated lastmod teaches crawlers to ignore the signal.
     updated: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'updated must be YYYY-MM-DD').optional(),
     author: z.string(),
-    category: z.enum(['AI Adoption', 'Engineering Velocity', 'Technical Leadership', 'Company Updates', 'Shipwright Origins']),
+    category: z.enum(['AI Adoption', 'Engineering Velocity', 'Technical Leadership', 'Company Updates', 'Shipwright Origins', 'Craft + Quality']),
     excerpt: z.string(),
     readTime: z.string(),
     faq: z.array(z.object({ question: z.string(), answer: z.string() })).optional(),
