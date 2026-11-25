@@ -36,6 +36,10 @@ Anthropic's own advice is the part worth repeating: start with one repo, and run
 
 Review reads the PR and leaves scored comments. Patch picks up those comments, fixes them, and rebases when the branch drifts. The merge gate decides what is allowed to go through. Same shape, different packaging.
 
+![The phases of the shipwright-loop in the Shipwright dashboard: dev-task, patch, review, plan-session, and merge](/img/blog/shipwright-loop-phases.png)
+
+*The five phases of the Shipwright loop, straight from our dashboard.*
+
 ## Where the two differ
 
 **Claude Ship starts at the pull request. Shipwright starts earlier and ends later.**
